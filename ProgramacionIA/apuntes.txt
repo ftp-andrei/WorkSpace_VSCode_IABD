@@ -1,0 +1,18 @@
+Análisis
+	-Funcionales:  funciones tendrá que realizar la aplicación
+	-No funcionales: tiempos de respuesta, simultaneidad de peticiones.. etc
+
+Diseño
+	-Diseño de datos: diagramas de clases (clases, atributos.. etc Entidades)
+-Diseño arquitectonico: como organizamos los datos entidad relacion, como se definen
+-Diseño de interfaz: App movil (donde va el menu, los botones etc), API Rest (app que contesta a otra)
+	-Diseño procedimental: pseudocodigo, diagramas de flujo
+
+
+Python usaremos procedimental estructurada
+
+Forma de ejecución
+	Los compilados: Coger todo el codigo y el compilador lo traduce a 0 y 1. C, C++
+	Los interpretados: Siempre vas a hacer traducciones, traduce en bitecode
+
+Compiladores: Si compila y da error, no pasa nada, pero los interpretados tienes que revertir cambios.
