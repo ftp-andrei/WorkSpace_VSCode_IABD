@@ -1,0 +1,11 @@
+Grafos - conjunto de puntos y aristas (relaciona datos)
+Hadoop - herramienta gestion de clusters
+
+
+--- LIMITES FIN EVALUACIONES ---
+
+4 dicimebre - fin 1era eva
+19 febrero - fin 2da eva
+11 abril - fin 3era eva
+25 abril - 1era ordinaria
+25 mayo - 2da ordinaria
