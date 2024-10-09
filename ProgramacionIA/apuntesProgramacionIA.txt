@@ -12,7 +12,21 @@ Diseño
 Python usaremos procedimental estructurada
 
 Forma de ejecución
-	Los compilados: Coger todo el codigo y el compilador lo traduce a 0 y 1. C, C++
+	Los compilados: Coge todo el codigo y el compilador lo traduce a 0 y 1. C, C++
 	Los interpretados: Siempre vas a hacer traducciones, traduce en bitecode
 
 Compiladores: Si compila y da error, no pasa nada, pero los interpretados tienes que revertir cambios.
+
+Comparativa general
+	Compilados: mas eficiente (gestiona mejor los recursos del sistema), optimización proceso compilacion, y el rendimiento
+	Interpretados: prototipado de codigo (prueba y error hsata llegar a la solucion mas optima)
+
+Lenguajes para programacion de IA: Se busca que sea 
+	-Simple
+	-Capacidad de prototipado
+	-Que sea facil de leer
+	-Que existan muchas librerias/bibliotecas (numpy, pandas, stickylearn, pytorch, keras..)
+	-La comunidad de desarrollo
+
+Lenguajes mas usados para IA: Python, LISP (antiguo), PROLOG, R (estadistica), Haskell, Java, C++
+
