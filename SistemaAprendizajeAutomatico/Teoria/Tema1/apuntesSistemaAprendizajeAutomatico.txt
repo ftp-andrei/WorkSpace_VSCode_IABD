@@ -1,0 +1,20 @@
+Machine learning -> Aprender tareas sin ser programadas. Utilizan estadisticas para predecir y reconocer patrones.
+
+Red neuronal -> Programa que toma decisiones para identificar, sopesar opciones y llegar a conclusiones. Tiene 3 capas:
+    Entradas: Representa una caracterista o atributo
+    Oculta (una y varias): Realizan funciones de suma ponderada y de activacion
+    Salida: Produce predicciones o resultados finales
+    
+Cada nodo procesa su informacion, sino no actua. Cuantos mas datos les des, mas aprenderán. 
+
+A veces se denominan ANN (Red neuronal artificial) o SNN (Red neuronal simuladas)
+
+Cualquier opcion de clasificacion binaria es 0,1 , verdadero o falso, rojo o verde.. etc 
+
+El termino profundo en las redes neuronales profundas se refiere a redes con muchas capas ocultas. Pueden aprender automaticamente 
+a partir de datos sin procesar
+
+Deep learning: utiliza redes neuronales profundas para simular la toma de decisiones
+
+IA Debil (o estrecha) : Que nos facilitan la vida (Asistentes virtuales). Solo cogen informanción y te devuelven información. No imitan al ser humano
+IA Fuerte: Busca replicar las capacidades humanas.
