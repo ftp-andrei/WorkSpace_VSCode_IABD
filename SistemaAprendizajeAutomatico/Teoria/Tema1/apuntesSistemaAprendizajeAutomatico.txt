@@ -17,4 +17,7 @@ a partir de datos sin procesar
 Deep learning: utiliza redes neuronales profundas para simular la toma de decisiones
 
 IA Debil (o estrecha) : Que nos facilitan la vida (Asistentes virtuales). Solo cogen informanción y te devuelven información. No imitan al ser humano
-IA Fuerte: Busca replicar las capacidades humanas.
+IA Fuerte: Busca replicar las capacidades humanas. Ej: robots que te haga la comida, asistentes de IA avanzados, coches autonomos
+
+
+La IA debil se le manda algo y lo hace, en cambio la IA fuerte toma sus propias decisiones
