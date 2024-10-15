@@ -1,6 +1,50 @@
 Grafos - conjunto de puntos y aristas (relaciona datos)
 Hadoop - herramienta gestion de clusters
 
+Big Data: Manejo, procesamiento y analisis de datos grandes y complejos. 
+
+Base de datos: Conjunto organizado de datos que almacenan y gestionan de manera estructurada el:
+    Acceso
+    Recuperación
+    La manipulacion de datos
+
+-----
+TIPOS DE BASES DE DATOS
+-----
+
+Existen 2 tipos:
+    SQL: Relacional (Postgres, MySQL... etc). Son las mas comunes. Se organizan en filas y columnas, de manera estructurada
+        Tipos de claves:
+            Unicas
+            No nulas
+            Irreducible: No puede ser un subcojunto de ninguna otra clave candidata. 
+            ¿Existen atributos que si los quitas siguen existiendo? Si es que si ese es el concepto.
+*Claves candidatas: Todas aquellas que pueden ser claves primarias
+
+    NoSQL: No Relacional (Mongo, Neo4js... etc). Hay categorias:
+        -De documentos: Se guardan archivos, semi-estructurados (JSON, XML)
+        -De columnas: Es eficiente para consultas analiticas (Preparadas para manejar grandes cantidades de datos).
+                        Preparadas para consultarse frecuentemente Ej: Apache, Cassandra,  HBase
+        -Clave valor: Son utilizadas para caché, pueden ser persistentes o no. Para acceder rapidamente a un valor.
+                        Son escalables. Ej: Redis.. . etc
+        -De grafo: Para consultar relaciones complejas. Se usa mucho para redes sociales Ejemplo: Neo4js
+        -De tiempo real: Para mandar telemetrias, metricas etc. Ej Prometheus
+        -De busqueda: Optimizadas para busqueda de texto compleja. Busca por todo a traves de la palabra indicada Ej: Elasticsearch
+
+Integridad: garantiza la cohesion y correcion de los datos de la bbdd
+    Entidad: Tiene una clave unica no nula
+    Referencial: Las claves externas(foraneas) se refieres a primarias validas
+    Dominio: Los valoSres se ajustan al dominio del atributo
+    Definida por usuario: Permite a los usuarios especificar restricciones y reglas (constrains)
+
+------
+NORMALIZACIÓN
+------
+Normalizar es el proceso de organizar y minimizar la redundancia de los datos en la bbdd
+Consiste en descomponer las tablas de datos en unas mas simples
+
+GUID: 
+
 
 --- LIMITES FIN EVALUACIONES ---
 
