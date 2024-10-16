@@ -1,0 +1,40 @@
+Que es un modelo de IA
+-----
+Es un componente sencial de los sistemas de IA y aprendizaje automatico. Como los guarda
+Utilizan
+    -Vision por ordenador
+    -Procesamiento de lenguaje natural
+    -Aprendizaje automatico
+
+IA generativa: Usa 2 redes neuronales para generar datos
+    Generador: crea datos sinteticos (datos artificiales)
+    Discriminador: evalua los datos generados y decide
+
+Se a utilizado para: generacion de imagenes, animacion y efectos especiales... etc
+
+Tipos de modelos de IA
+    -Redes profundas
+    -Modelo de regresion logistica: Se utiliza para clasificacion binaria. Responde en si y no.
+        Ej Atencion medica, marketing... etc
+    -
+    -Modelo de arboles de decision: Similares al diagrama de flujo. Dependiendo lo que hagas tendra un final u otro.
+    -
+Examen teorico (+ practicas a lo largo del semestre)
+*Le gustan las preguntas de ventajas y desventajas
+*Tipo test, entra toda la teoria dada en clase
+*No son de memorizar, son de entender
+*Puede haber desdew contestar una palabra hasta señalar varias cosas
+    ej; Pone todas las ventajas o inconvenientes y tenemos que decir cuales son
+de 30 a 50 preguntas
+no se puede volver atras 
+Las preguntas de cuadrado son las que descuentan
+Las preguntas de circulo y las demas no descuenta
+
+
+
+
+
+
+
+
+
