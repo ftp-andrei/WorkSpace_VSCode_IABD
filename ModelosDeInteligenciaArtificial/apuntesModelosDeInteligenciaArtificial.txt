@@ -12,13 +12,39 @@ IA generativa: Usa 2 redes neuronales para generar datos
 
 Se a utilizado para: generacion de imagenes, animacion y efectos especiales... etc
 
+Analisis predictivo: Se encarga de obtener informacion nueva y utilizarla para predecir patrones.
+    Ej: Predecir partidos de futbol
+
+Analisis de sentimiento: Proceso de determinar el tono emocional detras de una serie de palabras. 
+    Evalua emociones, actitudes y opiniones. Segun el tono en el que digas algo importa.
+
 Tipos de modelos de IA
     -Redes profundas
     -Modelo de regresion logistica: Se utiliza para clasificacion binaria. Responde en si y no.
         Ej Atencion medica, marketing... etc
-    -
+    -Regresion lineal: Simple y versatil para aplicaciones de clasificacion binaria
     -Modelo de arboles de decision: Similares al diagrama de flujo. Dependiendo lo que hagas tendra un final u otro.
-    -
+    -Bosque aleatorio: Esta basado en el modelo de arboles de decision (pero se dividen en pequeños grupos). Se divide en 2 etapas: 
+        - generacion de bosque aleatorio
+        - la prediccion utilizando el 1er paso
+    -Vecinos mas cercanos(K-NN): Si todos menos 1 hacen algo, probablemente acabe haciendo algo.Se usa para problema de clasificacion y regresion
+    -Naive Bayes: Basado en el teorema de Bayes (una caracteristica no depende de otra).
+
+
+
+
+
+
+
+
+
+
+
+
+
+------
+EXAMEN
+------
 Examen teorico (+ practicas a lo largo del semestre)
 *Le gustan las preguntas de ventajas y desventajas
 *Tipo test, entra toda la teoria dada en clase
