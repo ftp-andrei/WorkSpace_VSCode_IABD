@@ -1,0 +1,48 @@
+docker run --name mysqlRafa -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Libros -d mysql
+
+    --name = Nombre del contenedor en docker
+    -e = variable entorno, mas info en mysqlDocker
+
+docker ps (para coger el id/nombre del container)
+
+docker exec -it [container ID / nameContainer] bin/bash
+
+mysql --user=root --password [DB_Name (Libros)]
+
+(poner la password -> my-secret-pw)
+
+show databases; = muestra las bases de datos
+
+show tables; = muestra las tablas de una base de datos
+
+use [DB_Name];
+
+
+----
+CREAR TABLAS
+----
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+----
+MODIFICAR TABLAS
+----
+ALTER TABLE Customers
+ADD Email varchar(255)
+DROP COLUMN Email
+MODIFY COLUMN column_name datatype
+
+
+
+
+
+
+
+
+
+
