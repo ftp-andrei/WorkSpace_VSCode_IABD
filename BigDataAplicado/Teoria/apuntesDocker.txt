@@ -7,7 +7,7 @@ docker ps (para coger el id/nombre del container)
 
 docker exec -it [container ID / nameContainer] bin/bash
 
-mysql --user=root --password [DB_Name (Libros)]
+mysql --user=root --password [DB_Name (Libros)] 
 
 (poner la password -> my-secret-pw)
 

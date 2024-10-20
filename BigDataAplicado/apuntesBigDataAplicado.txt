@@ -41,7 +41,7 @@ Integridad: garantiza la cohesion y correcion de los datos de la bbdd
 NORMALIZACIÓN
 ------
 Normalizar es el proceso de organizar y minimizar la redundancia de los datos en la bbdd
-Consiste en descomponer las tablas de datos en unas mas simples
+Consiste en descomponer las tablas de datos en unas mas simples.
 
 GUID: 
 

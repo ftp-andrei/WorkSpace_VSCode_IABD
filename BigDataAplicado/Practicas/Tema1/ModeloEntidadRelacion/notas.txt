@@ -1,7 +1,7 @@
 1fn -> eliminacion de cosas repetidas (no necesariamente tiene que estar en las demas tablas), EJ telefonos
-    Además, es posible que no sea necesario crear tablas adicionales, es en según que casos, 
+    Además, es posible que no sea necesario crear tablas adicionales, es en según que casos,
     pasando asi la PK a la nueva tabla junto al atributo correspondiente, de ser necesario.
 
-2fn -> Todas las columnas deben ser dependientes de la PK (primary key)
+2fn -> Todas las columnas deben ser dependientes de la PK (primary key).
 
-3fn -> Eliminar cualquier dependencia transitiva (x->y->z), creando tablas y demás 
+3fn -> Eliminar cualquier dependencia transitiva (x->y->z), creando tablas y demás.
