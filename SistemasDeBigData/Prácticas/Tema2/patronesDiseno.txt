@@ -1,0 +1,80 @@
+Patrones de diseño: ETL (Extract, Transform, Load), ELT
+(Extract, Load, Transform), CQRS (Command Query
+Responsibility Segregation)
+
+
+ETL es mas conocido y ELT es mas moderno.
+son enfoques del procesamiento de datos que se utilizan para introducir datos en un almacén de datos
+y hacerlos útiles para los analistas y las herramientas de generación de reportes. 
+La diferencia entre los dos es el orden de sus dos pasos finales
+----
+ETL - Extract, Transform, Load (Extraer, Transformar, Cargar)
+----
+patron ampliamente utilizados en almacenamiento de datos e inteligencia de negocios
+
+
+----
+ELT - Extract, Load, Transform (Extraer, Cargar, Transformar)
+----
+patron ampliamente utilizados en almacenamiento de datos e inteligencia de negocios
+
+
+----
+CQRS - Command Query Responsibility Segregation (separación de la responsabilidad de consultas y comandos)
+----
+
+Es un patrón de diseño de software que separa consultas (recuperar datos) de los comandos 
+(inserción, actualización y borrado de datos). CQRS se utiliza en aplicaciones de alto rendimiento.
+
+Al separar las consultas en bases de datos podemos por ejemplo utilizar dos bases de datos, una NOSQL, 
+ya que son más rápidas a la hora de recuperar información, y otra SQL para los comandos.
+
+
+Como funciona (EJEMPLO): tenemos una petición POST para crear un usuario en una API:
+
+El controlador recibirá los parámetros para la creación del usuario
+Se crea un Command el cual será un DTO (objeto de transferencia de datos) con los parámetros de creación del usuario
+El CommandBus recibe por parámetro el Command el cual se encarga de enviarlo al CommandHandler
+El CommnandHandler recibirá el Command y este se encargará de enviarlo al caso de uso
+El caso de uso validará los datos y los persistirá en la base de datos
+
+
+Command: intención de realizar una acción en nuestro sistema que acabe modificando el estado como puede ser crear un registro, modificar uno existe o eliminarlo.
+El formato del Command será un DTO (objeto de transferencia de datos) el cual representa la acción que queremos hacer.
+
+Query: representa la intención de solicitar datos a nuestro sistema sin que ello acabe alterando el estado de tal.
+Al igual que en el Command, una Query será un DTO el cual representará la petición de datos que queremos consultar.
+
+Command/Query Bus: Este bus será el encargado de trasladar el DTO a su Handler correspondiente.
+
+Command/Query Handler: En Handler recibirá el DTO y este lo enviará al caso de uso
+
+Caso de Uso: Aquí es donde recibimos el DTO y aplicamos la lógica de negocio, validaremos los datos y después, según el tipo, 
+los persistiremos o los recuperaremos.
+
+
+Ventajas:
+    - Permite seguir más de cerca el principio de responsabilidad única
+    - Si los subsistemas de escritura y lectura se separan físicamente, podrían escalarse de manera independiente
+    - Las tecnologías de ambos sistemas podrían ser distintas: el sistema de escritura podría tener una base de datos distinta de la de lectura
+    - Las consultas se vuelven más sencillas
+
+Inconvenientes:
+    - Aumenta la complejidad del sistema
+    - Problemas de transaccionalidad pueden llevar a incoherencias de datos, ya que un usuario podría consultar datos obsoletos
+
+----
+Bibliografia
+----
+ETL & ELT
+    https://es.linkedin.com/advice/0/what-some-etl-design-patterns-automating-scheduling-5mdpe?lang=es
+    https://forum.huawei.com/enterprise/es/Patrones-en-el-flujo-de-datos-ETL-ELT/thread/667238284230803456-667212895836057600
+
+
+
+CQRS
+    https://cosasdedevs.com/posts/que-es-cqrs/
+    https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-data-persistence/cqrs-pattern.html#:~:text=The%20command%20query%20responsibility%20segregation,throughput%2C%20latency%2C%20or%20consistency.
+    https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs
+    https://www.netmentor.es/entrada/patron-cqrs-explicado-10-minutos#mcetoc_1fui41i1boq
+    https://www.altia.es/es/sobre-altia/actualidad/command-query-responsibility-segregation
