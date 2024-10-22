@@ -1,7 +1,36 @@
+docker ps -a -> todos los contenedores y cuando se apagó
+
+docker ps -> solo los activos
+
+docker run -> para ejecutar un contenedor
+
+docker exec -it -> para ejecutar un contenedor existente (el -it es para iterativo)
+
+el :tag es para las versiones, por default si no pones nada te pone la latest
+
+---
+VARIABLES DE ENTORNO
+---
+MYSQL_ROOT_PASSWORD -> Para poner una contraseña al usuario root
+
+MYSQL_DATABASE -> Nombre de la base de datos
+
+MYSQL_USER, MYSQL_PASSWORD -> Para poner un usuario y una contraseña
+
+MYSQL_ALLOW_EMPTY_PASSWORD -> Para que la password esté vacia
+
+MYSQL_RANDOM_ROOT_PASSWORD -> Genera una password aleatoria para el usuario root
+
+MYSQL_ONETIME_PASSWORD -> Fuerza al usuario root a cambiar la contraseña una vez logueado   
+---
+Crear contenedores
+---
+
 docker run --name mysqlRafa -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Libros -d mysql
 
     --name = Nombre del contenedor en docker
     -e = variable entorno, mas info en mysqlDocker
+    -d = daemon, para mantenerlo en segundo plano
 
 docker ps (para coger el id/nombre del container)
 
@@ -19,15 +48,20 @@ use [DB_Name];
 
 
 ----
-CREAR TABLAS
+CREAR TABLAS EJEMPLO
 ----
-CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255)
+CREATE TABLE Partido (
+    Id int NOT NULL,
+    Fecha DATETIME,
+    EquipoLocal nvarchar(255),
+    EquipoVisitante nvarchar(255),
+    Lugar nvarchar(255),
+    CONSTRAINT PK_Partido PRIMARY KEY (Id)
 );
+
+
+NVARCHAR permite añadir ASCII
+
 
 ----
 MODIFICAR TABLAS
