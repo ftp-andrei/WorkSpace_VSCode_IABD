@@ -36,7 +36,7 @@ docker ps (para coger el id/nombre del container)
 
 docker exec -it [container ID / nameContainer] bin/bash
 
-mysql --user=root --password [DB_Name (Libros)] 
+mysql --user=root --password [DB_Name (Libros)]  (o mysql -u root -p)
 
 (poner la password -> my-secret-pw)
 
@@ -72,8 +72,34 @@ DROP COLUMN Email
 MODIFY COLUMN column_name datatype
 
 
+-----
+Crear volumenes
+-----
+Para crear y exportar volumenes de docker
+
+un volumen es un puente bidireccional
+
+Si se modifica algo en S.O Windows, se modifica en el container
+Si se modifica algo en el container, tambien en el S.O Windows
+
+**S.O Windows direccion de la carpeta (c://usuarios/mysql)
+**Ruta container (var/lib/mysql)
+
+Si en el S.O No te dejan instalar nada pero si docker
+
+Coges el docker, creas una carpeta de programas, y ejecutas a traves del volumen
 
 
+------Como se hace------
+https://hub.docker.com/_/mysql
+
+Crear -> Poner nombre (MySQL_Volumen)
+
+-v [Nombre Volumen /my/own/datadir]:/var/lib/mysql    <- -v de volumen con la ruta
+
+Comando ejemplo para creacion de volumen
+
+docker run --name MysqlDBA -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Futbol -v MySQL_Volumen:/var/lib/mysql -d mysql
 
 
 

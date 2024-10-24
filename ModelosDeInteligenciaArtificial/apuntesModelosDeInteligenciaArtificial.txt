@@ -1,6 +1,6 @@
 Que es un modelo de IA
 -----
-Es un componente sencial de los sistemas de IA y aprendizaje automatico. Como los guarda
+Es un componente esencial de los sistemas de IA y aprendizaje automatico. Como los guarda
 Utilizan
     -Vision por ordenador
     -Procesamiento de lenguaje natural
@@ -29,6 +29,22 @@ Tipos de modelos de IA
         - la prediccion utilizando el 1er paso
     -Vecinos mas cercanos(K-NN): Si todos menos 1 hacen algo, probablemente acabe haciendo algo.Se usa para problema de clasificacion y regresion
     -Naive Bayes: Basado en el teorema de Bayes (una caracteristica no depende de otra).
+
+
+Diferencia Machine Learning y Modelo IA
+
+
+ModeloIA: Amplia gama de tareas, pretenden ser un superhumano
+Machine learning: Aprenden a partir de datos para tareas especificas
+
+Sistema experto: Responde como un experto en el tema
+
+CLIPS: Es un programa para sistemas expertos
+
+
+
+
+
 
 
 
