@@ -10,7 +10,12 @@ La diferencia entre los dos es el orden de sus dos pasos finales
 ----
 ETL - Extract, Transform, Load (Extraer, Transformar, Cargar)
 ----
-patron ampliamente utilizados en almacenamiento de datos e inteligencia de negocios
+Patron ampliamente utilizados en almacenamiento de datos e inteligencia de negocios. soluciones reutilizables para escenarios como
+    -integración de datos
+    -limpieza de datos
+    -calidad de los datos
+    -validación de datos
+    -transformación de datos
 
 
 ----
@@ -66,11 +71,16 @@ Inconvenientes:
 ----
 Bibliografia
 ----
+
+Patrones de diseño
+-----
+https://es.wikipedia.org/wiki/Patr%C3%B3n_de_dise%C3%B1o
+
 ETL & ELT
     https://es.linkedin.com/advice/0/what-some-etl-design-patterns-automating-scheduling-5mdpe?lang=es
     https://forum.huawei.com/enterprise/es/Patrones-en-el-flujo-de-datos-ETL-ELT/thread/667238284230803456-667212895836057600
-
-
+    https://nexla.com/data-integration-101/data-integration-architecture/
+    https://aws.amazon.com/es/compare/the-difference-between-etl-and-elt/
 
 CQRS
     https://cosasdedevs.com/posts/que-es-cqrs/
