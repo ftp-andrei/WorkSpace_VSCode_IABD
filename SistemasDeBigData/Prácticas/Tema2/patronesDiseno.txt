@@ -2,6 +2,12 @@ Patrones de diseño: ETL (Extract, Transform, Load), ELT
 (Extract, Load, Transform), CQRS (Command Query
 Responsibility Segregation)
 
+Los patrones de diseño son unas técnicas para resolver problemas comunes en el desarrollo de software y otros ámbitos referentes al diseño de interacción o interfaces.
+Un patrón de diseño resulta ser una solución a un problema de diseño. Para que una solución sea considerada un patrón debe poseer ciertas características. 
+-	Comprobar su efectividad a la hora de resolver problemas.
+-	Debe ser reutilizable.
+
+
 
 ETL es mas conocido y ELT es mas moderno.
 son enfoques del procesamiento de datos que se utilizan para introducir datos en un almacén de datos
@@ -81,6 +87,13 @@ ETL & ELT
     https://forum.huawei.com/enterprise/es/Patrones-en-el-flujo-de-datos-ETL-ELT/thread/667238284230803456-667212895836057600
     https://nexla.com/data-integration-101/data-integration-architecture/
     https://aws.amazon.com/es/compare/the-difference-between-etl-and-elt/
+    https://aws.amazon.com/es/what-is/etl/
+    https://www.conectasoftware.com/magazine/las-16-mejores-herramientas-etl-para-2023/
+    https://www.modus.es/etl-vs-elt/
+    https://learn.microsoft.com/es-es/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading
+    https://www.astera.com/es/type/blog/aws-etl-tools/#:~:text=Amazon%20Web%20Services%20(AWS)%20ETL,de%20decisiones%20basadas%20en%20ellos..
+    https://www.stambia.com/es/productos/integracion-datos/para-proyectos-de-big-data-hadoop
+    
 
 CQRS
     https://cosasdedevs.com/posts/que-es-cqrs/
@@ -88,3 +101,4 @@ CQRS
     https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs
     https://www.netmentor.es/entrada/patron-cqrs-explicado-10-minutos#mcetoc_1fui41i1boq
     https://www.altia.es/es/sobre-altia/actualidad/command-query-responsibility-segregation
+    https://www.pragma.co/es/blog/patron-cqrs-que-es-y-como-implementarlo-dentro-del-framework-axon
