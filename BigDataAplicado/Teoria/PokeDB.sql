@@ -117,11 +117,12 @@ SELECT Trainers.TrainerName, Badges.BadgeName FROM Trainers RIGHT JOIN Badges ON
 --Find all trainers with their Pokémon and abilities using multiple joins.
 
 --Find the trainer with the most Pokémon.
-
+SELECT t.TrainerName,Count(distinct bp.PokemonID) as numPokemons FROM Trainers AS t
+LEFT JOIN BattlePokemons AS bp ON t.TrainerID = bp.TrainerID GROUP BY  t.TrainerID,t.TrainerName ORDER BY numPokemons;
 --List all battles that occurred on a specific date (e.g., '2024-01-01').
 SELECT * FROM Battles WHERE BattleDate='2024-01-01';
 --Retrieve all Pokémon names along with their abilities.
-
+SELECT * FROM Pokemons JOIN PokemonAbilities ON Pokemons.PokemonID=PokemonAbilities.PokemonID JOIN Abilities ON PokemonAbilities.AbilityID=Abilities.AbilityID;
 --Get all trainers who won a battle.
 SELECT * FROM Trainers WHERE TrainerID IN (SELECT WinnerTrainerID FROM Battles);
 --Scalar Subquery: Find the number of badges for a specific trainer (e.g., TrainerID = 1).
