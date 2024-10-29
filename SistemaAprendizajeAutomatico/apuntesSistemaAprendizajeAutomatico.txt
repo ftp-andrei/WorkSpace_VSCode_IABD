@@ -33,7 +33,24 @@ Privacidad diferencial se dedica a meter ruido
 
 
 
+Aprendizaje automatico supervisado: Consiste en que a partir de unos datos, te da unos resultados. 
+Tipos de etiqueta:
+    - Clasificacion: varias etiquetas
+    - Regresion: una sola etiqueta
 
+Aprendizaje automatico no supervisado: Se retroalimenta a traves de sus propios resultados.
+Aparecen 2 tipos:
+    - Clustering (o agrupacion): A partir de unos resultados vas haciendo agrupaciones. A partir de esas agrupaciones da resultados (posiblemente mas especificos)
+        Tipos de algoritmos basados en:
+        -Densidad:  Encuentra los lugares mas densis en puntos de datos y los llama grupos. Pueden tener cualquier forma, no toma en cuenta valores atipicos
+        -Distribución: A partir de un punto central, segun se aleja del centro la probabilidad disminuye
+        -Centroides
+        -Jerarquias
+    - Association (o asociacion): Relacion entre los datos.
+
+Aprendizaje semisupervisado: Estudia y trabaja con la mitad de los datos (los mas significativos)
+
+Aprendizaje por refuerzo: Basada en un sistema de recompensas. Se retroalimentan,
 
 
 
