@@ -44,8 +44,8 @@ Aparecen 2 tipos:
         Tipos de algoritmos basados en:
         -Densidad:  Encuentra los lugares mas densis en puntos de datos y los llama grupos. Pueden tener cualquier forma, no toma en cuenta valores atipicos
         -Distribución: A partir de un punto central, segun se aleja del centro la probabilidad disminuye
-        -Centroides
-        -Jerarquias
+        -Centroides: 
+        -Jerarquias: 
     - Association (o asociacion): Relacion entre los datos.
 
 Aprendizaje semisupervisado: Estudia y trabaja con la mitad de los datos (los mas significativos)
