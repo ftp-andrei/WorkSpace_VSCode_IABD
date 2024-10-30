@@ -42,9 +42,17 @@ Aprendizaje automatico no supervisado: Se retroalimenta a traves de sus propios 
 Aparecen 2 tipos:
     - Clustering (o agrupacion): A partir de unos resultados vas haciendo agrupaciones. A partir de esas agrupaciones da resultados (posiblemente mas especificos)
         Tipos de algoritmos basados en:
-        -Densidad:  Encuentra los lugares mas densis en puntos de datos y los llama grupos. Pueden tener cualquier forma, no toma en cuenta valores atipicos
+        -Densidad:  Encuentra los lugares mas densos en puntos de datos y los llama grupos. Pueden tener cualquier forma, no toma en cuenta valores atipicos
         -Distribución: A partir de un punto central, segun se aleja del centro la probabilidad disminuye
-        -Centroides: 
+        -Centroides: Es el centro de algo, siendo equidistante de los vertices. Media de todos los puntos de datos dentro de un clúster.
+        Cada cluster va a tener un centroide. 
+            Ventajas:
+                -Escalabilidad
+                -Interpretabilidad
+                -Flexibilidad
+            Limitaciones:
+                -Sensibilidad a las condiciones iniciales
+                -Asunción de grupos esféricos
         -Jerarquias: 
     - Association (o asociacion): Relacion entre los datos.
 

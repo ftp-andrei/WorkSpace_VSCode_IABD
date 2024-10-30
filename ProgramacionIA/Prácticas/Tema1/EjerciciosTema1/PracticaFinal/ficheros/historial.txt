@@ -1,0 +1,20 @@
+papel gana a piedra. Tu pierdes 
+papel gana a piedra. Tu ganas 
+papel gana a piedra. Tu ganas 
+empate
+piedra gana a tijera. Tu ganas 
+empate
+tijera gana a papel. Tu ganas 
+empate
+piedra gana a tijera. Tu ganas 
+piedra gana a tijera. Tu ganas 
+papel gana a piedra. Tu pierdes 
+empate
+papel gana a piedra. Tu pierdes 
+piedra gana a tijera. Tu ganas 
+empate
+piedra gana a tijera. Tu ganas 
+tijera gana a papel. Tu pierdes 
+empate
+piedra gana a tijera. Tu pierdes 
+tijera gana a papel. Tu ganas 
