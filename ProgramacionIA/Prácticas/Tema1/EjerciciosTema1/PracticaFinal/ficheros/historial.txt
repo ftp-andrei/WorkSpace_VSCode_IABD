@@ -18,3 +18,5 @@ tijera gana a papel. Tu pierdes
 empate
 piedra gana a tijera. Tu pierdes 
 tijera gana a papel. Tu ganas 
+tijera gana a piedra. Tu pierdes 
+empate
