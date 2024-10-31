@@ -1,0 +1,43 @@
+
+
+docker run -d --network some-network --name some-mongo \
+	-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+	-e MONGO_INITDB_ROOT_PASSWORD=secret \
+	mongo
+
+
+VARIABLES DE ENTORNO USERNAME Y PASSWORD
+
+Para verlas las podemos ver desde docker
+--------------
+
+Creamos el volumen como con docker.
+
+
+
+PARA LANZAR UN CONTAINER MONGO:
+docker run --name MongoContainerBDA -v Mongo_Volumen:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret -d mongo 
+
+docker ps - para ver el id
+
+docker exec -it MongoContainerBDA bin/bash
+
+Escribimos mongosh para entrar (o mongosh -u mongoadmin -p secret --authenticationDatabase admin)
+
+CREAR BASE DE DATOS: use Instituto
+
+Si existe te cambia de BD 
+
+db.Clase.insertOne({Nombre:"C09", Alumnos: [{Nombre:"pepe",Suspendido: "si"}]})   - para crear cosas
+db.Clase.insertOne({Nombre:"C02", Alumnos: [{Nombre:"jose",Suspendido: "si"},{Nombre: 'Jorge',rubio:true}]})
+
+show collections -> Para ver las tablas
+
+db.Clase.find({}) -> Para ver el contenido de la tabla Clase
+
+db.Clase.find({Nombre:'C02'}) -> para buscar cuyo nombre sea C02
+
+db.Clase.find({Nombre:{$regex:"C"}}) -> para buscar mas fino, que contenga una C
+
+
+

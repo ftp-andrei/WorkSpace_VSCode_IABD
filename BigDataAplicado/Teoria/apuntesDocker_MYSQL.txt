@@ -21,7 +21,7 @@ MYSQL_ALLOW_EMPTY_PASSWORD -> Para que la password esté vacia
 
 MYSQL_RANDOM_ROOT_PASSWORD -> Genera una password aleatoria para el usuario root
 
-MYSQL_ONETIME_PASSWORD -> Fuerza al usuario root a cambiar la contraseña una vez logueado   
+MYSQL_ONETIME_PASSWORD -> Fuerza al usuario root a cambiar la contraseña una vez logueado
 ---
 Crear contenedores
 ---

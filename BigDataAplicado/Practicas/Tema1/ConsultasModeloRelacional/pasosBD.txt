@@ -1,0 +1,46 @@
+PASO 1
+-------------------
+
+docker run --name mysqlPractica -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=Instituto -d mysql
+
+docker ps
+
+docker exec -it mysqlPractica bin/bash
+
+mysql -u root -p
+
+añadimos pass secret
+
+show databases;
+
+use Instituto;
+
+CREATE TABLE Estudiante (
+    StudentID int NOT NULL,
+    FirstName nvarchar(255),
+    LastName nvarchar(255),
+    DateOfBirth DATETIME,
+    CONSTRAINT PK_Estudiante PRIMARY KEY (StudentID)
+);
+
+CREATE TABLE Curso (
+    CourseID int NOT NULL,
+    CourseName nvarchar(255),
+    Credits int,
+    CONSTRAINT PK_Curso PRIMARY KEY (CourseID)
+);
+
+CREATE TABLE Profesor (
+    ProfesorID int NOT NULL,
+    Nombre nvarchar(255),
+    Apellido int,
+    CONSTRAINT PK_Profesor PRIMARY KEY (ProfesorID)
+);
+
+CREATE TABLE Departamento (
+    DepartmentID int NOT NULL,
+    DepartmentName nvarchar(255),
+    CONSTRAINT PK_Departamento PRIMARY KEY (DepartmentID)
+);
+
+
