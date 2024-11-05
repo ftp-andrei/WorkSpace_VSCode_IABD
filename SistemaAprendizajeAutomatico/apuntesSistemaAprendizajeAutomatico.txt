@@ -45,6 +45,7 @@ Aparecen 2 tipos:
         -Densidad:  Encuentra los lugares mas densos en puntos de datos y los llama grupos. Pueden tener cualquier forma, no toma en cuenta valores atipicos
         -Distribución: A partir de un punto central, segun se aleja del centro la probabilidad disminuye
         -Centroides: Es el centro de algo, siendo equidistante de los vertices. Media de todos los puntos de datos dentro de un clúster.
+        El cuadrado del valor del centroide es la distancia al cuadrado (Si es 3, 3^2 = 9)
         Cada cluster va a tener un centroide. 
             Ventajas:
                 -Escalabilidad
@@ -53,7 +54,13 @@ Aparecen 2 tipos:
             Limitaciones:
                 -Sensibilidad a las condiciones iniciales
                 -Asunción de grupos esféricos
-        -Jerarquias: 
+        -Jerarquias: Se utiliza en datos jerarquicos. Es perfecto para tipos especificos de conjunto de datos. 
+        Es no supervisado que se utiliza para agrupar puntos de datos no etiquetados. 
+            Dendrograma: resultado es una estructura en forma de árbol invertido
+            (Taxonomia: clasificacion de cosas(animales,insectos) micotómicas (2 versiones), como un arbol de decision. Necesita muchos datos)
+            Existen 2 tipos:
+                Divisivo: todos los puntos de datos se tratan como un gran cluster y el proceso de agrupación implica la división del gran cluster en varios clusters pequeños
+                Aglomeracion: puntos de datos se agrupan utilizando un enfoque ascendente
     - Association (o asociacion): Relacion entre los datos.
 
 Aprendizaje semisupervisado: Estudia y trabaja con la mitad de los datos (los mas significativos)
@@ -62,5 +69,15 @@ Aprendizaje por refuerzo: Basada en un sistema de recompensas. Se retroalimentan
 
 
 
+
+
+Examen: miercoles 20
+Presenta un desarrollo de BigML, y hay que sacar conclusiones
+50 preguntas
+No se puede volver para atras
+2h de examen
+8 de verdadero falso
+Malentendidos
+No resta a no ser que sea cuadradito
 
 

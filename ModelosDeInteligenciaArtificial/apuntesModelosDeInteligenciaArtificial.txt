@@ -39,7 +39,7 @@ Machine learning: Aprenden a partir de datos para tareas especificas
 
 Sistema experto: Responde como un experto en el tema
 
-CLIPS: Es un programa para sistemas expertos
+CLIPS: Es un programa para sistemas expertos. Es una version nueva de Lisp. basado en ello (La C porque añade C)
 
 
 
@@ -73,7 +73,7 @@ Las preguntas de cuadrado son las que descuentan
 Las preguntas de circulo y las demas no descuenta
 
 
-
+Miercoles 27 examen
 
 
 

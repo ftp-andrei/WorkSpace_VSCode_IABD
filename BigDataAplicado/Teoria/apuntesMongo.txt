@@ -28,16 +28,89 @@ CREAR BASE DE DATOS: use Instituto
 
 Si existe te cambia de BD 
 
+Esto para insertar 1 solo
+
 db.Clase.insertOne({Nombre:"C09", Alumnos: [{Nombre:"pepe",Suspendido: "si"}]})   - para crear cosas
 db.Clase.insertOne({Nombre:"C02", Alumnos: [{Nombre:"jose",Suspendido: "si"},{Nombre: 'Jorge',rubio:true}]})
 
-show collections -> Para ver las tablas
+Esto para insertar varios
+
+db.products.insertMany( [
+      { _id: 10, item: "large box", qty: 20 },
+      { _id: 11, item: "small box", qty: 55 },
+      { _id: 12, item: "medium box", qty: 30 }
+])
+
+
+show collections/tables -> Para ver las tablas
+
+Find para leer
+Update para 
+
 
 db.Clase.find({}) -> Para ver el contenido de la tabla Clase
 
 db.Clase.find({Nombre:'C02'}) -> para buscar cuyo nombre sea C02
 
 db.Clase.find({Nombre:{$regex:"C"}}) -> para buscar mas fino, que contenga una C
+
+db.Clase.find({edad:{$gt:30}}) -> encuentra los mayores a 30
+
+db.products.find({item:{$in:["medium box","small box"]}}) -> para buscar los productos que tengan los valores que hay entre corchetes
+
+db.products.find({item:{$ne:"medium box"}}) -> que no tenga el valor mediumbox, es como el where negandolo
+
+db.products.find({item:{$ne:"medium box"}},{item:1}) -> el item 1 es el select
+
+db.students.updateOne({name: "Alice"}, {novio: rafa}) -> para añadir uno
+
+db.students.updateOne({name: "Alice"}, {set:{age:23}}); -> Actualiza el primero que encuentre con age23. Si no tiene la propiedad (age) la crea
+
+Para updatear varios es con updateMany
+
+db.students.deleteOne({name: "Alice"}) -> borra el primero que encuentre con name Alice
+
+db.students.find({"Info.fecha": "mañana"}) -> para filtrar por info.fecha (entrar dentro de un {})
+
+
+El match es como un find, pero los agreggation se van añadiendo uno detras de otro
+
+$lookup -> para hacer joins
+
+$unwind -> será la consulta dificil. lo que hace es dividir el array en elementos
+Es para buscar un elemento dentro de un array
+
+unwind property deporte
+Ejemplo:
+[{
+	nombre:"Pepe"
+	deporte: ["Futbol","tenis"]
+},
+{
+	nombre:"Jose"
+	deporte: ["Pingpong","Surf"]
+}]
+
+
+pasaria a:
+
+[{
+	nombre:"Pepe"
+	deporte: "Futbol"
+},
+{
+	nombre:"Pepe"
+	deporte: "tenis"
+},
+{
+	nombre:"Jose"
+	deporte: "Pingpong"
+},
+{
+	nombre:"Jose"
+	deporte: "Surf"
+}]
+
 
 
 
