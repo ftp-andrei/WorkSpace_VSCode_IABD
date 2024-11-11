@@ -1,0 +1,108 @@
+docker ps -a -> todos los contenedores y cuando se apagó
+
+docker ps -> solo los activos
+
+docker run -> para ejecutar un contenedor
+
+docker exec -it -> para ejecutar un contenedor existente (el -it es para iterativo)
+
+el :tag es para las versiones, por default si no pones nada te pone la latest
+
+---
+VARIABLES DE ENTORNO
+---
+MYSQL_ROOT_PASSWORD -> Para poner una contraseña al usuario root
+
+MYSQL_DATABASE -> Nombre de la base de datos
+
+MYSQL_USER, MYSQL_PASSWORD -> Para poner un usuario y una contraseña
+
+MYSQL_ALLOW_EMPTY_PASSWORD -> Para que la password esté vacia
+
+MYSQL_RANDOM_ROOT_PASSWORD -> Genera una password aleatoria para el usuario root
+
+MYSQL_ONETIME_PASSWORD -> Fuerza al usuario root a cambiar la contraseña una vez logueado
+---
+Crear contenedores
+---
+
+docker run --name mysqlRafa -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Libros -d mysql
+
+    --name = Nombre del contenedor en docker
+    -e = variable entorno, mas info en mysqlDocker
+    -d = daemon, para mantenerlo en segundo plano
+
+docker ps (para coger el id/nombre del container)
+
+docker exec -it [container ID / nameContainer] bin/bash
+
+mysql --user=root --password [DB_Name (Libros)]  (o mysql -u root -p)
+
+(poner la password -> my-secret-pw)
+
+show databases; = muestra las bases de datos
+
+show tables; = muestra las tablas de una base de datos
+
+use [DB_Name];
+
+
+----
+CREAR TABLAS EJEMPLO
+----
+CREATE TABLE Partido (
+    Id int NOT NULL,
+    Fecha DATETIME,
+    EquipoLocal nvarchar(255),
+    EquipoVisitante nvarchar(255),
+    Lugar nvarchar(255),
+    CONSTRAINT PK_Partido PRIMARY KEY (Id)
+);
+
+
+NVARCHAR permite añadir ASCII
+
+
+----
+MODIFICAR TABLAS
+----
+ALTER TABLE Customers
+ADD Email varchar(255)
+DROP COLUMN Email
+MODIFY COLUMN column_name datatype
+
+
+-----
+Crear volumenes
+-----
+Para crear y exportar volumenes de docker
+
+un volumen es un puente bidireccional
+
+Si se modifica algo en S.O Windows, se modifica en el container
+Si se modifica algo en el container, tambien en el S.O Windows
+
+**S.O Windows direccion de la carpeta (c://usuarios/mysql)
+**Ruta container (var/lib/mysql)
+
+Si en el S.O No te dejan instalar nada pero si docker
+
+Coges el docker, creas una carpeta de programas, y ejecutas a traves del volumen
+
+
+------Como se hace------
+https://hub.docker.com/_/mysql
+
+Crear -> Poner nombre (MySQL_Volumen)
+
+-v [Nombre Volumen /my/own/datadir]:/var/lib/mysql    <- -v de volumen con la ruta
+
+Comando ejemplo para creacion de volumen
+
+docker run --name MysqlDBA -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Futbol -v MySQL_Volumen:/var/lib/mysql -d mysql
+
+
+
+
+
+

@@ -43,12 +43,10 @@ NORMALIZACIÓN
 Normalizar es el proceso de organizar y minimizar la redundancia de los datos en la bbdd
 Consiste en descomponer las tablas de datos en unas mas simples.
 
-GUID: 
-
 
 --- LIMITES FIN EVALUACIONES ---
 
-4 dicimebre - fin 1era eva
+4 diciembre - fin 1era eva
 19 febrero - fin 2da eva
 11 abril - fin 3era eva
 25 abril - 1era ordinaria
