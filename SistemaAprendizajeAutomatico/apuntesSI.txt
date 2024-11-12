@@ -1,0 +1,148 @@
+(loop-for-count(?i 0 10) do (printout t(i) crlf)
+
+
+
+ (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (* ?i ?x)))
+ 
+ 
+          CLIPS (6.4.1 4/8/23)
+CLIPS> printout t(+ 2 3
+)printout
+CLIPS> (printout t(+ 2 3) crlf)
+5
+CLIPS> (defrule saludo => (printout t "+ 2 3" crlf))
+CLIPS> (run)
++ 2 3
+CLIPS> (assert (numero 5))
+<Fact-1>
+CLIPS> (assert (numero "5"))
+<Fact-2>
+CLIPS> (defrule mostrar-numero (numero ?x) => (printout t"El numero es "?x crlf))
+CLIPS> (run)
+El numero es 5
+El numero es 5
+CLIPS> (defrule mostrar-numero (numero ?y) => (printout t"El numero es "?y crlf))
+CLIPS> (run)
+El numero es 5
+El numero es 5
+CLIPS> (loop-for-count(?i 0 10) do (printout t(?i) crlf))
+[EXPRNPSR1] A function name must be a symbol.
+CLIPS> (loop-for-count(i 0 10) do (printout t(i) crlf))
+[EXPRNPSR3] Missing function declaration for 'i'.
+CLIPS> (loop-for-count(?i 0 10) do (printout t(i) crlf))
+[EXPRNPSR3] Missing function declaration for 'i'.
+CLIPS> (defrule iterar-numero =>(loop-for-count(?i 0 10) do (printout t(?i) crlf)))
+[EXPRNPSR1] A function name must be a symbol.
+
+ERROR:
+(defrule MAIN::iterar-numero
+   =>
+   (loop-for-count (?i 0 10)  do
+      (printout t (?i
+CLIPS> (defrule iterar-numero =>(loop-for-count(?i 0 10) do (printout t ?i crlf)))
+CLIPS> (run)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+CLIPS> loop-for-count(?i 0 10) do (printout t ?i crlf))
+loop-for-count
+CLIPS> (loop-for-count(?i 0 10) do (printout t ?i crlf))
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+FALSE
+CLIPS> (loop-for-count(?i 0 10) do (printout t ?i crlf))
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+FALSE
+CLIPS> (bind ?x (read))
+(defrule entrada => (printout t "introduzca una cadena:") (assert (cadena (read)))))
+(
+CLIPS> (run)
+CLIPS> (bind ?x (read))
+hola
+hola
+CLIPS> (reset)
+CLIPS> (reset)
+
+CLIPS> (bind ?x (read))
+hola
+hola
+CLIPS> (defrule entrada => (printout t "Introduce una cadena: ") (assert (cadena (read))))
+CLIPS> (run)
+Introduce una cadena: asdf
++ 2 3
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+CLIPS> (assert (numero 6))
+<Fact-2>
+CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (* ?i ?x)))
+CLIPS> (run)
+El numero es 6
+CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do printout t(* ?i ?x)))
+CLIPS> (run)
+CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t(* ?i ?x))))
+CLIPS> (run)
+06121824303642485460CLIPS> (run)
+CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t(* ?i ?x) crlf)))
+CLIPS> (run)
+0
+6
+12
+18
+24
+30
+36
+42
+48
+54
+60
+CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t ?i "*" ?x "=" (* ?i ?x) crlf)))
+CLIPS> (run)
+0*6=0
+1*6=6
+2*6=12
+3*6=18
+4*6=24
+5*6=30
+6*6=36
+7*6=42
+8*6=48
+9*6=54
+10*6=60
+ 
+ 

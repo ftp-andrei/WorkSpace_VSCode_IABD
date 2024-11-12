@@ -26,6 +26,15 @@ CREAR BASE DE DATOS: use Instituto
 
 Si existe te cambia de BD 
 
+
+Para crear coleccion Clase (tabla)
+
+db.createCollection("Clase")
+
+db.COLECCTION_NAME.find() - para ver informacion dentor de la tabla (Importante ID's)
+
+db.COLLECTION_NAME.drop() - PARA ELIMINAR UNA COLECCION
+
 Esto para insertar 1 solo
 
 db.Clase.insertOne({Nombre:"C09", Alumnos: [{Nombre:"pepe",Suspendido: "si"}]})   - para crear cosas
@@ -109,6 +118,31 @@ pasaria a:
 	deporte: "Surf"
 }]
 
+lookup - para hacer joins en mongo
+
+Sintaxis.
+
+Junta orders con inventory, los 2 siguientes campos son las keyA=keyB 
+
+https://www.mongodb.com/docs/manual/reference/operator/aggregation/lookup/
+db.orders.aggregate( [
+   {
+     $lookup:
+       {
+         from: "inventory",
+         localField: "item",
+         foreignField: "sku",
+         as: "inventory_docs"
+       }
+  }
+] )
 
 
+El unwind solo se hace sobre los arrays
+
+db.inventory.aggregate( [ { $unwind : "$sizes" } ] )
+
+Lo que hace es que se repite la informacion, se hace sobre el lookup anterior.
+
+group, match, project investigar y añadir (addFields)
 
