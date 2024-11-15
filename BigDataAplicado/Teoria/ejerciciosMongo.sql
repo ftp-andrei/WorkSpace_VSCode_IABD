@@ -135,11 +135,9 @@ db.customers.insertMany([
 ------------------
 
 
-1. Enumere todos los libros con una califi
+1. Enumere todos los libros con una calificación superior a 4,5.
 
 
-
-cación superior a 4,5.
 
 2. Calcular la puntuación media de cada libro.
 db.book.aggregate([

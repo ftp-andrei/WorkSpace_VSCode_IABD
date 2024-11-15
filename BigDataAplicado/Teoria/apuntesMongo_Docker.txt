@@ -86,7 +86,7 @@ $lookup -> para hacer joins
 
 $unwind -> será la consulta dificil. lo que hace es dividir el array en elementos
 Es para buscar un elemento dentro de un array
-
+Siempre los unwind se usan en los arrays
 unwind property deporte
 Ejemplo:
 [{
