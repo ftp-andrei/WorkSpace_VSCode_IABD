@@ -4,10 +4,7 @@
 
  (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (* ?i ?x)))
  
- 
-          CLIPS (6.4.1 4/8/23)
-CLIPS> printout t(+ 2 3
-)printout
+
 CLIPS> (printout t(+ 2 3) crlf)
 5
 CLIPS> (defrule saludo => (printout t "+ 2 3" crlf))
@@ -25,20 +22,7 @@ CLIPS> (defrule mostrar-numero (numero ?y) => (printout t"El numero es "?y crlf)
 CLIPS> (run)
 El numero es 5
 El numero es 5
-CLIPS> (loop-for-count(?i 0 10) do (printout t(?i) crlf))
-[EXPRNPSR1] A function name must be a symbol.
-CLIPS> (loop-for-count(i 0 10) do (printout t(i) crlf))
-[EXPRNPSR3] Missing function declaration for 'i'.
-CLIPS> (loop-for-count(?i 0 10) do (printout t(i) crlf))
-[EXPRNPSR3] Missing function declaration for 'i'.
-CLIPS> (defrule iterar-numero =>(loop-for-count(?i 0 10) do (printout t(?i) crlf)))
-[EXPRNPSR1] A function name must be a symbol.
 
-ERROR:
-(defrule MAIN::iterar-numero
-   =>
-   (loop-for-count (?i 0 10)  do
-      (printout t (?i
 CLIPS> (defrule iterar-numero =>(loop-for-count(?i 0 10) do (printout t ?i crlf)))
 CLIPS> (run)
 0
