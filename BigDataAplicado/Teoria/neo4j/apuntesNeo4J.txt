@@ -1,0 +1,129 @@
+Yelp: google de reviews, restaurantes, fotos etc etc
+
+Cortar bd, para pasar de 30gb a 30mb:
+powershell top
+
+https://github.com/Yelp/dataset-examples -- Dataset github example
+
+de JSON a CSV:
+
+$ python json_to_csv_converter.py yelp_academic_dataset.json # Creates yelp_academic_dataset.csv
+
+docker
+------
+
+docker run  --restart always  --name Neo4j_DBA --publish=7474:7474 --publish=7687:7687  --env NEO4J_AUTH=neo4j/my-secret-pw --volume=Neo4j_volume:/data  -d neo4j
+
+
+le damos click en docker para iniciar localhost
+
+y ponermos:
+Username: neo4j
+passsword: my-secret-pw 
+
+Todos los nodos estan asociados a un label
+
+Para crear nodos:
+
+CREATE (TheMatrix: Movie {title:'The matrix',released: 1990})
+
+Las relaciones:
+-------
+(Hugo)-[:ACTED_IN {roles:['Neo']}] -> (TheMatrix)
+(LanaW)-[:DIRECTED] -> (TheMatrix)
+
+Para las CONSTRAINT, se usan para las claves:
+-------
+CREATE CONSTRAINT FOR (n:Movie) REQUIRE (n.title) IS UNIQUE
+
+Para crear index:
+-------
+CREATE INDEX FOR (m:Movie) ON (m.released)
+
+Consulta para buscar/filtrar (match para filtrar), donde tom es el nombre de la variable a retornar, y Person es el label
+-------
+MATCH (tom:Person {name: "Tom Hanks"}) RETURN tom
+
+Esto coge todos los nodos, en el otro busca en el nodo de person
+-------
+MATCH (tom {name: "Tom Hanks"}) RETURN tom
+
+Otro ejemplo, donde devuelve los campos que quieres
+-------
+MATCH (m:Movie {released:1992}) RETURN m.title,m.released
+
+Otro ejemplo, donde devuelve 10 nombres de personas
+-------
+MATCH (m:Person {}) RETURN m.name LIMIT 10
+
+Otro ejemplo, usando WHERE
+-------
+MATCH (m:Movie) WHERE m.released >= 1990 AND m.released < 2000 RETURN m.title
+
+Filtrame todos los nodos que sea tom hanks, y que tenga una relacion acted in (haya actuado en m peliculas)
+----
+MATCH (p:Person {name: "Tom Hanks"})-[:ACTED_IN]->(m) RETURN p,m
+
+Coger el nodo person (con nombre Tom Hanks) y coge donde ha actuado en Movie
+Luego desde movie, busca todas las personas que han actuado
+Y devuelve esas personas
+----
+MATCH (tom:Person {name:"Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coActors:Person) RETURN DISTINCT coActors
+
+Las personas con las que mas a trabajado Tom Hanks
+-----
+MATCH (tom:Person {name:"Tom Hanks"})-[aTom:ACTED_IN]->(m)<-[aActor:ACTED_IN]-(coActors) RETURN DISTINCT coActors, count(aActor) as numRelaciones order by numRelaciones desc
+
+Cuanta gente a trabajado en Cloud Atlas (el type para ver el tipo, los roles para rol)
+-----
+MATCH (people:Person)-[relatedTo]-(:Movie {title: "Cloud Atlas"}) RETURN people.name, Type(relatedTo), relatedTo.roles
+
+The Sortest path. No lo vamos a ver mucho
+Coge una persona llamada Kevin Bacon (var: bacon),
+Y busca por todos los nodos tales que, el nivel de profundidad sea de 1-4.
+
+Es decir, Kevin trabajó (:acted_in) en 1 pelicula (Proyect X), eso es nivel 1 de profundidad
+Dentro de proyect X, trabajó (:acted_in) Sara, y Sara sería nivel 2.
+Entonces Sara, dirigió (:directed) Matrix, ese sería el nivel 3
+Y ahi, el personaje que actuó (:acted_in) fue Neo, que es el nivel 4 de profundidad
+
+En resumen, da los nodos mas cercanos a Kevin Bacon, buscando el camino mas corto.
+-----
+MATCH (bacon:Person {name:"Kevin Bacon"})-[*1..4]-(hollywood)
+RETURN DISTINCT hollywood
+
+Devuelve el path mas corto desde Kevin Bacon hasta Meg
+El * es: Todas las relaciones posibles hasta Meg
+-----
+MATCH p=shortestPath(
+(bacon:Person {name:"Kevin Bacon"})-[*]-(meg:Person {name:"Meg Ryan"})
+)
+RETURN p
+
+
+Saca los que no han trabajado con tom hanks
+
+Busca en una pelicula, compañeros de tom Hanks
+Luego busca dentro de los compañeros de tom las peliculas donde no a trabajado Tom
+Y saca los actores de esas peliculas
+
+El Strength son las personas con las que a trabajado Tom y han coincidido esos actores 
+-----
+MATCH (tom:Person {name:"Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coActors:Person),
+    (coActors)-[:ACTED_IN]->(m2:Movie)<-[:ACTED_IN]-(cocoActors)
+  WHERE NOT (tom)-[:ACTED_IN]->(:Movie)<-[:ACTED_IN]-(cocoActors) AND tom <> cocoActors
+  RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+

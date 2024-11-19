@@ -146,3 +146,28 @@ Lo que hace es que se repite la informacion, se hace sobre el lookup anterior.
 
 group, match, project investigar y añadir (addFields)
 
+----
+devolver la suma de qty agrupando por item
+
+db.products.aggregate([
+	{
+		$group: {
+			_id: "$item",
+			totalQty: { $sum: "$qty" }
+		}
+	}
+]);
+
+ejemplo de una consulta facil en el examen
+
+db.products.aggregate([
+	{
+		$group: {
+			_id: "$item",
+			totalQty: { $sum: "$qty" }
+		}
+	},
+	{
+		$match: { totalQty: { $gte:90 }}
+	}
+]);

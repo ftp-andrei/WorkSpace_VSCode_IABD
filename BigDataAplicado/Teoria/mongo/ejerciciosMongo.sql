@@ -137,38 +137,231 @@ db.customers.insertMany([
 
 1. Enumere todos los libros con una calificación superior a 4,5.
 
+db.books.aggregate([
+{
+    $match: {
+        rating: { $gt: 4.5 }
+    }
+}
+])
 
+
+-- devuelve el rating mas grande
+
+db.books.aggregate([
+{
+    $sort: { rating: -1 },
+    { $limit: 1 }
+}
+])
 
 2. Calcular la puntuación media de cada libro.
-db.book.aggregate([
+
+db.customers.aggregate([
+{ $unwind: "$reviews" },
 {
-    $lookup:
-       {
-         from: "customers",
-         localField: "_id",
-         foreignField: "reviews.book",
-         as: "joinGenerado"
-       }
+    $group: {
+        _id: "$reviews.book",
+        averageRating: { $avg: "$reviews.rating" }
+    }
 },
-{ $unwind : "$joinGenerado" },
-{ $group: { _id: null, avgRating: { $avg: "$reviews.rating" } } }
+{
+    $lookup: {
+        from: "books",
+        localField: "_id",
+        foreignField: "_id",
+        as: "bookInfo"
+    }
+}, 
+{ unwind: "$bookInfo" },
+{
+    $project: {
+        _id: 0,
+        title: "$bookInfo.title",
+        averageRating: 1
+    }
+}
 ])
 
 3. Encontrar el número total de libros publicados por cada editorial.
+db.books.aggregate([
+{
+    $group: {
+        _id: "$publisher",
+        totalBooks: { $sum: 1 }
+    }
+},
+{
+    $lookup: {
+        from: "publishers",
+        localField: "_id",
+        foreignField: "_id",
+        as: "publisherInfo"
+    }
+},
+{ $unwind: "$publisherInfo" },
+{
+    $project: {
+        _id: 0,
+        publisherName: "$publisherInfo.name",
+        totalBooks: 1
+    }
+}
+])
+--- Lo mimso pero con el nombre de los libros (push)
+
+db.books.aggregate([
+  {
+    $group: {
+      _id: "$gender",
+      averagePrice: { $avg: "$price" },
+      libros: { $push: "$title" }
+    }
+  },
+])
 
 4. Mostrar el precio medio de los libros de cada género.
+db.books.aggregate([
+{
+    $group: {
+        _id: "$gender",
+        averagePrice: { $avg: "$price" }
+    }
+}
+])
 
 5. Enumerar los autores junto con el número total de reseñas que han recibido sus
 libros.
-
+--gpt hasta fin
+db.books.aggregate([
+{
+    $lookup: {
+        from: "authors",
+        localField: "author",
+        foreignField: "_id",
+        as: "authorInfo"
+    }
+},
+{ $unwind: "$authorInfo" },
+{
+    $group: {
+        _id: "$authorInfo.name",
+        totalReviews: { $sum: { $size: "$reviews" } }
+    }
+}
+])
 6. Encuentre el libro mejor valorado de cada editorial.
-
+db.books.aggregate([
+{ $sort: { rating: -1 } },
+{
+    $group: {
+        _id: "$publisher",
+        topRatedBook: { $first: "$$ROOT" }
+    }
+},
+{
+    $lookup: {
+        from: "publishers",
+        localField: "_id",
+        foreignField: "_id",
+        as: "publisherInfo"
+    }
+},
+{ $unwind: "$publisherInfo" },
+{
+    $project: {
+        _id: 0,
+        publisherName: "$publisherInfo.name",
+        topRatedBook: 1
+    }
+}
+])
 7. Calcular la valoración media de los libros de cada autor.
-
+db.books.aggregate([
+{
+    $lookup: {
+        from: "authors",
+        localField: "author",
+        foreignField: "_id",
+        as: "authorInfo"
+    }
+},
+{ $unwind: "$authorInfo" },
+{
+    $group: {
+        _id: "$authorInfo.name",
+        averageRating: { $avg: "$rating" }
+    }
+}
+])
 8. Mostrar la distribución porcentual de libros por género.
-
+db.books.aggregate([
+{
+    $group: {
+        _id: "$gender",
+        count: { $sum: 1 }
+    }
+},
+{
+    $project: {
+        _id: 0,
+        gender: "$_id",
+        percentage: {
+            $multiply: [
+                { $divide: ["$count", { $sum: "$count" }] },
+                100
+            ]
+        }
+    }
+}
+])
 9. Identificar a los clientes que han reseñado más de un libro, mostrando sus nombres y
 los libros que han reseñado.
-
+db.customers.aggregate([
+{ $unwind: "$reviews" },
+{
+    $group: {
+        _id: "$_id",
+        name: { $first: "$name" },
+        reviewedBooks: { $addToSet: "$reviews.book" }
+    }
+},
+{
+    $match: {
+        $expr: { $gt: [{ $size: "$reviewedBooks" }, 1] }
+    }
+},
+{
+    $project: {
+        _id: 0,
+        name: 1,
+        reviewedBooks: 1
+    }
+}
+])
 10. Para cada editorial, enumere los libros en orden descendente de puntuación,
 incluyendo el número total de reseñas que ha recibido cada libro.
+db.books.aggregate([
+{
+    $lookup: {
+        from: "publishers",
+        localField: "publisher",
+        foreignField: "_id",
+        as: "publisherInfo"
+    }
+},
+{ $unwind: "$publisherInfo" },
+{ $sort: { rating: -1 } },
+{
+    $group: {
+        _id: "$publisherInfo.name",
+        books: {
+            $push: {
+                title: "$title",
+                rating: "$rating",
+                totalReviews: { $size: "$reviews" }
+            }
+        }
+    }
+}
+])
