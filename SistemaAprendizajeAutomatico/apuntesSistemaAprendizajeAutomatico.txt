@@ -87,3 +87,7 @@ No resta a no ser que sea cuadradito
 Coge el power point diapositiva por diapositiva, y saca 1 o 2 preguntas
 
 Diferencias datos categoricos vs datos numericos
+
+Categoricos: algo que no tiene continuidad, es decir, si no, perro gato. Puntos al azar en una grafica. los numeros enteros son categoricos
+
+Numericos: Numeros, que tienen una continuidad (una linea edntro de una grafica) (ejemplo, numeros reales)
