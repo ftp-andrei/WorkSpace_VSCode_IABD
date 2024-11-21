@@ -114,6 +114,36 @@ MATCH (tom:Person {name:"Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coAct
   WHERE NOT (tom)-[:ACTED_IN]->(:Movie)<-[:ACTED_IN]-(cocoActors) AND tom <> cocoActors
   RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC
 
+--Borrar todos los nodos y sus relaciones--
+MATCH (n) DETACH DELETE n
+
+Cargar CSVs
+-----
+--website--
+LOAD CSV FROM 'URL LINK'
+--Google--
+LOAD CSV WITH HEADERS FROM 'URL LINK'
+
+--CARGAR UNA CATEGORIA--
+LOAD CSV WITH HEADERS FROM "https://data.neo4j.com/northwind/categories.csv" AS row
+CREATE (n:Category)
+SET n = row
+
+(Nos dará para JSON, buscar cual sería)
+
+--CREAR INDEX (INDICE)--
+CREATE INDEX FOR (p:Product) ON (p.productID)
+
+collect: te hace el array de algo (categorias por ejemplo)
+--CONSULTA EJEMPLO--
+MATCH (s:Supplier)-->(:Product)-->(c:Category)
+RETURN s.companyName as Company, collect(distinct c.categoryName) as Categories
+
+
+
+
+--------------
+admin import para la practica (?)
 
 
 
