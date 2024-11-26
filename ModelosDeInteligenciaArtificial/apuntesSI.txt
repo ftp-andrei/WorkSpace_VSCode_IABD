@@ -7,21 +7,8 @@
 
 CLIPS> (printout t(+ 2 3) crlf)
 5
-CLIPS> (defrule saludo => (printout t "+ 2 3" crlf))
-CLIPS> (run)
-+ 2 3
-CLIPS> (assert (numero 5))
-<Fact-1>
-CLIPS> (assert (numero "5"))
-<Fact-2>
-CLIPS> (defrule mostrar-numero (numero ?x) => (printout t"El numero es "?x crlf))
-CLIPS> (run)
-El numero es 5
-El numero es 5
-CLIPS> (defrule mostrar-numero (numero ?y) => (printout t"El numero es "?y crlf))
-CLIPS> (run)
-El numero es 5
-El numero es 5
+
+Printea 2+3
 
 CLIPS> (defrule iterar-numero =>(loop-for-count(?i 0 10) do (printout t ?i crlf)))
 CLIPS> (run)
@@ -36,72 +23,28 @@ CLIPS> (run)
 8
 9
 10
-CLIPS> loop-for-count(?i 0 10) do (printout t ?i crlf))
-loop-for-count
-CLIPS> (loop-for-count(?i 0 10) do (printout t ?i crlf))
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-FALSE
-CLIPS> (loop-for-count(?i 0 10) do (printout t ?i crlf))
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-FALSE
-CLIPS> (bind ?x (read))
-(defrule entrada => (printout t "introduzca una cadena:") (assert (cadena (read)))))
-(
+
+devuelve mediante funcion y bucle numero del 0-10
+
+CLIPS> (assert (numero 5))
+<Fact-1>
+CLIPS> (defrule mostrar-numero (numero ?x) => (printout t"El numero es "?x crlf))
 CLIPS> (run)
-CLIPS> (bind ?x (read))
-hola
-hola
-CLIPS> (reset)
-CLIPS> (reset)
+El numero es 5
+
+Mediante un funcion y el assert dado, devuelve un print con el numero/assert que es
+
 
 CLIPS> (bind ?x (read))
-hola
-hola
-CLIPS> (defrule entrada => (printout t "Introduce una cadena: ") (assert (cadena (read))))
-CLIPS> (run)
-Introduce una cadena: asdf
-+ 2 3
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+
+Lee un numero
+
+CLIPS> (reset)
+
+Para reiniciar (mejor cerrar y volver a abrir)
+
 CLIPS> (assert (numero 6))
 <Fact-2>
-CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (* ?i ?x)))
-CLIPS> (run)
-El numero es 6
-CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do printout t(* ?i ?x)))
-CLIPS> (run)
-CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t(* ?i ?x))))
-CLIPS> (run)
-06121824303642485460CLIPS> (run)
 CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t(* ?i ?x) crlf)))
 CLIPS> (run)
 0
@@ -115,6 +58,11 @@ CLIPS> (run)
 48
 54
 60
+
+devuelve mediante el assert la tabla de multiplicar
+
+
+
 CLIPS> (defrule multiplicacion(numero ?x) => (loop-for-count(?i 0 10) do (printout t ?i "*" ?x "=" (* ?i ?x) crlf)))
 CLIPS> (run)
 0*6=0
@@ -129,4 +77,8 @@ CLIPS> (run)
 9*6=54
 10*6=60
  
- 
+lo mismo pero mejorado
+
+
+
+

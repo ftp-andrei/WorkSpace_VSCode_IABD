@@ -1,0 +1,154 @@
+(assert(numero 5))
+(assert(numero 4))
+(assert(numero 8))
+
+Tabla de los asserts que se han introducido (5, 4, 8)
+(defrule TabladeX(numero ?x) 
+=>
+(printout t "La tabla del " ?x " es:" crlf) 
+(loop-for-count(?i 1 10)  do (printout t ?x " * " ?i " = " (* ?x ?i) crlf)))
+CLIPS> (run)
+
+Tabla de el numero que elija el usuario
+(defrule entrada 
+=>
+(printout t "indtroduzca un numero: " )
+(bind ?x (read)
+) 
+(loop-for-count(?i 1 10)  do (printout t ?x " * " ?i " = " (* ?x ?i) crlf)))
+
+Hacer una piramide
+CLIPS> (defrule piramide 
+=>
+(printout t "tamaño de la piramide: " )
+(bind ?x (read))
+(while(> ?x 0) do
+	(loop-for-count ?x do
+	   (printout t "*"))
+	(printout t crlf)
+	(bind ?x (- ?x 1))))
+
+
+
+TABLA DE MULTIPLICAR DEL NUMERO 5
+(assert(numero 5))
+(defrule mostrar-numero(numero ?x) => (printout t "La tabla del " ?x " es:" crlf) 
+(loop-for-count(?i 1 10)  do (printout t ?x " * " ?i " = " (* ?x ?i) crlf)))
+CLIPS> (run)
+
+
+TABLA DE MULTIPLICAR DEL NUMERO ELEGIDO POR EL USUARIO
+(defrule entrada =>
+(printout t "indtroduzca un numero: " )
+(bind ?x (read)
+) 
+(loop-for-count(?i 1 10)  do (printout t ?x " * " ?i " = " (* ?x ?i) crlf)))
+
+MULTIPLICACION DE 3 
+(defrule multiplicar-numero(numero ?x ) => (printout t "La tabla del " ?x " es:" crlf)
+(loop-for-count(?i 1 3)  do (printout t ?x " * " ?i " = " (* ?x ?i) crlf)))
+
+(defrule mostrar-numero(numero ?x) => (printout t "indtroduzca un numero: " )
+(bind ?x (read))) (printout t (* ?x ?x ?x))
+
+(defrule solicitar-numeros
+   =>
+   (printout t "Introduzca el primer número: ")
+   (bind ?x1 (read))
+   (printout t "Introduzca el segundo número: ")
+   (bind ?x2 (read))
+   (printout t "Introduzca el tercer número: ")
+   (bind ?x3 (read))
+   (bind ?resultado (* ?x1 ?x2 ?x3))
+   (printout t "El resultado de la multiplicación es: " ?resultado crlf))
+   
+(defrule impares
+   =>
+   (loop-for-count (?i 1 50)
+      do
+      (if (eq (mod ?i 2) 1) then
+         (printout t ?i " ")))
+   )
+
+(defrule factorial
+   =>
+   (bind ?x (read))
+   (loop-for-count (?i 1 ?x)
+      do
+      (if (eq (mod ?i 2) 1) then
+         (printout t ?i " ")))
+   )
+
+
+LEER ARCHIVO TXT EN EL ESCRITORIO
+(open "C:\\Users\\Vespertino\\Desktop\\clips.txt" misdatos "r")
+(read misdatos) - lee dato a dato 
+(readline misdatos) - lee toda la linea
+EOF - Significa que ya no hay mas datos para leer
+(close misdatos)
+
+LEER ARCHIVO.TXT CON UN DEFRULE (BUCLE HASTA QUE SALGA EOF)
+(defrule leer-archivo.txt
+   =>
+   (open "C:\\Users\\Vespertino\\Desktop\\clips.txt" misdatoss "r")
+   (bind ?line (readline misdatoss))
+   (while (neq ?line EOF)
+      (printout t ?line crlf)   ; Imprime la línea en la consola
+      (bind ?line (readline misdatoss)) ; Lee la siguiente línea
+   )
+   (close misdatoss)  ; Cierra el archivo
+)
+
+LEER ARCHIVO.CSV CON UN DEFRULE (BUCLE HASTA QUE SALGA EOF)
+(defrule leer-archivo.csv
+   =>
+   (open "C:\\Users\\Vespertino\\Desktop\\clips.txt" misdatoss "r")
+   (bind ?line (readline misdatoss))
+   (while (neq ?line EOF)
+      (printout t ?line crlf)   ; Imprime la línea en la consola
+      (bind ?line (readline misdatoss)) ; Lee la siguiente línea
+   )
+   
+)
+
+(defrule buscar-comas
+   =>
+   (open "C:\\Users\\Vespertino\\Desktop\\clips.txt" misdatoss "r")
+   (bind ?line (readline misdatoss))
+   (while (eq ?line ",")
+      (printout t "Hay una coma" crlf)   ; Imprime la línea en la consola
+      (bind ?line (readline misdatoss)) ; Lee la siguiente línea
+   )
+   (close misdatoss)  ; Cierra el archivo
+)
+
+
+Meter varias cosas dentro de un assert.
+(deftemplate coche
+(slot matricula (type STRING))
+(slot antiguedad (type FLOAT))
+(slot color (type STRING))
+(slot descripcion (type STRING))
+(slot precio (type INTEGER)))
+
+(assert (coche
+(matricula "2493832J")
+(antiguedad 26.8)
+(color "violeta")
+(descripcion "esta guapo")
+(precio 12345)))
+
+Meter varias cosas dentro de un assert pidiendoselas al usuario.
+Para meter esto, hay que meter antes el deftemplate
+(defrule modelo-coche => 
+(printout t "Introduzca la matricula: ")
+(bind ?x (read)) 
+(printout t "Introduzca la antiguedad: ")
+(bind ?y (read)) 
+(printout t "Introduzca el color: ")
+(bind ?z (read)) 
+(printout t "Introduzca la descripcion: ")
+(bind ?v (read))
+(printout t "Introduzca el precio: ")
+(bind ?a (read)) 
+(assert (coche (matricula ?x) (antiguedad ?y) (color ?z) (descripcion ?v) (precio ?a))))

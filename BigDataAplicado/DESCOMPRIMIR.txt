@@ -1,0 +1,117 @@
+
+ir a la carpeta para descomprimir
+tar -xvf yelp_dataset.tar 
+lo pasas a csv (quitamos comillas), usando el convertir_csv
+C:\Users\Vespertino\Desktop\yelp>convertir_csv.py yelp_academic_dataset_business.json
+
+
+---- Hacer despues de tener los csv para limitarlos (powershell)
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_business.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\business_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_checkin.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\checkin_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_tip.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\tip_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_user.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\user_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_review.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\review_2000.csv"
+
+
+
+docker cp "C:\Users\Vespertino\Desktop\yelp\business_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\checkin_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\tip_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\user_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\review_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+
+
+docker exec -it Neo4j_DBA bash
+
+cd /var/lib/neo4j/import
+ls
+
+
+LOAD CSV WITH HEADERS FROM 'file:///business_2000.csv' AS row
+CREATE (:Business {
+    business_id: row.business_id,
+    name: row.name,
+    address: row.address,
+    city: row.city,
+    state: row.state,
+    postal_code: row.postal_code,
+    latitude: toFloat(row.latitude),
+    longitude: toFloat(row.longitude),
+    stars: toFloat(row.stars),
+    review_count: toInteger(row.review_count),
+    is_open: toInteger(row.is_open),
+    categories: row.categories
+});
+
+
+LOAD CSV WITH HEADERS FROM 'file:///checkin_2000.csv' AS row
+MATCH (b:Business {business_id: row.business_id})
+CREATE (b)-[:HAS_CHECKIN]->(:Checkin {
+    date: row.date
+});
+
+
+LOAD CSV WITH HEADERS FROM 'file:///tip_2000.csv' AS row
+MATCH (b:Business {business_id: row.business_id}),
+      (u:User {user_id: row.user_id})
+CREATE (u)-[:LEFT_TIP]->(:Tip {
+    text: row.text,
+    date: row.date,
+    compliment_count: toInteger(row.compliment_count)
+})-[:ABOUT]->(b);
+
+
+
+LOAD CSV WITH HEADERS FROM 'file:///user_2000.csv' AS row
+CREATE (:User {
+    user_id: row.user_id,
+    name: row.name,
+    review_count: toInteger(row.review_count),
+    yelping_since: row.yelping_since,
+    friends: row.friends,
+    useful: toInteger(row.useful),
+    funny: toInteger(row.funny),
+    cool: toInteger(row.cool),
+    fans: toInteger(row.fans),
+    average_stars: toFloat(row.average_stars),
+    compliment_hot: toInteger(row.compliment_hot),
+    compliment_more: toInteger(row.compliment_more),
+    compliment_profile: toInteger(row.compliment_profile),
+    compliment_cute: toInteger(row.compliment_cute),
+    compliment_list: toInteger(row.compliment_list),
+    compliment_note: toInteger(row.compliment_note),
+    compliment_plain: toInteger(row.compliment_plain),
+    compliment_cool: toInteger(row.compliment_cool),
+    compliment_funny: toInteger(row.compliment_funny),
+    compliment_writer: toInteger(row.compliment_writer),
+    compliment_photos: toInteger(row.compliment_photos)
+});
+
+
+LOAD CSV WITH HEADERS FROM 'file:///review_2000.csv' AS row
+MATCH (u:User {user_id: row.user_id}),
+      (b:Business {business_id: row.business_id})
+CREATE (u)-[:WROTE]->(:Review {
+    review_id: row.review_id,
+    stars: toInteger(row.stars),
+    text: row.text,
+    date: row.date,
+    useful: toInteger(row.useful),
+    funny: toInteger(row.funny),
+    cool: toInteger(row.cool)
+})-[:FOR]->(b);
+
+
+
+
+
+https://community.neo4j.com/t/importing-a-json-column-from-a-csv/27609
+
+buscar que es
+
+

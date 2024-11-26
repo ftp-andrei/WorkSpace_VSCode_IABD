@@ -52,7 +52,9 @@ CLIPS: Es un programa para sistemas expertos. Es una version nueva de Lisp. basa
 
 va a meter un modify
 
-hasta el ejercicio 3 como de dificultad
+hasta el ejercicio 3 como de dificultad, eso da para 1 ejercicio (seguramente modify)
+el otro puede ser el de leer
+
 
 
 
@@ -78,6 +80,8 @@ Las preguntas de circulo y las demas no descuenta
 Miercoles 27 examen
 
 
+
+Practico 2 ejercicios
 
 
 
