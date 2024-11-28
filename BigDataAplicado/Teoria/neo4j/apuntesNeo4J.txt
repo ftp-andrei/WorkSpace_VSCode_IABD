@@ -152,6 +152,9 @@ LIMIT 1;
 MATCH (n) DETACH DELETE n 
 ---
 
+--Devuelve los nodos de los grafos--
+MATCH (n)-[r]->(m)
+RETURN n, r, m;
 
 
 

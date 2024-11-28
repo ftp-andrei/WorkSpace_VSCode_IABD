@@ -51,3 +51,27 @@ Consiste en descomponer las tablas de datos en unas mas simples.
 11 abril - fin 3era eva
 25 abril - 1era ordinaria
 25 mayo - 2da ordinaria
+
+--- 
+habrá una parte de modelado de datos (Neo4J,Mongo y SQL) (Create table etc etc)
+
+Consultas - Neo4J, Mongo y SQL 
+    -Tener docker
+    -Imagen SQL
+    -Imagen Mongo
+    -Imagen Neo4J
+3/4 consultas
+
+
+Apuntes
+    -Practicas nuestras
+    -Cheatsheet
+    -Apuntes Rafa
+    -Documentacion
+
+No hay internet
+
+
+Puertos docker 1 pts 
+Modelado 3 pts
+Consultas 6 pts
