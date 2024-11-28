@@ -141,10 +141,16 @@ RETURN s.companyName as Company, collect(distinct c.categoryName) as Categories
 
 
 
+--Muestra las propiedades de user--
 
---------------
-admin import para la practica (?)
+MATCH (u:User)
+RETURN keys(u) AS propiedades
+LIMIT 1;
 
+
+--ELIMINA TODO (RELACIONES INCLUIDAS)--
+MATCH (n) DETACH DELETE n 
+---
 
 
 

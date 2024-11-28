@@ -1,0 +1,171 @@
+
+ir a la carpeta para descomprimir
+tar -xvf yelp_dataset.tar 
+lo pasas a csv (quitamos comillas), usando el convertir_csv
+C:\Users\Vespertino\Desktop\yelp>convertir_csv.py yelp_academic_dataset_business.json
+
+
+---- Hacer despues de tener los csv para limitarlos (powershell)
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_business.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\business_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_checkin.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\checkin_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_tip.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\tip_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_user.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\user_2000.csv"
+
+Get-Content "C:\Users\Vespertino\Desktop\yelp\yelp_academic_dataset_review.csv" | select -First 2000 | Out-File "C:\Users\Vespertino\Desktop\yelp\review_2000.csv"
+
+
+
+docker cp "C:\Users\Vespertino\Desktop\yelp\business_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\checkin_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\tip_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\user_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+docker cp "C:\Users\Vespertino\Desktop\yelp\review_2000.csv" Neo4j_DBA:/var/lib/neo4j/import/
+
+
+docker exec -it Neo4j_DBA bash
+
+cd /var/lib/neo4j/import
+ls
+
+LOAD CSV WITH HEADERS FROM 'file:///business_2000.csv' AS row
+CREATE (n:Business)
+set n = row
+
+LOAD CSV WITH HEADERS FROM 'file:///checkin_2000.csv' AS row
+CREATE (n:Checkin)
+set n = row
+
+LOAD CSV WITH HEADERS FROM 'file:///tip_2000.csv' AS row
+CREATE (n:Tip)
+set n = row
+
+LOAD CSV WITH HEADERS FROM 'file:///user_2000.csv' AS row
+CREATE (n:User)
+set n = row
+
+LOAD CSV WITH HEADERS FROM 'file:///review_2000.csv' AS row
+CREATE (n:Review)
+set n = row
+
+--Vicente (bien?)
+
+MATCH (u:User), (r:Review) WHERE u.user_id = r.user_id MERGE (u)-[:WROTE]->(r);
+
+MATCH (u:User), (t:Tip) WHERE u.user_id = t.user_id MERGE (u)-[:GAVE_TIP]->(t);
+
+MATCH (b:Business), (c:Checkin) WHERE c.???????= b.????? MERGE (b)-[:???]->(c);
+
+--Jaime (bien?)
+
+MATCH (b:Business), (r:Review) WHERE b.business_id = r.business_id CREATE (r)-[:Califica]->(b);
+
+-------------GPT-----------------
+
+MATCH (u:User), (r:Review)
+WHERE u.user_id = r.user_id
+CREATE (u)-[:WROTE]->(r);
+
+MATCH (r:Review), (b:Business)
+WHERE r.business_id = b.business_id
+CREATE (r)-[:REVIEWS]->(b);
+
+MATCH (u:User), (t:Tip)
+WHERE u.user_id = t.user_id
+CREATE (u)-[:GAVE_TIP]->(t);
+
+MATCH (t:Tip), (b:Business)
+WHERE t.business_id = b.business_id
+CREATE (t)-[:ABOUT]->(b);
+
+MATCH (c:Checkin), (b:Business)
+WHERE c.business_id = b.business_id
+CREATE (c)-[:AT]->(b);
+
+---CREACION INDICES CONSULTAS MAS RAPIDO---
+
+CREATE INDEX FOR (n:User) ON (n.user_id);
+CREATE INDEX FOR (n:Business) ON (n.business_id);
+CREATE INDEX FOR (n:Review) ON (n.review_id);
+
+
+-----------------------------
+
+
+https://community.neo4j.com/t/importing-a-json-column-from-a-csv/27609
+
+buscar que es
+
+
+--ELIMINA TODO--
+MATCH (n) DETACH DELETE n 
+---
+
+
+Get-Content "C:\Users\Andrei\Desktop\yelp\yelp_academic_dataset_business.csv" | select -First 10 | Out-File "C:\Users\Andrei\Desktop\yelp\business_10.csv"
+
+Get-Content "C:\Users\Andrei\Desktop\yelp\yelp_academic_dataset_checkin.csv" | select -First 10 | Out-File "C:\Users\Andrei\Desktop\yelp\checkin_10.csv"
+
+Get-Content "C:\Users\Andrei\Desktop\yelp\yelp_academic_dataset_tip.csv" | select -First 10 | Out-File "C:\Users\Andrei\Desktop\yelp\tip_10.csv"
+
+Get-Content "C:\Users\Andrei\Desktop\yelp\yelp_academic_dataset_user.csv" | select -First 10 | Out-File "C:\Users\Andrei\Desktop\yelp\user_10.csv"
+
+Get-Content "C:\Users\Andrei\Desktop\yelp\yelp_academic_dataset_review.csv" | select -First 10 | Out-File "C:\Users\Andrei\Desktop\yelp\review_10.csv"
+
+------
+
+
+1.	Encuentra los 10 hoteles con mayor número de reviews.
+MATCH (b:Business)-[:REVIEWS]-(r:Review)
+WHERE b.categories CONTAINS "Hotel"
+RETURN b.name AS HotelName, COUNT(r) AS ReviewCount
+ORDER BY ReviewCount DESC
+LIMIT 10;
+
+2.	Encuentra los 10 usuarios con un número mayor de reviews realizadas.
+MATCH (u:User)-[:WROTE]->(r:Review)
+RETURN u.name AS UserName, u.user_id AS UserID, COUNT(r) AS ReviewCount
+ORDER BY ReviewCount DESC
+LIMIT 10;
+
+
+MATCH (b:Business {name: "Bellagio Hotel"})<-[:REVIEWS]-(r:Review)<-[:WROTE]-(u:User)
+WITH DISTINCT u
+MATCH (u)-[:WROTE]->(allReviews:Review)
+RETURN u.name AS UserName, u.user_id AS UserID, COUNT(allReviews) AS TotalReviews
+ORDER BY TotalReviews DESC
+LIMIT 50;
+
+1.	Encuentra los 50 usuarios con mayor número de reviews que han hecho
+una review del hotel Bellagio Hotel.
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(h:Business)
+WHERE h.name = 'Bellagio Hotel'
+RETURN u.name AS usuario, COUNT(r) AS totalReviews
+ORDER BY totalReviews DESC
+LIMIT 50;
+
+2.	Buscar todos los hoteles que estos usuarios han hecho una review, no vale
+introducir los usuarios en el Where de manera manual.
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(h:Business)
+WHERE h.name = 'Bellagio Hotel'
+WITH u
+MATCH (u)-[:WROTE]->(r2:Review)-[:REVIEWS]->(h2:Business)
+RETURN DISTINCT h2.name AS hotel
+ORDER BY hotel;
+
+3.	Obtén el hotel con mayor número de reviews de los usuarios obtenidos en
+el apartado 1 de esta sección
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(h:Business)
+WHERE h.name = 'Bellagio Hotel'
+WITH u
+MATCH (u)-[:WROTE]->(r2:Review)-[:REVIEWS]->(h2:Business)
+RETURN h2.name AS hotel, COUNT(r2) AS totalReviews
+ORDER BY totalReviews DESC
+LIMIT 1;
+
+
+
+
