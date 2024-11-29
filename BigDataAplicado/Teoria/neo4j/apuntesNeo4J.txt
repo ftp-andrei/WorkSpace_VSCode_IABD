@@ -134,7 +134,7 @@ SET n = row
 --CREAR INDEX (INDICE)--
 CREATE INDEX FOR (p:Product) ON (p.productID)
 
-collect: te hace el array de algo (categorias por ejemplo)
+
 --CONSULTA EJEMPLO--
 MATCH (s:Supplier)-->(:Product)-->(c:Category)
 RETURN s.companyName as Company, collect(distinct c.categoryName) as Categories

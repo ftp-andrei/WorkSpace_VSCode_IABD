@@ -111,10 +111,25 @@ SELECT * FROM Trainers LEFT JOIN BattlePokemons ON Trainers.TrainerID=BattlePoke
 --Get a list of trainers and their badges, including badges without trainers (RIGHT JOIN).
 SELECT Trainers.TrainerName, Badges.BadgeName FROM Trainers RIGHT JOIN Badges ON Trainers.TrainerID=Badges.TrainerID;
 --Combine trainers who have at least one Pokémon and those who have badges (UNION).
-
+SELECT TrainerName FROM Trainers 
+WHERE TrainerID IN (SELECT TrainerID FROM BattlePokemons)
+UNION
+SELECT TrainerName FROM Trainers 
+WHERE TrainerID IN (SELECT TrainerID FROM Badges);
 --Get all trainers who have Pokémon or badges (INTERSECT).
+SELECT TrainerName FROM Trainers 
+WHERE TrainerID IN (SELECT TrainerID FROM BattlePokemons)
+INTERSECT
+SELECT TrainerName FROM Trainers 
+WHERE TrainerID IN (SELECT TrainerID FROM Badges);
 
 --Find all trainers with their Pokémon and abilities using multiple joins.
+SELECT t.TrainerName, p.PokemonName, a.AbilityName 
+FROM Trainers t
+LEFT JOIN BattlePokemons bp ON t.TrainerID = bp.TrainerID
+LEFT JOIN Pokemons p ON bp.PokemonID = p.PokemonID
+LEFT JOIN PokemonAbilities pa ON p.PokemonID = pa.PokemonID
+LEFT JOIN Abilities a ON pa.AbilityID = a.AbilityID;
 
 --Find the trainer with the most Pokémon.
 SELECT t.TrainerName,Count(distinct bp.PokemonID) as numPokemons FROM Trainers AS t
@@ -126,11 +141,53 @@ SELECT * FROM Pokemons JOIN PokemonAbilities ON Pokemons.PokemonID=PokemonAbilit
 --Get all trainers who won a battle.
 SELECT * FROM Trainers WHERE TrainerID IN (SELECT WinnerTrainerID FROM Battles);
 --Scalar Subquery: Find the number of badges for a specific trainer (e.g., TrainerID = 1).
+SELECT TrainerName, 
+       (SELECT COUNT(*) FROM Badges WHERE TrainerID = 1) AS BadgeCount 
+FROM Trainers WHERE TrainerID = 1;
 
 --Multiple-Row Subquery: Retrieve all trainers who have more Pokémon than the average number of Pokémon per trainer.
+SELECT TrainerName 
+FROM Trainers 
+WHERE TrainerID IN (
+    SELECT TrainerID 
+    FROM BattlePokemons 
+    GROUP BY TrainerID 
+    HAVING COUNT(PokemonID) > (
+        SELECT AVG(PokemonCount) 
+        FROM (SELECT COUNT(PokemonID) AS PokemonCount 
+              FROM BattlePokemons 
+              GROUP BY TrainerID) AS SubQuery
+    )
+);
 
 --Correlated Subquery: List all trainers who have more Pokémon than the trainer with the least number of Pokémon.
+SELECT TrainerName 
+FROM Trainers t 
+WHERE (SELECT COUNT(bp.PokemonID) 
+       FROM BattlePokemons bp 
+       WHERE bp.TrainerID = t.TrainerID) > (
+       SELECT MIN(PokemonCount) 
+       FROM (SELECT COUNT(PokemonID) AS PokemonCount 
+             FROM BattlePokemons 
+             GROUP BY TrainerID) AS SubQuery
+);
 
 --Correlated Subquery: Find all battles where Trainer1 has more Pokémon than Trainer2.
+SELECT b.BattleID, b.BattleDate 
+FROM Battles b 
+WHERE (SELECT COUNT(bp1.PokemonID) 
+       FROM BattlePokemons bp1 
+       WHERE bp1.TrainerID = b.Trainer1ID) > 
+      (SELECT COUNT(bp2.PokemonID) 
+       FROM BattlePokemons bp2 
+       WHERE bp2.TrainerID = b.Trainer2ID);
 
 --Multiple-Row Subquery: List all Pokémon that have abilities not held by any Pokémon in a specific battle (e.g., BattleID = 1).
+SELECT AbilityName 
+FROM Abilities 
+WHERE AbilityID NOT IN (
+    SELECT pa.AbilityID 
+    FROM PokemonAbilities pa 
+    JOIN BattlePokemons bp ON pa.PokemonID = bp.PokemonID 
+    WHERE bp.BattleID = 1
+);

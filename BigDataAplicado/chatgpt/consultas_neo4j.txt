@@ -1,0 +1,685 @@
+Variables de entorno comunes en Neo4j:
+NEO4J_AUTH: Define las credenciales del usuario predeterminado.
+
+Formato: NEO4J_AUTH=neo4j/<password>
+Ejemplo:
+
+-e NEO4J_AUTH=neo4j/mysecretpassword
+Esto configurará el usuario neo4j con la contraseña mysecretpassword.
+
+NEO4J_dbms_memory_pagecache_size: Establece el tamaño del caché de páginas de la base de datos (útil para optimizar el rendimiento).
+
+Ejemplo:
+
+-e NEO4J_dbms_memory_pagecache_size=2G
+Esto asigna 2 GB de memoria al caché de la base de datos.
+
+NEO4J_dbms_memory_heap_initial__size y NEO4J_dbms_memory_heap_max__size: Configura la memoria inicial y máxima del heap de la JVM.
+
+Ejemplo:
+
+-e NEO4J_dbms_memory_heap_initial__size=1G -e NEO4J_dbms_memory_heap_max__size=4G
+NEO4J_dbms_connector_http_enabled: Habilita o deshabilita el conector HTTP para el acceso REST a Neo4j.
+
+Ejemplo:
+
+-e NEO4J_dbms_connector_http_enabled=true
+NEO4J_dbms_connector_bolt_enabled: Habilita o deshabilita el conector Bolt (comúnmente usado por clientes de Neo4j).
+
+Ejemplo:
+
+-e NEO4J_dbms_connector_bolt_enabled=true
+NEO4J_dbms_connector_https_enabled: Habilita o deshabilita el conector HTTPS.
+
+Ejemplo:
+
+-e NEO4J_dbms_connector_https_enabled=false
+NEO4J_ACCEPT_LICENSE_AGREEMENT: Acepta automáticamente el acuerdo de licencia de Neo4j, necesario al usar imágenes Docker.
+
+Ejemplo:
+
+-e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+Ejemplo completo para iniciar un contenedor de Neo4j con variables de entorno:
+
+docker run --name neo4j-container \
+  -e NEO4J_AUTH=neo4j/mysecretpassword \
+  -e NEO4J_dbms_memory_pagecache_size=2G \
+  -e NEO4J_dbms_memory_heap_initial__size=1G \
+  -e NEO4J_dbms_memory_heap_max__size=4G \
+  -e NEO4J_dbms_connector_http_enabled=true \
+  -e NEO4J_dbms_connector_bolt_enabled=true \
+  -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
+  -d neo4j 
+Este comando configura:
+
+El usuario y contraseña predeterminados.
+La memoria de la base de datos.
+Habilita los conectores HTTP y Bolt.
+Acepta el acuerdo de licencia.
+
+///////////CONSULTAS////////////
+
+Creación de nodos
+Crear un nodo de tipo Business:
+
+CREATE (b:Business {name: 'Hotel California', category: 'Hotel'})
+Crear un nodo de tipo User:
+
+CREATE (u:User {name: 'John Doe', age: 30})
+Crear un nodo de tipo Review:
+
+CREATE (r:Review {rating: 5, text: 'Excelente servicio!'})
+Crear un nodo de tipo Tip:
+
+CREATE (t:Tip {text: 'Pide el desayuno especial', date: '2024-01-01'})
+Crear un nodo de tipo Checkin:
+
+CREATE (c:Checkin {date: '2024-01-02', time: '14:30'})
+Creación de relaciones
+Relación WROTE:
+
+MATCH (u:User {name: 'John Doe'}), (r:Review {rating: 5})
+CREATE (u)-[:WROTE]->(r)
+Relación REVIEWS:
+
+MATCH (r:Review {rating: 5}), (b:Business {name: 'Hotel California'})
+CREATE (r)-[:REVIEWS]->(b)
+Relación GAVE_TIP:
+
+MATCH (u:User {name: 'John Doe'}), (t:Tip {text: 'Pide el desayuno especial'})
+CREATE (u)-[:GAVE_TIP]->(t)
+Relación AT:
+
+MATCH (c:Checkin {date: '2024-01-02'}), (b:Business {name: 'Hotel California'})
+CREATE (c)-[:AT]->(b)
+Relación ABOUT:
+
+MATCH (t:Tip {text: 'Pide el desayuno especial'}), (b:Business {name: 'Hotel California'})
+CREATE (t)-[:ABOUT]->(b)
+
+
+Consultas básicas
+Obtener todos los negocios:
+
+MATCH (b:Business)
+RETURN b.name
+
+Obtener todas las reviews con calificación mayor a 4:
+
+MATCH (r:Review)
+WHERE r.rating > 4
+RETURN r.text, r.rating
+Contar usuarios registrados:
+
+MATCH (u:User)
+RETURN COUNT(u)
+Obtener tips sobre un negocio específico:
+
+MATCH (t:Tip)-[:ABOUT]->(b:Business {name: 'Hotel California'})
+RETURN t.text
+Obtener negocios con más de 10 checkins:
+
+MATCH (c:Checkin)-[:AT]->(b:Business)
+RETURN b.name, COUNT(c) AS checkins
+WHERE checkins > 10
+Consultas avanzadas
+Encontrar usuarios con más reviews:
+
+MATCH (u:User)-[:WROTE]->(r:Review)
+RETURN u.name, COUNT(r) AS reviews
+ORDER BY reviews DESC
+LIMIT 10
+Encontrar negocios con más reviews:
+
+MATCH (r:Review)-[:REVIEWS]->(b:Business)
+RETURN b.name, COUNT(r) AS reviews
+ORDER BY reviews DESC
+LIMIT 10
+Encontrar usuarios que escribieron reviews de un negocio:
+
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(b:Business {name: 'Hotel California'})
+RETURN u.name
+Calificación promedio de un negocio:
+
+MATCH (r:Review)-[:REVIEWS]->(b:Business {name: 'Hotel California'})
+RETURN AVG(r.rating) AS averageRating
+Encontrar el checkin más reciente de un negocio:
+
+MATCH (c:Checkin)-[:AT]->(b:Business {name: 'Hotel California'})
+RETURN c.date, c.time
+ORDER BY c.date DESC, c.time DESC
+LIMIT 1
+Consultas específicas del documento
+Usuarios con más reviews en un negocio:
+
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(b:Business)
+WHERE b.name = 'Bellagio Hotel'
+RETURN u.name, COUNT(r) AS reviews
+ORDER BY reviews DESC
+LIMIT 50
+Hoteles visitados por esos usuarios:
+
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(b:Business)
+WHERE b.name = 'Bellagio Hotel'
+WITH u
+MATCH (u)-[:WROTE]->(r2:Review)-[:REVIEWS]->(h:Business)
+RETURN DISTINCT h.name
+Hotel con más reviews de los usuarios anteriores:
+
+MATCH (u:User)-[:WROTE]->(r:Review)-[:REVIEWS]->(b:Business)
+WHERE b.name = 'Bellagio Hotel'
+WITH u
+MATCH (u)-[:WROTE]->(r2:Review)-[:REVIEWS]->(h:Business)
+RETURN h.name, COUNT(r2) AS reviews
+ORDER BY reviews DESC
+LIMIT 1
+Relaciones entre usuarios y tips:
+
+MATCH (u:User)-[:GAVE_TIP]->(t:Tip)-[:ABOUT]->(b:Business)
+RETURN u.name, t.text, b.name
+Usuarios que hicieron check-in en negocios específicos:
+
+MATCH (u:User)-[:AT]->(c:Checkin)-[:AT]->(b:Business)
+RETURN u.name, b.name, c.date
+
+
+
+
+Creación y Manipulación de Datos
+Crear múltiples nodos de Person en una sola consulta:
+
+
+CREATE 
+  (p1:Person {name: 'Leonardo DiCaprio', age: 45}),
+  (p2:Person {name: 'Kate Winslet', age: 44}),
+  (p3:Person {name: 'Brad Pitt', age: 58})
+Crear una relación con propiedades entre dos nodos:
+
+
+MATCH (p1:Person {name: 'Leonardo DiCaprio'}), (p2:Person {name: 'Kate Winslet'})
+CREATE (p1)-[:COLLABORATED_IN {year: 1997, role: 'Jack'}]->(p2)
+Actualizar una propiedad de un nodo existente:
+
+
+MATCH (m:Movie {title: 'The Matrix'})
+SET m.released = 1999
+RETURN m
+Agregar una nueva propiedad a múltiples nodos Person:
+
+
+MATCH (p:Person)
+SET p.country = 'USA'
+RETURN p.name, p.country
+Eliminar una relación específica entre dos nodos:
+
+
+MATCH (p1:Person {name: 'Leonardo DiCaprio'})-[r:COLLABORATED_IN]->(p2:Person {name: 'Kate Winslet'})
+DELETE r
+Consultas de Búsqueda y Filtrado Avanzado
+Encontrar todas las películas dirigidas por una persona específica:
+
+
+MATCH (d:Person {name: 'Lana Wachowski'})-[:DIRECTED]->(m:Movie)
+RETURN m.title, m.released
+Buscar películas que contienen una palabra clave en el título:
+
+
+MATCH (m:Movie)
+WHERE m.title CONTAINS 'Matrix'
+RETURN m.title, m.released
+Obtener actores que han trabajado tanto con Tom Hanks como con Leonardo DiCaprio:
+
+
+MATCH (actor:Person)-[:ACTED_IN]->(m1:Movie)<-[:ACTED_IN]-(tom:Person {name: 'Tom Hanks'}),
+      (actor)-[:ACTED_IN]->(m2:Movie)<-[:ACTED_IN]-(leo:Person {name: 'Leonardo DiCaprio'})
+RETURN DISTINCT actor.name
+Encontrar todas las películas lanzadas entre dos años específicos:
+
+
+MATCH (m:Movie)
+WHERE m.released >= 2000 AND m.released <= 2010
+RETURN m.title, m.released
+ORDER BY m.released
+Listar todas las relaciones de un tipo específico (por ejemplo, ACTED_IN):
+
+
+MATCH ()-[r:ACTED_IN]->()
+RETURN r
+LIMIT 25
+Consultas de Agregación y Análisis
+Calcular el número total de películas por cada actor:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+RETURN p.name, COUNT(m) AS NumberOfMovies
+ORDER BY NumberOfMovies DESC
+Encontrar la película con el mayor número de actores:
+
+
+MATCH (m:Movie)<-[:ACTED_IN]-(p:Person)
+RETURN m.title, COUNT(p) AS ActorCount
+ORDER BY ActorCount DESC
+LIMIT 1
+Obtener la edad promedio de los actores en cada película:
+
+
+MATCH (m:Movie)<-[:ACTED_IN]-(p:Person)
+RETURN m.title, AVG(p.age) AS AverageActorAge
+ORDER BY AverageActorAge DESC
+Listar directores que han dirigido más de 5 películas:
+
+
+MATCH (d:Person)-[:DIRECTED]->(m:Movie)
+RETURN d.name, COUNT(m) AS MoviesDirected
+HAVING COUNT(m) > 5
+ORDER BY MoviesDirected DESC
+Contar el número de películas por año de lanzamiento:
+
+
+MATCH (m:Movie)
+RETURN m.released AS Year, COUNT(m) AS MoviesReleased
+ORDER BY Year
+Consultas con Caminos y Patrones
+Encontrar todos los coactores de un actor específico (por ejemplo, Tom Hanks):
+
+
+MATCH (tom:Person {name: "Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coActors:Person)
+RETURN DISTINCT coActors.name AS CoActors
+Encontrar el camino más corto entre dos actores (por ejemplo, Kevin Bacon y Meg Ryan):
+
+
+MATCH p = shortestPath(
+  (bacon:Person {name: "Kevin Bacon"})-[:ACTED_IN*]-(meg:Person {name: "Meg Ryan"})
+)
+RETURN p
+Listar actores que han trabajado directamente o indirectamente con una persona específica (grado de separación):
+
+
+MATCH (p:Person {name: "Tom Hanks"})-[:ACTED_IN*1..3]-(connected:Person)
+RETURN DISTINCT connected.name
+Encontrar todas las películas donde han trabajado juntos dos actores específicos:
+
+
+MATCH (p1:Person {name: "Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(p2:Person {name: "Meg Ryan"})
+RETURN m.title, m.released
+Recomendar actores basados en colaboraciones anteriores con un actor dado:
+
+
+MATCH (p:Person {name: "Tom Hanks"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(coActors:Person)
+WHERE NOT (p)-[:ACTED_IN]->(:Movie)<-[:ACTED_IN]-(coActors)
+RETURN coActors.name AS RecommendedActor, COUNT(m) AS Collaborations
+ORDER BY Collaborations DESC
+LIMIT 10
+Gestión de Índices y Restricciones
+Eliminar una restricción existente:
+
+
+DROP CONSTRAINT ON (m:Movie) ASSERT m.title IS UNIQUE
+Crear un índice compuesto en múltiples propiedades:
+
+
+CREATE INDEX FOR (p:Person) ON (p.name, p.age)
+Verificar la existencia de índices y restricciones:
+
+
+CALL db.indexes()
+Eliminar un índice específico:
+
+
+DROP INDEX index_name
+Reemplaza index_name con el nombre real del índice que deseas eliminar.
+
+Consultas Utilizando MERGE y OPTIONAL MATCH
+Crear un nodo solo si no existe, utilizando MERGE:
+
+
+MERGE (p:Person {name: 'Morgan Freeman'})
+ON CREATE SET p.age = 83
+ON MATCH SET p.lastSeen = timestamp()
+RETURN p
+Realizar una consulta que incluye resultados opcionales:
+
+
+MATCH (p:Person {name: "Tom Hanks"})
+OPTIONAL MATCH (p)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(d:Person)
+RETURN p.name, m.title, d.name
+Actualizar múltiples propiedades usando SET:
+
+
+MATCH (m:Movie {title: 'The Matrix'})
+SET m.genre = 'Sci-Fi', m.budget = 63000000
+RETURN m
+Eliminar nodos que no tienen relaciones:
+
+
+MATCH (n)
+WHERE NOT (n)--()
+DELETE n
+Encontrar y eliminar duplicados basados en una propiedad única:
+
+
+MATCH (m:Movie)
+WITH m.title AS title, collect(m) AS movies
+WHERE size(movies) > 1
+FOREACH (duplicate IN tail(movies) | DELETE duplicate)
+Crear una relación solo si no existe previamente, usando MERGE:
+
+
+MATCH (p1:Person {name: 'Tom Hanks'}), (p2:Person {name: 'Meg Ryan'})
+MERGE (p1)-[:FRIENDS_WITH]->(p2)
+RETURN p1, p2
+Importación y Exportación de Datos
+Importar datos desde un archivo CSV con encabezados y crear nodos:
+
+
+LOAD CSV WITH HEADERS FROM 'file:///path/to/actors.csv' AS row
+CREATE (:Person {name: row.name, age: toInteger(row.age)})
+Importar relaciones desde un archivo CSV:
+
+
+LOAD CSV WITH HEADERS FROM 'file:///path/to/relationships.csv' AS row
+MATCH (p1:Person {name: row.person1}), (p2:Person {name: row.person2})
+CREATE (p1)-[:KNOWS {since: toInteger(row.since)}]->(p2)
+Exportar resultados de una consulta a un archivo CSV usando APOC:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+RETURN p.name AS Actor, m.title AS Movie
+CALL apoc.export.csv.query(
+  "MATCH (p:Person)-[:ACTED_IN]->(m:Movie) RETURN p.name AS Actor, m.title AS Movie",
+  "actors_movies.csv",
+  {}
+)
+YIELD file, source, format, nodes, relationships, properties, time
+RETURN file, source, format, time
+Nota: Asegúrate de tener instalado el complemento APOC para utilizar esta funcionalidad.
+
+Consultas de Visualización y Exploración
+Visualizar todos los nodos y relaciones en el grafo:
+
+
+MATCH (n)-[r]->(m)
+RETURN n, r, m
+Obtener un subconjunto de nodos y relaciones para análisis:
+
+
+MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)
+RETURN p, r, m
+LIMIT 50
+Listar todas las etiquetas de nodos existentes en la base de datos:
+
+
+CALL db.labels()
+Listar todos los tipos de relaciones existentes:
+
+
+CALL db.relationshipTypes()
+Listar todas las propiedades de un label específico:
+
+
+CALL db.propertyKeys()
+Encontrar nodos con una propiedad específica utilizando patrones:
+
+
+MATCH (p:Person)
+WHERE exists(p.email)
+RETURN p.name, p.email
+Utilizar expresiones regulares para filtrar nodos:
+
+
+MATCH (m:Movie)
+WHERE m.title =~ '(?i).*matrix.*'
+RETURN m.title, m.released
+Consultas de Análisis de Redes
+Calcular la centralidad de grado para cada persona:
+
+
+CALL algo.degree.stream('Person', 'ACTED_IN', {direction: 'OUT'})
+YIELD nodeId, score
+MATCH (p:Person) WHERE id(p) = nodeId
+RETURN p.name, score
+ORDER BY score DESC
+LIMIT 10
+Nota: Requiere los procedimientos de Algoritmos de Grafos de Neo4j.
+
+Detectar comunidades dentro del grafo:
+
+
+CALL algo.louvain.stream('Person', 'ACTED_IN', {})
+YIELD nodeId, community
+MATCH (p:Person) WHERE id(p) = nodeId
+RETURN p.name, community
+ORDER BY community
+Nota: Requiere los procedimientos de Algoritmos de Grafos de Neo4j.
+
+Encontrar actores que forman parte de ciclos en el grafo:
+
+
+MATCH p=(a:Person)-[:ACTED_IN*]->(a)
+RETURN p
+LIMIT 10
+Calcular la distancia promedio entre nodos:
+
+
+MATCH (a:Person), (b:Person)
+WHERE a <> b
+WITH a, b, shortestPath((a)-[*]-(b)) AS path
+WHERE path IS NOT NULL
+RETURN AVG(length(path)) AS averageDistance
+Identificar los nodos más conectados (hubs) en el grafo:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+RETURN p.name, COUNT(m) AS connections
+ORDER BY connections DESC
+LIMIT 10
+Consultas de Seguridad y Permisos
+Restringir acceso a ciertos nodos basado en roles de usuario:
+
+
+// Esto generalmente se maneja fuera de las consultas  permisos en la base de datos.
+// Sin embargo, puedes simular restricciones en las consultas:
+MATCH (p:Person)
+WHERE p.role = 'admin'
+RETURN p.name, p.email
+Auditar cambios recientes en los nodos:
+
+
+MATCH (m:Movie)
+WHERE m.lastUpdated > datetime() - duration({days: 7})
+RETURN m.title, m.lastUpdated
+Registrar todas las relaciones creadas en el grafo:
+
+
+MATCH ()-[r]->()
+RETURN type(r) AS RelationshipType, COUNT(r) AS Count
+GROUP BY RelationshipType
+ORDER BY Count DESC
+Consultas de Optimización y Rendimiento
+Optimizar consultas utilizando índices:
+
+
+// Asegúrate de tener un índice en la propiedad que filtras
+CREATE INDEX FOR (m:Movie) ON (m.title)
+
+// Luego, una consulta optimizada
+MATCH (m:Movie {title: 'Inception'})
+RETURN m
+Utilizar PROFILE para analizar el rendimiento de una consulta:
+
+
+PROFILE MATCH (p:Person {name: "Tom Hanks"})-[:ACTED_IN]->(m:Movie)
+RETURN m.title
+
+
+
+Consultas de Creación de Nodos y Relaciones
+Crear un nodo de tipo Director:
+
+
+CREATE (d:Director {name: "Christopher Nolan", born: 1970})
+Crear una relación DIRECTED entre un director y una película:
+
+
+MATCH (d:Director {name: "Christopher Nolan"}), (m:Movie {title: "Inception"})
+CREATE (d)-[:DIRECTED]->(m)
+Crear una relación entre dos personas:
+
+
+MATCH (p1:Person {name: "Leonardo DiCaprio"}), (p2:Person {name: "Kate Winslet"})
+CREATE (p1)-[:FRIEND]->(p2)
+Crear un nodo con múltiples propiedades:
+
+
+CREATE (c:Character {name: "Harry Potter", house: "Gryffindor", role: "Wizard"})
+Crear nodos y relaciones en una sola sentencia:
+
+
+CREATE (m:Movie {title: "Avatar", released: 2009})<-[:ACTED_IN {role: "Jake Sully"}]-(p:Person {name: "Sam Worthington"})
+Consultas de Filtrado y Búsqueda
+Obtener todas las películas dirigidas por un director:
+
+
+MATCH (d:Director {name: "Christopher Nolan"})-[:DIRECTED]->(m:Movie)
+RETURN m.title
+Películas donde trabajaron más de 5 actores:
+
+
+MATCH (m:Movie)<-[:ACTED_IN]-(p:Person)
+RETURN m.title, COUNT(p) AS numActors
+WHERE numActors > 5
+Obtener películas estrenadas en un rango de años:
+
+
+MATCH (m:Movie)
+WHERE m.released >= 2000 AND m.released <= 2010
+RETURN m.title, m.released
+Encontrar a las personas que no dirigieron ninguna película:
+
+
+MATCH (p:Person)
+WHERE NOT (p)-[:DIRECTED]->(:Movie)
+RETURN p.name
+Películas que comparten actores con "Inception":
+
+
+MATCH (:Movie {title: "Inception"})<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m:Movie)
+RETURN DISTINCT m.title
+Consultas de Relaciones Complejas
+Actores que trabajaron en más de una película juntos:
+
+
+MATCH (p1:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(p2:Person)
+WHERE p1 <> p2
+RETURN p1.name, p2.name, COUNT(m) AS sharedMovies
+HAVING sharedMovies > 1
+Buscar todos los caminos entre dos nodos con una profundidad máxima:
+
+
+MATCH path=(p1:Person {name: "Tom Hanks"})-[*..3]-(p2:Person {name: "Leonardo DiCaprio"})
+RETURN path
+Actores y directores que trabajaron en la misma película:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(d:Director)
+RETURN p.name, d.name, m.title
+Personas relacionadas indirectamente con "The Matrix":
+
+
+MATCH (p:Person)-[*1..3]->(m:Movie {title: "The Matrix"})
+RETURN DISTINCT p.name
+Relaciones con un peso específico (roles o interacciones):
+
+
+MATCH (p1:Person)-[r:ACTED_IN]->(m:Movie)<-[r2:ACTED_IN]-(p2:Person)
+RETURN p1.name, p2.name, r.roles, r2.roles
+Consultas de Análisis de Grafos
+Encontrar cliques (subgrupos completamente conectados):
+
+
+MATCH (p1:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(p2:Person)
+WHERE p1 <> p2
+RETURN p1.name, p2.name, COUNT(m) AS moviesTogether
+ORDER BY moviesTogether DESC
+Camino más largo entre dos personas:
+
+
+MATCH p=(p1:Person {name: "Tom Hanks"})-[*]-(p2:Person {name: "Kevin Bacon"})
+RETURN p, LENGTH(p) AS length
+ORDER BY length DESC
+LIMIT 1
+Encontrar subgrafos con más de 10 nodos conectados:
+
+
+MATCH (n)-[*]->(m)
+WITH COLLECT(n) + COLLECT(m) AS subgraph
+WHERE SIZE(subgraph) > 10
+RETURN subgraph
+Consultas Avanzadas
+Encontrar películas con la misma calificación promedio:
+
+
+MATCH (m:Movie)<-[:RATED]-(r:Review)
+WITH m, AVG(r.rating) AS avgRating
+MATCH (m2:Movie)<-[:RATED]-(r2:Review)
+WHERE AVG(r2.rating) = avgRating AND m <> m2
+RETURN m.title, m2.title, avgRating
+Rango de años con más películas estrenadas:
+
+
+MATCH (m:Movie)
+RETURN m.released, COUNT(m) AS numMovies
+ORDER BY numMovies DESC
+LIMIT 5
+Actores que trabajaron con al menos 3 directores diferentes:
+
+
+MATCH (a:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(d:Director)
+RETURN a.name, COUNT(DISTINCT d) AS numDirectors
+WHERE numDirectors >= 3
+Grupos de personas con el mismo número de películas:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+RETURN COUNT(m) AS movieCount, COLLECT(p.name) AS people
+ORDER BY movieCount DESC
+Encontrar películas que nunca fueron calificadas:
+
+
+MATCH (m:Movie)
+WHERE NOT EXISTS ((m)<-[:RATED]-())
+RETURN m.title
+Director con más películas realizadas en cada década:
+
+
+MATCH (d:Director)-[:DIRECTED]->(m:Movie)
+WITH d, m, (m.released / 10) * 10 AS decade
+RETURN d.name, decade, COUNT(m) AS numMovies
+ORDER BY decade, numMovies DESC
+Recomendar películas basadas en actores comunes:
+
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(other:Person)-[:ACTED_IN]->(recommended:Movie)
+WHERE NOT (p)-[:ACTED_IN]->(recommended)
+RETURN recommended.title, COUNT(other) AS commonActors
+ORDER BY commonActors DESC
+LIMIT 10
+
+--Ver esquema de la base de datos
+
+CALL db.schema.visualization();
+
+--o sino
+
+MATCH (n)-[r]->(m)
+RETURN n, r, m LIMIT 25;
+
+
+
+camino mas corto
+
+Encontrar el Camino Más Corto entre un Usuario y un Negocio
+
+MATCH (user:User {id: 'user_id'}), (business:Business {id: 'business_id'})
+MATCH p = shortestPath((user)-[*]-(business))
+RETURN p;
