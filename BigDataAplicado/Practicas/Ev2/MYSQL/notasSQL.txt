@@ -1,0 +1,11 @@
+docker run --name MysqlBDA -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Futbol -v MySQL_volume:/var/lib/mysql -p 6969:3306 -d mysql
+
+docker exec -it MysqlBDA bin/bash
+
+mysql -u root -p
+
+my-secret-pw   --- password
+
+show databases
+
+pip install mysql-connector-python
