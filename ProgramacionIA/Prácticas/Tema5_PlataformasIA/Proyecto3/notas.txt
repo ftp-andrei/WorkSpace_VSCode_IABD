@@ -1,4 +1,0 @@
-Crear una carpeta con 100 imagenes (pj)
-Dar una palabra y analizar las 100 imagenes
-Las que correspondan ponerlas en una carpeta (que no se repitan las imagenes)
-Que la puntuacion de la palabra de busqueda sea superior a 70%
