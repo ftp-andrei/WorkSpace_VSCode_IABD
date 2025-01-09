@@ -7,13 +7,16 @@ password = "password"
         
 while True:
     print("\nMenu:")
-    print("1. Obtener todas las atracciones visitadas por un visitante específico")
-    print("2. Mostrar las 5 atracciones más visitadas.")
-    print("3. Coches alquilados por un cliente específico")
-    print("4. Muestra los equipos con el número total de proyectos a los que están asociados")
-    print("5. Mostrar todos los coches que fueron alquilados más de una vez")
-    print("6. Exit")
-    choice = input("Enter your choice (1/2/3/4/6): ")
+    print("1. Personas y sus roles en una empresa concreta")
+    print("2. Personas con el mismo rol en diferentes empresas.")
+    print("3. Empresas comunes entre dos personas.")
+    print("4. Personas y sus funciones en un equipo específico.")
+    print("5. Muestra todos los equipos con el número de personas que los componen.")
+    print("6. Muestra los equipos con el número total de proyectos a los que están asociados.")
+    print("7. Muestra los equipos con el número total de proyectos a los que están asociados.")
+    print("8. Muestra los equipos con el número total de proyectos a los que están asociados.")
+    print("9. Muestra los equipos con el número total de proyectos a los que están asociados.")
+    choice = input("¿Qué desea hacer?")
     
     if choice == '1':
         print("a")
