@@ -1,4 +1,5 @@
 from neo4j import GraphDatabase
+# pip install neo4j
 import csv
 def read_csv_file(filename):
     data =[]

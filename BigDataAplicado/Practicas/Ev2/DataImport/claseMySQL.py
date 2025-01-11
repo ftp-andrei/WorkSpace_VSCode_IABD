@@ -1,5 +1,7 @@
 import csv
 import mysql.connector
+# pip install mysql-connector-python
+
 
 # Creacion de tablas 
 # Añadir estructura ficheros 
