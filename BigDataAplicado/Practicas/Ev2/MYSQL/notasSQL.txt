@@ -1,4 +1,4 @@
-docker run --name MysqlBDA -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=Futbol -v MySQL_volume:/var/lib/mysql -p 6969:3306 -d mysql
+docker run --name MySQLdb -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=PokemonDB -v MySQL_volume:/var/lib/mysql -p 6969:3306 -d mysql
 
 docker exec -it MysqlBDA bin/bash
 
@@ -9,3 +9,48 @@ my-secret-pw   --- password
 show databases
 
 pip install mysql-connector-python
+
+
+
+
+# Insertar los datos (sin eliminar)
+    # for element in has_skill[1:]:
+    #     insert_query = "INSERT INTO Has_Skill (person_id, skill_id, proficiency) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in locations[1:]:
+    #     insert_query = "INSERT INTO Locations (id, name, city) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in pokemon[1:]:
+    #     insert_query = "INSERT INTO Pokemon (pokemon_id, description, pokeGame) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in skills[1:]:
+    #     insert_query = "INSERT INTO Skills (name, category) VALUES (%s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1]))
+
+# Eliminar los datos existentes antes de insertar, para evitar fallos
+    # for element in has_skill[1:]:
+    #     delete_query = "DELETE FROM Has_Skill WHERE person_id = %s AND skill_id = %s"
+    #     db.insert_data(delete_query, (element[0], element[1]))
+    #     insert_query = "INSERT INTO Has_Skill (person_id, skill_id, proficiency) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in locations[1:]:
+    #     delete_query = "DELETE FROM Locations WHERE id = %s"
+    #     db.insert_data(delete_query, (element[0],))
+    #     insert_query = "INSERT INTO Locations (id, name, city) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in pokemon[1:]:
+    #     delete_query = "DELETE FROM Pokemon WHERE pokemon_id = %s"
+    #     db.insert_data(delete_query, (element[0],))
+    #     insert_query = "INSERT INTO Pokemon (pokemon_id, description, pokeGame) VALUES (%s, %s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1], element[2]))
+
+    # for element in skills[1:]:
+    #     delete_query = "DELETE FROM Skills WHERE name = %s"
+    #     db.insert_data(delete_query, (element[0],))
+    #     insert_query = "INSERT INTO Skills (name, category) VALUES (%s, %s)"
+    #     db.insert_data(insert_query, (element[0], element[1]))
