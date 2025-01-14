@@ -104,6 +104,6 @@ for element in persons[1:]:
     }
     neo4j_crud.create_node("Persona", node_properties)
 
-# Crear relaciones WORKS_AT
+# # Crear relaciones WORKS_AT
 for element in works_at[1:]:
-    neo4j_crud.create_relationship("Persona", element[0], "Empresa", element[1], "WORKS_AT")
+    neo4j_crud.create_relationship("Persona", element[0], "Empresa", element[2], "WORKS_AT", element[1])
