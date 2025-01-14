@@ -47,17 +47,25 @@ class Neo4J:
         return result
 
     # Crear relaciones
-    def create_relationship(self, label_origin, property_origin, label_end, property_end, relationship_name):
+    def create_relationship(self,label_origin, property_origin, label_end, property_end, relationship_name):
         with self._driver.session() as session:
-            result = session.write_transaction(self._create_relationship, label_origin, property_origin, label_end, property_end, relationship_name)
+            result = session.write_transaction(
+                self._create_relationship,
+                label_origin,
+                property_origin,
+                label_end,
+                property_end,
+                relationship_name
+            )
             return result
+        
     @staticmethod
     def _create_relationship(tx, label_origin, property_origin, label_end, property_end, relationship_name):
         query = (
-            f"MATCH (o:{label_origin} {{id: $property_origin}}), (e:{label_end} {{id: $property_end}}) "
-            f"CREATE (o)-[:{relationship_name} $props]->(e)"
+            f"MATCH (a:{label_origin}), (b:{label_end}) "
+            f"CREATE (a)-[:{relationship_name}]->(b)"
         )
-        result = tx.run(query, property_origin=property_origin, property_end=property_end)
+        result= tx.run(query, property_origin=property_origin, property_end=property_end)
         return result
     
     # Obtener personas que trabajan en una empresa
@@ -104,6 +112,13 @@ for element in persons[1:]:
     }
     neo4j_crud.create_node("Persona", node_properties)
 
-# # Crear relaciones WORKS_AT
+# Crear relacion WORKS_AT
 for element in works_at[1:]:
-    neo4j_crud.create_relationship("Persona", element[0], "Empresa", element[2], "WORKS_AT", element[1])
+    # Llamada a la función create_relationship
+    neo4j_crud.create_relationship(
+        "Persona",   # labelOrigin
+        element[0],  # persona_id (propertyOrigin)
+        "Empresa",   # labelEnd
+        element[2],  # empresa_id (propertyEnd)
+        "WORKS_AT"   # relationshipName
+    )

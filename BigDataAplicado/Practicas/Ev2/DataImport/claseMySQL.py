@@ -32,8 +32,7 @@ create_table_pokemon = """
 create_table_skills = """
         CREATE TABLE IF NOT EXISTS Skills (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255),
-            category VARCHAR(255)
+            name VARCHAR(255)
         );
         """
 
