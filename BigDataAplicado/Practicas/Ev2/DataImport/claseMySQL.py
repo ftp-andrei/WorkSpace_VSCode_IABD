@@ -197,3 +197,5 @@ for element in skills[1:]:
     if result[0] == 0:
         insert_query = "INSERT INTO Skills (name, category) VALUES (%s, %s)"
         db.insert_data(insert_query, (element[0], element[1]))
+
+print("MySQL: Datos insertados correctamente.") 

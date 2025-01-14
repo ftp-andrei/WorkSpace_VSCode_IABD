@@ -122,3 +122,4 @@ for element in works_at[1:]:
         element[2],  # empresa_id (propertyEnd)
         "WORKS_AT"   # relationshipName
     )
+print("Neo: Datos insertados correctamente.") 
