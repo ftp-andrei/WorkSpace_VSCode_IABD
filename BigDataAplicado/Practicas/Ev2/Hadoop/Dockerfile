@@ -14,7 +14,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # --------------------------------------------------------
 # HADOOP
 # --------------------------------------------------------
-ENV HADOOP_VERSION=3.3.6
+ENV HADOOP_VERSION=3.4.1
 ENV HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 ENV HADOOP_PREFIX=/opt/hadoop-$HADOOP_VERSION
 ENV HADOOP_CONF_DIR=/etc/hadoop

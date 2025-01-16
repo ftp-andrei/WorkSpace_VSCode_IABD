@@ -1,0 +1,18 @@
+-----------
+Cluster:
+-----------
+## HADOOP ## 
+docker build -t hadoop-bda:3.4.1 .
+docker-compose up -d
+
+user:password
+
+>ssh rafa@192.168.50.251
+>rafa2024
+
+El archivo se subira en /root/users/[Apellido]
+sudo docker ps
+
+scp [ruta/origen/archivo] rafa@192.168.50.251:[/ruta/destino]
+
+

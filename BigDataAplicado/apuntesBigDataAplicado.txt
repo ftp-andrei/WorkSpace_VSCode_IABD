@@ -75,3 +75,6 @@ No hay internet
 Puertos docker 1 pts 
 Modelado 3 pts
 Consultas 6 pts
+
+
+
