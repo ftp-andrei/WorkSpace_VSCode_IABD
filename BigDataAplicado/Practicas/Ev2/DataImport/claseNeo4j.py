@@ -72,15 +72,16 @@ class Neo4J:
     def consulta1(self, empresa_name):
         with self._driver.session() as session:
             result = session.read_transaction(self._consulta1, empresa_name)
+            print(result)
             for record in result:
-                print(f"Persona: {record['persona']}, Empresa: {record['empresa']}, Location ID: {record['location_id']}, Rol: {record['rol']}")
+                print(f"Persona: {record['persona']}, Rol: {record['rol']}")
 
     @staticmethod
     def _consulta1(tx, empresa_name):
         query = """
             MATCH (p:Persona)-[r:WORKS_AT]->(e:Empresa)
-            WHERE e.name = $empresa_name
-            RETURN p.name AS persona, e.name AS empresa, r.location_id AS location_id, r.role AS rol
+            WHERE e.name = '$empresa_name'
+            RETURN p.name AS persona, r.role AS rol
         """
         return tx.run(query, empresa_name=empresa_name)
 
