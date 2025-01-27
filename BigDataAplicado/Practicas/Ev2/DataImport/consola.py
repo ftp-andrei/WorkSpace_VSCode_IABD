@@ -65,7 +65,17 @@ def show_menu():
         elif choice == '6':
             print("a")
         elif choice == '7':
-            print("a")
+            proficiency = input("Ingrese el proficiency: ")
+            personas = neo4j.consulta7()
+            for persona in personas:
+                persona_id = persona['id']
+                persona_name = persona['name']
+                skills = mysql.consulta7(persona_id,proficiency)
+                if skills:
+                    for skill in skills:
+                        skill_name = skill[1]
+                        proficiency = skill[2]
+                        print(f"Persona: {persona_name}, Skill: {skill_name}, Proficiency: {proficiency}")
         elif choice == '8':
             print("a")
         elif choice == '9':
@@ -73,11 +83,14 @@ def show_menu():
         elif choice == '10':
             print("a")           
         elif choice == '99':
-            print("Saliendo...")
+            print("Cerrando conexiones...")
             mysql.close()
+            neo4j.close()
+            mongodb.close()
+            print("Saliendo...")
             menu = False
         else:
-            print("Invalid choice. Please select a valid option.")
+            print("Opción invalida. Selecciona un numero del (1-10) o 99 para salir")
 
 # Llamar a la función para mostrar el menú al ejecutar el script
 if __name__ == "__main__":

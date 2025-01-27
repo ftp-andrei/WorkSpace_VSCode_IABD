@@ -154,6 +154,32 @@ class Neo4J:
         for record in result:
             print(f"Persona 1: {record['persona1']}, Persona 2: {record['persona2']}, Empresa común: {record['empresa_comun']}")
 
+    # Obtener todas las skills en las que una persona tiene al menos un nivel específico de proficiency
+    def consulta7(self):
+        with self._driver.session() as session:
+            result = session.read_transaction(self._consulta7)
+            return result
+    
+    def _consulta7(self,tx):
+        query = """
+             MATCH (p:Persona)
+             RETURN p.id AS person_id, p.name AS person_name
+        """
+        result = tx.run(query)
+        data = []
+
+        for record in result:
+            person = {
+                "id": record["person_id"],
+                "name": record["person_name"]
+            }
+            data.append(person)
+
+        return data
+
+        # Construir una lista con los resultados
+        #return [{"id": record["person_id"], "name": record["person_name"]} for record in result]
+
 #-----------------------------------
 
 uri = "bolt://localhost:7687" 

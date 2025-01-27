@@ -1,7 +1,6 @@
 import csv
 import json
 import mysql.connector
-# pip install mysql-connector-python
 
 # Creacion de tablas 
 create_table_has_skill = """
@@ -61,7 +60,7 @@ class MySQL:
             host=host,
             user=user,
             password=password,
-            # database=database,
+            database=database,
             port=port
         )
 
@@ -77,6 +76,7 @@ class MySQL:
     def create_database(self, database_name):
         # Comprobamos si la base de datos existe
         self.cursor.execute(f"SHOW DATABASES LIKE '{database_name}';")
+        # Devuelve el 1er resultado
         result = self.cursor.fetchone()
         
         if result:
@@ -99,17 +99,16 @@ class MySQL:
             self.cursor.close()
             self.connection.close()
 
-    def consulta(self):
+    def consulta7(self, persona_id, proficiency):
         # Definir la consulta
-        query = "SELECT * FROM Pokemon"
+        query = "SELECT hs.skill_id,s.category, hs.proficiency FROM Has_Skill hs,Skills s WHERE hs.person_id = %s AND hs.proficiency = %s"
 
         # Ejecutar la consulta
-        db.cursor.execute(query)
+        self.cursor.execute(query, (persona_id, proficiency))
 
         # Obtener y mostrar los resultados
-        results = db.cursor.fetchall()
-        for row in results:
-            print(row)
+        results = self.cursor.fetchall()
+        return results
 
 # Archivos JSON a CSV
 json_to_csv("Archivos/MySQL/has_skill.json", "Archivos/MySQL/has_skill.csv")
@@ -131,7 +130,6 @@ locations=read_csv_file("Archivos/MySQL/locations.csv")
 pokemon=read_csv_file("Archivos/MySQL/pokemon.csv")
 skills=read_csv_file("Archivos/MySQL/skills.csv")
 
-
 DB_HOST = "localhost"
 DB_USER = "root"
 DB_PASSWORD = "my-secret-pw"
@@ -140,15 +138,13 @@ DB_PORT= 6969
 
 db = MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE,DB_PORT)
 
-# # Creamos las tablas
+# Creamos las tablas
 db.create_table(create_table_has_skill)
 db.create_table(create_table_locations)
 db.create_table(create_table_pokemon)
 db.create_table(create_table_skills)
 
-# ================
-# Insertamos datos
-# ================
+#-----------INSERTAMOS DATOS---------------
 
 # Para Has_Skill
 for element in has_skill[1:]:

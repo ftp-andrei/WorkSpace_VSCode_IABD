@@ -40,6 +40,9 @@ class MongoDB:
         else:
             print("El formato de los datos no es una lista de documentos.")
 
+    def close(self):
+        self.client.close()
+
 # Convertir CSV a JSON
 csv_a_json("Archivos/MongoDB/projects.csv", "Archivos/MongoDB/projects.json")
 csv_a_json("Archivos/MongoDB/teams.csv", "Archivos/MongoDB/teams.json")
