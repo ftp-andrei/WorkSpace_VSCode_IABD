@@ -59,7 +59,22 @@ def show_menu():
         elif choice == '3':
             neo4j.consulta3()
         elif choice == '4':
-            print("a")
+            team_name = input("Ingrese el nombre del equipo: ")
+            
+            personas = neo4j.consulta7()
+            # Crear un diccionario para mapear 'id' de personas a 'name'
+            person_name_map = {persona['id']: persona['name'] for persona in personas}
+
+            resultados = mongodb.consulta4(team_name)
+
+            print(f"Resultados para el equipo {team_name}:")
+            for resultado in resultados:
+
+                # Reemplazar el person_id por el person_name usando el diccionario de personas
+                if resultado['person_id'] in person_name_map:
+                    resultado['person_name'] = person_name_map[resultado['person_id']]  # Asignar el nombre correspondiente
+                
+                print(resultado['persona_name'], resultado['rol'])
         elif choice == '5':
             print("a")
         elif choice == '6':

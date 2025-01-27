@@ -2,9 +2,6 @@ from pymongo import MongoClient
 import json
 import csv
 
-
-# TODO: Consultas
-
 def read_json_file(filename):
     try:
         with open(filename, 'r') as file:
@@ -42,6 +39,48 @@ class MongoDB:
 
     def close(self):
         self.client.close()
+        
+    # Función para obtener personas y roles de un equipo específico (ID_PERSON, ROL)
+    def consulta4(self, team_name):
+        pipeline = [
+            {
+                "$lookup": {
+                    "from": "teams",           # Colección con la que unimos
+                    "localField": "team_id",   # Campo en works_in_team
+                    "foreignField": "team_id", # Campo en teams
+                    "as": "team_info"          # Alias para los datos unidos
+                }
+            },
+            {
+                "$unwind": "$team_info"         # Desanidar el array de team_info
+            },
+            {
+                "$match": { 
+                    "team_info.name": team_name # Filtrar por el nombre del equipo
+                }
+            },
+            {
+                "$group": {                     # Agrupar para evitar duplicados
+                    "_id": {                    # Agrupamos por persona y rol
+                        "person_id": "$person_id",
+                        "rol": "$rol"
+                    },
+                    "team_info": { "$first": "$team_info" }  # Retener el primer valor de team_info
+                }
+            },
+            {
+                "$project": {                   # Seleccionar los campos deseados
+                    "_id": 0,
+                    "person_id": "$_id.person_id",
+                    "rol": "$_id.rol",
+                }
+            }
+        ]
+        
+        # Ejecutar el pipeline
+        results = list(self.db["works_in_team"].aggregate(pipeline))
+        return results
+
 
 # Convertir CSV a JSON
 csv_a_json("Archivos/MongoDB/projects.csv", "Archivos/MongoDB/projects.json")
