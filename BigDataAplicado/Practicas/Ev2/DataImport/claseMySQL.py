@@ -80,11 +80,11 @@ class MySQL:
         result = self.cursor.fetchone()
         
         if result:
-            print(f"MYSQL: La base de datos '{database_name}' ya existe.")
+            print(f"MySQL: La base de datos '{database_name}' ya existe.")
         else:
             # Si no existe, la creamos
             self.cursor.execute(f"CREATE DATABASE {database_name};")
-            print(f"MYSQL: Base de datos '{database_name}' creada.")
+            print(f"MySQL: Base de datos '{database_name}' creada.")
 
     def create_table(self,stringCreate):
         self.cursor.execute(stringCreate)

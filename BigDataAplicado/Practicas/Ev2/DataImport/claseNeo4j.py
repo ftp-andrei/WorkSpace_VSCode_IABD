@@ -25,12 +25,37 @@ class Neo4J:
     # Conectar a la bd
     def _connect(self):
         self._driver = GraphDatabase.driver(self._uri, auth=(self._user, self._password))
-        print("Conexión a Neo4j exitosa.")
 
     # Cerrar conexion
     def close(self):
         if self._driver is not None:
             self._driver.close()
+
+    # Eliminar nodos - relaciones
+    def eliminar_todos_los_nodos_y_relaciones(self):
+        with self._driver.session() as session:
+            result = session.write_transaction(self._eliminar_todos_los_nodos_y_relaciones)
+            return result
+
+    @staticmethod
+    def _eliminar_todos_los_nodos_y_relaciones(tx):
+        query = """
+            MATCH (n)
+            RETURN COUNT(n) AS total_nodos
+        """
+        result = tx.run(query)
+        total_nodos = result.single()["total_nodos"]
+
+        if total_nodos > 0:
+            # Si existen nodos, los eliminamos
+            query_delete = """
+                MATCH (n)
+                DETACH DELETE n
+            """
+            tx.run(query_delete)
+            print(f"Se han eliminado {total_nodos} nodos y sus relaciones.")
+        else:
+            print("No existen nodos para eliminar.")
 
     # Crear nodos
     def create_node(self, label, properties):
@@ -47,43 +72,89 @@ class Neo4J:
         return result
 
     # Crear relaciones
-    def create_relationship(self,label_origin, property_origin, label_end, property_end, relationship_name):
+    def create_relationship_with_role(self, label_origin, property_origin, label_end, property_end, relationship_name, role):
         with self._driver.session() as session:
             result = session.write_transaction(
-                self._create_relationship,
+                self._create_relationship_with_role,
                 label_origin,
                 property_origin,
                 label_end,
                 property_end,
-                relationship_name
+                relationship_name,
+                role
             )
             return result
         
     @staticmethod
-    def _create_relationship(tx, label_origin, property_origin, label_end, property_end, relationship_name):
+    def _create_relationship_with_role(tx, label_origin, property_origin, label_end, property_end, relationship_name, role):
         query = (
-            f"MATCH (a:{label_origin}), (b:{label_end}) "
-            f"CREATE (a)-[:{relationship_name}]->(b)"
+            f"MATCH (a:{label_origin} {{id: $property_origin}}), (b:{label_end} {{id: $property_end}}) "
+            f"MERGE (a)-[r:{relationship_name}]->(b) "  # Asegura que no se creen relaciones duplicadas (Se puede cambiar por CREATE)
+            f"ON CREATE SET r.role = $role "            # Establece la propiedad `role` solo si la relación es nueva
         )
-        result= tx.run(query, property_origin=property_origin, property_end=property_end)
+        result = tx.run(query, property_origin=property_origin, property_end=property_end, role=role)
         return result
-    
-    # Obtener personas que trabajan en una empresa
+
+#----------------CONSULTAS----------------
+
+    # Personas y sus roles en una empresa concreta
     def consulta1(self, empresa_name):
         with self._driver.session() as session:
+            # Ejecutar la consulta y obtener los resultados en la transacción
             result = session.read_transaction(self._consulta1, empresa_name)
-            print(result)
-            for record in result:
-                print(f"Persona: {record['persona']}, Rol: {record['rol']}")
+            return result
 
     @staticmethod
     def _consulta1(tx, empresa_name):
         query = """
             MATCH (p:Persona)-[r:WORKS_AT]->(e:Empresa)
-            WHERE e.name = '$empresa_name'
+            WHERE e.name = $empresa_name
             RETURN p.name AS persona, r.role AS rol
         """
-        return tx.run(query, empresa_name=empresa_name)
+        result =  tx.run(query, empresa_name=empresa_name)
+
+        for record in result:
+            print(f"Persona: {record['persona']}, Rol: {record['rol']}")
+
+    # Personas con el mismo rol en diferentes empresas
+    def consulta2(self):
+        with self._driver.session() as session:
+            result = session.read_transaction(self._consulta2)
+            return result
+
+    @staticmethod
+    def _consulta2(tx):
+        query = """
+            MATCH (p:Persona)-[r:WORKS_AT]->(e:Empresa)
+            WITH p, r.role AS rol, COLLECT(e.name) AS empresas
+            WHERE SIZE(empresas) > 1  
+            RETURN p.name AS persona, rol, empresas
+        """
+        result =  tx.run(query)
+
+        for record in result:
+            print(f"Persona: {record['persona']}, Rol: {record['rol']}, Empresas: {record['empresas']}")
+
+    # Empresas comunes entre dos personas
+    def consulta3(self):
+        with self._driver.session() as session:
+            result = session.read_transaction(self._consulta3)
+            return result
+
+    @staticmethod
+    def _consulta3(tx):
+        query = """
+            MATCH (p1:Persona)-[:WORKS_AT]->(e:Empresa)<-[:WORKS_AT]-(p2:Persona)
+            WHERE p1 <> p2  
+            RETURN p1.name AS persona1, p2.name AS persona2, e.name AS empresa_comun
+        """
+        # <> | Asegura que no se comparen la misma persona consigo misma
+        result = tx.run(query)
+
+        for record in result:
+            print(f"Persona 1: {record['persona1']}, Persona 2: {record['persona2']}, Empresa común: {record['empresa_comun']}")
+
+#-----------------------------------
 
 uri = "bolt://localhost:7687" 
 user = "neo4j"
@@ -91,9 +162,12 @@ password = "my-secret-pw"
 
 neo4j_crud = Neo4J(uri, user, password)
 
-empresas= read_csv_file("Archivos/Neo4J/empresas.csv")
-persons=read_csv_file("Archivos/Neo4J/persons.csv")
-works_at=read_csv_file("Archivos/Neo4J/works_at.csv")
+# Eliminamos por si estan creados
+neo4j_crud.eliminar_todos_los_nodos_y_relaciones()
+
+empresas = read_csv_file("Archivos/Neo4J/empresas.csv")
+persons = read_csv_file("Archivos/Neo4J/persons.csv")
+works_at = read_csv_file("Archivos/Neo4J/works_at.csv")
 
 # Crear nodos de Empresa
 for element in empresas[1:]:
@@ -116,11 +190,12 @@ for element in persons[1:]:
 # Crear relacion WORKS_AT
 for element in works_at[1:]:
     # Llamada a la función create_relationship
-    neo4j_crud.create_relationship(
+    neo4j_crud.create_relationship_with_role(
         "Persona",   # labelOrigin
         element[0],  # persona_id (propertyOrigin)
         "Empresa",   # labelEnd
         element[2],  # empresa_id (propertyEnd)
-        "WORKS_AT"   # relationshipName
+        "WORKS_AT",  # relationshipName
+        element[1]   # role
     )
 print("Neo: Datos insertados correctamente.") 

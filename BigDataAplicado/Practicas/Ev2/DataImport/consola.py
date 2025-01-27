@@ -55,9 +55,9 @@ def show_menu():
             empresa_name = input("Ingrese el nombre de la empresa: ")
             neo4j.consulta1(empresa_name)
         elif choice == '2':
-            mongodb.consulta({"rol": "developer"})
+            neo4j.consulta2()
         elif choice == '3':
-            mysql.consulta()
+            neo4j.consulta3()
         elif choice == '4':
             print("a")
         elif choice == '5':
