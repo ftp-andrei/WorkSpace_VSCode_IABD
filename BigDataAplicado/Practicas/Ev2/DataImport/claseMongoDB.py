@@ -81,6 +81,47 @@ class MongoDB:
         results = list(self.db["works_in_team"].aggregate(pipeline))
         return results
 
+    # Función para obtener el nombre de los equipos y el conteo de personas
+    def consulta5(self):
+        pipeline = [
+            {
+                "$lookup": {
+                    "from": "teams",            # Colección con la que unimos
+                    "localField": "team_id",    # Campo en works_in_team
+                    "foreignField": "team_id",  # Campo en teams
+                    "as": "team_info"           # Alias para los datos unidos
+                }
+            },
+            {
+                "$unwind": {
+                    "path": "$team_info",      # Desanidar el array de team_info
+                    "preserveNullAndEmptyArrays": False  # Ignorar documentos sin coincidencia
+                }
+            },
+            {
+                "$group": {
+                    "_id": "$team_info.name",  # Agrupar por nombre del equipo
+                    "num_people": { "$sum": 1 }  # Contar el número de personas
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0,                  # Ocultar el _id
+                    "team_name": "$_id",       # Nombre del equipo
+                    "num_people": 1            # Conteo de personas
+                }
+            },
+            {
+                "$sort": {
+                    "team_name": 1             # Ordenar por nombre del equipo
+                }
+            }
+        ]
+
+        # Ejecutar el pipeline
+        results = list(self.db["works_in_team"].aggregate(pipeline))
+        return results
+
 
 # Convertir CSV a JSON
 csv_a_json("Archivos/MongoDB/projects.csv", "Archivos/MongoDB/projects.json")

@@ -34,7 +34,7 @@ class Neo4J:
     # Eliminar nodos - relaciones
     def eliminar_todos_los_nodos_y_relaciones(self):
         with self._driver.session() as session:
-            result = session.write_transaction(self._eliminar_todos_los_nodos_y_relaciones)
+            result = session.execute_write(self._eliminar_todos_los_nodos_y_relaciones)
             return result
 
     @staticmethod
@@ -60,7 +60,7 @@ class Neo4J:
     # Crear nodos
     def create_node(self, label, properties):
         with self._driver.session() as session:
-            result = session.write_transaction(self._create_node, label, properties)
+            result = session.execute_write(self._create_node, label, properties)
             return result
 
     @staticmethod
@@ -74,7 +74,7 @@ class Neo4J:
     # Crear relaciones
     def create_relationship_with_role(self, label_origin, property_origin, label_end, property_end, relationship_name, role):
         with self._driver.session() as session:
-            result = session.write_transaction(
+            result = session.execute_write(
                 self._create_relationship_with_role,
                 label_origin,
                 property_origin,
@@ -101,7 +101,7 @@ class Neo4J:
     def consulta1(self, empresa_name):
         with self._driver.session() as session:
             # Ejecutar la consulta y obtener los resultados en la transacción
-            result = session.read_transaction(self._consulta1, empresa_name)
+            result = session.execute_read(self._consulta1, empresa_name)
             return result
 
     @staticmethod
@@ -119,7 +119,7 @@ class Neo4J:
     # Personas con el mismo rol en diferentes empresas
     def consulta2(self):
         with self._driver.session() as session:
-            result = session.read_transaction(self._consulta2)
+            result = session.execute_read(self._consulta2)
             return result
 
     @staticmethod
@@ -138,7 +138,7 @@ class Neo4J:
     # Empresas comunes entre dos personas
     def consulta3(self):
         with self._driver.session() as session:
-            result = session.read_transaction(self._consulta3)
+            result = session.execute_read(self._consulta3)
             return result
 
     @staticmethod
@@ -157,7 +157,7 @@ class Neo4J:
     # Obtener todas las skills en las que una persona tiene al menos un nivel específico de proficiency
     def consulta7(self):
         with self._driver.session() as session:
-            result = session.read_transaction(self._consulta7)
+            result = session.execute_read(self._consulta7)
             return result
     
     def _consulta7(self,tx):

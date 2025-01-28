@@ -8,7 +8,8 @@ create_table_has_skill = """
             id INT AUTO_INCREMENT PRIMARY KEY,
             person_id INT,
             skill_id INT,
-            proficiency VARCHAR(255)
+            proficiency VARCHAR(255),
+            FOREIGN KEY (skill_id) REFERENCES Skills(id) ON DELETE CASCADE ON UPDATE CASCADE
         );
         """    
 
@@ -60,7 +61,7 @@ class MySQL:
             host=host,
             user=user,
             password=password,
-            database=database,
+            #database=database,
             port=port
         )
 
@@ -101,7 +102,7 @@ class MySQL:
 
     def consulta7(self, persona_id, proficiency):
         # Definir la consulta
-        query = "SELECT hs.skill_id,s.category, hs.proficiency FROM Has_Skill hs,Skills s WHERE hs.person_id = %s AND hs.proficiency = %s"
+        query = "SELECT hs.skill_id, hs.proficiency FROM Has_Skill hs WHERE hs.person_id = %s AND hs.proficiency = %s"
 
         # Ejecutar la consulta
         self.cursor.execute(query, (persona_id, proficiency))
@@ -137,14 +138,26 @@ DB_DATABASE = "PokemonDB"
 DB_PORT= 6969
 
 db = MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE,DB_PORT)
-
 # Creamos las tablas
+db.create_table(create_table_skills)
 db.create_table(create_table_has_skill)
 db.create_table(create_table_locations)
 db.create_table(create_table_pokemon)
-db.create_table(create_table_skills)
+
 
 #-----------INSERTAMOS DATOS---------------
+
+# Para Skills
+for element in skills[1:]:
+    # Verificar si ya existe el registro
+    select_query = "SELECT COUNT(*) FROM Skills WHERE name = %s"
+    db.cursor.execute(select_query, (element[1],))
+    result = db.cursor.fetchone()
+    
+    # Si no existe, lo insertamos
+    if result[0] == 0:
+        insert_query = "INSERT INTO Skills (name) VALUES (%s)"
+        db.insert_data(insert_query, (element[1],))
 
 # Para Has_Skill
 for element in has_skill[1:]:
@@ -181,17 +194,4 @@ for element in pokemon[1:]:
     if result[0] == 0:
         insert_query = "INSERT INTO Pokemon (pokemon_id, description, pokeGame) VALUES (%s, %s, %s)"
         db.insert_data(insert_query, (element[0], element[1], element[2]))
-
-# Para Skills
-for element in skills[1:]:
-    # Verificar si ya existe el registro
-    select_query = "SELECT COUNT(*) FROM Skills WHERE name = %s"
-    db.cursor.execute(select_query, (element[0],))
-    result = db.cursor.fetchone()
-    
-    # Si no existe, lo insertamos
-    if result[0] == 0:
-        insert_query = "INSERT INTO Skills (name, category) VALUES (%s, %s)"
-        db.insert_data(insert_query, (element[0], element[1]))
-
 print("MySQL: Datos insertados correctamente.") 

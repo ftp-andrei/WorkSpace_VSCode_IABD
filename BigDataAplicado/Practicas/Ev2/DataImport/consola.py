@@ -69,14 +69,11 @@ def show_menu():
 
             print(f"Resultados para el equipo {team_name}:")
             for resultado in resultados:
-
-                # Reemplazar el person_id por el person_name usando el diccionario de personas
-                if resultado['person_id'] in person_name_map:
-                    resultado['person_name'] = person_name_map[resultado['person_id']]  # Asignar el nombre correspondiente
-                
-                print(resultado['persona_name'], resultado['rol'])
+                personaName=person_name_map[resultado['person_id']]
+                if (personaName):
+                    print(personaName, resultado['rol'])
         elif choice == '5':
-            print("a")
+            mongodb.consulta5()
         elif choice == '6':
             print("a")
         elif choice == '7':
@@ -88,8 +85,8 @@ def show_menu():
                 skills = mysql.consulta7(persona_id,proficiency)
                 if skills:
                     for skill in skills:
-                        skill_name = skill[1]
-                        proficiency = skill[2]
+                        skill_name = skill[0]
+                        proficiency = skill[1]
                         print(f"Persona: {persona_name}, Skill: {skill_name}, Proficiency: {proficiency}")
         elif choice == '8':
             print("a")
