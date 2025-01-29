@@ -2,7 +2,7 @@
 
 docker run --name MySQLdb -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=PokemonDB -v MySQL_volume:/var/lib/mysql -p 6969:3306 -d mysql
 
-docker exec -it MysqlBDA bin/bash
+docker exec -it MySQLdb bin/bash
 
 mysql -u root -p
 
