@@ -75,7 +75,7 @@ def show_menu():
         elif choice == '5':
             mongodb.consulta5()
         elif choice == '6':
-            print("a")
+            mongodb.consulta6()
         elif choice == '7':
             proficiency = input("Ingrese el proficiency: ")
             personas = neo4j.consulta7()

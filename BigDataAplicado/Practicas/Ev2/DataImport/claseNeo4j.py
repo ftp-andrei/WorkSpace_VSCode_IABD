@@ -177,8 +177,25 @@ class Neo4J:
 
         return data
 
-        # Construir una lista con los resultados
-        #return [{"id": record["person_id"], "name": record["person_name"]} for record in result]
+    def consulta8(self):
+        with self._driver.session() as session:
+            result = session.execute_read(self._consulta8)
+            return result
+    
+    def _consulta8(self,tx):
+        #TODO!: FALTA CONSULTA
+        query = """
+
+        """
+        result = tx.run(query)
+        data = []
+
+        for record in result:
+            person = {
+                "id": record["person_id"],
+                "name": record["person_name"]
+            }
+            data.append(person)
 
 #-----------------------------------
 

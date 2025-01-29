@@ -31,6 +31,11 @@ class MongoDB:
 
     def insert_many(self, collection_name, data):
         collection = self.db[collection_name]
+        # Verificar si la colección ya existe y contiene datos
+        if collection.estimated_document_count() > 0:
+            print(f"La colección '{collection_name}' ya contiene datos. No se insertarán nuevos documentos.")
+            return
+        # Insertar documentos si la colección está vacía
         if isinstance(data, list):
             result = collection.insert_many(data)
             print(f"{len(result.inserted_ids)} documentos insertados en la colección '{collection_name}'.")
@@ -39,6 +44,8 @@ class MongoDB:
 
     def close(self):
         self.client.close()
+
+#------------------CONSULTAS-------------------------  
         
     # Función para obtener personas y roles de un equipo específico (ID_PERSON, ROL)
     def consulta4(self, team_name):
@@ -86,22 +93,22 @@ class MongoDB:
         pipeline = [
             {
                 "$lookup": {
-                    "from": "teams",            # Colección con la que unimos
-                    "localField": "team_id",    # Campo en works_in_team
-                    "foreignField": "team_id",  # Campo en teams
-                    "as": "team_info"           # Alias para los datos unidos
+                    "from": "teams",           # Colección con la que unimos
+                    "localField": "team_id",   # Campo en works_in_team
+                    "foreignField": "team_id", # Campo en teams
+                    "as": "team_info"          # Alias para los datos unidos
                 }
             },
             {
                 "$unwind": {
-                    "path": "$team_info",      # Desanidar el array de team_info
+                    "path": "$team_info",       # Desanidar el array de team_info
                     "preserveNullAndEmptyArrays": False  # Ignorar documentos sin coincidencia
                 }
             },
             {
                 "$group": {
                     "_id": "$team_info.name",  # Agrupar por nombre del equipo
-                    "num_people": { "$sum": 1 }  # Contar el número de personas
+                    "num_people": { "$sum": 1 }  # Contar el número de personas en el equipo
                 }
             },
             {
@@ -117,10 +124,53 @@ class MongoDB:
                 }
             }
         ]
-
+        
         # Ejecutar el pipeline
         results = list(self.db["works_in_team"].aggregate(pipeline))
-        return results
+        
+        # Mostrar los resultados en consola
+        for result in results:
+            print(f"Equipo: {result['team_name']}, Número de personas: {result['num_people']}")
+
+
+    # Muestra los equipos con el número total de proyectos a los que están asociados
+    def consulta6(self):
+        pipeline = [
+            # Unir con la colección "projects" para obtener el nombre del proyecto
+            {
+                "$lookup": {
+                    "from": "projects",          # Colección a unir
+                    "localField": "project_id",  # Campo en "teams"
+                    "foreignField": "project_id",# Campo en "projects"
+                    "as": "project_info"         # Alias para los datos del proyecto
+                }
+            },
+            # Desanidar el array project_info (1 documento por proyecto)
+            {"$unwind": "$project_info"},
+            # Agrupar por nombre del proyecto y contar equipos
+            {
+                "$group": {
+                    "_id": "$project_info.name",  # Agrupar por nombre del proyecto
+                    "total_equipos": {"$sum": 1}  # Contar equipos en cada proyecto
+                }
+            },
+            # Proyectar campos deseados
+            {
+                "$project": {
+                    "_id": 0, 
+                    "nombre_proyecto": "$_id", 
+                    "equipos_asociados": "$total_equipos"
+                }
+            },
+            # Ordenar por nombre del proyecto
+            {"$sort": {"nombre_proyecto": 1}}
+        ]
+        
+        results = list(self.db["teams"].aggregate(pipeline))
+        
+        # Mostrar resultados
+        for result in results:
+            print(f"Proyecto: {result['nombre_proyecto']}, Nº asociados: {result['equipos_asociados']}")
 
 
 # Convertir CSV a JSON
