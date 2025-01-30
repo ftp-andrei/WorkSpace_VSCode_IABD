@@ -178,47 +178,64 @@ class MongoDB:
     # Para ver si un pokemon es de un tipo o de otro tendrás que hacer una petición al API.
     def consulta9(self):
         pipeline = [
-            # Contar el número de personas por equipo
-            {"$group": {"_id": "$team_id", "totalPersonas": {"$sum": 1}}},
-
-            # Unir con la colección de equipos
+            # 1. Eliminar duplicados de personas en equipos
+            {"$group": {
+                "_id": {"person": "$person_id", "team": "$team_id"}
+            }},
+            
+            # 2. Contar personas únicas por equipo (convertir team_id a string)
+            {"$group": {
+                "_id": {"$toString": "$_id.team"},  # Convertir a string para hacer match con teams
+                "totalPersonas": {"$sum": 1}
+            }},
+            
+            # 3. Unir con equipos (team_id como string)
             {"$lookup": {
                 "from": "teams",
                 "localField": "_id",
-                "foreignField": "team_id",
+                "foreignField": "team_id",  # Asumiendo que team_id en teams es string
                 "as": "equipo"
             }},
             {"$unwind": "$equipo"},
-
-            # Agrupar por proyecto sumando las personas de sus equipos
-            {"$group": {
-                "_id": "$equipo.project_id",
-                "totalPersonasProyecto": {"$sum": "$totalPersonas"}
+            
+            # 4. Convertir project_id (desde teams) a string
+            {"$addFields": {
+                "project_id_str": {"$toString": "$equipo.project_id"}  # Asegurar tipo string
             }},
-
-            # Ordenar por número de personas y tomar el proyecto con más personas
-            {"$sort": {"totalPersonasProyecto": -1}},
-            {"$limit": 1},
-
-            # Unir con la colección de proyectos para obtener el nombre
+            
+            # 5. Agrupar por proyecto sumando personas
+            {"$group": {
+                "_id": "$project_id_str",
+                "totalPersonas": {"$sum": "$totalPersonas"}
+            }},
+            
+            # 6. Unir con proyectos (project_id como string)
             {"$lookup": {
                 "from": "projects",
                 "localField": "_id",
-                "foreignField": "project_id",
+                "foreignField": "project_id",  # project_id en projects es string
                 "as": "proyecto"
             }},
             {"$unwind": "$proyecto"},
-
-            # Seleccionar los campos finales asegurando que solo haya un resultado
+            
+            # 7. Proyectar campos requeridos
             {"$project": {
                 "_id": 0,
                 "project_id": "$_id",
                 "nombre": "$proyecto.name",
-                "totalPersonasProyecto": 1
-            }}
+                "location_id": "$proyecto.location_id",
+                "totalPersonas": 1
+            }},
+            
+            # 8. Ordenar y obtener el máximo
+            {"$sort": {"totalPersonas": -1}},
+            {"$limit": 1}
         ]
-
+        
         return list(self.db["works_in_team"].aggregate(pipeline))
+
+
+
 
     #Dado una ubicación, obtén la lista de equipos que están ubicados allí junto
     #con información de las personas que trabajan en ese equipo y los proyectos asociados.
