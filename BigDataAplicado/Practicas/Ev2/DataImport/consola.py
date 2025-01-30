@@ -84,11 +84,10 @@ def show_menu():
                 persona_id = persona['id']
                 persona_name = persona['name']
                 skills = mysql.consulta7(persona_id,proficiency)
-                if skills:
-                    for skill in skills:
-                        skill_name = skill[0]
-                        proficiency = skill[1]
-                        print(f"Persona: {persona_name}, Skill: {skill_name}, Proficiency: {proficiency}")
+                for skill in skills:
+                    skill_name = skill[0]
+                    proficiency = skill[1]
+                    print(f"Persona: {persona_name}, Skill: {skill_name}, Proficiency: {proficiency}")
         elif choice == '8':
             # Obtener pares de IDs con al menos una skill en común
             id_skill_comunes = mysql.consulta8()
@@ -112,8 +111,11 @@ def show_menu():
             # Ver los pokemons favoritos de esas personas(?)
             # Ver los tipos de los pokemons a traves de la API(?)
 
-            response = requests.get(API+f'/pokemon/ditto')
-            print(response.json())
+            proyecto = mongodb.consulta9()
+            print(f'El proyecto con mas personas es: {proyecto}')
+
+            #response = requests.get(API+f'/pokemon/ditto')
+            #print(response.json())
         elif choice == '10':
             localizaciones = mysql.consulta10()
             # Extraer solo los nombres de las ubicaciones

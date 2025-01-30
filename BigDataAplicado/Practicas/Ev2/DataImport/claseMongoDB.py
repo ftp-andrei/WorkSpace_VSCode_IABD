@@ -172,6 +172,54 @@ class MongoDB:
         for result in results:
             print(f"Proyecto: {result['nombre_proyecto']}, Nº asociados: {result['equipos_asociados']}")
 
+
+    # Encontrar el proyecto que tenga más personas en el equipo cuyos
+    # pokemons favoritos son de diferente tipo, mostrar todo los tipos distintos.
+    # Para ver si un pokemon es de un tipo o de otro tendrás que hacer una petición al API.
+    def consulta9(self):
+        pipeline = [
+            # Contar el número de personas por equipo
+            {"$group": {"_id": "$team_id", "totalPersonas": {"$sum": 1}}},
+
+            # Unir con la colección de equipos
+            {"$lookup": {
+                "from": "teams",
+                "localField": "_id",
+                "foreignField": "team_id",
+                "as": "equipo"
+            }},
+            {"$unwind": "$equipo"},
+
+            # Agrupar por proyecto sumando las personas de sus equipos
+            {"$group": {
+                "_id": "$equipo.project_id",
+                "totalPersonasProyecto": {"$sum": "$totalPersonas"}
+            }},
+
+            # Ordenar por número de personas y tomar el proyecto con más personas
+            {"$sort": {"totalPersonasProyecto": -1}},
+            {"$limit": 1},
+
+            # Unir con la colección de proyectos para obtener el nombre
+            {"$lookup": {
+                "from": "projects",
+                "localField": "_id",
+                "foreignField": "project_id",
+                "as": "proyecto"
+            }},
+            {"$unwind": "$proyecto"},
+
+            # Seleccionar los campos finales asegurando que solo haya un resultado
+            {"$project": {
+                "_id": 0,
+                "project_id": "$_id",
+                "nombre": "$proyecto.name",
+                "totalPersonasProyecto": 1
+            }}
+        ]
+
+        return list(self.db["works_in_team"].aggregate(pipeline))
+
     #Dado una ubicación, obtén la lista de equipos que están ubicados allí junto
     #con información de las personas que trabajan en ese equipo y los proyectos asociados.
     def consulta10(self, location_id):
