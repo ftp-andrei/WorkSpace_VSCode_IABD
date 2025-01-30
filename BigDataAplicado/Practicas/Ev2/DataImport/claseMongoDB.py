@@ -173,9 +173,7 @@ class MongoDB:
             print(f"Proyecto: {result['nombre_proyecto']}, Nº asociados: {result['equipos_asociados']}")
 
 
-    # Encontrar el proyecto que tenga más personas en el equipo cuyos
-    # pokemons favoritos son de diferente tipo, mostrar todo los tipos distintos.
-    # Para ver si un pokemon es de un tipo o de otro tendrás que hacer una petición al API.
+    # Devuelve el proyecto que mas personas tiene
     def consulta9(self):
         pipeline = [
             # 1. Eliminar duplicados de personas en equipos
@@ -235,10 +233,20 @@ class MongoDB:
         return list(self.db["works_in_team"].aggregate(pipeline))
 
 
+    # Saca a traves del id el pokemon favorito de cada persona
+    def consulta9_v2(self, person_id):
+        query = {
+            "person_id": {"$eq": int(person_id)}  # Asegura que sea un entero
+        }
+        projection = {
+            "_id": 0,
+            "person_id": 1,
+            "pokemon_id": 1
+        }
+        result = list(self.db["favourite_pokemon"].find(query, projection))
+        return result
 
-
-    #Dado una ubicación, obtén la lista de equipos que están ubicados allí junto
-    #con información de las personas que trabajan en ese equipo y los proyectos asociados.
+    # Devuelve las localizaciones
     def consulta10(self, location_id):
         pipeline = [
             {

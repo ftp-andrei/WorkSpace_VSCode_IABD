@@ -105,18 +105,30 @@ def show_menu():
             # /pokemon/{id or name}/
             # /type/{id or name}/
 
-            # TODO!: Implementar logica
-            # Coger personas que trabajan en un equipo(?)
-            # Sacar el que mas personas trabajen en el equipo(?)
-            # Ver los pokemons favoritos de esas personas(?)
-            # Ver los tipos de los pokemons a traves de la API(?)
-
             proyecto = mongodb.consulta9()
-            print(f'El proyecto con mas personas es: {proyecto}')
+            print(f'El proyecto con mas personas es: {proyecto[0]["nombre"]}') # Nombre del proyecto
+            
+            personas = neo4j.consulta9(proyecto[0]["location_id"]) # location_id
+            for persona in personas:
+                pokemon_ids = mongodb.consulta9_v2(persona['id']) # parseado a entero en la funcion
+                if pokemon_ids:
+                    print(f"Persona: {persona['name']}. Sus pokemons favoritos son:")
+                    for id in pokemon_ids:
+                        pokemon_id = id.get('pokemon_id')
+                        response = requests.get(API+f'/pokemon/{pokemon_id}')
+                        data = response.json()
+                        
+                        # Accede a los tipos del Pokémon
+                        types = data.get('types', [])
+                        
+                        if types:
+                            print(f'{data['name']} es de tipo:') # nombre pokemon
+                            for t in types:
+                                type_name = t.get('type', {}).get('name')  # nombre del tipo
+                                print(f"- {type_name}")
+                else:
+                    print(f"Persona {persona['name']} no tiene Pokémon favorito registrado.")
 
-
-            #response = requests.get(API+f'/pokemon/ditto')
-            #print(response.json())
         elif choice == '10':
             localizaciones = mysql.consulta10()
             # Extraer solo los nombres de las ubicaciones

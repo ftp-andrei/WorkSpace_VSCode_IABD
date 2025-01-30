@@ -70,7 +70,7 @@ class Neo4J:
         return result
 
     # Crear relaciones
-    def create_relationship_with_role(self, label_origin, property_origin, label_end, property_end, relationship_name, role):
+    def create_relationship_with_role(self, label_origin, property_origin, label_end, property_end, relationship_name, role, location_id):
         with self._driver.session() as session:
             result = session.execute_write(
                 self._create_relationship_with_role,
@@ -79,18 +79,19 @@ class Neo4J:
                 label_end,
                 property_end,
                 relationship_name,
-                role
+                role,
+                location_id
             )
             return result
-        
+
     @staticmethod
-    def _create_relationship_with_role(tx, label_origin, property_origin, label_end, property_end, relationship_name, role):
+    def _create_relationship_with_role(tx, label_origin, property_origin, label_end, property_end, relationship_name, role, location_id):
         query = (
             f"MATCH (a:{label_origin} {{id: $property_origin}}), (b:{label_end} {{id: $property_end}}) "
-            f"MERGE (a)-[r:{relationship_name}]->(b) "  # Asegura que no se creen relaciones duplicadas (Se puede cambiar por CREATE)
-            f"ON CREATE SET r.role = $role "            # Establece la propiedad `role` solo si la relación es nueva
+            f"MERGE (a)-[r:{relationship_name}]->(b) "
+            f"ON CREATE SET r.role = $role, r.location_id = $location_id "
         )
-        result = tx.run(query, property_origin=property_origin, property_end=property_end, role=role)
+        result = tx.run(query, property_origin=property_origin, property_end=property_end, role=role, location_id=location_id)
         return result
 
 #----------------CONSULTAS----------------
@@ -191,6 +192,29 @@ class Neo4J:
         # Formatear los resultados como lista de diccionarios
         persons = [{"id": record["id"], "name": record["name"]} for record in result]
         return persons
+    
+    def consulta9(self, location_id):
+        with self._driver.session() as session:
+            result = session.execute_read(self._consulta9, location_id)
+            return result
+
+    def _consulta9(self, tx, location_id):
+        query = """
+            MATCH (p:Persona)-[w:WORKS_AT]->(e:Empresa)
+            WHERE w.location_id = $location_id
+            RETURN p.id AS person_id, p.name AS person_name
+        """
+        result = tx.run(query, location_id=location_id)
+        data = []
+
+        for record in result:
+            person = {
+                "id": record["person_id"],
+                "name": record["person_name"]
+            }
+            data.append(person)
+
+        return data
 
     def consulta10(self):
         with self._driver.session() as session:
@@ -245,10 +269,11 @@ for element in works_at[1:]:
     # Llamada a la función create_relationship
     neo4j_crud.create_relationship_with_role(
         "Persona",   # labelOrigin
-        element[0],  # persona_id (propertyOrigin)
+        element[0],  # persona_id (propertyOrigin) (posicion persons.csv)
         "Empresa",   # labelEnd
-        element[2],  # empresa_id (propertyEnd)
-        "WORKS_AT",  # relationshipName
-        element[1]   # role
+        element[2],  # empresa_id (propertyEnd) (posicion empresas.csv)
+        "WORKS_AT",  # relationshipName 
+        element[1],  # role (posicion works_at.csv)
+        element[2]   # location_id (posicion works_at.csv)
     )
 print("Neo: Datos insertados correctamente.") 
