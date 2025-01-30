@@ -100,6 +100,8 @@ class MySQL:
             self.cursor.close()
             self.connection.close()
 
+#------------------CONSULTAS-------------------------
+
     # Obtener todas las skills en las que una persona tiene al menos un nivel específico de proficiency
     def consulta7(self, persona_id, proficiency):
         # Definir la consulta
@@ -113,17 +115,28 @@ class MySQL:
         return results
     
     # Encontrar todas las personas que tienen skill en al menos una skill en común con otra persona (es decir, encontrar personas con skills similares).
-
     def consulta8(self):
-        #TODO!: FALTA CONSULTA
         query = """
+            SELECT DISTINCT h1.person_id AS person1_id, h2.person_id AS person2_id
+            FROM Has_Skill h1
+            JOIN Has_Skill h2 ON h1.skill_id = h2.skill_id
+            WHERE h1.person_id < h2.person_id;
         """
-
         self.cursor.execute(query)
-
         results = self.cursor.fetchall()
         return results
-    
+
+    # Dado una ubicación, obtén la lista de equipos que están ubicados allí junto con información de las personas que trabajan en ese equipo y los proyectos asociados
+    def consulta10(self):
+        query = """
+            SELECT id, name FROM Locations;
+        """
+        self.cursor.execute(query)
+        results = self.cursor.fetchall()
+        return results
+
+#---------------------------------------------
+
 # Archivos JSON a CSV
 json_to_csv("Archivos/MySQL/has_skill.json", "Archivos/MySQL/has_skill.csv")
 json_to_csv("Archivos/MySQL/locations.json", "Archivos/MySQL/locations.csv")

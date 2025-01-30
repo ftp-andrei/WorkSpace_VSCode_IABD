@@ -172,6 +172,55 @@ class MongoDB:
         for result in results:
             print(f"Proyecto: {result['nombre_proyecto']}, Nº asociados: {result['equipos_asociados']}")
 
+    #Dado una ubicación, obtén la lista de equipos que están ubicados allí junto
+    #con información de las personas que trabajan en ese equipo y los proyectos asociados.
+    def consulta10(self, location_id):
+        pipeline = [
+            {
+                "$lookup": {
+                    "from": "teams",
+                    "localField": "team_id",
+                    "foreignField": "team_id",
+                    "as": "team_info"
+                }
+            },
+            {
+                "$unwind": {
+                    "path": "$team_info",
+                }
+            },
+            {
+                "$lookup": {
+                    "from": "projects",
+                    "localField": "team_info.project_id",
+                    "foreignField": "project_id",
+                    "as": "project_info"
+                }
+            },
+            {
+                "$unwind": {
+                    "path": "$project_info",
+                }
+            },
+            {
+                "$match": {
+                    "project_info.location_id": location_id
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0,
+                    "person_id": 1,
+                    "team_name": "$team_info.name",
+                    "project_name": "$project_info.name"
+                }
+            }
+        ]
+        
+        result = list(self.db["works_in_team"].aggregate(pipeline))        
+        return result
+
+
 
 # Convertir CSV a JSON
 csv_a_json("Archivos/MongoDB/projects.csv", "Archivos/MongoDB/projects.json")

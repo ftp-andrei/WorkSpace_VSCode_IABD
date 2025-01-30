@@ -1,8 +1,6 @@
 from neo4j import GraphDatabase
 import csv
 
-# TODO: Falta relacion entre los 2 nodos
-
 # Función para leer archivos CSV
 def read_csv_file(filename):
     data =[]
@@ -177,25 +175,37 @@ class Neo4J:
 
         return data
 
+    # Encontrar todas las personas que tienen skill en al menos una skill en común con otra persona (es decir, encontrar personas con skills similares).
     def consulta8(self):
         with self._driver.session() as session:
             result = session.execute_read(self._consulta8)
             return result
-    
-    def _consulta8(self,tx):
-        #TODO!: FALTA CONSULTA
-        query = """
 
+    @staticmethod
+    def _consulta8(tx):
+        query = """
+        MATCH (p:Persona)
+        RETURN p.id AS id, p.name AS name
         """
         result = tx.run(query)
-        data = []
+        # Formatear los resultados como lista de diccionarios
+        persons = [{"id": record["id"], "name": record["name"]} for record in result]
+        return persons
 
-        for record in result:
-            person = {
-                "id": record["person_id"],
-                "name": record["person_name"]
-            }
-            data.append(person)
+    def consulta10(self):
+        with self._driver.session() as session:
+            result = session.execute_read(self._consulta10)
+            return result
+        
+    def _consulta10(self, tx):
+        query = """
+            MATCH (l:Location)
+            RETURN l.id AS id, l.name AS name
+        """
+        result = tx.run(query)
+        # Formatear los resultados como lista de diccionarios
+        locations = [{"id": record["id"], "name": record["name"]} for record in result]
+        return locations
 
 #-----------------------------------
 

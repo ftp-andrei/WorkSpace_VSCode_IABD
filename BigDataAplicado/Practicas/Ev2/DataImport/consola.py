@@ -1,6 +1,7 @@
 from claseNeo4j import Neo4J
 from claseMongoDB import MongoDB
 from claseMySQL import MySQL
+import requests
 
 def connect_to_neo4j():
     neo_uri = "bolt://localhost:7687"
@@ -89,11 +90,54 @@ def show_menu():
                         proficiency = skill[1]
                         print(f"Persona: {persona_name}, Skill: {skill_name}, Proficiency: {proficiency}")
         elif choice == '8':
-            print("a")
+            # Obtener pares de IDs con al menos una skill en común
+            id_skill_comunes = mysql.consulta8()
+            # Obtener diccionario {id: nombre}
+            lista_personas_neo4j = neo4j.consulta8()
+            
+            id_nombre_personas = {str(persona['id']): persona['name'] for persona in lista_personas_neo4j}
+            print("Personas con skills comunes:")
+            for id1, id2 in id_skill_comunes:
+                nombre1 = id_nombre_personas.get(str(id1), "Desconocido")
+                nombre2 = id_nombre_personas.get(str(id2), "Desconocido")
+                print(f"{nombre1} y {nombre2}")
         elif choice == '9':
-            print("a")
+            API = "https://pokeapi.co/api/v2"
+            # /pokemon/{id or name}/
+            # /type/{id or name}/
+
+            # TODO!: Implementar logica
+            # Coger personas que trabajan en un equipo(?)
+            # Sacar el que mas personas trabajen en el equipo(?)
+            # Ver los pokemons favoritos de esas personas(?)
+            # Ver los tipos de los pokemons a traves de la API(?)
+
+            response = requests.get(API+f'/pokemon/ditto')
+            print(response.json())
         elif choice == '10':
-            print("a")           
+            localizaciones = mysql.consulta10()
+            # Extraer solo los nombres de las ubicaciones
+            diccionarioLoc = {nombre: id for id, nombre in localizaciones}
+            noExiste=True
+
+            while noExiste:
+                ubicacion = input("Ingrese la ubicación: ")
+                if ubicacion in diccionarioLoc:
+                    # Devuelve el id de la ubicación
+                    id_loc= diccionarioLoc[ubicacion]
+                    # id_person + team_name + proyect_name
+                    equipos = mongodb.consulta10(str(id_loc))
+                    # id_person + name
+                    lista_personas_neo4j = neo4j.consulta8()
+                    # mapeo de id a nombre
+                    id_nombre_personas = {str(persona['id']): persona['name'] for persona in lista_personas_neo4j}
+                    for id in equipos:
+                        nombre = id_nombre_personas.get(str(id['person_id']), "Desconocido")
+                        print(f"Persona: {nombre}, Equipo: {id['team_name']}, Proyecto: {id['project_name']}")
+                    noExiste = False
+                else:
+                    print("Ubicación no encontrada.")
+
         elif choice == '99':
             print("Cerrando conexiones...")
             mysql.close()
