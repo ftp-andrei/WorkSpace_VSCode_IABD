@@ -1,4 +1,4 @@
-FROM hadoop-bda:3.3.6
+FROM hadoop-bda:3.4.1
 
 HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
 
