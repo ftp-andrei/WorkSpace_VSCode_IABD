@@ -1,0 +1,167 @@
+Apache Pig Tutorial
+Apache Pig Tutorial
+Apache Pig is a high-level platform for creating programs that run on Apache Hadoop. It simplifies the processing of large datasets by providing a scripting language called Pig Latin. This tutorial will cover basic commands, notations, and progressively challenging examples.
+
+Prerequisites
+Basic understanding of Hadoop and HDFS.
+Apache Pig installed and configured.
+Access to a Hadoop cluster or a single-node setup.
+Basic Commands and Notations
+1. Starting Pig
+You can run Pig in two modes:
+
+Local mode: Executes Pig programs locally on your machine. Useful for small datasets.
+Hadoop mode: Executes Pig programs on a Hadoop cluster.
+pig -x local     # Start Pig in local mode
+pig -x mapreduce # Start Pig in Hadoop mode
+2. Loading Data
+Use the LOAD command to load data into a Pig relation.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: datatype, field2: datatype);
+Replace PigStorage(',') with your desired delimiter.
+Specify the schema using AS.
+3. Dumping Data
+The DUMP command displays the contents of a relation on the console.
+
+DUMP my_data;
+4. Storing Data
+Use the STORE command to save results to HDFS or a local filesystem.
+
+STORE my_data INTO 'output_directory' USING PigStorage(',');
+5. Filtering Data
+The FILTER command is used to select rows based on a condition.
+
+filtered_data = FILTER my_data BY field1 > 10;
+6. Grouping and Aggregation
+GROUP: Groups the data by a specific field.
+FOREACH … GENERATE: Performs operations on grouped data.
+grouped_data = GROUP my_data BY field1;
+aggregated_data = FOREACH grouped_data GENERATE group AS field1, COUNT(my_data) AS count;
+7. Joining Data
+Use the JOIN command to combine two datasets.
+
+joined_data = JOIN data1 BY field1, data2 BY field1;
+Examples
+Example 1: Basic Filtering
+Problem:
+Filter rows where field1 > 10.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+filtered_data = FILTER my_data BY field1 > 10;
+DUMP filtered_data;
+Example 2: Aggregation
+Problem:
+Count the number of occurrences of each unique value in field1.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: chararray, field2: chararray);
+grouped_data = GROUP my_data BY field1;
+counts = FOREACH grouped_data GENERATE group AS field1, COUNT(my_data) AS count;
+DUMP counts;
+Example 3: Joining Datasets
+Problem:
+Join two datasets on a common field and select specific columns.
+
+Dataset 1 (data1.txt):
+
+1,John
+2,Sarah
+3,Alice
+Dataset 2 (data2.txt):
+
+1,Engineer
+2,Doctor
+3,Artist
+data1 = LOAD 'data1.txt' USING PigStorage(',') AS (id: int, name: chararray);
+data2 = LOAD 'data2.txt' USING PigStorage(',') AS (id: int, profession: chararray);
+joined_data = JOIN data1 BY id, data2 BY id;
+result = FOREACH joined_data GENERATE data1::name, data2::profession;
+DUMP result;
+Example 4: Advanced - Top N Records
+Problem:
+Find the top 3 highest values in field1.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+sorted_data = ORDER my_data BY field1 DESC;
+top_3 = LIMIT sorted_data 3;
+DUMP top_3;
+Example 5: Complex - Word Count
+Problem:
+Count the frequency of each word in a text file.
+
+Input (text.txt):
+
+apple orange banana
+banana orange apple apple
+raw_data = LOAD 'text.txt' USING TextLoader() AS (line: chararray);
+words = FOREACH raw_data GENERATE FLATTEN(TOKENIZE(line)) AS word;
+grouped_words = GROUP words BY word;
+word_count = FOREACH grouped_words GENERATE group AS word, COUNT(words) AS count;
+DUMP word_count;
+Example 6: Filtering with Multiple Conditions
+Problem:
+Filter rows where field1 > 10 and field2 starts with “A”.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+filtered_data = FILTER my_data BY (field1 > 10) AND (field2 MATCHES 'A.*');
+DUMP filtered_data;
+Example 7: Splitting Data
+Problem:
+Split a dataset into two based on a condition.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+SPLIT my_data INTO high_data IF field1 > 50, low_data IF field1 <= 50;
+DUMP high_data;
+DUMP low_data;
+Example 8: Combining Data with UNION
+Problem:
+Combine two datasets into one.
+
+data1 = LOAD 'data1.txt' USING PigStorage(',') AS (id: int, value: chararray);
+data2 = LOAD 'data2.txt' USING PigStorage(',') AS (id: int, value: chararray);
+combined_data = UNION data1, data2;
+DUMP combined_data;
+Example 9: Generating Unique Records
+Problem:
+Remove duplicate records from a dataset.
+
+my_data = LOAD 'input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+unique_data = DISTINCT my_data;
+DUMP unique_data;
+Example 10: Cross Product of Two Datasets
+Problem:
+Generate all possible combinations of rows from two datasets.
+
+data1 = LOAD 'data1.txt' USING PigStorage(',') AS (field1: int, value1: chararray);
+data2 = LOAD 'data2.txt' USING PigStorage(',') AS (field2: int, value2: chararray);
+cross_product = CROSS data1, data2;
+DUMP cross_product;
+Example 11: Executing a Pig Script on a Cluster
+Problem:
+Execute a Pig script stored in a file (script.pig) on a Hadoop cluster.
+
+Create the Pig Script:
+Save the following code in a file named script.pig:
+
+my_data = LOAD 'hdfs://path/to/input_data.txt' USING PigStorage(',') AS (field1: int, field2: chararray);
+filtered_data = FILTER my_data BY field1 > 10;
+STORE filtered_data INTO 'hdfs://path/to/output_directory' USING PigStorage(',');
+Upload the Input File to HDFS:
+
+hdfs dfs -put input_data.txt /path/to/input_data.txt
+Execute the Script:
+
+pig -x mapreduce script.pig
+Check the Output:
+After execution, the results will be stored in the specified HDFS output directory. To check:
+
+hdfs dfs -ls /path/to/output_directory
+hdfs dfs -cat /path/to/output_directory/part-r-00000
+Tips and Best Practices
+Always validate data types in your schema to avoid runtime errors.
+Use DESCRIBE and ILLUSTRATE to debug scripts.
+DESCRIBE my_data;
+ILLUSTRATE my_data;
+Optimize scripts by using PARALLEL for parallelism in tasks.
+Test scripts in local mode with small datasets before deploying to a cluster.
+This tutorial provides a comprehensive guide to working with Apache Pig, covering a variety of examples from basic to advanced. By mastering these concepts, you can efficiently process and analyze large datasets in Hadoop
+
