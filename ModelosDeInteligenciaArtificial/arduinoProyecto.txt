@@ -1,0 +1,4 @@
+Si le doy un boton, se encienden 2 leds
+y que pegue un grito
+si le doy a otro boton
+tiene que haber una rueda que gire
