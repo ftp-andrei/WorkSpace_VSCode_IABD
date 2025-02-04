@@ -42,7 +42,6 @@ services:
     networks:
       - hadoop_network
 
-
   datanode1:
     build: ./Datanode
     hostname: 10.2.14.251
@@ -55,11 +54,77 @@ services:
     networks:
       - hadoop_network
 
+  # --------------------------------- AÑADIMOS DATANODES Y NODEMANAGER ---------------------------------
+  datanode2:
+    build: ./Datanode
+    hostname: 10.2.14.251
+    depends_on:
+      - namenode
+    ports:
+      - "9865:9864"
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    networks:
+      - hadoop_network
+
+  datanode3:
+    build: ./Datanode
+    hostname: 10.2.14.251
+    depends_on:
+      - namenode
+    ports:
+      - "9866:9864"
+    volumes:
+      - hadoop_datanode3:/hadoop/dfs/data
+    networks:
+      - hadoop_network
+
+  datanode4:
+    build: ./Datanode
+    hostname: 10.2.14.251
+    depends_on:
+      - namenode
+    ports:
+      - "9867:9864"
+    volumes:
+      - hadoop_datanode4:/hadoop/dfs/data
+    networks:
+      - hadoop_network
+
+  datanode5:
+    build: ./Datanode
+    hostname: 10.2.14.251
+    depends_on:
+      - namenode
+    ports:
+      - "9868:9864"
+    volumes:
+      - hadoop_datanode5:/hadoop/dfs/data
+    networks:
+      - hadoop_network
+
+  nodemanager2:
+    build: ./Nodemanager
+    hostname: nodemanager2
+    container_name: nodemanager2
+    depends_on:
+      - namenode
+      - datanode1
+    ports:
+      - "8043:8043"
+    networks:
+      - hadoop_network
+
+# --------------------------------- VOLUMENES ---------------------------------
 
 volumes:
   hadoop_namenode:
   hadoop_datanode1:
-
+  # ---- AÑADIMOS VOLUMENES ----
+  hadoop_datanode2:
+  hadoop_datanode3:
+  hadoop_datanode4:
+  hadoop_datanode5:
 
 networks:
   hadoop_network:
