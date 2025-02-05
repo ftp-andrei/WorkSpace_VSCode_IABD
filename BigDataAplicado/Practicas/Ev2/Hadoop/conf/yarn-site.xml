@@ -84,9 +84,13 @@
     </property>
         <property>
         <name>yarn.nodemanager.address</name>
-        <value>nodemanager1:8042</value>
+        <value>nodemanager:8042</value>
     </property>
 
+    <property>
+        <name>yarn.nodemanager.webapp.address</name>
+        <value>nodemanager:8043</value> 
+    </property>
 
     <property>
 

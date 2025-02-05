@@ -8,6 +8,7 @@ RUN mkdir -p /hadoop/dfs/name
 VOLUME /hadoop/dfs/name
 
 ADD run.sh /run.sh
+RUN sed -i 's/\r$//g' /run.sh
 RUN chmod a+x /run.sh
 
 EXPOSE 9870
