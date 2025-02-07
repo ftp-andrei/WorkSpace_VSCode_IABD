@@ -17,6 +17,24 @@ services:
         aliases:
           - namenode
 
+  # namenode2:
+  #   build: ./Namenode
+  #   container_name: namenode2
+  #   hostname: namenode
+  #   environment:
+  #     - CLUSTER_NAME=test
+  #   ports:
+  #     - "9871:9870" # Web UI para el segundo NameNode
+  #     - "8021:8020" # IPC para el segundo NameNode
+  #   volumes:
+  #     - hadoop_namenode2:/hadoop/dfs/name
+  #     - ./data:/hadoop-data/input
+  #     - ./map_reduce:/hadoop-data/map_reduce
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - namenode2
+
   resourcemanager:
     build: ./Resourcemanager
     container_name: resourcemanager
@@ -29,6 +47,19 @@ services:
       hadoop_network:
         aliases:
           - resourcemanager
+
+  # resourcemanager2:
+  #   build: ./Resourcemanager
+  #   container_name: resourcemanager2
+  #   hostname: resourcemanager2
+  #   depends_on:
+  #     - namenode
+  #   ports:
+  #     - "8089:8088" # ResourceManager Web UI
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - resourcemanager2
 
   nodemanager:
     build: ./Nodemanager
@@ -44,19 +75,19 @@ services:
         aliases:
           - nodemanager
 
-  nodemanager2:
-    build: ./Nodemanager
-    container_name: nodemanager2
-    hostname: nodemanager
-    depends_on:
-      - resourcemanager
-      - datanode
-    ports:
-      - "8044:8043" # NodeManager Web UI
-    networks:
-      hadoop_network:
-        aliases:
-          - nodemanager2
+  # nodemanager2:
+  #   build: ./Nodemanager
+  #   container_name: nodemanager2
+  #   hostname: nodemanager
+  #   depends_on:
+  #     - resourcemanager
+  #     - datanode
+  #   ports:
+  #     - "8044:8043" # NodeManager Web UI
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - nodemanager2
 
   datanode:
     build: ./Datanode
@@ -73,77 +104,76 @@ services:
         aliases:
           - datanode
 
-  # --------------------------------- AÑADIMOS DATANODES ---------------------------------
-  datanode2:
-    build: ./Datanode
-    container_name: datanode2
-    hostname: datanode2
-    depends_on:
-      - namenode
-    ports:
-      - "9865:9864" # DataNode Web UI
-    volumes:
-      - hadoop_datanode2:/hadoop/dfs/data
-    networks:
-      hadoop_network:
-        aliases:
-          - datanode2
+  # datanode2:
+  #   build: ./Datanode
+  #   container_name: datanode2
+  #   hostname: datanode2
+  #   depends_on:
+  #     - namenode
+  #   ports:
+  #     - "9865:9864" # DataNode Web UI
+  #   volumes:
+  #     - hadoop_datanode2:/hadoop/dfs/data
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - datanode2
 
-  datanode3:
-    build: ./Datanode
-    container_name: datanode3
-    hostname: datanode3
-    depends_on:
-      - namenode
-    ports:
-      - "9866:9864" # DataNode Web UI
-    volumes:
-      - hadoop_datanode3:/hadoop/dfs/data
-    networks:
-      hadoop_network:
-        aliases:
-          - datanode3
+  # datanode3:
+  #   build: ./Datanode
+  #   container_name: datanode3
+  #   hostname: datanode3
+  #   depends_on:
+  #     - namenode
+  #   ports:
+  #     - "9866:9864" # DataNode Web UI
+  #   volumes:
+  #     - hadoop_datanode3:/hadoop/dfs/data
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - datanode3
 
-  datanode4:
-    build: ./Datanode
-    container_name: datanode4
-    hostname: datanode4
-    depends_on:
-      - namenode
-    ports:
-      - "9867:9864" # DataNode Web UI
-    volumes:
-      - hadoop_datanode4:/hadoop/dfs/data
-    networks:
-      hadoop_network:
-        aliases:
-          - datanode4
+  # datanode4:
+  #   build: ./Datanode
+  #   container_name: datanode4
+  #   hostname: datanode4
+  #   depends_on:
+  #     - namenode
+  #   ports:
+  #     - "9867:9864" # DataNode Web UI
+  #   volumes:
+  #     - hadoop_datanode4:/hadoop/dfs/data
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - datanode4
 
-  datanode5:
-    build: ./Datanode
-    container_name: datanode5
-    hostname: datanode5
-    depends_on:
-      - namenode
-    ports:
-      - "9868:9864" # DataNode Web UI
-    volumes:
-      - hadoop_datanode5:/hadoop/dfs/data
-    networks:
-      hadoop_network:
-        aliases:
-          - datanode5
+  # datanode5:
+  #   build: ./Datanode
+  #   container_name: datanode5
+  #   hostname: datanode5
+  #   depends_on:
+  #     - namenode
+  #   ports:
+  #     - "9868:9864" # DataNode Web UI
+  #   volumes:
+  #     - hadoop_datanode5:/hadoop/dfs/data
+  #   networks:
+  #     hadoop_network:
+  #       aliases:
+  #         - datanode5
 
 # --------------------------------- VOLUMENES ---------------------------------
 
 volumes:
   hadoop_namenode:
+  # hadoop_namenode2:
   hadoop_datanode:
-  # ---- AÑADIMOS VOLUMENES ----
-  hadoop_datanode2:
-  hadoop_datanode3:
-  hadoop_datanode4:
-  hadoop_datanode5:
+  # hadoop_datanode2:
+  # hadoop_datanode3:
+  # hadoop_datanode4:
+  # hadoop_datanode5:
 
 networks:
   hadoop_network:
