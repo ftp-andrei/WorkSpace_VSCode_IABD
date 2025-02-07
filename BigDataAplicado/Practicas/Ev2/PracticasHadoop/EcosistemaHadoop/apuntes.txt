@@ -1,0 +1,17 @@
+Podria meter un segundary namenode o un history server
+
+docker exec -it namenode bin/bash  -> conexion namenode
+hdfs dfs -mkdir /home -> creamos carpeta /home
+exit -> salimos
+docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\generadorLineas.py namenode:/home -> subimos a namenode
+
+
+
+
+
+
+
+
+
+
+
