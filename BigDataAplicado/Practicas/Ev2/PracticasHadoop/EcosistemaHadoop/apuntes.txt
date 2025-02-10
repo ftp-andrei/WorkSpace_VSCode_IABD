@@ -1,5 +1,12 @@
 Podria meter un segundary namenode o un history server
 
+# SI DA CONEXION ERROR AL SUBIR A HDFS:
+
+hdfs namenode -format  # SOLO si es la primera vez, ¡esto borra datos en HDFS!
+hdfs --daemon start namenode
+hdfs --daemon start datanode
+
+
 docker exec -it namenode bin/bash  -> conexion namenode
 hdfs dfs -mkdir /home -> creamos carpeta /home
 exit -> salimos
@@ -14,7 +21,18 @@ hdfs dfs -get /home/archivo.txt C:
 docker cp namenode:/home D:/
 
 -- Ver permisos
-hdfs dfs -ls 
+hdfs dfs -ls /home
+
+
+Hadoop MapReduce:
+
+-- Ejecutarlo
+docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\MapReduce\MedianCalculator.java namenode:/home/
+hdfs dfs -put namenode:/home/MedianCalculator.java /home/
+
+-- Ver resultados
+hdfs dfs -cat /user/hadoop/output/part-r-00000
+
 
 
 
