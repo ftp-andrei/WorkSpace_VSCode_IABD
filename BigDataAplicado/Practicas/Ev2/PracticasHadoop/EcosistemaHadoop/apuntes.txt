@@ -3,14 +3,18 @@ Podria meter un segundary namenode o un history server
 docker exec -it namenode bin/bash  -> conexion namenode
 hdfs dfs -mkdir /home -> creamos carpeta /home
 exit -> salimos
-docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\generadorLineas.py namenode:/home -> subimos a namenode
 
+-- Copiar de local a namenode
+docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\HDFS\generadorLineas.py namenode:/home
 
+-- De hdfs a namenode
+hdfs dfs -get /home/archivo.txt C: 
 
+-- De namenode a local
+docker cp namenode:/home D:/
 
-
-
-
+-- Ver permisos
+hdfs dfs -ls 
 
 
 
