@@ -78,3 +78,23 @@ Consultas 6 pts
 
 
 
+--------------------
+
+EV2
+
+
+Las credenciales serán distintas, hay que poner las que nos da el
+
+Nos dará 3 scripts de bbdd, donde 1 no estará (y los ficheros de texto csv, txt y json)
+
+Tendremos que hacer 3 querys, que luego haremos con ellas la siguiente parte: Hadoop
+
+Hadoop, las querys tendran que usar webHdfs
+
+Tendremos que hacer un trabajo PIG (por nosotros)
+
+Ejecutar jar (map reduce) -> dentro de los files
+
+Sqoop o flume -> para exportar ficheros a bbdd
+
+Si no funcionan las querys nos las pasa el (los datos en .csv)
