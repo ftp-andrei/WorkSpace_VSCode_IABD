@@ -5,6 +5,8 @@ Podria meter un segundary namenode o un history server
 hdfs namenode -format  # SOLO si es la primera vez, ¡esto borra datos en HDFS!
 hdfs --daemon start namenode
 hdfs --daemon start datanode
+hdfs dfsadmin -safemode get
+hdfs dfsadmin -safemode leave -> Quitar safemode
 
 
 docker exec -it namenode bin/bash  -> conexion namenode
@@ -26,19 +28,32 @@ hdfs dfs -put namenode:/home/[archivo] /home/
 -- Ver permisos
 hdfs dfs -ls /home
 
-
+--------------------
 Hadoop MapReduce:
+--------------------
 
 -- Ejecutarlo
 docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\MapReduce\MedianCalculator.java namenode:/home/
+docker cp D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\PracticasHadoop\EcosistemaHadoop\MapReduce\random_numbers.txt namenode:/home/
 hdfs dfs -put namenode:/home/MedianCalculator.java /home/
+hdfs dfs -put namenode:/home/random_numbers.txt /home/
+
+-- Compilarlo
+javac -cp $(hadoop classpath) -d . MedianCalculator.java
+
+-- Crear archivo jar
+jar cf median.jar MedianCalculator*.class
+
+-- Ejecutamos 
+hadoop jar [el jar de antes] [nombre clase] [ruta hdfs del fichero a ejecutar] [ruta destino/almacenamiento]
+hadoop jar median.jar MedianCalculator /home/random_numbers.txt ./
 
 -- Ver resultados
-hdfs dfs -cat /user/hadoop/output/part-r-00000
+hdfs dfs -cat ./part-r-00000
 
-
+--------------------
 PIG:
-
+--------------------
 docker cp [origen] namenode:/home/
 hdfs dfs -put namenode/home/[archivo] /home/
 
@@ -49,9 +64,9 @@ pig [ficheroAEjecutar].pig
 -- para ver el contenido dentro de hdfs
 hdfs dfs -cat /home/datos_limpios/part-m-00000
 hdfs dfs -cat /home/datos_limpios/part-R-00000
-
+--------------------
 SQOOP
-
+--------------------
 Añadimos en docker-compose el mysql y su respectivo volumen (ver docker-compose/practica)
 
 docker exec -it mysql bin/bash
