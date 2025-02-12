@@ -20,6 +20,9 @@ hdfs dfs -get /home/archivo.txt C:
 -- De namenode a local
 docker cp namenode:/home D:/
 
+-- De namenode a hdfs 
+hdfs dfs -put namenode:/home/[archivo] /home/
+
 -- Ver permisos
 hdfs dfs -ls /home
 
@@ -34,6 +37,113 @@ hdfs dfs -put namenode:/home/MedianCalculator.java /home/
 hdfs dfs -cat /user/hadoop/output/part-r-00000
 
 
+PIG:
 
+docker cp [origen] namenode:/home/
+hdfs dfs -put namenode/home/[archivo] /home/
+
+-- Ejecutar .PIG
+Dentro del namenode:
+pig [ficheroAEjecutar].pig
+
+-- para ver el contenido dentro de hdfs
+hdfs dfs -cat /home/datos_limpios/part-m-00000
+hdfs dfs -cat /home/datos_limpios/part-R-00000
+
+SQOOP
+
+Añadimos en docker-compose el mysql y su respectivo volumen (ver docker-compose/practica)
+
+docker exec -it mysql bin/bash
+mysql -u root -p
+password -> root
+use hadoop (o la bd que hayamos puesto en docker)
+
+##
+
+CREATE TABLE empleados (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(50),
+  departamento VARCHAR(50),
+  salario DECIMAL(10,2),
+  fecha_contratacion DATE
+);
+
+##
+
+---- Las tablas y generacion de personas se ha hecho a traves de scripts ----
+En la ruta de D:\WorkSpace_VSCode_IABD\BigDataAplicado\Practicas\Ev2\Hadoop\mysql
+python genera_empleados.py -> añade 2000 lineas 
+
+
+-- Importar db mysql con SQOOP
+
+sqoop import --connect jdbc:mysql://<host>:<puerto>/<base_de_datos> \
+--username <usuario> --password <contraseña> \
+--table empleados --target-dir /user/sqoop/empleados \
+--split-by <columna> --num-mappers <número_de_mappers> \
+--fields-terminated-by ',' --lines-terminated-by '\n'
+
+Explicación de los parámetros:
+--connect jdbc:mysql://<host>:<puerto>/<base_de_datos>: La URL de conexión JDBC para MySQL. Reemplaza <host> con el host de tu servidor MySQL, <puerto> con el puerto en el que MySQL está escuchando (el valor predeterminado es 3306), y <base_de_datos> con el nombre de tu base de datos (en este caso, hadoop).
+
+--username <usuario>: El nombre de usuario de MySQL.
+
+--password <contraseña>: La contraseña de MySQL.
+
+--table empleados: El nombre de la tabla que deseas importar (en este caso, empleados).
+
+--target-dir /user/sqoop/empleados: El directorio de destino en HDFS donde se almacenarán los datos importados.
+
+--split-by <columna>: Especifica una columna de la tabla que se usará para dividir el trabajo de importación en múltiples mappers. Lo ideal es elegir una columna con valores numéricos o de tipo fecha. Por ejemplo, si id es un valor único y secuencial, puedes usar id para dividir los datos.
+
+--num-mappers <número_de_mappers>: Especifica el número de mappers que se utilizarán para la importación. Esto depende del tamaño de los datos y el rendimiento de tu sistema. Un valor común es 4, pero puedes ajustarlo según tus necesidades.
+
+--fields-terminated-by ',': Especifica que los campos estarán separados por comas (esto puede ajustarse según el formato que prefieras, como CSV).
+
+--lines-terminated-by '\n': Especifica que las filas estarán terminadas por saltos de línea (esto también puede ajustarse según el formato de salida).
+
+--delete-target-dir: Si el directorio de destino en HDFS ya existe, este parámetro eliminará el contenido anterior del directorio.
+
+
+sqoop import --connect jdbc:mysql://mysql:3306/hadoop \
+--username root --password root \
+--table empleados --target-dir /user/sqoop/empleados \
+--m 1 \
+--fields-terminated-by ',' --lines-terminated-by '\n'
+
+(QUITAMOS EL SPLITED COLUMNA)
+
+-- Comprobaciones de que están ahi
+hadoop fs -cat /user/sqoop/empleados/* | head -n 10
+hdfs dfs -ls /user/sqoop/
+
+-- Para la segunda consulta, cambio el target-dir (si queremos eliminar el contenido y hacerlo en el mismo sería necesario poner delete-target-dir)
+
+sqoop import --connect jdbc:mysql://mysql:3306/hadoop \
+--username root --password root \
+--query "SELECT id, nombre, departamento, salario, fecha_contratacion FROM empleados WHERE departamento = 'Ventas' AND \$CONDITIONS" \
+--target-dir /user/sqoop/empleados_ventas2 \--m 1 \
+--fields-terminated-by ',' --lines-terminated-by '\n'
+
+-- Comprobaciones de que están ahi
+hadoop fs -cat /user/sqoop/empleados/* | head -n 10
+hdfs dfs -ls /user/sqoop/
+
+
+Entramos al namenode y hacemos:
+•	apt-get update 
+•	apt-get install cron
+•	apt-get install nano -y
+
+crontab -e -> abrir y editar el fichero para tareas
+
+0 0 * * * sqoop import --connect jdbc:mysql://localhost:3306/hadoop --username root --password root --query "SELECT id, nombre, departamento, salario, fecha_contratacion FROM empleados WHERE departamento = 'Ventas' AND \$CONDITIONS" --target-dir /user/sqoop/empleados_ventas2 --m 1 --fields-terminated-by ',' --lines-terminated-by '\n' > /var/log/sqoop_import.log 2>&1
+
+crontab -l -> lista las tareas
+
+-- Fuera del namenode, para comprobar que funciona correctamente
+
+docker exec -it <nombre_del_contenedor> cat /var/log/sqoop_import.log
 
 

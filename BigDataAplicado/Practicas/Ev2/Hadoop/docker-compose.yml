@@ -1,4 +1,25 @@
 services:
+  # --------------------------------- MYSQL ---------------------------------
+  mysql:
+    container_name: mysql # Nombre del contenedor
+    hostname: mysql # Nombre del host
+    image: mysql:latest # Imagen de MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: root # Contraseña del usuario root
+      MYSQL_DATABASE: hadoop # Nombre de la base de datos
+      #MYSQL_USER: user # Nombre del usuario
+      #MYSQL_PASSWORD: password # Contraseña del usuario
+    ports:
+      - "3306:3306" # Puerto de MySQL
+    volumes:
+      - hadoop_mysql:/var/lib/mysql # Volumen de MySQL
+      - ./mysql/:/docker-entrypoint-initdb.d # Montar el directorio con los scripts SQL
+    networks:
+      hadoop_network:
+        aliases:
+          - mysql # Alias de MySQL
+
+  # --------------------------------- HADOOP ---------------------------------
   namenode:
     build: ./Namenode
     container_name: namenode
@@ -174,6 +195,7 @@ volumes:
   # hadoop_datanode3:
   # hadoop_datanode4:
   # hadoop_datanode5:
+  hadoop_mysql: # Volumen de MySQL
 
 networks:
   hadoop_network:
