@@ -27,8 +27,7 @@
         <value>/tmp/hadoop/dfs/data</value>
     </property>
     <property>
-    <!-- Para acceder a la web, tiene que estar enabled -->
-        <name>dfs.webhdfs.enabled</name> 
+        <name>dfs.webhdfs.enabled</name>
         <value>true</value>
     </property>
     <property>
