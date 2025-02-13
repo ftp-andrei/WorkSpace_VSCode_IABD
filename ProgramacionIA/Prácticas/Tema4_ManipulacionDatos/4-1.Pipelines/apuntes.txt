@@ -1,0 +1,105 @@
+1. Información general del DataFrame
+df.head(n): Muestra las primeras n filas del DataFrame (por defecto 5).
+df.head(10)
+
+df.tail(n): Muestra las últimas n filas del DataFrame.
+df.tail(5)
+
+df.info(): Muestra información sobre el DataFrame, incluyendo tipos de datos, valores nulos, y memoria utilizada.
+df.info()
+
+df.describe(): Proporciona estadísticas descriptivas (solo para columnas numéricas por defecto).
+df.describe()
+
+df.shape: Devuelve el número de filas y columnas en forma de tupla (filas, columnas).
+filas, columnas = df.shape
+
+df.columns: Lista los nombres de las columnas.
+df.columns
+
+df.dtypes: Muestra los tipos de datos de cada columna.
+df.dtypes
+
+2. Seleccionar datos
+Seleccionar una columna:
+df['columna']  # Devuelve una Serie
+df[['columna1', 'columna2']]  # Devuelve un DataFrame
+
+Seleccionar filas por índice (posición):
+df.iloc[0]  # Primera fila
+df.iloc[2:5]  # Filas de la posición 2 a la 4
+
+Seleccionar filas por etiquetas (nombre):
+df.loc[0]  # Primera fila basada en la etiqueta
+df.loc[0:3, ['columna1', 'columna2']]  # Selección de filas y columnas específicas
+
+Seleccionar datos condicionalmente:
+df[df['columna'] > 10]  # Filtrar filas donde los valores de 'columna' > 10
+df[(df['col1'] > 10) & (df['col2'] == 'A')]  # Filtro con múltiples condiciones
+
+3. Modificar datos
+Añadir una nueva columna:
+df['nueva_columna'] = df['columna1'] + df['columna2']
+
+Eliminar columnas o filas:
+df.drop('columna', axis=1, inplace=True)  # Eliminar una columna
+df.drop([0, 1], axis=0, inplace=True)  # Eliminar filas 0 y 1
+
+Renombrar columnas:
+df.rename(columns={'viejo_nombre': 'nuevo_nombre'}, inplace=True)
+
+Reemplazar valores:
+df['columna'].replace({1: 'A', 2: 'B'}, inplace=True)
+
+4. Manejo de valores nulos
+Identificar valores nulos:
+df.isnull()  # DataFrame de booleanos
+df.isnull().sum()  # Número de valores nulos por columna
+
+Eliminar valores nulos:
+df.dropna(inplace=True)  # Elimina filas con valores nulos
+df.dropna(axis=1, inplace=True)  # Elimina columnas con valores nulos
+
+Rellenar valores nulos:
+df.fillna(0, inplace=True)  # Rellena valores nulos con 0
+df['columna'].fillna(df['columna'].mean(), inplace=True)  # Rellena con la media
+
+5. Ordenar y agrupar
+Ordenar por valores:
+df.sort_values(by='columna', ascending=False, inplace=True)
+
+Agrupar datos:
+df.groupby('columna')['otra_columna'].mean()  # Media agrupada por columna
+df.groupby(['col1', 'col2']).sum()  # Agrupación con múltiples columnas
+
+6. Operaciones comunes
+Aplicar funciones a columnas:
+df['columna'].apply(lambda x: x**2)  # Cuadrado de cada valor en la columna
+
+Obtener valores únicos:
+df['columna'].unique()
+df['columna'].nunique()  # Número de valores únicos
+
+Contar valores:
+df['columna'].value_counts()
+7. Exportar e importar datos
+
+Leer un archivo CSV:
+df = pd.read_csv('archivo.csv')
+
+Escribir un archivo CSV:
+df.to_csv('archivo_salida.csv', index=False)
+
+8. Estadísticas rápidas
+Estadísticas básicas:
+df.mean()  # Media por columna
+df.median()  # Mediana por columna
+df.std()  # Desviación estándar
+
+Correlaciones:
+df.corr()  # Matriz de correlación entre columnas numéricas
+
+9. Visualización rápida
+Histogramas y gráficos simples (requiere Matplotlib)
+df['columna'].hist()  # Histograma de una columna
+df.plot(kind='scatter', x='col1', y='col2')  # Diagrama de dispersión
