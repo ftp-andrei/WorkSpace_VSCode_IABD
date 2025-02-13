@@ -1,0 +1,11 @@
+Servidor Linux red Centro
+IP: 192.168.50.251 
+user rafa
+pwd: rafa2024
+puerto: 22
+
+Servidor Linux red externa
+IP: 213.4.39.182
+user rafa
+pwd: rafa2024
+puerto: 50600

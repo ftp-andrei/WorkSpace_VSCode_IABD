@@ -1,4 +1,5 @@
-Podria meter un segundary namenode o un history server
+docker build -t hadoop-bda:3.4.1 .
+docker-compose up -d
 
 # SI DA CONEXION ERROR AL SUBIR A HDFS:
 
