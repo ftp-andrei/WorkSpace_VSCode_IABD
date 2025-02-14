@@ -77,3 +77,9 @@ hdfs dfs -get /data/mongo/empleados/empleados.json .
 
 mongoimport --db empresa --collection nuevos_empleados --file empleados.json --jsonArray
 
+
+
+Resumen
+MySQL ↔ HDFS: CSV como formato intermedio.
+Neo4j ↔ HDFS: CSV como formato intermedio.
+MongoDB ↔ HDFS: JSON como formato intermedio.
