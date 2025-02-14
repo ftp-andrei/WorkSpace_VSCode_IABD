@@ -1,0 +1,87 @@
+1. Caracteres Básicos
+
+. : Cualquier carácter excepto nueva línea (a.b coincide con acb).
+
+^ : Inicio de línea (^hola coincide con hola al inicio de la cadena).
+
+$ : Final de línea (mundo$ coincide con mundo al final de la cadena).
+
+\ : Escapa caracteres especiales (\., \*, \+, etc.).
+
+2. Cuantificadores
+
+* : 0 o más repeticiones (ab*c coincide con ac, abc, abbc).
+
++ : 1 o más repeticiones (ab+c coincide con abc, abbc).
+
+? : 0 o 1 repetición (colou?r coincide con color, colour).
+
+{n} : Exactamente n repeticiones (a{3} coincide con aaa).
+
+{n,} : Al menos n repeticiones (a{2,} coincide con aa, aaa, etc.).
+
+{n,m} : Entre n y m repeticiones (a{2,4} coincide con aa, aaa, aaaa).
+
+3. Conjuntos y Rangos
+
+[abc] : Coincide con a, b o c.
+
+[^abc] : Coincide con cualquier carácter excepto a, b o c.
+
+[a-z] : Coincide con cualquier letra minúscula.
+
+[A-Z] : Coincide con cualquier letra mayúscula.
+
+[0-9] : Coincide con cualquier dígito.
+
+[a-zA-Z0-9] : Coincide con cualquier letra o dígito.
+
+4. Metacaracteres Especiales
+
+\d : Dígito (0-9).
+
+\D : No es un dígito.
+
+\w : Carácter de palabra (a-z, A-Z, 0-9, _).
+
+\W : No es un carácter de palabra.
+
+\s : Espacio en blanco ( , \t, \n).
+
+\S : No es un espacio en blanco.
+
+5. Anclas y Bordes de Palabra
+
+\b : Límite de palabra (\bword\b coincide solo con word).
+
+\B : No es un límite de palabra.
+
+6. Agrupaciones y Alternancia
+
+(exp) : Grupo de captura.
+
+(?:exp) : Grupo sin captura.
+
+| : Alternancia (cat|dog coincide con cat o dog).
+
+7. Modificadores Comunes
+
+/i : Ignora mayúsculas y minúsculas.
+
+/g : Coincide globalmente en toda la cadena.
+
+/m : Multilínea (^ y $ funcionan por línea).
+
+8. Ejemplos Comunes
+
+Emails: \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+
+Números de teléfono: \(\d{3}\) \d{3}-\d{4}
+
+URLs: https?:\/\/[\w.-]+(?:\.[\w.-]+)+(?:\/[\w._%+-]*)*
+
+Código postal (EEUU): \d{5}(-\d{4})?
+
+Fechas (DD/MM/AAAA): \d{2}/\d{2}/\d{4}
+
+IPv4: \b(?:\d{1,3}\.){3}\d{1,3}\b

@@ -3,13 +3,14 @@ Importar datos desde MySQL a HDFS usando Sqoop
 Este comando Sqoop leerá los datos de MySQL y los almacenará en HDFS: [TABLA empleados]
 --------------------------------------------------
 sqoop import \
---connect "jdbc:mysql://localhost:3306/nombredb" \
+--connect "jdbc:mysql://mysql:3306/nombredb" \
 --username root \
 --password tu_contraseña \
 --table empleados \
 --target-dir /data/empleados \
 --fields-terminated-by ',' \
 --as-textfile
+
 Descripción de los parámetros:
 --connect: La cadena de conexión JDBC para tu base de datos MySQL.
 --username y --password: Credenciales para conectarte a MySQL.
@@ -22,7 +23,7 @@ Descripción de los parámetros:
 Comando Sqoop para exportar datos desde HDFS a MySQL: [TABLA nuevos_empleados]
 --------------------------------------------------
 sqoop export \
---connect "jdbc:mysql://localhost:3306/nombredb" \
+--connect "jdbc:mysql://mysql:3306/nombredb" \
 --username root \
 --password tu_contraseña \
 --table nuevos_empleados \

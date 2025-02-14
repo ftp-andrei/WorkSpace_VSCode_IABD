@@ -1,12 +1,12 @@
-
-
 from binascii import Error
 import csv
 import json
 import mysql.connector
 import requests
+from faker import Faker
+import random
 
-def connect_to_mysql(host='localhost', user='root', password='my-secret-pw', database=None):
+def connect_to_mysql(host='localhost', user='root', password='root', database=None): # my-secret-pw
     """Conecta a MySQL y devuelve la conexión."""
     try:
         connection = mysql.connector.connect(
@@ -14,7 +14,7 @@ def connect_to_mysql(host='localhost', user='root', password='my-secret-pw', dat
             user=user,
             password=password,
             database=database,
-            # port=6969,
+            port=3306,
             auth_plugin='mysql_native_password'  # 🔹 Agregamos esta línea para evitar errores
         )
         if connection.is_connected():
@@ -69,57 +69,6 @@ def insert_data(db_name, table_name, columns, values):
             cursor.close()
             connection.close()
 
-def update_data(db_name, table_name, set_clause, condition):
-    """Actualiza datos en una tabla."""
-    connection = connect_to_mysql(database=db_name)
-    if connection:
-        try:
-            cursor = connection.cursor()
-            query = f"UPDATE {table_name} SET {set_clause} WHERE {condition}"
-            cursor.execute(query)
-            connection.commit()
-            print("✅ Datos actualizados correctamente.")
-        except Error as e:
-            print(f"❌ Error al actualizar datos: {e}")
-        finally:
-            cursor.close()
-            connection.close()
-
-def delete_data(db_name, table_name, condition):
-    """Elimina datos de una tabla."""
-    connection = connect_to_mysql(database=db_name)
-    if connection:
-        try:
-            cursor = connection.cursor()
-            query = f"DELETE FROM {table_name} WHERE {condition}"
-            cursor.execute(query)
-            connection.commit()
-            print("🗑️ Datos eliminados correctamente.")
-        except Error as e:
-            print(f"❌ Error al eliminar datos: {e}")
-        finally:
-            cursor.close()
-            connection.close()
-
-def select_data(db_name, table_name, columns='*', condition='1=1'):
-    """Recupera datos de una tabla."""
-    connection = connect_to_mysql(database=db_name)
-    if connection:
-        try:
-            cursor = connection.cursor()
-            query = f"SELECT {columns} FROM {table_name} WHERE {condition}"
-            cursor.execute(query)
-            results = cursor.fetchall()
-            for row in results:
-                print(row)
-            return results
-        except Error as e:
-            print(f"❌ Error al consultar datos: {e}")
-        finally:
-            cursor.close()
-            connection.close()
-
-##################################################################INSERTORES DESDE AQUI##############################################################################################################
 def insert_data_from_csv(db_name, table_name, columns, csv_file):
     """Inserta datos en una tabla desde un archivo CSV."""
     connection = connect_to_mysql(database=db_name)
@@ -182,38 +131,34 @@ def insert_data_from_txt(db_name, table_name, columns, txt_file, delimiter='|'):
             cursor.close()
             connection.close()
 
-def insert_data_from_api(db_name, table_name, columns, api_url):
-    """Inserta datos en una tabla desde una API."""
-    connection = connect_to_mysql(database=db_name)
-    if connection:
-        try:
-            cursor = connection.cursor()
-            response = requests.get(api_url)
-            if response.status_code == 200:
-                data = response.json()
-                for entry in data:
-                    values = tuple(entry[col] for col in columns)
-                    placeholders = ', '.join(['%s'] * len(values))
-                    query = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
-                    cursor.execute(query, values)
-                connection.commit()
-                print("✅ Datos insertados desde API correctamente.")
-            else:
-                print(f"❌ Error en la solicitud API: Código {response.status_code}")
-        except Error as e:
-            print(f"❌ Error al insertar datos desde API: {e}")
-        finally:
-            cursor.close()
-            connection.close()
+def generarDatos():
+    fake = Faker()
+    # Nombre del archivo de salida
+    datos = "./archivos/mysqlGen.csv"
+    
+    # Abrir el archivo en modo escritura
+    with open(datos, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Escribir los encabezados del CSV
+        writer.writerow(['linea', 'hora_inicio', 'hora_fin'])
+        i = 1
+        # Generar y escribir 100 registros
+        for _ in range(2000):
+            id = i
+            vehiculo = f'{fake.random_element(['Bus_','Tranvia_'])}{random.randint(1, 100)}'
+            linea =  f'L{random.randint(1, 100)}'
+            monto = fake.random_element([1.00,1.25,1.50,1.75,2.00])
+            fecha = fake.date_time()
+            writer.writerow([id, vehiculo, linea, monto, fecha])
+            i=i+1
+
+    print(f"Archivo CSV generado: {datos}")
+
 
 # 🛠️ EJEMPLO DE USO
 if __name__ == "__main__":
-    create_database('test_db')
-    create_table('test_db', 'users', 'id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), age INT')
-    insert_data('test_db', 'users', ['name', 'age'], ('Juan', 30))
-    select_data('test_db', 'users')
-    insert_data_from_csv('test_db', 'users', ['name', 'age'], 'users.csv')
-    insert_data_from_json('test_db', 'users', ['name', 'age'], 'users.json')
-    insert_data_from_txt('test_db', 'users', ['name', 'age'], 'users.txt', delimiter='|')
-    insert_data_from_api('test_db', 'users', ['name', 'age'], 'https://pokeapi.co/api/v2/pokemon/ditto')
-
+    create_database('transporte')
+    create_table('transporte', 'tickets', 'id INT AUTO_INCREMENT PRIMARY KEY, vehiculo VARCHAR(255), linea VARCHAR(255), monto FLOAT, fecha DATETIME')
+    generarDatos()
+    insert_data_from_csv('transporte', 'tickets', ['id', 'vehiculo','linea','monto','fecha'], './archivos/mysqlGen.csv')

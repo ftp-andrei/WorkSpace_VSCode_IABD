@@ -14,7 +14,7 @@ def connect_to_mysql(host='localhost', user='root', password='my-secret-pw', dat
             user=user,
             password=password,
             database=database,
-            # port=6969,
+            port=6969,
             auth_plugin='mysql_native_password'  # 🔹 Agregamos esta línea para evitar errores
         )
         if connection.is_connected():

@@ -21,6 +21,73 @@ def csv_a_json(csv_file, json_file):
 
     print(f"Archivo JSON generado correctamente: {json_file}")
 
+
+def txt_a_csv(txt_file, csv_file):
+    with open(txt_file, mode="r", encoding="utf-8") as file_txt:
+        # Lee el archivo de texto línea por línea
+        lines = file_txt.readlines()
+
+    # Abre el archivo CSV para escribir
+    with open(csv_file, mode="w", newline='', encoding="utf-8") as file_csv:
+        writer = csv.writer(file_csv)
+
+        # Si el archivo txt tiene cabeceras, puedes escribirlas en el CSV
+        # Si no, salta este paso
+        # writer.writerow(["columna1", "columna2", "columna3"])  # Modificar según tus necesidades
+
+        # Procesar cada línea
+        for line in lines:
+            # Aquí definimos cómo separar los datos (por ejemplo, usando espacios o tabulaciones)
+            # Si son separados por tabulaciones, puedes usar `split('\t')`
+            row = line.split()  # Por defecto separa por espacios
+            writer.writerow(row)
+
+    print(f"Archivo CSV generado correctamente: {csv_file}")
+
+def json_a_csv(json_file, csv_file):
+    # Leer el archivo JSON
+    with open(json_file, mode="r", encoding="utf-8") as file_json:
+        data = json.load(file_json)
+
+    # Abrir el archivo CSV para escribir
+    with open(csv_file, mode="w", newline='', encoding="utf-8") as file_csv:
+        writer = csv.DictWriter(file_csv, fieldnames=data[0].keys())
+
+        # Escribir los encabezados (keys del primer diccionario)
+        writer.writeheader()
+
+        # Escribir los registros
+        for record in data:
+            writer.writerow(record)
+
+    print(f"Archivo CSV generado correctamente: {csv_file}")
+
+
+def txt_a_json(txt_file, json_file):
+    with open(txt_file, mode="r", encoding="utf-8") as file_txt:
+        lines = file_txt.readlines()
+
+    # Asumiendo que cada línea contiene un registro y los campos están separados por espacios o tabulaciones
+    data = []
+    for line in lines:
+        # Dividir la línea por espacios (puedes cambiar esto si es otro delimitador)
+        fields = line.strip().split()
+        # Crear un diccionario con claves generadas dinámicamente
+        record = {
+            "campo1": fields[0],
+            "campo2": fields[1],
+            "campo3": fields[2]  # Ajusta según el número de campos y tus necesidades
+        }
+        data.append(record)
+
+    # Guardar los datos en un archivo JSON
+    with open(json_file, mode="w", encoding="utf-8") as file_json:
+        json.dump(data, file_json, indent=4, ensure_ascii=False)
+
+    print(f"Archivo JSON generado correctamente: {json_file}")
+
+
+
 class MongoDB:
     def __init__(self, database_name, port, username=None, password=None):
         if username and password:

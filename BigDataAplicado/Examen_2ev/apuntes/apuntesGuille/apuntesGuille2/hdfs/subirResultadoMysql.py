@@ -7,8 +7,8 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='my-secret-pw',
+    port=6969,
     database='test_db',  # Cambia esto por el nombre de tu base de datos
-    # port=6969, # Cambia esto por el puerto de tu base de datos
     auth_plugin='mysql_native_password'  # 🔹 Esto evita problemas de autenticación
 )
 

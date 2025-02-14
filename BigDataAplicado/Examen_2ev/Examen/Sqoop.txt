@@ -1,0 +1,11 @@
+--------------------------------------------------
+Comando Sqoop para exportar datos desde HDFS a MySQL: [TABLA NUEVA TopConductor2]
+--------------------------------------------------
+sqoop export \
+--connect "jdbc:mysql://mysql:3306/DataWarehouse" \
+--username root \
+--password my-secret-pw \
+--table TopConductor \
+--export-dir /data/TopConductor2 \
+--fields-terminated-by ',' \
+--input-lines-terminated-by '\n'

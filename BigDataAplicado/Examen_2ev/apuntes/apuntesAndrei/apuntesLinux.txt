@@ -1,0 +1,114 @@
+Aquí tienes algunos comandos básicos de Linux:
+
+
+pwd: Muestra el directorio actual de trabajo.
+pwd
+
+ls: Lista los archivos y directorios en el directorio actual.
+ls
+
+cd: Cambia el directorio de trabajo.
+cd /ruta/del/directorio
+
+mkdir: Crea un nuevo directorio.
+mkdir nombre_directorio
+
+rmdir: Elimina un directorio vacío.
+rmdir nombre_directorio
+rm: Elimina archivos o directorios.
+
+
+Para eliminar un archivo
+rm archivo
+
+Para eliminar un directorio y su contenido
+rm -r directorio
+cp: Copia archivos o directorios.
+
+
+Copiar un archivo
+cp archivo destino
+
+Copiar un directorio y su contenido
+cp -r directorio destino
+
+mv: Mueve o renombra archivos o directorios.
+mv archivo destino
+
+cat: Muestra el contenido de un archivo.
+cat archivo
+
+echo: Muestra un mensaje en la terminal.
+echo "Hola, mundo"
+
+touch: Crea un archivo vacío.
+touch archivo
+
+man: Muestra el manual de un comando.
+man ls
+
+chmod: Cambia los permisos de un archivo o directorio.
+chmod 755 archivo
+
+ps: Muestra los procesos en ejecución.
+ps aux
+
+top: Muestra una lista dinámica de los procesos en ejecución.
+top
+
+kill: Termina un proceso por su ID (PID).
+kill PID
+
+df: Muestra el uso del espacio en disco.
+df -h
+
+free: Muestra la memoria libre y utilizada.
+free -h
+
+sudo: Ejecuta un comando como superusuario.
+sudo comando
+
+exit: Sale de la terminal o cierra la sesión.
+exit
+
+
+Ejemplos:
+
+Añadir permiso de lectura (r) al usuario:
+chmod u+r archivo
+
+Quitar permiso de escritura (w) al grupo:
+chmod g-w archivo
+
+Dar permiso de ejecución (x) a otros (otros usuarios):
+chmod o+x archivo
+
+Establecer permisos de lectura y ejecución para el usuario y grupo, pero sin permisos para otros:
+chmod ug+rx,o-r archivo
+
+Quitar todos los permisos (lectura, escritura y ejecución) a otros usuarios:
+chmod o-rwx archivo
+
+Ejemplos:
+Dar permisos completos (lectura, escritura y ejecución) al propietario, y solo lectura a grupo y otros:
+chmod 744 archivo
+
+Dar permisos de lectura y escritura al propietario, y solo lectura al grupo y a otros:
+chmod 644 archivo
+
+Dar permisos de ejecución a todos:
+chmod +x archivo
+
+Quitar permisos de escritura a todos:
+chmod -w archivo
+
+
+3. Cambiar permisos de directorios
+Dar permisos de lectura, escritura y ejecución al directorio para el usuario:
+chmod u+rwx directorio
+
+Dar permisos de lectura y ejecución al grupo para acceder al directorio:
+chmod g+rx directorio
+
+Cambiar permisos recursivamente:
+chmod -R 755 directorio

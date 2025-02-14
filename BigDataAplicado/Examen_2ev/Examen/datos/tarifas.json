@@ -1,0 +1,502 @@
+[
+    {
+        "linea": "L72",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L35",
+        "precio": 1.75,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L17",
+        "precio": 2.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L85",
+        "precio": 2.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L88",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L60",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L51",
+        "precio": 2.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L74",
+        "precio": 1.25,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L60",
+        "precio": 1.25,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L56",
+        "precio": 1.75,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L49",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L46",
+        "precio": 1.5,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L8",
+        "precio": 1.25,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L49",
+        "precio": 1.75,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L47",
+        "precio": 2.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L31",
+        "precio": 2.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L98",
+        "precio": 1.5,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L48",
+        "precio": 1.25,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L53",
+        "precio": 1.25,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L52",
+        "precio": 1.25,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L89",
+        "precio": 1.25,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L95",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L98",
+        "precio": 1.5,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L18",
+        "precio": 1.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L30",
+        "precio": 1.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L53",
+        "precio": 2.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L96",
+        "precio": 1.5,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L81",
+        "precio": 2.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L73",
+        "precio": 2.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L31",
+        "precio": 1.75,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L47",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L45",
+        "precio": 1.75,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L51",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L93",
+        "precio": 2.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L81",
+        "precio": 1.25,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L12",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L13",
+        "precio": 2.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L6",
+        "precio": 1.25,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L73",
+        "precio": 2.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L63",
+        "precio": 1.25,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L19",
+        "precio": 1.5,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L60",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L82",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L56",
+        "precio": 1.5,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L17",
+        "precio": 1.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L16",
+        "precio": 2.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L14",
+        "precio": 1.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L33",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L64",
+        "precio": 1.75,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L35",
+        "precio": 2.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L38",
+        "precio": 1.5,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L73",
+        "precio": 2.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L24",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L10",
+        "precio": 1.75,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L87",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L55",
+        "precio": 1.75,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L23",
+        "precio": 1.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L26",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L31",
+        "precio": 1.75,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L77",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L3",
+        "precio": 1.5,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L74",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L98",
+        "precio": 1.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L14",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L62",
+        "precio": 2.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L74",
+        "precio": 1.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L21",
+        "precio": 1.5,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L73",
+        "precio": 1.0,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L64",
+        "precio": 1.5,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L96",
+        "precio": 1.5,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L58",
+        "precio": 1.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L83",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L55",
+        "precio": 1.75,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L21",
+        "precio": 1.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L85",
+        "precio": 1.5,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L27",
+        "precio": 1.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L34",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L24",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L55",
+        "precio": 1.5,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L24",
+        "precio": 1.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L58",
+        "precio": 1.75,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L36",
+        "precio": 1.5,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L86",
+        "precio": 2.0,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L70",
+        "precio": 1.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L52",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L29",
+        "precio": 1.75,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L45",
+        "precio": 1.25,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L63",
+        "precio": 1.25,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L42",
+        "precio": 1.75,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L9",
+        "precio": 1.25,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L90",
+        "precio": 2.0,
+        "descuento": 0.2
+    },
+    {
+        "linea": "L95",
+        "precio": 1.75,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L2",
+        "precio": 1.25,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L10",
+        "precio": 2.0,
+        "descuento": 0.3
+    },
+    {
+        "linea": "L98",
+        "precio": 1.5,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L64",
+        "precio": 1.25,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L28",
+        "precio": 1.75,
+        "descuento": 0.5
+    },
+    {
+        "linea": "L69",
+        "precio": 1.5,
+        "descuento": 0.1
+    },
+    {
+        "linea": "L64",
+        "precio": 2.0,
+        "descuento": 0.4
+    },
+    {
+        "linea": "L93",
+        "precio": 1.5,
+        "descuento": 0.1
+    }
+]

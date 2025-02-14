@@ -16,9 +16,9 @@ with driver.session() as session:
 csv_file_path = "resultado_neo4j.csv"
 with open(csv_file_path, 'w', newline='') as csv_file:
     writer = csv.writer(csv_file)
-    writer.writerow(["name", "age"]) # Cambia por tus campos
+    writer.writerow(["name", "age"])
     for record in records:
-        writer.writerow([record['p.name'], record['p.age']]) # Cambia por tus campos
+        writer.writerow([record['p.name'], record['p.age']])
 
 # Subir a HDFS
 hdfs = PyWebHdfsClient(host='localhost', port='9870', user_name='root')

@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import json
 
 # Cliente de HDFS
-hdfs_client = PyWebHdfsClient(host='localhost', port='50070', user_name='root') # 9870 en lugar de 50070
+hdfs_client = PyWebHdfsClient(host='localhost', port='9870', user_name='root') # 9870 en lugar de 50070
 
 # Conexión a MongoDB
 client = MongoClient("mongodb://mongoadmin:secret@localhost:27017/")

@@ -53,10 +53,13 @@ class MySQLCRUD:
 
         # Empezamos a construir la consulta de creación de la tabla
         create_table_query = f"CREATE TABLE IF NOT EXISTS {nombreTabla} ("
+        compId= input("Tiene id la tabla? y/n \n")
 
+        if compId=='y':
+            create_table_query += f"id INT AUTO_INCREMENT PRIMARY KEY, "
         # Lista para almacenar las claves foráneas que vamos a agregar al final
         foreign_keys = []
-
+        
         # Recorrer las demás columnas
         for col in columns:  # Asegurarnos de no añadir 'id' de nuevo
                 print(f"Para la columna '{col}': \n")
@@ -65,7 +68,7 @@ class MySQLCRUD:
                 tipoVar = input(f"Tipo de variable para {col}: \n")
                 print('\n')
                 print(f"¿Qué restricciones quieres agregar? (Deja en blanco si no deseas ninguna) \n")
-                print("Ejemplos de restricciones: PRIMARY KEY, UNIQUE, NOT NULL, ON DELETE CASCADE \n")
+                print("Ejemplos de restricciones: PRIMARY KEY, UNIQUE, NOT NULL \n")
                 constraints = input(f"Restricciones para {col}: \n")
                 print('\n')
 
@@ -125,6 +128,7 @@ class MySQLCRUD:
         result = self.cursor.fetchall()
         column_names = [desc[0] for desc in self.cursor.description]
         return result, column_names
+    
     def skillsComunes(self):
         query= """SELECT t.person_id
                 FROM tiene_habilidad t
