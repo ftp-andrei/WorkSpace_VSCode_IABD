@@ -1,0 +1,79 @@
+--------------------------------------------------
+Importar datos desde MySQL a HDFS usando Sqoop
+Este comando Sqoop leerá los datos de MySQL y los almacenará en HDFS: [TABLA empleados]
+--------------------------------------------------
+sqoop import \
+--connect "jdbc:mysql://localhost:3306/nombredb" \
+--username root \
+--password tu_contraseña \
+--table empleados \
+--target-dir /data/empleados \
+--fields-terminated-by ',' \
+--as-textfile
+Descripción de los parámetros:
+--connect: La cadena de conexión JDBC para tu base de datos MySQL.
+--username y --password: Credenciales para conectarte a MySQL.
+--table: La tabla que quieres importar (empleados en este caso).
+--target-dir: La ruta en HDFS donde se guardarán los datos.
+--fields-terminated-by ',': Formato delimitado por comas.
+--as-textfile: Guarda los datos como archivo de texto.
+
+--------------------------------------------------
+Comando Sqoop para exportar datos desde HDFS a MySQL: [TABLA nuevos_empleados]
+--------------------------------------------------
+sqoop export \
+--connect "jdbc:mysql://localhost:3306/nombredb" \
+--username root \
+--password tu_contraseña \
+--table nuevos_empleados \
+--export-dir /data/nuevos_empleados \
+--fields-terminated-by ',' \
+--input-lines-terminated-by '\n'
+
+--------------------------------------------------
+Exportar datos desde Neo4j a HDFS
+Exportar los datos a un archivo CSV desde Neo4j:
+Usa una consulta Cypher en Neo4j para exportar datos a un archivo CSV.
+--------------------------------------------------
+CALL apoc.export.csv.query(
+  "MATCH (n:Empleado) RETURN n.id, n.nombre, n.edad, n.departamento, n.salario",
+  "empleados.csv",
+  {}
+);
+
+Despues: hdfs dfs -put empleados.csv /data/neo4j/empleados
+
+--------------------------------------------------
+Importar datos desde HDFS a Neo4j
+Copiar el archivo desde HDFS al sistema local:
+--------------------------------------------------
+hdfs dfs -get /data/neo4j/empleados/empleados.csv .
+
+LOAD CSV WITH HEADERS FROM 'file:///empleados.csv' AS row
+CREATE (:Empleado {
+  id: toInteger(row.n_id),
+  nombre: row.n_nombre,
+  edad: toInteger(row.n_edad),
+  departamento: row.n_departamento,
+  salario: toFloat(row.n_salario)
+});
+
+
+--------------------------------------------------
+Exportar datos desde MongoDB a HDFS
+Exportar los datos de MongoDB a un archivo JSON o CSV:
+Si tienes una colección llamada empleados en la base de datos empresa, usa mongoexport:
+--------------------------------------------------
+mongoexport --db empresa --collection empleados --out empleados.json --jsonArray
+
+Despues: hdfs dfs -put empleados.json /data/mongo/empleados
+
+
+--------------------------------------------------
+Importar datos desde HDFS a MongoDB
+Copiar el archivo desde HDFS al sistema local:
+--------------------------------------------------
+hdfs dfs -get /data/mongo/empleados/empleados.json .
+
+mongoimport --db empresa --collection nuevos_empleados --file empleados.json --jsonArray
+

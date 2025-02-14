@@ -1,0 +1,182 @@
+script_01.pig:
+-- Carga un archivo CSV en Pig
+LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+
+script_02.pig:
+-- Muestra las primeras líneas del archivo cargado
+LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+DUMP data;
+
+script_03.pig:
+-- Filtra personas mayores de 30 años
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+mayores = FILTER data BY edad > 30;
+DUMP mayores;
+
+script_04.pig:
+-- Selecciona solo las columnas nombre y edad
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+seleccionados = FOREACH data GENERATE nombre, edad;
+DUMP seleccionados;
+
+script_05.pig:
+-- Cuenta el número total de registros en el archivo
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+agrupados = GROUP data ALL;
+conteo = FOREACH agrupados GENERATE COUNT(data);
+DUMP conteo;
+
+script_06.pig:
+-- Agrupa los datos por edad
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+porEdad = GROUP data BY edad;
+DUMP porEdad;
+
+script_07.pig:
+-- Cuenta cuántos registros hay en cada grupo de edad
+conteo = FOREACH porEdad GENERATE group AS edad, COUNT(data);
+DUMP conteo;
+
+script_08.pig:
+-- Ordena los registros por edad de forma descendente
+ordenado = ORDER data BY edad DESC;
+DUMP ordenado;
+
+script_09.pig:
+-- Limita la salida a los primeros 10 registros
+limite = LIMIT data 10;
+DUMP limite;
+
+script_10.pig:
+-- Une dos conjuntos de datos por el ID de la persona
+personas = LOAD 'personas.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int);
+salarios = LOAD 'salarios.csv' USING PigStorage(',') AS (id:int, salario:double);
+unidos = JOIN personas BY id, salarios BY id;
+DUMP unidos;
+
+script_11.pig:
+-- Une dos conjuntos de datos sin necesidad de coincidencia (union)
+data1 = LOAD 'datos1.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+data2 = LOAD 'datos2.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+unidos = UNION data1, data2;
+DUMP unidos;
+
+script_12.pig:
+-- Elimina registros duplicados
+distinctos = DISTINCT data;
+DUMP distinctos;
+
+script_13.pig:
+-- Reemplaza valores nulos en las columnas id y edad
+sinNulos = FOREACH data GENERATE (id IS NULL ? 0 : id) AS id, nombre, (edad IS NULL ? 0 : edad) AS edad;
+DUMP sinNulos;
+
+script_14.pig:
+-- Calcula el promedio de edad
+agrupados = GROUP data ALL;
+promedio = FOREACH agrupados GENERATE AVG(data.edad);
+DUMP promedio;
+
+script_15.pig:
+-- Calcula la suma total de las edades
+suma = FOREACH agrupados GENERATE SUM(data.edad);
+DUMP suma;
+
+script_16.pig:
+-- Obtiene la edad mínima y máxima
+minimo = FOREACH agrupados GENERATE MIN(data.edad);
+maximo = FOREACH agrupados GENERATE MAX(data.edad);
+DUMP minimo;
+DUMP maximo;
+
+script_17.pig:
+-- Guarda los datos procesados en un archivo CSV
+STORE data INTO 'salida.csv' USING PigStorage(',');
+
+script_18.pig:
+-- Clasifica las personas según su edad en categorías
+etiquetas = FOREACH data GENERATE nombre, edad, 
+    (edad < 18 ? 'Menor' : (edad >= 18 AND edad < 65 ? 'Adulto' : 'Mayor')) AS categoria;
+DUMP etiquetas;
+
+script_19.pig:
+-- Convierte los nombres a mayúsculas
+mayusculas = FOREACH data GENERATE UPPER(nombre);
+DUMP mayusculas;
+
+script_20.pig:
+-- Extrae el año de una fecha
+data = LOAD 'fechas.csv' USING PigStorage(',') AS (id:int, fecha:chararray);
+formato = FOREACH data GENERATE id, SUBSTRING(fecha, 0, 4) AS anio;
+DUMP formato;
+
+script_21.pig:
+-- Reemplaza valores nulos por 'NULL'
+... (contenido anterior de script_21 y script_22) ...
+
+script_23.pig:
+-- Encuentra la longitud del nombre de cada persona
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+nombre_longitud = FOREACH data GENERATE id, nombre, SIZE(nombre) AS longitud;
+DUMP nombre_longitud;
+
+script_24.pig:
+-- Filtra personas cuyo nombre comience con 'A'
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+nombres_A = FILTER data BY nombre MATCHES 'A.*';
+DUMP nombres_A;
+
+script_25.pig:
+-- Encuentra la cantidad de personas con cada profesión
+personas = LOAD 'profesiones.csv' USING PigStorage(',') AS (id:int, profesion:chararray);
+grupos = GROUP personas BY profesion;
+conteo_profesiones = FOREACH grupos GENERATE group AS profesion, COUNT(personas) AS cantidad;
+DUMP conteo_profesiones;
+
+script_26.pig:
+-- Une personas con direcciones
+personas = LOAD 'personas.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+direcciones = LOAD 'direcciones.csv' USING PigStorage(',') AS (id:int, direccion:chararray);
+unidos = JOIN personas BY id, direcciones BY id;
+DUMP unidos;
+
+script_27.pig:
+-- Encuentra la edad promedio por profesión
+personas = LOAD 'personas.csv' USING PigStorage(',') AS (id:int, nombre:chararray, edad:int, profesion:chararray);
+grupos = GROUP personas BY profesion;
+promedio_edad = FOREACH grupos GENERATE group AS profesion, AVG(personas.edad) AS edad_promedio;
+DUMP promedio_edad;
+
+script_28.pig:
+-- Extrae el dominio del correo electrónico
+data = LOAD 'emails.csv' USING PigStorage(',') AS (id:int, email:chararray);
+dominio = FOREACH data GENERATE id, email, TOKENIZE(email, '@')[1] AS dominio;
+DUMP dominio;
+
+script_29.pig:
+-- Identifica registros con direcciones vacías
+data = LOAD 'direcciones.csv' USING PigStorage(',') AS (id:int, direccion:chararray);
+nulos = FILTER data BY direccion IS NULL OR TRIM(direccion) == '';
+DUMP nulos;
+
+script_30.pig:
+-- Ordena los datos por nombre ascendente
+ordenado = ORDER data BY nombre ASC;
+DUMP ordenado;
+
+script_31.pig:
+-- Elimina espacios en blanco de los nombres
+data = LOAD 'datos.csv' USING PigStorage(',') AS (id:int, nombre:chararray);
+nombres_limpios = FOREACH data GENERATE id, TRIM(nombre) AS nombre;
+DUMP nombres_limpios;
+
+script_32.pig:
+-- Identifica el registro más reciente
+data = LOAD 'registros.csv' USING PigStorage(',') AS (id:int, fecha:chararray);
+reciente = ORDER data BY fecha DESC;
+DUMP reciente;
+
+script_40.pig:
+-- Calcula la mediana de las edades
+mediana = FOREACH grupos GENERATE group AS edad, MEDIAN(data.edad) AS mediana;
+DUMP mediana;

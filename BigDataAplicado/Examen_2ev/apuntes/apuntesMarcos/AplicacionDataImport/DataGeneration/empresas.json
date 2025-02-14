@@ -1,0 +1,252 @@
+[
+    {
+        "id": "1",
+        "name": "Company_1",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "2",
+        "name": "Company_2",
+        "sector": "Finance"
+    },
+    {
+        "id": "3",
+        "name": "Company_3",
+        "sector": "Finance"
+    },
+    {
+        "id": "4",
+        "name": "Company_4",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "5",
+        "name": "Company_5",
+        "sector": "Tech"
+    },
+    {
+        "id": "6",
+        "name": "Company_6",
+        "sector": "Education"
+    },
+    {
+        "id": "7",
+        "name": "Company_7",
+        "sector": "Education"
+    },
+    {
+        "id": "8",
+        "name": "Company_8",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "9",
+        "name": "Company_9",
+        "sector": "Tech"
+    },
+    {
+        "id": "10",
+        "name": "Company_10",
+        "sector": "Finance"
+    },
+    {
+        "id": "11",
+        "name": "Company_11",
+        "sector": "Tech"
+    },
+    {
+        "id": "12",
+        "name": "Company_12",
+        "sector": "Education"
+    },
+    {
+        "id": "13",
+        "name": "Company_13",
+        "sector": "Finance"
+    },
+    {
+        "id": "14",
+        "name": "Company_14",
+        "sector": "Tech"
+    },
+    {
+        "id": "15",
+        "name": "Company_15",
+        "sector": "Finance"
+    },
+    {
+        "id": "16",
+        "name": "Company_16",
+        "sector": "Education"
+    },
+    {
+        "id": "17",
+        "name": "Company_17",
+        "sector": "Finance"
+    },
+    {
+        "id": "18",
+        "name": "Company_18",
+        "sector": "Education"
+    },
+    {
+        "id": "19",
+        "name": "Company_19",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "20",
+        "name": "Company_20",
+        "sector": "Education"
+    },
+    {
+        "id": "21",
+        "name": "Company_21",
+        "sector": "Finance"
+    },
+    {
+        "id": "22",
+        "name": "Company_22",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "23",
+        "name": "Company_23",
+        "sector": "Tech"
+    },
+    {
+        "id": "24",
+        "name": "Company_24",
+        "sector": "Education"
+    },
+    {
+        "id": "25",
+        "name": "Company_25",
+        "sector": "Tech"
+    },
+    {
+        "id": "26",
+        "name": "Company_26",
+        "sector": "Finance"
+    },
+    {
+        "id": "27",
+        "name": "Company_27",
+        "sector": "Tech"
+    },
+    {
+        "id": "28",
+        "name": "Company_28",
+        "sector": "Finance"
+    },
+    {
+        "id": "29",
+        "name": "Company_29",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "30",
+        "name": "Company_30",
+        "sector": "Education"
+    },
+    {
+        "id": "31",
+        "name": "Company_31",
+        "sector": "Education"
+    },
+    {
+        "id": "32",
+        "name": "Company_32",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "33",
+        "name": "Company_33",
+        "sector": "Tech"
+    },
+    {
+        "id": "34",
+        "name": "Company_34",
+        "sector": "Finance"
+    },
+    {
+        "id": "35",
+        "name": "Company_35",
+        "sector": "Finance"
+    },
+    {
+        "id": "36",
+        "name": "Company_36",
+        "sector": "Healthcare"
+    },
+    {
+        "id": "37",
+        "name": "Company_37",
+        "sector": "Education"
+    },
+    {
+        "id": "38",
+        "name": "Company_38",
+        "sector": "Tech"
+    },
+    {
+        "id": "39",
+        "name": "Company_39",
+        "sector": "Education"
+    },
+    {
+        "id": "40",
+        "name": "Company_40",
+        "sector": "Finance"
+    },
+    {
+        "id": "41",
+        "name": "Company_41",
+        "sector": "Education"
+    },
+    {
+        "id": "42",
+        "name": "Company_42",
+        "sector": "Tech"
+    },
+    {
+        "id": "43",
+        "name": "Company_43",
+        "sector": "Tech"
+    },
+    {
+        "id": "44",
+        "name": "Company_44",
+        "sector": "Finance"
+    },
+    {
+        "id": "45",
+        "name": "Company_45",
+        "sector": "Education"
+    },
+    {
+        "id": "46",
+        "name": "Company_46",
+        "sector": "Finance"
+    },
+    {
+        "id": "47",
+        "name": "Company_47",
+        "sector": "Tech"
+    },
+    {
+        "id": "48",
+        "name": "Company_48",
+        "sector": "Finance"
+    },
+    {
+        "id": "49",
+        "name": "Company_49",
+        "sector": "Education"
+    },
+    {
+        "id": "50",
+        "name": "Company_50",
+        "sector": "Education"
+    }
+]

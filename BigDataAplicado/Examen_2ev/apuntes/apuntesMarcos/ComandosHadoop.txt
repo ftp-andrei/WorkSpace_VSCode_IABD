@@ -1,0 +1,19 @@
+EXTAER E INTRODUCIR ARCHIVOS HDFS
+
+docker cp /ruta/origen/archivo contenedor:/ruta/fin
+hdfs dfs -put /ruta/origen/archivo /ruta/fin
+hdfs dfs -ls /ver/archivos/o/directorios
+hdfs dfs -get /ruta/origen/archivo /ruta/fin
+docker cp contenedor:/ruta/fin/archivo /ruta/origen
+
+VER CONTENIDO DE ARCHIVOS
+
+hdfs dfs -cat /ruta/archivo
+
+MAP REDUCE
+
+hadoop jar /ruta/archivo.jar NombreDeLaClase /ruta/archivo/input /ruta/directorio/fin
+
+PIG
+
+pig /ruta/archivo.pig

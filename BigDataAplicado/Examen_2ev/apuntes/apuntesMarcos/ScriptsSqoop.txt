@@ -1,0 +1,29 @@
+sqoop import -Dmapreduce.job.user.classpath.first=true \ 
+--connect jdbc:mysql://mysql:3306/hadoop_db
+--username root 
+--password "root" \
+--table empleados \
+--m 1 \
+--target-dir /user/sqoop/employees_data \
+--as-textfile\
+--fields-terminated-by ','
+--lines-terminated-by '\n'
+
+sqoop export -Dmapreduce.job.user.classpath.first=true \
+--connect jdbc:mysql://mysql:3306/hadoop_db \
+--username root \
+--password "root" \
+--table empleados \
+--export-dir /user/sqoop/employees_data \
+--input-fields-terminated-by ',' \
+--input-lines-terminated-by '\n'
+
+sqoop import -Dmapreduce.job.user.classpath.first=true 
+--connect jdbc:mysql://mysql:3306/hadoop_db \
+--username root 
+--password "root" \
+--query "SELECT * FROM empleados WHERE departamento LIKE 'Ventas' AND \$CONDITIONS" \ --m 1 \
+--target-dir /user/sqoop/query_data\
+--as-textfile\
+--fields-terminated-by ',' \
+--lines-terminated-by '\n'

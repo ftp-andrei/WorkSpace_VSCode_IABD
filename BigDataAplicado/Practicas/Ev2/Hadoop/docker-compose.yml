@@ -19,6 +19,43 @@ services:
         aliases:
           - mysql # Alias de MySQL
 
+  # --------------------------------- NEO4J ---------------------------------
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    hostname: neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/my-secret-pw # Configuración de autenticación
+    ports:
+      - "7474:7474" # Web UI
+      - "7687:7687" # Bolt protocol
+    volumes:
+      - neo4j_data:/data # Volumen para datos persistentes
+      - neo4j_logs:/logs # Volumen para logs
+      - ./neo4j:/var/lib/neo4j/import # Montar el directorio con los scripts SQL
+    networks:
+      hadoop_network:
+        aliases:
+          - neo4j
+
+  # --------------------------------- MONGODB ---------------------------------
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin # Usuario administrador
+      MONGO_INITDB_ROOT_PASSWORD: secret # Contraseña del usuario
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db # Volumen para datos persistentes
+      - ./mongodb/:/docker-entrypoint-initdb.d # Montar el directorio con los scripts SQL
+    networks:
+      hadoop_network:
+        aliases:
+          - mongodb
+
   # --------------------------------- HADOOP ---------------------------------
   namenode:
     build: ./Namenode
@@ -196,6 +233,9 @@ volumes:
   # hadoop_datanode4:
   # hadoop_datanode5:
   hadoop_mysql: # Volumen de MySQL
+  neo4j_data: # Volumen de datos para Neo4j
+  neo4j_logs: # Volumen de logs para Neo4j
+  mongodb_data: # Volumen de datos para MongoDB
 
 networks:
   hadoop_network:
