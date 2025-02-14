@@ -1,6 +1,9 @@
 docker build -t hadoop-bda:3.4.1 .
 docker-compose up -d
 
+--SOCORRO
+wsl --unregister docker-desktop
+
 # SI DA CONEXION ERROR AL SUBIR A HDFS:
 
 hdfs namenode -format  # SOLO si es la primera vez, ¡esto borra datos en HDFS!
