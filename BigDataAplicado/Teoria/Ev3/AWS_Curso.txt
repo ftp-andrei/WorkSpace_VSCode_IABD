@@ -1,0 +1,11 @@
+Cloud computing: Es un servicio onDemand, donde pagas por lo que usas (pay-as-you-go)
+
+Modelos de servicio de cloud:
+    -IaaS: infraestructura como servicio. Mas flexible
+    -PaaS: plataforma como servicio. Mas o menos flexible
+    -SaaS: software como servicio. Menos flexible
+
+Modelos de despliegue de cloud:
+    -Cloud:
+    -Hibrido:
+    -OnPremises (nube privada):

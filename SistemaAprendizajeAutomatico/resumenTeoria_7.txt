@@ -1,0 +1,33 @@
+NLP: procesamiento de lenguaje natural. Tecnologia de machine learning que brinda a las computadoras la capacidad de interpretar, manipular y comprender el lenguaje humano.
+Por ejemplo: Utilizan software de NLP para procesar de forma automática estos datos, analizan la intención y responden en tiempo real a la comunicación humana
+
+Casos de uso en ambito empresarial:
+    -Eliminación de información confidencial
+    -Interacción con clientes
+    -Análisis empresarial
+
+Como funciona NLP: combina modelos de lingüística computacional, machine learning y aprendizaje profundo para procesar el lenguaje humano.
+    -Lingüística computacional: ciencia de entender y crear modelos de lenguaje humano con computadoras y herramientas de software
+    -Machine learning: tecnología que entrena a una computadora con datos de muestra para mejorar su eficiencia.
+    -Aprendizaje profundo: campo específico del machine learning que enseña a las computadoras a aprender y pensar como humanos.
+    -Pasos de la implementación del NLP: recopilación y preparación de datos
+    -Preprocesamiento: Uso de distintas tecnicas (como la creación de tokens, derivación, lematización y eliminación) para preparar los datos.
+    -Capacitación: Se utilizan los datos preprocesados y el machine learning para entrenar modelos NLP
+    -Despliegue e inferencia: El modelo de NLP recibe entradas y predice un resultado para el caso de uso específico para el que está diseñado el modelo.
+
+Tareas de NLP: Dividen el texto en partes mas pequeñas.
+    -Etiquetado de parte de la voz
+    -Desambiguación del sentido de las palabras
+    -Reconocimiento de voz
+    -Traducción automática
+    -Reconocimiento de entidades con nombre
+    -Análisis de opiniones
+
+Enfoques procesamiento de lenguaje natural:
+    -NLP supervisado
+    -NLP no supervisado
+    -Comprensión de lenguaje natural
+    -Generación de lenguaje natural
+    
+
+
