@@ -1,0 +1,106 @@
+---------------
+TEST 1
+---------------
+
+1. advantages of cloud computing
+All are posible
+
+2. pricing model enables aws costomer pay
+pay as you go
+
+3. which of these is not a cloud compting model
+system administration as a service
+
+4. true or false aws network connectied
+true
+
+5. Which of these is not a benefic of cloud computing
+paying for racking, stacking.. etc
+
+6.which of these following are not benefits of aws cloud computing
+high latency y multiple procurement cycles
+
+7. which of the following is a compute service
+amazon ec2
+
+8. true or false, cloud computing provices a simple way to acces servers
+false
+
+9. Economies of scale result from
+having hundeds of thousands of customers
+
+10. Which of these are ways to access aws core services
+aws managemente console
+aws cli
+sdks
+
+
+---------------
+TEST 2
+---------------
+
+1. Servicios EC2, RDS, available for reserved instances
+auri, puri y nuri
+
+2. where can customer go to get more details EC2 3 month ago
+aws cost Explorer
+
+3. to receibe the discounter rate associated with reserved instances you must make a full upfront payment for the term of the agreess
+false 
+
+4. Which statement is true abot the pricing model on AWS?
+storage is typically charged per gigabyte
+
+5. what are the four plans AWS Support
+basic developer businnes Enterprise
+
+6. What aws tool lets you explorer aws services and create estimes for the cost
+AWS Pricing calculator
+
+7. as aws grows, the cost of doing business is reduced and saving are passed back of the costumer with lower pricing. What is this optimization
+economies of scale 
+
+8. Amazon virtual private iam,
+true 
+
+9. what are benefics of using aws Organizations
+OUs, SPCs (?)
+
+10. Unlimited services are availables with the aws free FreeTier to new aws customer for 12 month flloing their aws sigh up date
+false
+
+
+---------
+TEST 3
+---------
+
+1. Which componmnte of the aws global infraestrcture does amazon cloudfront use ensure low-latency
+AWS edge locations
+
+2. You can run applications and workloads from a region clouse to the end users to  latency
+decrese
+
+3. networking stoage are examples of service categories that aws offers
+true
+
+4. Which of the folling are geographic areas that host 2 or more availability zones
+aws regions
+
+5. means the infraestrature has built compontent redundady and mea
+fault tolerant elastic and scalable 
+
+6. availability zones within a region are connected through low latenct links ture or false
+true
+
+7. Which of these statements about availibity zones is not true 
+a data center can be used for more that one az 
+
+8. What is true abaout regions 
+each region is separete geografic area y region has multiple availiby zones 
+
+9. AWS highly recommens provision your compute resource across ___ AZ 
+multiple
+
+10. edge locations are only located in the same general area as regions ture of false 
+false 
+

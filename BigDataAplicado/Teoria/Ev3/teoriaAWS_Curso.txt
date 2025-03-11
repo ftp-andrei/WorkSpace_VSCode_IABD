@@ -1,0 +1,111 @@
+Cloud computing: Es un servicio onDemand, donde pagas por lo que usas (pay-as-you-go)
+
+Modelos de servicio de cloud:
+    -IaaS: infraestructura como servicio. Mas flexible
+    -PaaS: plataforma como servicio. Mas o menos flexible
+    -SaaS: software como servicio. Menos flexible
+
+Modelos de despliegue de cloud:
+    -Cloud
+    -Hibrido
+    -OnPremises (nube privada)
+
+Tipos de coste de AWS:
+    -Por computo: Cambia cada hora/varia segun el tipo de instancia
+    -Por almacenamiento: Cambia por GB
+    -Por datos de transferencia: Cambia por GB, al meter datos no cobra, pero si al sacarlos.
+
+Como pagas por AWS:
+    -Pagas por lo que usas
+    -Pagas menos cuando reservas
+    -Pagas menos cuanto mas uses y mas crezca AWS: S3, EBS, EFS.
+
+AWS FreeTier: 1 año de servicios gratis para nuevos clientes.
+
+OnPremises vs Cloud:
+    OnPremises: Equipamiento, costes, contratos, recursos y administradores 
+    AWS Cloud: Servicio de infraestructura, pagas por lo que usas, ganas tiempo para hacer otras cosas
+Puedes ahorrar hasta un 96% por año moviendote a la infraestuctura de AWSs
+
+TCO (Total Cost of Ownership): Ayuda a identificar y estimar directa e indirectamente los costes del distema
+
+Consideraciones de TCO:
+    -Coste del servidor
+    -Coste del almacenamiento
+    -Coste de red/network
+    -Coste de labores IT (Empleados/administracion)
+
+AWS Pricing calculator: Ayuda a estimar los costes de tu arquitectura, es una herramienta gratuita.
+    -Upfront,monthly, total of both... etc
+
+Beneficios adiciones a tener en cuenta:
+    -HardBenefits:
+        -Reduce el tiempo por computo empleado, al igual que el almacenamiento, networking y seguridad
+        -Reducciones en las compras de el hardware y software
+        -Reducciones en operaciones de personal
+        -Reducciones de operaciones de coste, backup
+
+    -SoftBenefits:
+        -Reuso de aplicaciones y servicios que se habilitan cuando lo digas tu.
+        -Incrementa la productividad del desarrollo
+        -Mejora la satisfaccion del cliente
+        -Incrementa la meta global
+
+AWS Organizations:
+    -Root
+        -OU
+            -AWSAcc
+            -OU
+                -AWSAcc
+                -AWSAcc
+        -OU
+            -AWSAcc
+            -OU
+                -AWSAcc
+                -AWSAcc
+                -AWSAcc
+
+
+Caracteristicas claves y Beneficios
+    -Administracion de grupos
+    -Administracion de politicas
+    -Administracion de aplicaciones automatizadas (APIs)
+    -Pagos consolidados
+
+
+Seguridad con AWS Organizations
+    -Control de acceso AWS Identity and IAM
+    -Politicas de AWS permiten o deniegan el acceso a los servicios de aws (aplica a grupos, personas, o roles)
+
+Acceso a AWS Organizations
+    -AWS Managemente Console
+    -AWS CLI
+    -SDKs
+    -APIs
+
+AWS Billing and Cost Management (Adminsitracion de costes y pagos)
+    -Herramientas:
+        -AWS Budgets
+        -AWS Cost y uso de reportes
+        -AWS Cost Explorer
+
+AWS Support:
+    Best Practices: AWS Trusted Advisor
+    Account assistance: AWS Support Cocierge
+    Proactive guidance: TAM (Technical Account Manager)
+
+Ofrece 4 tipos de soporte:
+    -Basic support: FAQs, Resource Center access (No support case)
+    -Developer Support: Acceso anticipado de desarrollo en AWS (12hs (normal), 24hs (low))
+    -Business Support: Los clientes pueden run production workloads (lo anterior + 1h (urgent), 4hs (high))
+    -Enterprise Support: Los clientes pueden run business and mission critial workloads (lo anterior + 15min (critical))
+
+
+
+
+
+
+
+
+
+
