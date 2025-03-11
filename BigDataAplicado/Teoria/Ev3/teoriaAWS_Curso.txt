@@ -101,6 +101,89 @@ Ofrece 4 tipos de soporte:
     -Enterprise Support: Los clientes pueden run business and mission critial workloads (lo anterior + 15min (critical))
 
 
+AWS autentificacion y autorización:
+
+Modelo de responsabilidad:
+    Responsabilidad de Customer/Cliente^: 
+        -Base de datos cliente
+        -Plataforma, aplicaciones, autentificacion y control de acceso
+        -OS, Firewall y configuracion de red
+        -Trafico (HTTPs en vez de HTTP..) etc
+    Responsabilidad de AWS:*
+        -La computación, almacenamiento, base de datos y red 
+        -Region, Avaibility Zones y Edge Locations
+
+
+*   Seguridad fisica de los data centers 
+    Infraestructura de hardware y software 
+    Intrusos en la red 
+    Virtualizacion de la infraestructura
+
+^   Instancias de EC2
+    Contraseñas de apps, roles.. 
+    Configuraciones de grupos
+    Firewall del OS 
+    Configuracion de red 
+
+
+IaaS:
+    - El cliente tiene mas flexibilidad
+    - Es responsable de mas aspectos de seguridad
+PaaS:
+    - El cliente no tiene la necesidad de manejar la infraestructura
+    - Puede enfocarse en los datos o managing code 
+SaaS:
+    - PayAsYouGo
+    - Se accede por APIs
+    - El cliente on necesita gestionar la infraestructura
+
+-----
+IAM: Identity Access Management. 
+    - Puede gestionar el acceso a los recursos de AWS 
+    - Define control de acceso/permisos 
+    - Es gratis
+
+Componentes esenciales:
+    - User: Persona o aplicacion que puede autentificarse en AWS 
+    - Group: Coleccion/Grupos de usuarios IAM 
+    - Policy: El documento define que recursos pueden acceder y el nivel de acceso de cada recursos
+    - Role: Roles que predefinen un conjunto de permisos
+
+Tipos de acceso (AWS):
+    - Programmatic access (AWS Cli o SDKs): AccessKeyID y SecretAccessKey 
+    - AWS Management Console Access: Autentificacion usando IAM username y password (*Posibilidad MFA (multifactor authentifcation))
+
+
+Que acciones estan permitidas (autorizacion): Dado un usuario/grupo/rol
+    - Policy: Full access a instancias EC2
+    - Policy: Readonly a S3 Bucket
+
+
+IAM authorization:
+    - Asigna permisos a traves del IAM Policy 
+    - Los permisos determinan que recursos y operaciones estan permitidas 
+    *Siempre se prioriza el que menos permisos tenga
+    *Configuracion a nivel global 
+
+IAM Policies:
+    - Documento que define unos permisos
+    - Se asocia a un grupo/usuario/rol 
+
+Resource-based policies: Estan asociadas a un grupo/usuario/rol 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
