@@ -70,9 +70,9 @@ OUs, SPCs (?)
 false
 
 
----------
+---------------
 TEST 3
----------
+---------------
 
 1. Which componmnte of the aws global infraestrcture does amazon cloudfront use ensure low-latency
 AWS edge locations
@@ -103,4 +103,66 @@ multiple
 
 10. edge locations are only located in the same general area as regions ture of false 
 false 
+
+
+---------------
+TEST 4
+---------------
+
+in the shared responsability model, aws is responsible for providing what 
+security of the cloud
+
+in the shared responsibility model, which of the following are examples of security in the cloud(choose 2)
+Security group configurations y Encryption of data at rest and data in transit
+
+
+which of the following is the responsibility of aws under the aws shared responsibility model
+Maintaining physical hardware
+
+when creating an IAM policiy what are the 2 types of access that can be granted to a user (choose 2)
+PROGRAMMATIC ACCESS Y AWS MANAGEMENTE CONSOLE Access
+
+aws organizations ebables you to consolidate multiple aws accounts so that you centrally manage them
+yes 
+
+
+which of the following are best practices to secure toy account using IAM (choose 2)
+manage access to AWS resources
+define 5granined access rights
+
+which of the following shoud be done by aws account root user
+change the aws support plan
+
+after initial login, what does aws recommend as the best pratice for the aws account root user
+delete the access key of the aws account root user
+
+
+how would a system adminitrator add an additional layer of login security to a users aws management console
+enable multifactor authentification
+
+aws kms enables you to assess audit and evaluate the configurations of your aws resoruces
+false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

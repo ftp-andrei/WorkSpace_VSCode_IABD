@@ -172,6 +172,47 @@ IAM Policies:
 Resource-based policies: Estan asociadas a un grupo/usuario/rol 
 
 
+Cuenta Root AWS: Usar la cuenta AWS root solamente cuando sea necesario
+    - Paso 1: Dejar de usar lo mas pronto posible la cuenta root
+    - Paso 2: Habilitar la autentificacion multifactor (MFA)
+    - Paso 3: Usar AWS CloudTrail (Permite trackear la actividad)
+    - Paso 4: Habilitar el reporte de coste (AWS Cost and Usage Report)
+
+
+AWS Organizations: Permite consolidar las multiples cuentas de AWS
+
+Service Control Policies (SCP): Ofrece un control centralizado sobre las cuentas. Son similares a las policies de IAM 
+
+AWS Key Managemente Service (AWS KMS): 
+    - Permite crear y gestionar claves encriptadas
+    - Integra logs con AWS CloudTrail 
+    - otros.. 
+
+Amazon Cognito: Añade login/register de usuarios, y control de acceso de la web y aplicaciones moviles.
+
+AWS Shield: Previene de ataques DDoS, mantiene a salvo aplicaciones de AWS, usarlo minimiza el tiempo de latencia de las aplicaciones
+
+Encripta los datos en reposo:
+    - Encripta los datos usando una secret key 
+    - AWS soporta la encriptacion de datos en reposo
+
+
+Encripta los datos en transito:
+    - Encripta los datos usando TLS (protocolo)
+    - HTTPS (ssl)
+
+Los contenedores y objetos de S3 son privados y protegidos por defecto
+
+
+Cumplimiento de los programas se categorizan en:
+    - Certificaciones
+    - Regulaciones, leyes y privacidad
+    - Frameworks y alineacion
+
+AWS Config: Auditorias y configuraciones para los recursos de AWS 
+
+AWS Artifact: Recurso para el cumplimiento normativo de la informacion
+    - Permite acceder a certificaciones AWS ISO, y reportes PCI y SOC 
 
 
 
