@@ -61,6 +61,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=casa1234
+      - POSTGRES_DB=retail_db
     volumes:
       - "postgres:/var/lib/postgresql/data"
 
