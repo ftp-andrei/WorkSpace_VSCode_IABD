@@ -1,3 +1,0 @@
-Este proyecto consistirá en acceder a una de las competiciones de Kaggle
- (https://www.kaggle.com/competitions) y aplicar todas las técnicas y modelos 
- aprendidos durante el curso para obtener el mejor resultado.  

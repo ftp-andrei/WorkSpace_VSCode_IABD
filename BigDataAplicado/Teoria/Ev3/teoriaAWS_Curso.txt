@@ -214,6 +214,37 @@ AWS Config: Auditorias y configuraciones para los recursos de AWS
 AWS Artifact: Recurso para el cumplimiento normativo de la informacion
     - Permite acceder a certificaciones AWS ISO, y reportes PCI y SOC 
 
+Networks:
+    -IPv4 (32bits): 192.168.1.1
+    -IPv6 (128bits): 2600:fs3s:1f4h:3f5q:1c4g:3fh6:663g:652g
+
+Capas OSI:
+    -Aplicacion (7): Sevicios red a aplicaciones (HTTPS, FTP)
+    -Presentacion (6): Representacion de datos y encriptacion (ANSI) 
+    -Sesion (5): Comunicacion entre dispositivos (RPC)
+    -Transporte (4): Conexion extremo a extremo (TCP UDP)
+    -Red (3): Determina la ruta y direcionamiento logico (IP)
+    -Enlace (2): Direccionamiento fisico (MAC)
+    -Fisica (1): Transmision binaria (0/1)
+
+Amazon VPC: Te termina una aislación logica a AWS Cloud, donde puedes lanzar los recursos de AWS en una red virtual que definas.
+    - Subnets: priviadas o publicas
+    - Rango de ips divididas por VPC 
+Cuando creas una VPC tienes que asignarlo a un IPv4 CIDR (no puedes cambiar el ranog una vez asignado)
+    - IPv4 CIDR mas largo: /16 
+    - IPv4 CIDR mas pequeño: /28
+Existen ips publicas y privadas, las privadas cuestan mas al ser estáticas
+
+Route tables (tabla de rutas) contiene una serie de reglas que permite configurar directamente el trafico de internet de tu Subnets
+
+VPC Networking: Puedes conectar VPC en tu propia cunet ade AWS, entre cuentas de AWS o entre regiones AWS 
+
+2 types of endpoints: 
+    - Gateway: Endpoints Amazon S3 
+    - Interface: Endpoints AWS PrivateLink
+
+VPC Security: 
+
 
 
 
