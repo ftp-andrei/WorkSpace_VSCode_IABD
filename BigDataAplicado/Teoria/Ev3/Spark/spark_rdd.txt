@@ -1,0 +1,227 @@
+Part 2: DataFrame Functions
+Key DataFrame Functions
+select() - Selects specific columns from the DataFrame.
+filter() - Filters rows based on a condition.
+groupBy() - Groups the DataFrame based on a column.
+agg() - Aggregates data using functions like sum(), avg(), etc.
+withColumn() - Adds or modifies a column.
+show() - Displays the DataFrame.
+drop() - Removes a column.
+distinct() - Returns only distinct rows.
+
+
+Exercise 1: Basic DataFrame Operations
+Task: Create a DataFrame with columns \"Name\" and \"Age\". Use select() to get only the \"Name\" column, and use filter() to select rows where the age is greater than 21.
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Create Spark session
+spark = SparkSession.builder.master(\"local[1]\").appName(\"DataFrameExercise\").getOrCreate()
+
+# Create a DataFrame with columns \"Name\" and \"Age\"
+data = [(\"Alice\", 22), (\"Bob\", 25), (\"Charlie\", 18), (\"David\", 30)]
+df = spark.createDataFrame(data, [\"Name\", \"Age\"])
+
+# Use select() to get only the \"Name\" column
+df_name = df.select(\"Name\")
+
+# Use filter() to select rows where the age is greater than 21
+df_filtered = df.filter(df[\"Age\"] > 21)
+
+# Show the results
+df_name.show()
+df_filtered.show()
+
+Exercise 2: Grouping and Aggregation
+Task: Create a DataFrame with columns \"Category\" and \"Price\". Use groupBy() and agg() to calculate the total price per category.
+from pyspark.sql import functions as F
+
+# Create a DataFrame with columns \"Category\" and \"Price\"
+data = [(\"Electronics\", 100), (\"Electronics\", 150), (\"Clothing\", 50), (\"Clothing\", 75)]
+df = spark.createDataFrame(data, [\"Category\", \"Price\"])
+
+# Use groupBy() and agg() to calculate the total price per category
+df_grouped = df.groupBy(\"Category\").agg(F.sum(\"Price\").alias(\"Total_Price\"))
+
+# Show the result
+df_grouped.show()
+Problem 2:
+Task: Given a DataFrame with columns \"Product\" and \"Quantity\", write a function to find the product with the highest total quantity by multiplying Quantity and Price. Do not use any external libraries like pandas.
+Part 3: Spark SQL
+Key Spark SQL Functions
+createOrReplaceTempView() - Registers a DataFrame as a temporary SQL table.
+sql() - Executes SQL queries on the registered DataFrame.
+selectExpr() - Selects and performs SQL expressions directly on DataFrames.
+join() - Joins DataFrames based on a column.
+
+
+Exercise 1: Spark SQL Queries
+Task: Register a DataFrame as a temporary SQL table and write a SQL query to select all rows where the price is greater than 100.
+# Create a DataFrame with columns \"Name\" and \"Price\"
+data = [(\"Alice\", 200), (\"Bob\", 120), (\"Charlie\", 250), (\"David\", 80)]
+df = spark.createDataFrame(data, [\"Name\", \"Price\"])
+
+# Register the DataFrame as a temporary SQL table
+df.createOrReplaceTempView(\"people\")
+
+# Use SQL to select rows where the price is greater than 100
+result = spark.sql(\"SELECT * FROM people WHERE Price > 100\")
+
+# Show the result
+result.show()
+
+
+Exercise 2: SQL Join
+Task: Create two DataFrames, one with columns \"Product\" and \"Category\", and the other with columns \"Category\" and \"Price\". Perform an SQL join between the two DataFrames on the \"Category\" column and select the \"Product\" and \"Price\".
+# Create two DataFrames
+data1 = [(\"Laptop\", \"Electronics\"), (\"Shirt\", \"Clothing\"), (\"Phone\", \"Electronics\")]
+df1 = spark.createDataFrame(data1, [\"Product\", \"Category\"])
+
+data2 = [(\"Electronics\", 1000), (\"Clothing\", 50)]
+df2 = spark.createDataFrame(data2, [\"Category\", \"Price\"])
+
+# Register DataFrames as temporary SQL tables
+df1.createOrReplaceTempView(\"products\")
+df2.createOrReplaceTempView(\"prices\")
+
+# Perform an SQL join between the two DataFrames
+result = spark.sql(\"\"\"
+    SELECT p.Product, pr.Price
+    FROM products p
+    JOIN prices pr ON p.Category = pr.Category
+\"\"\")
+
+# Show the result
+result.show()
+
+Problem 3:
+Task: Given a DataFrame with \"Employee\" and \"Salary\" columns, and another DataFrame with \"Employee\" and \"Department\" columns, write a SQL query to find the average salary by department. Do not use any joins in Spark SQL.
+
+
+RDD Problems
+Problem 1: Word Count from a Text File
+Objective: Write a program that reads a text file from the local filesystem or S3, splits each line into words, and counts how many times each word appears.
+File: text_data.txt (or an S3 URL: s3://your-bucket/text_data.txt).
+Tasks:
+Read the file and create an RDD from the lines.
+Split each line into words.
+Count the frequency of each word using RDD operations.
+
+Problem 2: Filter and Save Results to a File
+Objective: Read a CSV file from the local disk or S3, filter out all rows where the age is less than 21, and save the resulting RDD to a new file.
+File: users.csv (or an S3 URL: s3://your-bucket/users.csv).
+Tasks:
+Load the CSV file into an RDD.
+Filter out the users who are under 21 years old.
+Save the result to a new file in CSV format (output.csv).
+
+Problem 3: Max Sale from JSON File
+Objective: Read a JSON file with sales data and find the maximum sale amount.
+File: sales_data.json (or an S3 URL: s3://your-bucket/sales_data.json).
+Tasks:
+Read the JSON file into an RDD.
+Find the maximum sale by using the reduce() function.
+
+Problem 4: Extract Top 5 Most Frequent Words from Text File
+Objective: Read a text file, split it into words, and find the top 5 most frequent words.
+File: document.txt (or an S3 URL: s3://your-bucket/document.txt).
+Tasks:
+Load the text file into an RDD.
+Split each line into words and map them.
+Use reduceByKey to count occurrences.
+Find the top 5 most frequent words.
+
+
+DataFrame Problems
+Problem 1: Load and Display Data from CSV
+Objective: Read a CSV file, display its first 5 rows, and print the schema.
+File: employees.csv (or an S3 URL: s3://your-bucket/employees.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Show the first 5 rows using .show().
+Print the schema of the DataFrame using .printSchema().
+
+Problem 2: Group Data by Category
+Objective: Read a CSV file containing products and their prices, and group the data by the product category.
+File: products.csv (or an S3 URL: s3://your-bucket/products.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Group the data by the category.
+Count the number of products in each category.
+
+Problem 3: Calculate Average Price by Category
+Objective: Calculate the average price of products in each category.
+File: products.csv (or an S3 URL: s3://your-bucket/products.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Group the products by category.
+Calculate the average price for each category.
+Display the result.
+
+Problem 4: Filter Data and Write to Parquet
+Objective: Read a CSV file, filter all rows where the price is greater than $100, and save the filtered data as a Parquet file.
+File: products.csv (or an S3 URL: s3://your-bucket/products.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Filter the rows where the price is greater than 100.
+Save the filtered DataFrame as a Parquet file (filtered_products.parquet).
+
+Problem 5: Merge Two DataFrames
+Objective: Read two CSV files and merge them into one based on a common column.
+Files: users.csv and orders.csv (or S3 URLs: s3://your-bucket/users.csv and s3://your-bucket/orders.csv).
+Tasks:
+Load both CSV files into DataFrames.
+Merge the DataFrames on the user ID column.
+Show the first 5 rows of the merged DataFrame.
+
+Problem 6: Find the Top 3 Most Expensive Products
+Objective: Load a CSV file containing product details, and find the top 3 most expensive products.
+File: products.csv (or an S3 URL: s3://your-bucket/products.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Sort the DataFrame by the price column in descending order.
+Display the top 3 most expensive products.
+
+
+Spark SQL Problems
+Problem 1: Query from a CSV File
+Objective: Write a Spark SQL query to select all employees from a CSV file who earn more than $50,000.
+File: employees.csv (or an S3 URL: s3://your-bucket/employees.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Register the DataFrame as a temporary table.
+Write an SQL query to select employees with a salary greater than $50,000.
+Show the result.
+
+Problem 2: Calculate Total Sales for Each Product
+Objective: Calculate the total sales for each product from an orders CSV file and a sales CSV file.
+Files: orders.csv and sales.csv (or S3 URLs: s3://your-bucket/orders.csv and s3://your-bucket/sales.csv).
+Tasks:
+Load both CSV files into DataFrames.
+Register both DataFrames as temporary SQL tables.
+Write an SQL query to calculate the total sales for each product by joining the two tables on product ID.
+
+Problem 3: Find the Most Expensive Product in Each Category
+Objective: Find the most expensive product in each category.
+File: products.csv (or an S3 URL: s3://your-bucket/products.csv).
+Tasks:
+Load the CSV file into a DataFrame.
+Register the DataFrame as a temporary SQL table.
+Write an SQL query to find the most expensive product in each category.
+
+Problem 4: Join DataFrames from Two Files
+Objective: Join two DataFrames based on customer ID and display the total amount spent by each customer.
+Files: customers.csv and purchases.csv (or S3 URLs: s3://your-bucket/customers.csv and s3://your-bucket/purchases.csv).
+Tasks:
+Load both CSV files into DataFrames.
+Register the DataFrames as temporary SQL tables.
+Write an SQL query to join the DataFrames on the customer ID column.
+Display the total amount spent by each customer.
+
+Problem 5: Average Price per Product
+Objective: Calculate the average price per product from a JSON file.
+File: product_data.json (or an S3 URL: s3://your-bucket/product_data.json).
+Tasks:
+Load the JSON file into a DataFrame.
+Register the DataFrame as a temporary SQL table.
+Write an SQL query to calculate the average price for each product.
