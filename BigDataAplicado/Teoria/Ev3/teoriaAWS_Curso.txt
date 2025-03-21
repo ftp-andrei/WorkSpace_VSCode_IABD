@@ -264,3 +264,66 @@ VPC Security:
 
 
 
+
+Amazon EC2: Servicio de maquinas virtuales. IaaS. Basado en instancias
+AWS Lambda: Serverless, basado en funciones, es buena practica usarlas
+AWS ECS, EKS, Fargate y ECR: Basado en instancias. El fargate te quita administracion de cluster pero es mas caro 
+AWS Beanstalk: Preparado para aplicaciones web. PaaS.
+
+Cuando lanzas una instancia EC2 tienes que seleccionar una AMI (Imagen)
+
+    -AMI
+    -Tipo de instancia 
+    -Configuracion de red
+    -IAM Role 
+    -Datos de usuario 
+    -Opciones de almacenamiento
+    -Tags 
+    -Grupos de seguridad 
+    -Par de llaves
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
