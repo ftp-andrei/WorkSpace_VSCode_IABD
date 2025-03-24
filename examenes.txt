@@ -1,5 +1,3 @@
-7 luisma
-10 matriz confusion (practico)
-13 carlos
-14 rafa
-19 presentacion/entrega cristina
+28 carlos
+31 luisma
+4 rafa 
