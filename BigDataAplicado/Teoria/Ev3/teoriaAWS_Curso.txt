@@ -244,6 +244,23 @@ VPC Networking: Puedes conectar VPC en tu propia cunet ade AWS, entre cuentas de
     - Interface: Endpoints AWS PrivateLink
 
 VPC Security: 
+    - Segurity groups: actuan en el nivel de instancia, tienen reglas
+    - Network ACLs: Actuan en el nivel de subnet, tienen reglas de entrada y salida y cada regla permite denegar o permitir el trafico 
+
+Route 53:
+Es un altamente disponible y escalable servicio web DNS. Traduce nombres a IPS
+User <-> DNS <-> Amazon Route 53
+ - Simple routing
+ - Weighted routing
+ - Latency routing 
+ - Geolocation routing 
+ - Geopromity routing 
+ - Failover routing 
+ - Multivalue answer routing 
+
+CloudFront: Rapido, global y seguro servicio de CDN. Pay-as-you-go pricing 
+    - Edge locations: Centros de datos que CloudFront usa 
+    - Regional edge cache: Donde se almacena la caché
 
 
 
