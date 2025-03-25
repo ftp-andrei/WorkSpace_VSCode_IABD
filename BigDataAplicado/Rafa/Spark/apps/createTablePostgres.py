@@ -16,7 +16,7 @@ def create_table():
             password="casa1234",
             port=5432
         )
-        createTableString='CREATE TABLE Stores ( store_id SERIAL PRIMARY KEY, store_name VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, demographics VARCHAR(255) NOT NULL);'
+        createTableString='CREATE TABLE IF NOT EXISTS Stores ( store_id SERIAL PRIMARY KEY, store_name VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, demographics VARCHAR(255) NOT NULL);'
         with conn.cursor() as cur:
             cur.execute(createTableString)
         conn.commit()
@@ -24,9 +24,10 @@ def create_table():
 
         with conn.cursor() as cur:
             for x in range(1000):
-                insertString=f'INSERT INTO Stores  (store_name,location,demographics) VALUES ({get_random_string(30)},{get_random_string(20)},{get_random_string(5)})'
+                insertString=f'INSERT INTO Stores  (store_name,location,demographics) VALUES (\'{get_random_string(30)}\',\'{get_random_string(20)}\',\'{get_random_string(5)}\')'
                 cur.execute(insertString)
             conn.commit()
+
                 
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)

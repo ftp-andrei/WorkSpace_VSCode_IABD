@@ -16,36 +16,17 @@ def read_from_postgres():
         "driver": "org.postgresql.Driver"
     }
 
-    # Define table name
-    table_name = "ExampleData"
+    table_name = "Stores"
 
     try:
         # Read data from PostgreSQL table into a DataFrame
         df = spark.read.jdbc(url=jdbc_url, table=table_name, properties=connection_properties)
+        df.rdd.sortBy(lambda fila: fila[1],False,4).toDF().show()
 
-        #Características de Pokémon:
-        #¿Cuáles son los Pokémon con mayor HP?
-        #¿Qué Pokémon tiene el mayor ataque?
-        #¿Cuáles son las habilidades más comunes entre los Pokémon?
-        '''
-            PokemonName
-            PokemonHP
-            PokemonAtack
-            PokemonHabilities
-            '''
-        df.OrderBy("PokemonAtack").take(1)
-
-        #Numero de pokemons
-        df.count()
-        
-        # Show the DataFrame
-        df.show()
 
     except Exception as e:
         print("Error reading data from PostgreSQL:", e)
-
     finally:
-        # Stop SparkSession
         spark.stop()
 
 if __name__ == "__main__":

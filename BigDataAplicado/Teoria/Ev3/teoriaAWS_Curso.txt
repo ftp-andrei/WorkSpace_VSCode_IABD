@@ -263,25 +263,6 @@ CloudFront: Rapido, global y seguro servicio de CDN. Pay-as-you-go pricing
     - Regional edge cache: Donde se almacena la caché
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Amazon EC2: Servicio de maquinas virtuales. IaaS. Basado en instancias
 AWS Lambda: Serverless, basado en funciones, es buena practica usarlas
 AWS ECS, EKS, Fargate y ECR: Basado en instancias. El fargate te quita administracion de cluster pero es mas caro 

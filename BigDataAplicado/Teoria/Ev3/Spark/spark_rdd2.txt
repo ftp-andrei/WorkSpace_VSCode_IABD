@@ -1,0 +1,10 @@
+Diferencia map y flatmap:
+-------
+Map: devolverá el mismo numero de elementos.
+Flatmap: Cambiará el numero de elementos, pudiendo unir/concatenar 2 arrays si es preciso.
+
+
+Todo dataframe tendra un rdd. 
+
+Como dado un df accedo a un rdd: df.rdd 
+

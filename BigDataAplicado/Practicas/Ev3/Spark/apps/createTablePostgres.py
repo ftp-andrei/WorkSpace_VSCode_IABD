@@ -27,6 +27,7 @@ def create_table():
                 insertString=f'INSERT INTO Stores  (store_name,location,demographics) VALUES (\'{get_random_string(30)}\',\'{get_random_string(20)}\',\'{get_random_string(5)}\')'
                 cur.execute(insertString)
             conn.commit()
+
                 
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)

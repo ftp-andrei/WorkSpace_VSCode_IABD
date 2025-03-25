@@ -3,25 +3,42 @@ services:
     build:
       context: .
       dockerfile: ./docker/spark/Dockerfile
+    container_name: spark-master
     ports:
-      - "9090:8080"
-      - "7077:7077"
+      - "9090:8080" # Web UI for master
+      - "7077:7077" # Spark master port
     volumes:
       - ./apps:/opt/spark-apps
       - ./data:/opt/spark-data
+      - spark-logs:/opt/spark/logs
+      - spark-history:/opt/spark/history
+      - ./conf/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - SPARK_LOCAL_IP=spark-master
       - SPARK_WORKLOAD=master
+      - SPARK_NO_DAEMONIZE=true
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   spark-worker-a:
     build:
       context: .
       dockerfile: ./docker/spark/Dockerfile
+    container_name: spark-worker-a
     ports:
-      - "9091:8080"
-      - "7000:7000"
+      - "9091:8080" # Web UI for worker
+      - "7000:7000" # Worker communication port
     depends_on:
       - spark-master
+    volumes:
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
+      - spark-logs:/opt/spark/logs
+      - spark-history:/opt/spark/history
+      - ./conf/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - SPARK_MASTER=spark://spark-master:7077
       - SPARK_WORKER_CORES=1
@@ -30,19 +47,29 @@ services:
       - SPARK_EXECUTOR_MEMORY=1G
       - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-a
-    volumes:
-      - ./apps:/opt/spark-apps
-      - ./data:/opt/spark-data
+      - SPARK_NO_DAEMONIZE=true
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   spark-worker-b:
     build:
       context: .
       dockerfile: ./docker/spark/Dockerfile
+    container_name: spark-worker-b
     ports:
-      - "9095:8080"
+      - "9095:8080" # Web UI for worker
       - "7001:7000"
     depends_on:
       - spark-master
+    volumes:
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
+      - spark-logs:/opt/spark/logs
+      - spark-history:/opt/spark/history
+      - ./conf/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - SPARK_MASTER=spark://spark-master:7077
       - SPARK_WORKER_CORES=1
@@ -51,23 +78,44 @@ services:
       - SPARK_EXECUTOR_MEMORY=1G
       - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-b
+      - SPARK_NO_DAEMONIZE=true
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  spark-history-server:
+    build:
+      context: .
+      dockerfile: ./docker/spark/Dockerfile
+    container_name: spark-history-server
+    ports:
+      - "18080:18080"
     volumes:
-      - ./apps:/opt/spark-apps
-      - ./data:/opt/spark-data
+      - spark-history:/opt/spark/history
+      - ./conf/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
+    environment:
+      - SPARK_WORKLOAD=history-server
+      - SPARK_HISTORY_OPTS=-Dspark.history.fs.logDirectory=file:/opt/spark/history -Dspark.history.ui.port=18080
+    depends_on:
+      - spark-master
 
   database:
     image: postgres:16.2-alpine
+    container_name: postgres-db
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=casa1234
+      - POSTGRES_DB=retail_db
     volumes:
-      - "postgres:/var/lib/postgresql/data"
+      - postgres:/var/lib/postgresql/data
 
   kafka:
     image: wurstmeister/kafka:latest
-    hostname: kafka
     container_name: kafka
+    hostname: kafka
     ports:
       - "9092:9092"
     environment:
@@ -90,15 +138,24 @@ services:
 
   localstack:
     image: localstack/localstack
+    container_name: localstack
     ports:
       - "127.0.0.1:4566:4566" # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559" # external services port range
+      - "127.0.0.1:4510-4559:4510-4559" # External services port range
     environment:
       - DEBUG=${DEBUG:-0}
     volumes:
-      - "localstackVolume:/var/lib/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - localstackVolume:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
-  localstackVolume:
   postgres:
+  localstackVolume:
+  spark-logs:
+  spark-history:
+
+
+networks:
+  default:
+    name: spark-network
+    driver: bridge
