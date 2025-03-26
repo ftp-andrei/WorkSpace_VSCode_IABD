@@ -1,1 +1,7 @@
 aplicar todo lo visto en la 2da evaluacion
+
+Hacer un docx y enviar como PDF con todo (Deep)
+
+departure_delay_in_minutes - valor atipico (209)
+arrival_delay_in_minutes - valor inconsistente (espacio en blanco), fila 213
+
