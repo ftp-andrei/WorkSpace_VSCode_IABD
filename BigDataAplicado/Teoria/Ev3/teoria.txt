@@ -1,1 +1,4 @@
 examtopics - partitioner (clf-C0X)
+
+Cuando tienes csvs: trabajas con dataframes
+Si tienes txts,json.. con rdds

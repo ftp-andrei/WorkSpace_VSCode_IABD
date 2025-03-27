@@ -290,6 +290,16 @@ Cuando lanzas una instancia EC2 tienes que seleccionar una AMI (Imagen)
 
 
 
+Lambda: Detiene, inicia, para... Pero necesitas un rol. Es una accion que ejecuta un evento
+
+
+Beanstalk: esta preparado para web, le paso el codigo y se encarga de todo: nginx, loadbalancing.. etc. Es tipo SaaS 
+Se paga por lo que se usa.
+
+
+
+
+
 
 
 

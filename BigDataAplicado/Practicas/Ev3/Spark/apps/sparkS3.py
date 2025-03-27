@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 aws_access_key_id = 'test'
 aws_secret_access_key = 'test'
 
-
+# En vez de spark-localstack-1 poner localstack a secas
 
 spark = SparkSession.builder \
     .appName("SPARK S3") \
