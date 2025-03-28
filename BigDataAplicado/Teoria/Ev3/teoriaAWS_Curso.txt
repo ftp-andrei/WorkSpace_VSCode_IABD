@@ -280,14 +280,18 @@ Cuando lanzas una instancia EC2 tienes que seleccionar una AMI (Imagen)
     -Grupos de seguridad 
     -Par de llaves
 
+EC2: Modelos de pago:
+Ondemand instances: Se paga por horas
+Hosts dedicados
+Instancias dedicadas
+Instancias reservadas: Full, parcial, no upfront payment
+Tareas instancias reservadas 
 
+Coontainers: Son un metodo de virtualizacion de sistema operativo 
+Beneficios: Repetable, el software corre en distintos entornos, mas rapido para pasar,iniciar o terminar las maquinas virtuales 
 
-    
-
-
-
-
-
+Docker: Software que permite contruir, testear y lanzar aplicaciones rapidamente 
+Un container contiene todo l necesario para que la aplicacion corra 
 
 
 Lambda: Detiene, inicia, para... Pero necesitas un rol. Es una accion que ejecuta un evento
@@ -297,6 +301,11 @@ Beanstalk: esta preparado para web, le paso el codigo y se encarga de todo: ngin
 Se paga por lo que se usa.
 
 
+
+AWS EBS: Permite crear un volumen individual de almacenamiento y adjuntarlo a EC2 
+Tipos EBS:
+    - SSD 
+    - HDD
 
 
 
