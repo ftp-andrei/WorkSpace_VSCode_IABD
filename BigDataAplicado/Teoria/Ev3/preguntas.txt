@@ -1,0 +1,251 @@
+---------------------
+Guille
+---------------------
+
+1. What are advantages of cloud computing for a company moving from a traditional on-premises computing model? (Select TWO.)
+A. The company can focus less on infraestructure and focus more on differentiating the business 
+B. The company can invest in more fixed (capital) expenses and reduce their variable expenses 
+C. IT teams can make capacity decisions before deploying applications so that the always have excess capacity 
+D. Resources can be created, scaled up, scaled down, ir destroyed based on demand 
+E. All on-premises server licenses can be easily tranferred and managed centrally in the cloud 
+
+Correct: A y D 
+
+2. How does cloud computing improve a company's ability to provision resources to meet capacity demands compared to on-premises computing? 
+A. Cloud resources can scale up or down based on demand.
+B. Cloud resources can be locked down to the resource level
+C. Cloud resources can experience peaks and valleys in usage 
+D. Cloud resources can be cost forecasted
+
+Correct: A 
+
+3. Which statement accurately describes how costumers can use AWS Support?
+A. Customers are assigned a Technical Acoount Manager (TAM) for all AWS Support plans 
+B. Customers can get AWS Support for both experimental non-production accounts and for business-critical production accounts 
+C. Customers must choose one of three support plans: Basic Support, Business Suport, and Enterprise Support 
+D. Customers should contact their Support Concierge to provide quick and efficient technical support 
+
+Correct: B 
+
+4. Which factors are considered in calculating the total cost of ownership (TCO) for the AWS Cloud? (Select TWO) 
+A. The numbers of servers that need to be migrated to the cloud
+B. The numbers of roles that need to be migrated to the cloud
+C. The numbers of users that need to be migrated to the cloud
+D. The numbers of storage that need to be migrated to the cloud
+E. The numbers of groups that need to be migrated to the cloud
+
+Correct: A y D
+
+5. Which statement about AWS Regions is true?
+A. All AWS Acoounts can access all AWS Regions
+B. Data stored in an AWS Region isn't subject to geographical complance requirements 
+C. All available Regions are enabled by default in an AWS account 
+D. Using a Region as clouse as possible to users can reduce latency 
+
+Correct: D
+
+6. Which statements about AWS Identity and Access Management (IAM) policies are accurate? (Select TWO)
+A. Identity-based policies can only be attached to a single entity
+B. Identity-based policies are attached to a user, group or role
+C. Resources-based policies are attached to a user, group or role 
+D. Resources-based policies allow access by default 
+E. Access control list (ACLs) are form of resources-based policies
+
+Correct: B y E
+
+7. A company must produce reports of any changes to its Amazon EC2 instance settings. Which AWS service should they use?
+A. AWS Config 
+B. Amazon CloudWatch
+C. AWS CloudTrail 
+D. AWS Artifact
+
+Correct: A
+
+8. Which option describes a capability of Amazon virtual private clouds (VPCs)?
+A. They can belong to multiple AWS Regions 
+B. They can span Availability Zones 
+C. They can have the address range changed as desired after creation 
+D. They can be configured as a physically isolated section of the AWS Cloud 
+
+Correct: B 
+
+9. Which requirement suggests configuring Amazon Route 53 with latency routing? 
+A. A company wants to detect website outages and automatically redirect customers to a healthy location 
+B. A company wants to route traffic to only locations where they have distribution rights
+C. A company wants to perform A/B testing and route traffic to different locations based on a percentage of traffic 
+D. A company wants to route traffic to the Region that provides the fastest experience based on performance measurements 
+
+Correct: D
+
+10. A developer is testing a prototype on Amazon EC2. The instances are terminated after testing, ut the application requires uninterrupted compute while processing. Which type of Amazon EC2 instance pricing meets the need at the lowest cost? 
+A. Scheduled Reserved Instance 
+B. On-Demand Instance 
+C. Spot Instance 
+D. Reserved Instance 
+
+Correct: B
+
+11. What role do security groups play in managing access to Amazon EC2 instance?
+A. Security groups define the AWS Identity and Access Management (IAM) roles that can access an instance 
+B. Security groups control inbound access to the subnet that an Amazon EC2 is associated with 
+C. Security groups provide a set of rules to control traffic to or from an instance 
+D. Security groups identiy the public and private keys required to connect to an Amazon EC2 instance
+
+Correct: C
+
+12. A developer wants to use Amazon Elastic Block Store (Amazon EBS) for their application. What action should they take? 
+A. Attach the Amazon EBS volume to an Amazon EC2 instance 
+B. Back up the Amazon EBS volume using Snapshots 
+C. Attach the Amazon EBS volume to multiple Amazon EC2 instances in multiple Availibity Zones 
+D. Replicate the Amazon EBS volume in a different Availability Zones
+
+Correct: A
+
+13. A company needs to sotre long-lived data. They need to the data to be available immediately, but access patterns are unpredicable. Which Amazon S3 storage class would be most cost-effective?
+A. Amazon S3 Standard
+B. Amazon S3 One Zone-Infrequent Access 
+C. Amazon S3 Intelligent-Tiering 
+D. Amazon S3 Glacier 
+
+Correct: C
+
+14. Which statement about Amazon S3 Glacier security is accurate? 
+A. Application encryption must be initiated on ojects archived to Amazon S3 Glacier either using the AWS Management Console or programmatically 
+B. For all operations and interactions with Amazon S3 Glacier yu can use the AWS Management Console
+C. Access to Amazon S3 Glacier can be managed using AWS Identity and Access Management (IAM) policies 
+D. The data in Amazon S3 Glacier is public by default 
+
+Correct: C 
+
+15. Which feature of Amazon RDS should a compnay to enabled high availability?
+A. Virtual private cloud (VPC) deployment
+B. Provisioned IOPS storage 
+C. Multi AZ deployment 
+D. Encryption with AWS Key Management Service (AWS KMS) keys
+
+Correct: C 
+
+16. What is an attribute in an Amazon DynamoDB table? 
+A. A set of related data 
+B. A data element that doesn't need to be broken down further 
+C. A data element that is shared by all items in a table 
+D. A key that uniquely identifies a set of data elements 
+
+Correct: B 
+
+17. Which statement reflects a design principle of the Reliability pillar of the AWS Well Architected Frameworks? 
+A. Dont's deploy code to production until you're certain that it can't fail 
+B. Limit automation when updating infraestructure
+C. Replace one large resource with multiple, smaller resources and distribute requests across these smaller resources 
+D. Scale vertically to the largest instance types that your budget allows based on your best guess of capacity 
+
+Correct: C 
+
+18. What type of alet might be provided by AWS Trust Advisor? 
+A. An alert that an AWS Identity and Access Management (IAM) user has requested service quota changes 
+B. An alert of usual API calls made in an AWS account 
+C. An alert that multi-factor authentication (MFA) isn't activated on an AWS account 
+D. An alert of unauthorized access in an AWS account 
+
+Correct: C 
+
+19. A company has an application running on two Amazon EC2 instances. They want to reduce idle EC2 capacity. The application load is difficult to forecast and they want to keep the CPU utilization close to 40 percent on all instances. Which type of Amazon EC2 Auto Scaling should they configure? 
+A. Dynamic scaling 
+B. Scheduled scaling 
+C. Manual scaling 
+D. Predictive scaling 
+
+Correct: A 
+
+20. Which statement about AWS Auto Scaling is true? 
+A. You can use either Amazon EC2 Auto Scaling or AWS Auto Scaling, but not both 
+B. AWS Auto Scaling can be used to automatically scale Amazon RDS databases
+C. AWS Auto Scaling can be used to automatically scale Amazon DynamoDB tables and indexes
+D. AWS Auto Scaling and Amazon EC2 Auto Scaling are synonymous
+
+Correct: C 
+
+---------------------
+VICENTE - GPT answer
+---------------------
+
+21. Which statement about AWS storage services is accurate?
+A. Amazon EC2 instance store provides durable storage for the Amazon EC2 instance that it's attached to, but it isn't available to other EC2 instances
+B. Amazon Elastic Block Store (Amazon EBS) volumes provide temporary block storage to Amazon EC2, but they don't persist when the EC2 instance is stopped 
+C. Amazon EC2 instance syore is a good choice for running big data processing and analytics 
+D. To access an Amazon Elastic File System (Amazon EFS) the file system must be mounted on an Amazon EC2 instance in your virtual private cloud (VPC)
+
+Correct: 
+
+22. What is the relationship between AWS Regions, Availabilty Zones and data centers?  
+A. Each Region has a set of data centers. Each data center maps to one Availabily Zone 
+B. Each Region has locations called Avaibility Zones, Each Avaibility Zone has data centers 
+C. A set of data centers in a geographical area create a Region. Availabilty Zones are connections between Regions 
+D. Each Avaibility Zone includes data centers. Each data center in an Availability Zone is located in a different geographical Region 
+
+Correct: 
+
+23. Which statements about responsibility are accurate based on the AWS shared responsibility model? (Select TWO) 
+A. Customers are responsible for managing their user data 
+B. AWS is responsible for the configuration of security groups 
+C. AWS is responsible for deciding what data to encrypt in customers' Amazon S3 buckets 
+D. Customers are ponsible for the installation, manintenance, and decommissioning of the hardware that they use in the AWS data centers 
+E. AWS is responisible for the physical security of data centers 
+
+Correct: 
+
+24. Which statement describes the business perspective of the AWS Cloud Adoption Framework? 
+A. Stakeholders can evaluate organizational structures and roles, new skill and process requirement and identify gaps 
+B. Stakeholders can focus on the skill and processes the are needed to aligh IT stategy and goals with business strategy and goals 
+C. Stakeholders can use architectural dimensions and models to understand and communicate the nature of IT systems and their relationships 
+D. Stakeholders can create a strong business case for cloud adoption and prioritize cloud adoption initiatives 
+
+Correct: 
+
+25. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
+
+26. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
+
+27. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
+
+28. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
+
+29. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
+
+30. 
+A. 
+B. 
+C. 
+D. 
+
+Correct: 
