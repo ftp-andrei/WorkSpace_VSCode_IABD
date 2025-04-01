@@ -1,4 +1,5 @@
 import csv
+import os
 import random
 from faker import Faker
 
@@ -8,6 +9,9 @@ random.seed(42)
 
 # Nombre del archivo CSV
 file_name = "../data_bda/csv/sales_data.csv"
+
+# Asegurar que el directorio existe
+os.makedirs(os.path.dirname(file_name), exist_ok=True)
 
 # Número de registros a generar
 num_records = 1000
