@@ -22,7 +22,7 @@ spark = SparkSession.builder \
 
 
 try:
-    df3 = spark.read.option("delimiter", ",").option("header", True).csv("/opt/spark-data/csv/sales_data.csv")
+    df3 = spark.read.option("header", True).option("delimiter", ",").csv("/opt/spark-data/csv/sales_data.csv")
     # cambiar nombre bucket
     df3 \
     .write \
@@ -31,7 +31,7 @@ try:
     .option("fs.s3a.fast.upload.buffer", "bytebuffer")\
     .mode('overwrite') \
     .csv(path='s3a://bucket/output', sep=',')
-    
+    df3.show(5, truncate=False)
     spark.stop()
     
 except Exception as e:

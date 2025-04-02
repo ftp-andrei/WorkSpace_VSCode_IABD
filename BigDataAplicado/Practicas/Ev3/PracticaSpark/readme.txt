@@ -53,15 +53,42 @@ psql -U postgres -d retail_db
 SELECT * FROM stores LIMIT 10;
 
 
+#### 
+CREAR CSV CON LA BD Y SUBIR AL BUCKET (subirCsv.py)
+####
+
 -----
 KAFKA
 -----
 -- Ejecutar en local el kafka-producer y en el master el streamingKafka
 LOCAL: python kafka_producer.py 
 docker exec -it spark-master /bin/bash
-cd ..
-cd spark-apps
-MASTER: python streamingKafka.py
+(Desde /)
+MASTER: python opt/spark-apps/streamingKafka.py
+
+####
+QUE SEA JSON EN VEZ DE CSV
+####
+
+-----
+TRANSFORMACIÓN DE DATOS 
+-----
+
+------- TRATAMIENTO DE LOS VALORES PERDIDOS -------
+
+-- Ejecutamos desde el spark-master el valorPerdido.py
+python opt/spark-apps/valorPerdido.py
+
+-- Verificamos que esta subido al bucket
+    OPCION 1: awslocal s3 ls s3://bucket/  
+    OPCION 2: awslocal s3api list-objects --bucket bucket
+
+(
+para visualizar los datos 
+    df.printSchema()
+    df.show(50)
+)
+
 
 
 
