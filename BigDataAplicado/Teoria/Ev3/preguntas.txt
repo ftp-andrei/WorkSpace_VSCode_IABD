@@ -117,7 +117,7 @@ D. The data in Amazon S3 Glacier is public by default
 
 Correct: C 
 
-15. Which feature of Amazon RDS should a compnay to enabled high availability?
+15. Which feature of Amazon RDS should a company to enabled high availability?
 A. Virtual private cloud (VPC) deployment
 B. Provisioned IOPS storage 
 C. Multi AZ deployment 
@@ -141,7 +141,7 @@ D. Scale vertically to the largest instance types that your budget allows based 
 
 Correct: C 
 
-18. What type of alet might be provided by AWS Trust Advisor? 
+18. What type of alet might be provided by AWS Trusted Advisor? 
 A. An alert that an AWS Identity and Access Management (IAM) user has requested service quota changes 
 B. An alert of usual API calls made in an AWS account 
 C. An alert that multi-factor authentication (MFA) isn't activated on an AWS account 
@@ -175,7 +175,7 @@ B. Amazon Elastic Block Store (Amazon EBS) volumes provide temporary block stora
 C. Amazon EC2 instance syore is a good choice for running big data processing and analytics 
 D. To access an Amazon Elastic File System (Amazon EFS) the file system must be mounted on an Amazon EC2 instance in your virtual private cloud (VPC)
 
-Correct: 
+Correct: D
 
 22. What is the relationship between AWS Regions, Availabilty Zones and data centers?  
 A. Each Region has a set of data centers. Each data center maps to one Availabily Zone 
@@ -200,52 +200,284 @@ B. Stakeholders can focus on the skill and processes the are needed to aligh IT 
 C. Stakeholders can use architectural dimensions and models to understand and communicate the nature of IT systems and their relationships 
 D. Stakeholders can create a strong business case for cloud adoption and prioritize cloud adoption initiatives 
 
-Correct: 
+Correct: D
 
-25. 
-A. 
-B. 
-C. 
-D. 
+----
+VIDEO
+----
 
-Correct: 
 
-26. 
-A. 
-B. 
-C. 
-D. 
+1 Which IT requirement would lead and architect to choose an infraestrcture as a service cloud service model?
 
-Correct: 
+A company wants to mantain the hishest level of flexibility over its IT resources 
 
-27. 
-A. 
-B. 
-C. 
-D. 
+2 How does cloud computing improve a company's ability to provision resoruces to meet capacity demands compared to on-premises computing?
 
-Correct: 
+Cloud resoruces can scale up or down based on demand. 
 
-28. 
-A. 
-B. 
-C. 
-D. 
+3 Which statments about how a company would use AWS Organizations are accurate? (Select TWO)
 
-Correct: 
+A company can benefit from volume discounts with consolidated billing 
+A company can consolidate and centrally manage multiple AWS accounts 
 
-29. 
-A. 
-B. 
-C. 
-D. 
+4 A cloud practitioner wants to visualize their AWS costs per EC2 Instance type for the past 3 months. Which AWS tool or feature should they use?
 
-Correct: 
+AWS Cost Explorer 
 
-30. 
-A. 
-B. 
-C. 
-D. 
+5 What is the relationship between AWS Regions, Availability Zones and data centers?
 
-Correct: 
+Each region has location called Avaibility zones. Each Avaibility zones has data centers 
+
+6 Which statements about AWS Identity and Access Management (IAM) policies are accurate? (Select TWO)
+
+Access control lists (ACLs) are a form of resource-based policies 
+identity-based policies are attched to a user, group or role 
+
+7 Which scenario describe a use case for AWS CloudTrail? 
+
+An account adminitrator wants the ability to track user activity on their account 
+
+8 Which option describe a capabilty of Amazon virtual private clouds? (VPCs)
+
+They can span Avaibility zones 
+
+9 What role do security groups play in managing access to Amazon EC2 instances? 
+
+Security gruops provide a set of rules to control traffic to or from an instance 
+
+10 Which statement about Amazon Elastic Block Store (amazon ebs) is true? 
+
+Amazon EBS volumes persis independentyle from the Amazon EC2 instances that they're attached to 
+
+11 A company need to store long-lived data. They need the data to be available immediately, but acess patterns are unpredictable. Which Amazon S3 storage class wouldn be most cost effective?
+
+Amazon S3 Intelligent-Tiering 
+
+12 A company needs to store billions of low volume daily events that will be used for analytics. Which storage option best fits this use case? 
+
+Amazon S3 
+
+13 A company has an ecommerce site that requires storage and retrival of unstructured customer metadata to support one of its microservices. Which database option is best suited to store this data?
+
+Amazon DynamoDB 
+
+14 which scenario is a good git for Amazon Redshift?
+
+A company needs a data warehouse to support analytics applications
+
+15 Which statemente reflects a design priciple of the Reliabilty pilar of the AWS Well-Architected Framework? 
+
+Replace one large resource with multiple, smaller resources, and distribute requests across these smaller resources
+
+16. Which scenario should be addressed with a Network Load Balancer?
+
+A solution must load balance millions of request per second while maintaning low latency 
+
+17 How is Elastic Load Balancing (ELB) used with Amazon EC2 Auto Scaling (Select TWO)
+
+ELB performs Health checks on new Amazon EC2 instances that are added to the Amazon EC2 Auto Scaling group 
+ELB distributes traffic between Amazon EC2 instances in an Amazon EC2 Auto Scaling group 
+
+
+1) How do economies of scale help customers moving to cloud computing from on- premises computing?
+Ans) Customers can achieve lower variable costs and scale infrastructure beyond what is possible on premises.
+
+2) Which statement accurately describes how customers can use AWS Support?
+Ans) Customers can get AWS Support for both experimental non-production accounts and for business-critical production accounts.
+
+3) Which factors are considered in calculating the total cost of ownership (TCO) for the AWS Cloud? (Select TWO.)
+Ans) i) The number of servers that need to be migrated to the cloud
+ii) The amount of storage that needs to be migrated to the cloud
+
+4) Which statement about AWS Regions is true?
+Ans) Using a Region as close as possible to users can reduce latency.
+
+5) Which statements about AWS Identity and Access Management (IAM) policies are accurate? (Select TWO.)
+Ans) i) Identity-based policies are attached to a user, group, or role.
+ii) Access control lists (ACLs) are a form of resource-based policies.
+
+6) Which option describes a capability of Amazon virtual private clouds (VPCs)?
+Ans) They can span Availability Zones.
+
+7) Which requirement suggests configuring Amazon Route 53 with latency routing?
+Ans) A company wants to route traffic to the Region that provides the fastest experience based on performance measurements.
+
+8) A company wants complete control over its server's configurations, operating system (OS), and application software stack. Which AWS compute service should they choose?
+Ans) Amazon EC2
+
+9) A developer needs temporary block storage for cache data on an Amazon EC2 instance. Which option should they choose?
+Ans) Amazon EC2 instance store
+
+10) Which statement about Amazon Elastic Block Store (Amazon EBS) is true?
+Ans) Amazon EBS volumes persist independently from the Amazon EC2 instances that they're attached to.
+
+11) A company needs to store billions of low volume daily events that will be used for analytics. Which storage option best fits this use case?
+Ans) Amazon S3
+
+12) A company has an ecommerce site that requires storage and retrieval of unstructured customer metadata to support one of its microservices. Which database option is best suited to store this data?
+Ans) Amazon DynamoDB
+
+13) Which scenario best describes a use case for Amazon Aurora?
+Ans) A company needs a highly available PostgreSQL-compatible database.
+
+14) Which statement is an advantage of the platform as a service (PaaS) cloud service model?
+Ans) PaaS avoids the need to manage operating systems.
+
+15) Which statements about responsibility are accurate based on the AWS shared responsibility model? (Select TWO.)
+Ans) i) AWS is responsible for the physical security of data centers.
+ii) Customers are responsible for managing their user data.
+
+16) Which scenario describes a use case for AWS CloudTrail?
+Ans) An account administrator wants the ability to track user activity on their account.
+
+17) . A network administrator wants to run their ecommerce web application on a virtual private cloud (VPC). Which step is part of setting up the VPC? (Select TWO.)
+Ans) i) Create private and public subnets.
+ii) Specify the range of IP addresses for the VPC.
+
+18) . Which statement accurately describes a content delivery network (CDN)?
+Ans) A CDN caches frequently requested files.
+
+19) A company wants complete control over its server's configurations, operating system (OS), and application software stack. Which AWS compute service should they choose?
+Ans) Amazon EC2
+
+20) What role do security groups play in managing access to Amazon EC2 instances?
+Ans) Security groups provide a set of rules to control traffic to or from an instance.
+
+21) A developer wants to use Amazon Elastic Block Store (Amazon EBS) for their application. What action should they take?
+Ans) Attach the Amazon EBS volume to an Amazon EC2 instance.
+
+22) - A company needs to store long-lived data. They need the data to be available immediately, but access patterns are unpredictable. Which Amazon S3 storage class would be most cost-effective?
+Ans) Amazon S3 Intelligent-Tiering
+
+23) . Which statement about Amazon S3 Glacier security is accurate?
+Ans) Access to Amazon S3 Glacier can be managed using AWS Identity and Access Management (IAM) policies.
+
+24) Which option is a company's responsibility when running Amazon RDS?
+Ans) Application optimization
+
+25) Which scenario is a good fit for Amazon Redshift?
+Ans) A company needs a data warehouse to support analytics applications.
+
+26) How does AWS Trusted Advisor assist a company getting started with AWS?
+Ans) AWS Trusted Advisor provides recommendations on configuring your AWS resources.
+
+27) Which statement describes high availability?
+Ans) It's the probability that your entire system will function as intended for a specified period.
+
+28) -Which pieces of information MUST be configured for the Amazon EC2 instances that will be part of an Amazon EC2 Auto Scaling group? (Select TWO).
+Ans) i) ID of an Amazon Machine Image (AMI)
+ii) Amazon EC2 instance type
+
+29) Which statement about AWS Auto Scaling is true?
+Ans) AWS Auto Scaling can be used to automatically scale Amazon DynamoDB tables and indexes.
+
+30) Which configuration represents a valid use of security groups in a virtual private cloud (VPC)?
+Ans) Limit outbound traffic from an Amazon EC2 instance in the VPC to a specific database server.
+
+
+
+1. What are advantages of cloud cimputing for a company moving from a tradicional on-premises computing model (Select TWO)
+
+Resources can be created, caled up, scaled down, or destroyed based on demand
+The company can focus less on infraestrcture and focus more on differentiating the business 
+
+2. How does cloud computing improve a company's ability to provision resources to meet capacity demands compared to on-premises computing? 
+
+Cloud resources can scale up or down based on demand 
+
+3. Which statement accurately describes AWS pricing 
+
+Volume-based discounts are available when usage increses (on more services)
+
+4. How does the AWS Billing Dashboard help companies analyze their AWS usage to find potential cost-saving opportunities?
+
+The billing dashboard shows the status of the month-to-date AWS expenditure and the AWS services that account for the majority of the overall expenditure 
+
+5. An AWS account administrator wants to grant temporary cross-account access that allows external users to access specific resources within their own account. Which action would align with the best practice of using temporary sessions? 
+
+Create an AWS Identity and Access Management (IAM) role that can be assumed by external users and grant it permissions to the specific resources 
+
+6. Which statement about securing data in transit are true? Select TWO 
+
+TLS provides encryption of data in transit 
+TLS certificates can be managed using AWS Certificate Manager (ACM)
+
+7. A network administrator wnats to configure a public subnet and route incoming and outgoing traffic to and from an Amazon EC2 instance in the public subnet to the public internet. Which virtual private cloud (VPC) feature should they use?
+
+An internet gateway 
+
+8. Which statement accurately describes a content delivery network (CDN)?
+
+A CDN caches frequently requested files 
+
+9. A company wants complete control over its server's configurations, operating system (OS), and application software stack. Which AWS compute service should they choose? 
+
+Amazon EC2 
+
+10. What role do security groups play in managing access to Amazon EC2 instances?
+
+Security groups provide a set of rules to control traffic to or from an instance 
+
+11. Which scenario is a good fit for Amazon Elastic File System (Amazon EFS) storage?
+
+A company needs to give all Amazon EC2 instances in its virtual private cloud (PCS) read and write access to a network file system (NFS)
+
+12. A company needs to sotre long-lived data. They need the data to be available immediately, buy access patterns are unpredicable. Which Amazon S3 storage class would be most cost-effective? 
+
+Amazon S3 Intelligent-Tiering
+
+13. Which scenario describes a good use case for Amazon S3 Standard storage? 
+
+Hosting website images 
+
+14. What is an attribute in an Amazon DynamoDB table?
+
+A data element that doesn't need to be broken down further 
+
+15. Which statement reflects a design priciple of the Security pillar of the AWS Well-Architected Framework?
+
+Apply security at all layers of an architecture 
+
+16. Which scenario should be addressed with a Network Load Balancer? 
+
+A solution must load balance millions of requests per second while maintaining low latency 
+
+17. Which statement about AWS Auto Scaling is true? 
+
+AWS Auto Scaling can be used to automatically scale Amazon DynamoDB tables and indexes 
+
+-----------------
+
+1. Which statement accurately describes AWS pricing?
+
+Volume-based discounts are available when usage increases (on some services)
+
+2. Which factors are considered in calculating the total cost of ownership (TCO) for the AWS Cloud (Select TWO)
+
+The number of servers that need to be migrated to the cloud 
+The amount of storage that needs to be migrated to the cloud 
+
+3. A company has a set of big data processing jobs in Amazon Simple Queue Service (Amazon SQS) that need a lot of compute. Which Amazon EC2 instancing pricing model would meet the need at the lowest possible cost? 
+
+Sporrt instance 
+
+4. How does AWS Trusted Advisor assist a company getting started with AWS? 
+
+AWS Trusted Advisor provides recommendations on configuring your AWS resources 
+
+5. Which pieces of information must be configured for the Amazon EC2 instances that will be part of an Amazon EC2 Auto Scaling group? Select TWO 
+
+Amazon EC2 instance type 
+ID of an Amazon Machine Image (AMI)
+
+
+
+
+
+
+
+
+
+
+
+

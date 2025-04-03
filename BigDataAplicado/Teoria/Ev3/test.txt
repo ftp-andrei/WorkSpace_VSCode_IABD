@@ -1,0 +1,1302 @@
+AWS Academy Cloud Foundation Module 1 Quiz Answers
+Q1. What are the advantages of cloud computing over computing on-premises?
+
+Answer: 
+
+All of the above
+
+Avoid large capital purchases
+
+Use on-demand capacity
+
+Increase speed and agility
+
+Q2. What is the pricing model that enables AWS customers to pay for resources on an as-needed basis?
+
+Answer: 
+
+   Pay as you go
+
+Q3. Which of these is not a cloud deployment
+
+Answer: 
+
+    System administration as a service
+
+Q4. True of False? AWS owns and maintains the network-connected hardware required for 
+
+       application services, while you provision and use what you need.
+
+Answer: 
+
+       True
+
+Q5. Which of these is not a benefit of cloud computing over on-premises computing?
+
+Answer: 
+
+       Pay for racking, stacking, and powering services
+
+Q6. Which of the following are not benefits of AWS Cloud computing?
+
+
+Answer: 
+
+      High Latency
+
+      Multiple procurement cycles
+
+Q7. Which of the following is a compute service? (Select the best answer)
+
+Answer: 
+
+       Amazon EC2
+
+Q8. True or False? Cloud Computing provides a simple way to access servers, storage, databases, and 
+
+
+       a broad set of application services over the internet. You own the network-connected  hardware required for these services and Amazon Web Services provisions what you need.
+
+Answer: 
+
+       False
+
+Q9. Economics of Scale result from_______
+
+Answer: 
+
+       having hundreds of thousands of customers aggregated in cloud
+
+
+
+
+
+
+
+
+
+
+AWS Academy Cloud Foundation Module 10 Quiz Answers
+
+
+AWS Academy Cloud Foundation Module 10 Quiz Answers
+Q1. Which of the following AWS tools help your application scale up or down based on demand?
+
+A. Availability Zones 
+
+B. Amazon EC2 Auto Scaling 
+
+C. Aws CloudFormation 
+
+D. Elastic load balancing 
+
+E. AWS Config 
+
+Answer: [ B ] [ D ]
+                                       Amazon EC2 Auto Scaling
+
+                                       Elastic Load Balancing
+
+Q2. Which service would you use to send alerts based on Amazon CloudWatch alarms?
+
+A. Amazon Simple Notification Service (Amazon SNS)
+
+B. AWS Cloud Trail 
+
+C. AWS Trusted Advisor 
+
+D. Amazon Route 53
+
+Answer:   [ A ]  Amazon Simple Notification Service (Amazon SNS)
+
+Q3. Which of the following are characteristics of Amazon EC2 Auto Scaling? ( Choose three ) 
+
+A. Only Supports Dynamic Scaling 
+
+B. Responds to changing conditions by adding or terminating instances
+
+C. Deliver Push Notifications 
+
+D. Launches instances from a specified Amazon Machine Image (AMI)
+
+E. Enforces a minimum number of running Amazon EC2 instances
+
+Answer: [ B ] , [ D ] , [ E ] 
+
+Responds to changing conditions by adding or terminating instances
+
+Launches instances from a specified Amazon Machine Image (AMI)
+
+Enforces a minimum number of running Amazon EC2 instances
+
+Q4. Which of the following must be configured on an Elastic Load Balancing load balancer 
+
+        to expect incoming traffic ?
+
+A. A Port 
+
+B. A Network Interface 
+
+C. A Listener 
+
+D. An Instance 
+
+Answer: [ C ] A listener
+
+Q5. Which of the following elements are used to create an Amazon EC2 Auto Scaling 
+
+       launch configuration?
+
+A. Amazon Machine Image (AMI)
+
+B. Load Balancer 
+
+C. Instance type
+
+
+D. Virtual Private Cloud (VPC ) and Subnets
+
+ E. Amazon Elastic Block Store (Amazon EBS) volumes
+
+Answer: [ A ] , [ C ] , [ E ] 
+
+Amazon Machine Image (AMI)
+
+Instance type
+
+Amazon Elastic Block Store (Amazon EBS) volumes
+
+
+Q6.Which of the following services can help you conflict important metrics from 
+
+      Amazon Relational Database Service (Amazon RDS) and Amazon Elastic Compute 
+
+      Cloud (Amazon EC2) instances?
+
+A. Amazon CloudFront 
+
+B. Amazon Cloud Search 
+
+C. Amazon Cloud Watch 
+
+D. Amazon Cloud Trial 
+
+E. Amazon E2C Scaling 
+
+Answer: [ D ] Amazon CloudTrail
+
+Q7. Which of the following are elements of an Auto Scaling group ? (Choose three)
+
+A. Maximum size 
+
+B. Health Checks 
+
+C. Desired capacity
+
+D. Minimum size
+
+Answer: [ A ] , [ C ] , [ D ]
+
+Maximum size
+
+Desired capacity
+
+Minimum size
+
+Q8. There is an adult at your company and they need to have a big log of all access to 
+
+        AWS resources in the account. Which of the following services can assist in providing 
+
+        these details?
+
+A. Amazon Cloud Watch 
+
+B. AWS Cloud Trial 
+
+C. Amazon Elastic Compute Cloud (Amazon EC2)
+
+D. Amazon Simple Notification Service ( Amazon SNS) 
+
+Answer: [ B ]  AWS CloudTrail
+
+Q9. In Elastic Load Balancing, when the load balancing detects an unhealthy target, which of 
+
+       the following are true (Choose three)
+
+A. Stops routing traffic to that target
+
+B. Triggers an Alarm 
+
+C. Resumes routing traffic when it detects that the target is healthy again
+
+D. Resumes routing traffic when manually restarted 
+
+E. Routes traffic to a healthy target
+
+Answer: [ A ] , [ C ] , [ E ]  
+
+
+
+
+
+Q1. For certain services like Amazon Elastic Compute Cloud (Amazon EC2) and 
+
+       Amazon Relational Database Service (Amazon RDS), you can invest in reserved capacity. 
+       What options are available for Reserved Instances?
+
+Answer: 
+              AURI
+              NURI
+              PURI
+
+Q2. Where can a customer go to get more details about Amazon Elastic Compute Cloud 
+       (Amazon EC2) billing activity that took the place 3 months ago?
+
+Answer: 
+
+               AWS Cost Explorer
+
+Q3. True or false? To receive the discounted rate associated with Reserved Instances, you must 
+        make a full, upfront payment for the term of the agreement
+
+Answer: 
+             False
+
+Q4. There is no charge for which of the following?
+
+Answer: 
+              Inbound data transfer (with some exceptions)
+              Data transfer between services within the same AWS Reg
+
+Q5. What are the four support plans offered by AWS Support?
+
+Answer: 
+              Basic, Developer, Business, Enterprise
+
+
+Q6. What AWS tool compares the cost of running your application in an on-premises data 
+       center to AWS?
+
+Answer: 
+             Total Cost of Ownership (TCO) calculator
+
+
+Q7. As AWS grows, the cost of doing business is reduced and savings are passed back to the 
+      customer with lower pricing. What is this optimization called?
+
+Answer: 
+              Economics of scale
+
+
+Q8. True or false? AWS offers a variety of services at no charge, for example, Amazon Virtual Private Cloud (Amazon VPC), AWS Identity and Access Management (IAM), 
+       Consolidated Billing, AWS Elastic Beanstalk, automatic scaling, AWS Ops Works and 
+       AWS CloudFormation. However, you might be charged for other AWS services that you use 
+       in conjunction with these services
+
+Answer: 
+                True
+
+
+Q9. When are free data transfers applicable across AWS?
+
+Answer: 
+
+               Free inbound data transfer for Amazon Elastic Computer Cloud (Amazon EC2) instances
+
+               Free outbound data transfer between AWS services within the same Region
+
+
+Q10. True of false? Unlimited services are available with the AWS Free Tier to new AWS customers for 12 months following their AWS sign-up date.
+
+Answer: 
+               False
+
+
+
+
+
+
+
+
+
+AWS Global Infrastructure Overview
+Q1. Which component of the AWS Global Infrastructure does Amazon CloudFront use to ensure 
+
+       low-latency delivery? (Select the best answer)
+
+ A. AWS Regions
+
+ B. AWS Edge locations
+
+ C. AWS Availability Zone
+
+D. Amazon virtual private cloud (Amazon VPC)
+
+Answer:  
+
+                  [ B ] AWS Edge locations
+
+Q2. You can run applications and workloads from a region closer to the end users to ______ latency.
+
+A. Increase
+
+B. Decrease
+
+Answer: 
+
+                  [ B ] Decrease
+
+Q3. True / False? Networking, storage, compute and databases are examples of service categories 
+
+       that AWS offers.
+
+Answer: 
+
+                 True
+
+Q4. Which of these statements about Availability Zones is not true? (Select the best answer)
+
+A. Availability Zones are designed for fault isolation
+
+B. Availability Zones are made up of one or more data centers
+
+C. Availability zones are connected to each other using high-speed private links
+
+D. A data center can be used for more than one availability zone
+
+Answer: 
+
+                 [ D ]   A data center can be used for more than one availability zone
+
+Q5. What is true about Regions (Choose two)
+
+1. They are the physical locations of your customers
+
+2. All regions are located in one specific geographic area
+3. A region is a physical location that has multiple availability zones
+
+4. Physical location has multiple availability zones
+
+5. Each region is located in a separate geographic area
+
+Answer: 
+
+3. A region is a physical location that has multiple availability zones
+
+5. Each region is located in a separate geographic area
+
+Q6. Which of the following are geographic areas that host two or more Availability Zones? 
+
+       (Select the best answer)
+
+A. AWS Origin
+
+B. AWS Regions
+
+
+C. Compute Zones
+
+D. Edge Locations
+
+Answer: AWS Regions
+
+Q7. _____ means the infrastructure has built-in component redundancy and _____ means that 
+
+      resources dynamically adjust to increases or decreases in capacity requirements.
+
+A. No human intervention, fault-tolerant
+
+
+B. Fault-tolerant, no human intervention
+
+C. Elastic and scalable, fault-tolerant
+
+D. Elastic and scalable, no human intervention
+
+E. Fault-tolerant, elastic and scalable
+
+Answer: [ E ] Fault-tolerant, elastic and scalable
+
+Q8. True or False? Availability Zones within a region are connected through low-latency links.
+
+Answer: 
+
+               True
+
+Q9. AWS highly recommends provisioning your compute resources across _____ availability zones.
+
+A.  All
+
+B. No
+
+C. Multiple
+
+D. Single
+
+Answer:
+
+                Multiple
+
+Q10. True or False? Edge locations are only located in the same general area as regions.
+
+Answer: 
+
+                False
+
+
+
+
+
+
+AWS Cloud Security 
+
+Q1. What is the AWS Shared Security Model?
+
+Answer: Security of the Cloud
+
+Q2. In the shared responsibility model, which of the following are examples of
+       " Security in the cloud" ? 
+
+A. Compliance with compute security standards and regulations. 
+
+B. Physical security of the facilities in which the service operates. 
+
+C. Security group configurations. 
+
+D. Encryption of the data at rest and data in transit. 
+
+E. Protecting the global infrastructure. 
+
+
+Answer: 
+
+ [ C ] , [ D ]  
+
+ Q3. Which of the following is the responsibility of AWS under the AWS shared responsibility 
+        model? (Select the best answer).
+
+A. Configuring third party applications.
+
+B. Maintaining physical hardware.
+
+C. Security application access and data.
+
+D. Managing custom Amazon machine images (AMI's).
+
+Answer: 
+                Maintaining physical hardware.
+
+Q4. When creating an AWS Identity and Access Management (IAM) policy, what are the two 
+
+
+      types of access that can be granted to a user? (Choose two).
+
+A. Institutuional Access.
+
+B. Authorized Access.
+
+C. Programmatic Access.
+
+D. AWS Management Console Access.
+
+E. Administrative Root Access.
+
+Answer: 
+
+Programmatic Access.
+
+AWS Management Console Access.
+
+Q5. True or false? AWS organizations enables you to consolidate multiple aws accounts so that 
+
+       you centrally manage them.
+
+           True.
+
+           False.
+
+Answer: 
+                   True.
+
+Q6. Which of the following are best practices to secure your account using aws identity and 
+
+         access management? (Choose 2).
+
+A. Provide users with default administrative privileges.
+
+B. Leave unused and unnecessary users and credentials in place.
+
+C. Manage access to AWS resources.
+
+D. Avoid using IAM groups to grant the same access permissions to multiple users.
+
+E. Define fine-grained access rights.
+
+Answer: 
+
+Manage access to AWS resources.
+
+Define fine-grained access rights.
+
+Q7. Which of the following should be done by the AWS account root user? 
+
+       (Select the best answer).
+
+A. Secure access for applications.
+
+B. Integrate with other AWS services.
+
+C. Change granular permissions.
+
+D. Change the AWS support plan.
+
+Answer: 
+
+Change the AWS support plan.
+
+Q8. After initial login, what does AWS recommend as the best practice for the AWS account 
+
+       root user?
+
+A. Delete the AWS account root user.
+
+B. Revoke all permissions on the AWS account root user.
+
+C. Restrict permission on the AWS account root user.
+
+D. Delete the access keys of the AWS account root user.
+
+Answer: 
+
+Delete the access keys of the AWS account root user.
+
+Q9. How would a system administrator add an additional layer of login security to a user's 
+
+       AWS management console?
+
+A. Use Amazon Cloud Directory.
+
+B. Audit AWS Identity and Access Management (IAM) roles.
+
+C. Enable multi-factor authentication.
+
+D. Enable AWS CloudTrail.
+
+Answer: 
+
+Enable multi-factor authentication.
+
+Q10. True or false? AWS key management service (AWS KMS) enables you to assess, audit, 
+
+         and evaluate the configurations of your AWS resources.
+
+             True.
+
+             False.
+
+Answer: 
+
+                    False.
+
+
+
+
+
+
+AWS Academy Cloud Foundation Module 5 Quiz Answers 
+
+Q1. Which AWS networking service enables a company to create a virtual network within AWS
+
+A. AWS Config
+B. Amazon Route 53
+C. AWS Direct Connect
+D. Amazon VPC
+
+Answer: 
+
+               D. Amazon VPC
+
+Q2. With Amazon Virtual Private Cloud (Amazon VPC), what is the smallest size subnet you can 
+       have in a VPC?
+
+A. /28
+B. /30
+C. /24
+D. /26
+
+Answer: 
+                 A. /28
+
+Q3. With Amazon Virtual Private Cloud (Amazon VPC), what is the maximum size IP address 
+       range you can have in a VPC?
+
+A. /28
+B. /16
+C. /30
+D. /24
+
+Answer: 
+                B. /16
+
+
+Q4. You need to allow resources in a private subnet to access the internet. Which of the following 
+       must be present to enable this access?
+
+A. Network access control lists
+B. Security groups
+C. NAT gateway
+D. Route tables
+
+Answer: 
+  
+              C. NAT gateway
+
+
+Q5. Which AWS networking service enables a company to create a virtual network within AWS?
+
+A. Amazon Virtual Private Cloud (Amazon VPC)
+B. AWS Direct Connect
+C. Amazon Route 53
+D. AWS Config
+
+Answer: 
+               A. Amazon VPC
+
+
+Q7. T/F, Private subnets have direct access to the internet.
+
+Answer: 
+              False
+
+
+Q8. Which component of AWS Global Infrastructure does Amazon CloudFront use to ensure 
+       low-latency deliver?
+
+A. AWS Regions
+B. AWS Availability Zones
+C. AWS edge locations
+D. Amazon Virtual Private Cloud (Amazon VPC)
+
+Answer: 
+              C. AWS edge locations
+
+
+Q9. Which of the following is an optional security control that can be applied at the subnet layer 
+       of a VPC?
+
+A. Network ACL
+B. Security group
+C. Web application firewall
+D. Firewall
+
+Answer: 
+                A. Network ACL
+
+
+Q10. What happens when you use Amazon Virtual Private Cloud (Amazon VPC) to create a 
+         new VPC?
+
+A. Three subnets are created by default in one Availability Zone
+B. A main route table is created by default
+C. Three subnets are created by default: one for each Availability Zone
+D. An internet gateway is created by default.
+
+Answer: 
+               B. A main route table is created by default
+
+Q11. Which of the following can be used to protect Amazon Elastic Compute Cloud 
+         (Amazon EC2)  instances hosted in AWS?
+
+A. Internet Gateway
+B. All of the above
+C. AMI
+D. Security group
+
+Answer:
+              D. Security group
+
+Q12. You are a solutions architect who works at a large retail company that is migrating its 
+         existing infrastructure to AWS. You recommend that they use a custom VPC. When 
+         you create a VPC, you assign it to an IPv4 Classless Inter-Domain Routing (CIDR) block 
+         of 10.0.1.0/24 (which has 256 total IP addresses). How many IP addresses are available?
+
+A. 251
+B. 256
+C. 246
+D. 250
+
+Answer: 
+               [A]  251
+
+
+
+
+
+
+
+AWS Cloud Foundation Module 6 Answers
+Q1. Why is AWS more economical than traditional data centers for applications with varying 
+       compute workloads? (Select the best answer).
+
+A. Amazon EC2 Costs are billed on a monthly basis.
+B. Customers retain full administrative access to their Amazon EC2 instances.
+C. Customers can permanently run enough instances to handle peak workloads.
+D. Amazon EC2 instances can be launched on-demand when needed.
+
+Answer: 
+                [ D ] Amazon EC2 instances can be launched on-demand when needed.
+
+Q2. If your project requires monthly reports that iterate through very large amounts of data, 
+       which Amazon Elastic Compute Cloud EC2 purchasing option should you consider? 
+       (Select the best answer).
+
+A. Spot Instances.
+B. Scheduled Reserved Instances.
+C. Dedicated Hosts.
+D. On-Demand Instances.
+
+Answer: 
+                [ B ] Scheduled Reserved Instances.
+
+Q3. What is included in an Amazon Machine Image (AMI)? Select the best answer.
+
+A. A template for the root volume for the instance.
+B. Launch permissions that control which AWS accounts can use the AMI to launch instances.
+C. A block device mapping that specifies the volumes to attach to the instance when it's launched.
+D. All of the above.
+
+Answer: 
+                  [ D ] All of the above.
+
+
+Q4. Which Amazon Elastic Compute Cloud EC2 feature ensures your instances will not share 
+        a physical host with instances from any other AWS customer? (Select the best answer).
+
+A. Amazon VPC.
+B. Placement Groups.
+C. Dedicated Instances.
+D. Reserved Instances.
+
+Answer: 
+                  [ C ]  Dedicated Instances.
+
+Q5. Which of the following services is a serverless compute service in AWS? (Select the best answer).
+
+A. AWS Config.
+B. AWS Lambda.
+C. AWS OpsWork.
+D. Amazon EC2.
+
+Answer: 
+                     [ B ]  AWS Lambda.
+
+Q6. What is the service provided by AWS that enables developers to easily deploy and 
+       manage applications in the cloud? (Select the best answer).
+
+A. Amazon Elastic Container Service.
+B. AWS Elastic Beanstalk.
+C. AWS OpsWork
+D. AWS CloudFormation
+
+Answer: 
+                   [ B ]  AWS Elastic Beanstalk.
+
+*Elastic Beanstalk is an AWS compute service option. It is a Platform as a Service (or PaaS) that facilitates quick deployment, scaling, and managing of your web applications and services.
+
+Q7. Your web application needs four instances to support steady traffic all of the time. 
+      On the last day of the month, the traffic triples. What is the most cost-effective way to 
+      handle this pattern?  (Select the best answer).
+
+A. Run 12 reserved instances all of the time.
+B. Run four On-demand Instances constantly, then add eight more On-Demand on the last day of 
+     each month.
+C. Run four Reserved Instances constantly, then add eight On-Demand Instances on the last day of 
+     each month.
+D. Run four On-Demand Instances constantly, then add eight Reserved Instances on the last day of 
+     each month.
+
+Answer: 
+Run four Reserved Instances constantly, then add eight On-Demand Instances on the last day of each month.
+
+*Reserved Instances provide cost savings when you can commit to running instances full-time, such as to handle the base traffic. On-Demand Instances provide the flexibility to handle traffic spikes.
+
+
+Q8. True or false? Containers contain an entire operating system.
+
+True.
+False.
+
+Answer: 
+                  False.
+
+*Containers are smaller than virtual machines, and do not contain an entire operating system.
+
+Q9. Which Amazon EC2 option is best for long-term workload with predictable usage patterns? 
+       (Select the best answer).
+
+A. Spot Instances.
+B. On-Demand Instances.
+C. Reserved Instances.
+
+Answer: 
+                    [ C ] Reserved Instances.
+
+Q10. Which of the following must be specified when launching a new Amazon Elastic Cloud 
+
+         Compute EC2 windows instance? (Choose two).
+
+A. Amazon EC2 instance type.
+B. Amazon Machine Image (AMI).
+C. The Amazon EC2 Instance ID.
+D. Password for the administrator account.
+E. Amazon EC2 instance type.
+
+Answer: 
+                     [ B ]  Amazon Machine Image (AMI).
+
+
+
+
+
+
+
+AWS Academy Cloud Foundation Module 7 Quiz Answers
+
+Q1. True or false. Amazon simple storage service S3 is an object storage suitable for the storage    of flat files like Microsoft Word documents, photos, etc.
+
+
+A. True
+
+B. False
+
+Answer:   True.
+
+Q2. Amazon S3 replicates all objects _____. (Select the best answer).
+
+A. On multiple volumes within an availability zone.
+
+B. In multiple Availability zones within the same region.
+
+C. Across multiple regions for higher durability.
+
+D. On multiple S3 buckets.
+
+Answer:  In multiple Availability zones within the same region.
+
+Q3. Which of the following can be used as a storage class for an S3 object lifecycle policy?
+
+A. S3 Standard Access.
+
+B. AWS Storage Gateway.
+
+C. S3 Infrequent Access.
+
+D. Simple Storage Service Glacier.
+
+E. S3 Reduced Redundancy Storage.
+
+F. Amazon Dynamo DB.
+
+Answer:
+               [ D ] , [ C ] , [ A ]  Glacier, S3 infrequent access and S3 standard access.
+
+Q4. The name of an S3 bucket must be unique.
+
+A. Worldwide across all AWS accounts.
+
+B. Within a region.
+
+C. Across all your AWS accounts.
+
+D. Within your AWS account.
+
+Answer: [ A ] Worldwide across all AWS accounts.
+
+Q5. You can use amazon elastic file system efc to: (Select the best answer).
+
+A. Provide simple, scalable, elastic file storage for use only within AWS.
+
+B. Implement storage for Amazon EC2 instances that multiple virtual machines can access at the 
+
+     same time.
+
+C. Host a robust CDN to deliver entire web sites with dynamic, static, and streaming content.
+
+D. Generate user specific content.
+
+Answer: [ B ] 
+
+Implement storage for EC2 instances that multiple virtual machines can access at the same time.
+
+Q6. Amazon Elastic Block Storage (Amazon EBS) is recommended when 
+
+       data _____ and ______ (Choose two).
+
+ A. Requires object level storage.
+
+B. Must be quickly accessbile, requiring long-term persistence.
+
+C. Requires an encryption solution.
+
+D. Needs to be stored in a different availability zone than the one the EC2 instance is in.
+
+
+Answer: [ B ] , [ C ] 
+
+Must be quickly accessible, requiring longterm persistence
+requires an encryption solution.
+Q7. True or false, by default all data stored in amazon S3 is viewable by the public.
+
+A. True.
+
+B. False.
+
+Answer: [ B ] 
+                          False.
+
+Q8. Regarding amazon S3 glacier, what is a vault?
+
+A. The rules that determine who may (or may not) access archives.
+
+B. An object (photos, videos, files, or documents).
+
+C. A container for storing archives.
+
+D. A policy that identifies who can access content stored in Glacier.
+
+Answer: [ C]  Container for storing archives.
+
+Q9. True or false. When you create a bucket in amazon S3, it is associated with a specific aws region.
+
+A. True.
+
+B. False.
+
+Answer: [ A]  True.
+
+Q10. Which of the following are features of Amazon Elastic Block Store (Amazon EBS). (Choose two).
+
+A. Data on an Amazon EBS volume is lost when the attatched instance is stopped.
+
+B. Amazon EBS volumes can be encrypted transparently to workloads on the attached instance.
+
+C. Amazon EBS data is automatically backed up to tape.
+
+D. Data stored on Amazon  EBS is automatically replicated within an Availability Zone.
+
+Answer: [ B ] , [ D]
+
+
+
+
+
+
+
+Q1. You are designing an ecommerce web application that will scale to hundreds of thousands 
+
+       of concurrent users, Which database technology is best suited to hold the session state in 
+
+       this example? 
+
+A. Amazon Relational Database Service (Amazon RDS)
+
+B. Amazon DynamoDB 
+
+C. Amazon RedShift 
+
+D. Amazon Simple Storage (Amazon S3)
+
+
+Answer: 
+                  [ B ]  Amazon DynamoDB
+
+Q2. You need to find an item in Amazon DynamoDB table using an attribute other than item's
+
+        primary key. Which of the following operations should you use?
+
+A. Put Item
+
+B. Scan 
+
+C. Query
+
+D. Get Item 
+
+Answer:     [ B ] Scan
+
+
+Q3. In Amazon DynamoDB, what does the query operation enable you to do?
+
+A. Query a table using the Partition Key and optional sort key filter
+
+B. Query and secondary indexes that exists for a table 
+
+C. Efficiency retrieve items from a table or secondary index 
+
+D. All the Above    
+
+Answer:   [ D ] All of the above
+
+Q4. Which AWS Cloud service is best suited for analyzing your data by using 
+
+
+      standard structured  query language (SQL) and your existing business intelligence (BI) tools
+
+
+A. Amazon Relational Database (Amazon RDS)
+
+B. Amazon Simple Storage Simple Glacier 
+
+C. Amazon Dynamo DB
+
+D. Amazon Redshift
+
+Answer:  [ D ]  Amazon Redshift
+
+Q5. In Amazon DynamoDB, an attribute is________. 
+
+A. A Fundamental Data Element
+
+
+B. A Collection Of items 
+
+C. A Collection of Attributes
+
+Answer: [ A ] a fundamental data element
+
+Q6. Which of the following use cases is appropriate for using Amazon Relational Database 
+
+       Service (Amazon RDS)?
+
+A. Massive read / write rates
+
+B. Simple Gets or Put Requests
+
+C. Complex Transactions
+
+D. All the Above 
+
+Answer: [ C ] Complex transactions
+
+Q7. A company has an application, which consists of a .NET layer that connects to a 
+
+     MySQL database. They want to move this application on to AWS and use AWS features 
+
+     such as high availability and automated backups. Which of the following would be 
+
+     an ideal database for this use case ( Select the best answer)
+
+A. Amazon Dynamo DB 
+
+B. Amazon RDS 
+
+C. Amazon Aurora
+
+D. Amazon Redshift
+
+Answer: [ C ] Amazon Aurora
+
+Q8. If you are developing an application that requires a database with extremely 
+
+       fast performance, fast scalability, and flexibility in the database schema, which service 
+
+       would you consider?
+
+A. Amazon Relational Database (Amazon RDS)
+
+B. Amazon Elastic Cache 
+
+C. Amazon Dynamo DB
+
+D. Amazon Redshift
+
+Answer: [ C]  Amazon DynamoDB
+
+Q9. True of false? Amazon RDS automatically patches the database software and backs up 
+
+       your database, storing the backups for a user-defined retention period and enabling point-in-
+
+        time recovery
+
+A. True 
+
+B. False
+
+Answer: [ A ] True
+
+Q10. What should you consider when choosing database type? 
+
+A. Data Size 
+
+B. Data access period 
+
+C. Query Frequency
+
+D. All the Above 
+
+E. Highly Available 
+
+Answer:  [ D ] All of the above
+
+
+
+
+
+
+
+AWS Academy Cloud Foundation Module 9 Quiz Answers
+
+Q1. Which of the following is not one of the four areas of the Performance Efficiency pillar of the 
+
+        AWS Well-Architected Framework?
+
+   A. Tradeoffs 
+
+   B. Selection 
+
+   C. Traceability 
+
+   D. Monitoring 
+
+   Answer:  [ C ]  Traceability
+
+Q2. Which of the following is a principle when designing cloud-based systems?
+
+   A. Build tightly - coupled components 
+
+   B. Make infrequent , large batch changes
+
+   C. Assume Everything will fail 
+
+   D. Use as many services as possible
+
+  Answer:  [ C ]  Assume everything will fail
+
+Q3. Which of the following are pillars of the AWS Well-Architected Framework? (Choose three)
+
+   A. Security 
+
+   B. Persistence 
+
+   C. Operational Excellence 
+
+   D. Cost Optimization  
+
+Answer: [ A ], [ C ] , [ D ]  Security, Operational Excellence & Cost Optimization  
+
+Q4. Which design principles are recommended when considering performance efficiency? (Choose 2)
+
+   A. Enable traceability 
+
+   B. Use serverless architecture 
+
+   C. Analyze and attribute expenditure 
+
+   D. Match Supply with demand 
+
+   E. Democratize advance technologies  
+
+Answer: [ B ] [ E ] 
+
+                                 Use serverless architecture
+
+                                 Democratize advanced technologies
+
+Q5. AWS Trusted Advisor provides insight regarding which five categories of an AWS account?
+
+A. Performance, cost optimization, security, fault tolerance, service limits. 
+
+B. Security, Fault tolerance, high availability, connectivity, service limits 
+
+C. Performance, cost optimization, access control, connectivity, security 
+
+D. Security, access control, high availability, performance, service limits
+
+Answer: [ A ] 
+
+                       Performance, cost optimization, security, fault tolerance, service limits
+
+Q6. What is the focus of the sustainability pillar of the well - architected Frame work ? 
+
+A. Designing workloads that recover quickly from failures. 
+
+B. Minimize the environmental impacts of the running cloud networks. 
+
+C. Avoid unnecessary cost in cloud networks. 
+
+D. Automating updates to cloud networks. 
+
+Answer: [ B ] Minimize the environmental impacts of the running cloud networks. 
+
+Q7. The AWS Well-Architected Framework is organized into how many pillars?
+
+Answer:  5
+
+Q8. After you move to the AWS Cloud, you want to ensure that the right security settings are put 
+
+       in place. Which online tool can assist in security compliance?
+
+A. Amazon Kinesis 
+
+B. Amazon Support 
+
+C. AWS Trusted Advisor 
+
+D. Amazon Cloud watch 
+
+Answer: [ C]  AWS Trusted Advisor
+
+Q9. Which of the following is a measure of your system's ability to provide functionality when 
+
+
+       desired by the user?
+
+A. Availability 
+
+B. Fault Tolerance 
+
+C. Reliability 
+
+D. Performance Efficiency 
+
+
+Answer: [ C]  Reliability
+
+Q10.  What is defined as the ability for a system to remain operational even if some of the 
+
+           components of that system fail?
+
+A. High durability 
+
+
+B. Fault Tolerance 
+
+C. High availability 
+
+Answer: [ B ] Fault Tolerance
+
+Q11. Which of the following best describes a system that can withstand some measures of 
+
+        degradation, experiences minimal downtime, and requires minimal human intervention
+
+A. Scalable 
+
+B. Fault Tolerant 
+
+C. Elastic 
+
+D. Highly available 
+
+Answer: [ D ] Highly available
+
+
+
+
+
+
+
+
+
+
+
+
