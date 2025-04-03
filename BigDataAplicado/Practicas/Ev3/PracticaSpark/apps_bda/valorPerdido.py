@@ -2,6 +2,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit, current_timestamp, mean, count
 from pyspark.sql.types import IntegerType, FloatType, TimestampType
 import re
+from pyspark.sql.types import StructType, StructField, IntegerType, FloatType, TimestampType, StringType
+
 
 # Inicializar la sesión de Spark con configuración para LocalStack
 spark = SparkSession.builder \
@@ -11,11 +13,22 @@ spark = SparkSession.builder \
     .config("spark.hadoop.fs.s3a.secret.key", "test") \
     .config("spark.hadoop.fs.s3a.path.style.access", "true") \
     .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem") \
+    .master("spark://spark-master:7077") \
     .getOrCreate()
 
 # Cargar datos desde el Data Lake en LocalStack
-data_path = "s3a://bucket/output/part-00000-2c7dc2cc-9e22-485c-b705-e97b8d8359a2-c000.csv"
-df = spark.read.option("header", "true").option("delimiter", ",").csv(data_path)
+# * = part de la ruta csv
+data_path = "s3a://bucket/output/*.csv"
+
+# Definir el esquema
+schema = StructType([
+    StructField("Date", TimestampType(), True),  # Campo de fecha
+    StructField("Store ID", IntegerType(), True),  # ID de tienda
+    StructField("Product ID", IntegerType(), True),  # ID de producto
+    StructField("Quantity Sold", IntegerType(), True),  # Cantidad vendida
+    StructField("Revenue", FloatType(), True)  # Ingresos
+])
+df = spark.read.option("header", "true").schema(schema).csv(data_path)
 
 # Verificar los nombres originales de las columnas
 print("Columnas originales:", df.columns)
