@@ -13,7 +13,6 @@ kafka si
 
 
 
-
 ------------
 PRACTICA PASO A PASO
 ------------
@@ -28,7 +27,7 @@ python csvData.py
 docker exec -it spark-master /bin/bash
 cd ..
 cd ..
-python opt/spark-apps/subirCsv.py
+python opt/spark-apps/data_integration.py
 
 -- Despues nos metemos al localstack y comprobar que esta subido 
 docker exec -it localstack /bin/bash
@@ -52,6 +51,7 @@ psql -U postgres -d retail_db
 -- Ejecutamos para ver que existen los datos
 SELECT * FROM stores LIMIT 10;
 
+DROP TABLE stores;
 
 #### 
 CREAR CSV CON LA BD Y SUBIR AL BUCKET (subirCsv.py)
@@ -70,11 +70,14 @@ MASTER: python opt/spark-apps/streamingKafka.py
 QUE SEA JSON EN VEZ DE CSV
 ####
 
+Juntar los parts usando el compresorKafka.py desde master y aplicar tratamiento de datos
+
+
 -----
 TRANSFORMACIÓN DE DATOS 
 -----
 
-------- TRATAMIENTO DE LOS VALORES PERDIDOS -------
+------- TRATAMIENTO DE LOS VALORES -------
 
 -- Ejecutamos desde el spark-master el valorPerdido.py
 python opt/spark-apps/valorPerdido.py

@@ -7,6 +7,8 @@ fake = Faker()
 Faker.seed(42)
 random.seed(42)
 
+# CREAR ARCHIVO CSV CON DATOS FALSOS
+
 # Nombre del archivo CSV
 file_name = "../data_bda/csv/sales_data.csv"
 

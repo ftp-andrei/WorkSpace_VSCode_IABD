@@ -4,10 +4,10 @@ from pyspark.sql import SparkSession
 aws_access_key_id = 'test'
 aws_secret_access_key = 'test'
 
-# LocalStack endpoint URL cambiar si falla
+
 
 spark = SparkSession.builder \
-    .appName("SPARK S3") \
+    .appName("UPLOAD ALTERNATIVO DE POSGRES A S3") \
     .config("spark.hadoop.fs.s3a.endpoint", "http://localstack:4566") \
     .config("spark.hadoop.fs.s3a.access.key", aws_access_key_id) \
     .config("spark.hadoop.fs.s3a.secret.key", aws_secret_access_key) \
@@ -20,20 +20,22 @@ spark = SparkSession.builder \
     .master("spark://spark-master:7077") \
     .getOrCreate()
 
-
+#Upload file to S3
 try:
-    df3 = spark.read.option("header", True).option("delimiter", ",").csv("/opt/spark-data/csv/sales_data.csv")
-    # cambiar nombre bucket
+    #Read file from local directory
+    df3 = spark.read.option("delimiter", ",").option("header", True).csv("/opt/spark-data/stores.csv")
+    
     df3 \
     .write \
+    .option('header', 'true') \
     .option('fs.s3a.committer.name', 'partitioned') \
     .option('fs.s3a.committer.staging.conflict-mode', 'replace') \
     .option("fs.s3a.fast.upload.buffer", "bytebuffer")\
     .mode('overwrite') \
-    .csv(path='s3a://bucket/output', sep=',')
-    df3.show(5, truncate=False)
+    .csv(path='s3a://data-lake/postgres/', sep=',')
+    
     spark.stop()
     
 except Exception as e:
-    print("error reading csv")
+    print("error reading CSV")
     print(e)

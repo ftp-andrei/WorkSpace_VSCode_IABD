@@ -9,7 +9,7 @@ fake = Faker()
 
 producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
                          value_serializer=lambda x: dumps(x).encode('utf-8'))
-print("Producer escuchando...")
+print("Escuchando ...")
 while True:
     message = {
         "timestamp": int(datetime.now().timestamp() * 1000),

@@ -1,0 +1,26 @@
+--Guille
+
+https://github.com/guilleDCMdev/practica_spark_guillermoDeCarlosMunoz
+
+
+-- Jaime
+
+https://github.com/JaimeJimArd2/TrabajoSpark/tree/main
+
+-- Carlos
+
+https://github.com/Trocolao/Practica_Spark
+
+-- Vicente
+
+https://github.com/Vicenteci/ETL-Spark
+
+-- Marcos
+
+https://github.com/MarcosRSPG/ProyectoSpark
+
+
+
+
+
+

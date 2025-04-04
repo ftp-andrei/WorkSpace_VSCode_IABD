@@ -46,7 +46,7 @@ query = df \
     .outputMode("append") \
     .format("console") \
     .start()
-
+# cambiar formato y bucket si fuese necesario
 query = df \
     .writeStream \
     .outputMode("append") \

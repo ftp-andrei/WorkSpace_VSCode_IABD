@@ -6,6 +6,8 @@ fake = Faker()
 Faker.seed(42)
 random.seed(42)
 
+# Crear datos en PostgreSQL con errores y nulos
+
 # Número de registros a generar
 num_records = 1000
 
