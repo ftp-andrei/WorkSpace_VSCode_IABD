@@ -34,7 +34,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Processing Sales Data
-source_path = "s3a://bucket/csv/*.csv"
+source_path = "s3a://bucket/output/*.csv"
 df = spark.read.option('header', 'true').option("delimiter", ",").csv(source_path)
 
 INVALID_VALUES = ["", "STORE_ERROR", "PRODUCT_ERROR", "QUANTITY_ERROR", "REVENUE_ERROR", "DATE_ERROR"]

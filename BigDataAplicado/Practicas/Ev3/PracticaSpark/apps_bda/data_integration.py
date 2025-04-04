@@ -22,7 +22,7 @@ spark = SparkSession.builder \
 
 
 try:
-    df3 = spark.read.option("header", True).option("delimiter", ",").csv("/opt/spark-data/csv/sales_data.csv")
+    df3 = spark.read.option("header", True).option("delimiter", ",").csv("/opt/spark-data/csv/stores_data.csv")
     # cambiar nombre bucket
     df3 \
     .write \
