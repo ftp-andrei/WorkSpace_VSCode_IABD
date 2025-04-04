@@ -10,6 +10,14 @@ test_clust.py
 
 redshift no entra en examen
 kafka si
+--------------------
+subir a s3 los 2 archivos de json
+el mongo subirlo a mongo, y bajarlo en .json/csv 
+subirlo a s3 
+
+Kafka igual que en la practica
+
+
 
 
 
