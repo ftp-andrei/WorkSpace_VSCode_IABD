@@ -1,8 +1,0 @@
-Importacion:
-    Neo/SQL/Mongo
-
-Importar los archivos .csv,.json.. etc
-
-A traves de los containers, generar nodos/relaciones
-
-Luego trabajar sobre las consultas

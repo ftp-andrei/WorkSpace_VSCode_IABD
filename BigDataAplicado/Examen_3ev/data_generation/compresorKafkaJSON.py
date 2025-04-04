@@ -26,10 +26,10 @@ try:
 
     # Leer los datos de Kafka (o el directorio S3)
     # cambiar bucket y tipo de archivo si fuese necesario
-    df = spark.read.csv("s3a://bucket/outputKafka/")
+    df = spark.read.json("s3a://bucket/outputKafka/")
 
     # Guardar el archivo en S3 (cambiar extension si fuese necesario)
-    df.coalesce(1).write.mode("overwrite").csv("s3a://bucket/sales_compacted3")
+    df.coalesce(1).write.mode("overwrite").json("s3a://bucket/sales_compacted_json")
 
     print("Datos comprimidos con exito.")
 except Exception as e:

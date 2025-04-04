@@ -17,54 +17,81 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 schema = StructType([
-    StructField("OrderID", IntegerType(), True),
-    StructField("StoreID", IntegerType(), True),
-    StructField("ProductID", StringType(), True),
-    StructField("Revenue", FloatType(), True),
-    StructField("Date", StringType(), True),
+    StructField("_c2", StringType(), True),
+    StructField("_c1", IntegerType(), True),
+    StructField("_c3", IntegerType(), True),
+    StructField("_c4", FloatType(), True),
+    StructField("_c0", StringType(), True),
 ])
 
-df_csv = spark.read.csv("s3a://cubito/output/*.csv", header=True, inferSchema=True)
+df_csv = spark.read.csv("s3a://cubito/output/*.csv", header=False, inferSchema=True)
 
-from pyspark.sql.functions import col, avg, when
+from pyspark.sql.functions import col, avg, when, to_date
 
-# Revenue
+# Duplicados
 
-df_csv_mean_reve = df_csv.withColumn("Revenue", col("Revenue").cast("float"))
-mean_revenue = df_csv_mean_reve.select(avg("Revenue")).first()[0]
+df_csv = df_csv.dropDuplicates()
 
-df_csv = df_csv_mean_reve.fillna({"Revenue": round(mean_revenue, 2)})
+# Nuevas cols
 
-# Quantity
+df_csv = df_csv.withColumn(
+    "Tratado",
+    when(
+        col("_c4").isNull() | col("_c4").cast("float").isNull() |
+        col("_c3").isNull() | col("_c3").cast("float").isNull() |
+        col("_c0").isNull() | to_date(col("_c0"), "yyyy-MM-dd").isNull(),
+        "Sí"
+    ).otherwise("No")
+)
 
-df_csv_mean_quan = df_csv.withColumn("Quantity Sold", col("Quantity Sold").cast("float"))
+df_csv = df_csv.withColumn("Fecha Inserción", current_timestamp())
+    
+# _c4
 
-mean_quantity = df_csv_mean_quan.select(avg("Quantity Sold")).first()[0]
-df_csv = df_csv_mean_quan.fillna({"Quantity Sold": round(mean_quantity, 2)})
+df_csv_mean_reve = df_csv.withColumn("_c4", col("_c4").cast("float"))
+mean__c4 = df_csv_mean_reve.select(avg("_c4")).first()[0]
+
+df_csv = df_csv_mean_reve.fillna({"_c4": round(mean__c4, 2)})
+
+# _c3
+
+df_csv_mean_quan = df_csv.withColumn("_c3", col("_c3").cast("float"))
+
+mean_quantity = df_csv_mean_quan.select(avg("_c3")).first()[0]
+df_csv = df_csv_mean_quan.fillna({"_c3": round(mean_quantity, 2)})
+
+# Cuartiles de _c3
+
+q1, q3 = df_csv.approxQuantile("_c3", [0.25, 0.75], 0.05)
+iqr = q3 - q1
+
+lower_bound = q1 - 1.5 * iqr
+upper_bound = q3 + 1.5 * iqr
+
+df_csv_clean = df_csv.filter((col("_c3") >= lower_bound) & (col("_c3") <= upper_bound))
 
 # Store
 
-df_csv_store = df_csv.withColumn("Store ID", col("Store ID").cast("int"))
+df_csv_store = df_csv.withColumn("_c1", col("_c1").cast("int"))
 
-df_csv = df_csv_store.dropna(subset=["Store ID"])
+df_csv = df_csv_store.dropna(subset=["_c1"])
 
 # Product
 
-df_csv_prod = df_csv.filter(~col("Product ID").cast("string").startswith("#"))
+df_csv_prod = df_csv.filter(~col("_c2").cast("string").startswith("#"))
 
-df_csv = df_csv_prod.dropna(subset=["Product ID"])
+df_csv = df_csv_prod.dropna(subset=["_c2"])
 
 # Date
 
-df_csv_mean_date = df_csv.withColumn("Date", col("Date").cast("Date"))
-df_csv_mean_date = df_csv_mean_date.dropna(subset=["Date"])
-mode_date = df_csv_mean_date.groupBy("Date").count().orderBy(col("count").desc()).first()[0]
+df_csv_mean_date = df_csv.withColumn("_c0", col("_c0").cast("Date"))
+df_csv_mean_date = df_csv_mean_date.dropna(subset=["_c0"])
+mode_date = df_csv_mean_date.groupBy("_c0").count().orderBy(col("count").desc()).first()[0]
 
 mode_date_str = mode_date.strftime('%Y-%m-%d')
 
-df_csv = df_csv_mean_date.fillna({"Date": mode_date_str})
-
+df_csv = df_csv_mean_date.fillna({"_c0": mode_date_str})
 
 df_csv.show(50)
 
-#df_csv.write.csv("s3://cubito/processed_ceseuve.csv", header=True)
+df_csv.write.mode("append").csv("s3a://cubito/processed/datos_compra", header=True)

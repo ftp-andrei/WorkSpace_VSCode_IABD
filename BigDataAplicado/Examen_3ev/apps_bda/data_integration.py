@@ -1,10 +1,10 @@
-# Ajustar la lectura y escritura para manejar mejor los encabezados y la codificación
-
 from pyspark.sql import SparkSession
 
-# Configuración del SparkSession
+
 aws_access_key_id = 'test'
 aws_secret_access_key = 'test'
+
+# Subir .CSV a S3 LocalStack
 
 spark = SparkSession.builder \
     .appName("SPARK S3") \
@@ -20,34 +20,20 @@ spark = SparkSession.builder \
     .master("spark://spark-master:7077") \
     .getOrCreate()
 
-df3 = spark.read.option("delimiter", ",") \
-    .option("header", "true") \
-    .option("encoding", "UTF-8") \
-    .csv("../spark-data/csv/ceseuve.csv")
 
-df3.show()
-
-df3.write \
+try:
+    df3 = spark.read.option("header", True).option("delimiter", ",").csv("/opt/spark-data/csv/stores_data.csv")
+    # cambiar nombre bucket
+    df3 \
+    .write \
     .option('fs.s3a.committer.name', 'partitioned') \
     .option('fs.s3a.committer.staging.conflict-mode', 'replace') \
-    .option("fs.s3a.fast.upload.buffer", "bytebuffer") \
-    .option("header", "true") \
+    .option("fs.s3a.fast.upload.buffer", "bytebuffer")\
     .mode('overwrite') \
-    .csv(path='s3a://cubito/output', sep=',')
-
-df3 = spark.read.option("delimiter", ",") \
-    .option("encoding", "UTF-8") \
-    .csv("../spark-data/json/tablapostgres/*")
-
-df3.show()
-
-df3.write \
-    .option('fs.s3a.committer.name', 'partitioned') \
-    .option('fs.s3a.committer.staging.conflict-mode', 'replace') \
-    .option("fs.s3a.fast.upload.buffer", "bytebuffer") \
-    .option("header", "true") \
-    .mode('overwrite') \
-    .csv(path='s3a://cubito/basededatos', sep=',')
-
-
-spark.stop()
+    .csv(path='s3a://bucket/output', sep=',')
+    df3.show(5, truncate=False)
+    spark.stop()
+    
+except Exception as e:
+    print("error reading csv")
+    print(e)

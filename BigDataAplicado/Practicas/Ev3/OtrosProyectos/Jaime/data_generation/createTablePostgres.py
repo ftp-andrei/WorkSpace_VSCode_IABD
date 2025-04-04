@@ -27,7 +27,7 @@ def create_table():
 
         with conn.cursor() as cur:
             for x in range(1000):
-                insertString=f'INSERT INTO Stores (store_name,location,demographics) VALUES (\'{random.choices([f'{fake.city()} Shop', '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\',\'{random.choices([fake.city(), '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\',\'{random.choices([fake.last_name(), '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\')'
+                insertString=f'INSERT INTO Stores (store_name,location,demographics) VALUES (\'{random.choices([f'{fake.city()} Shop', '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\',\'{random.choices([fake.city(), '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\',\'{random.choices([random.choice(['Adolescente','Joven adulto','Adulto','Tercera edad']), '', fake.color()], weights=[0.8, 0.15, 0.05])[0]}\')'
                 cur.execute(insertString) 
             conn.commit()
 

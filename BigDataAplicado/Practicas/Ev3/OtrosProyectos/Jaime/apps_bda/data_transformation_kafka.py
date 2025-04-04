@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, current_timestamp
+from pyspark.sql.functions import col, from_unixtime, to_date, current_timestamp
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType
 from pyspark.sql.types import StructType, StringType, IntegerType, DoubleType
 aws_access_key_id = 'test'
@@ -24,45 +24,51 @@ schema = StructType() \
     .add("quantity_sold", IntegerType()) \
     .add("revenue", DoubleType())
 
-df_csv = spark.read.csv("s3a://cubito/output/*.csv", header=True, inferSchema=True)
+df_csv = spark.read.csv("s3a://cubito/kafka_compacted/*.csv", header=False, inferSchema=True)
 
-from pyspark.sql.functions import col, avg, when
+# Duplicados
 
-# Revenue
+df_csv = df_csv.dropDuplicates()
 
-df_csv_mean_reve = df_csv.withColumn("revenue", col("revenue").cast("float"))
-mean_revenue = df_csv_mean_reve.select(avg("revenue")).first()[0]
+# Nuevas cols
 
-df_csv = df_csv_mean_reve.fillna({"revenue": round(mean_revenue, 2)})
+from pyspark.sql.functions import col, when, to_date
 
-# Quantity
+df_csv = df_csv.withColumn(
+    "Tratado",
+    when(
+        col("_c4").isNull() | col("_c4").cast("float").isNull() |
+        col("_c3").isNull() | col("_c3").cast("float").isNull() |
+        col("_c0").isNull() | to_date(col("_c0"), "yyyy-MM-dd").isNull(),
+        "Sí"
+    ).otherwise("No")
+)
 
-df_csv_mean_quan = df_csv.withColumn("quantity_sold", col("quantity_sold").cast("int"))
+df_csv = df_csv.withColumn("Fecha Inserción", current_timestamp())
+   
 
-mean_quantity = df_csv_mean_quan.select(avg("quantity_sold")).first()[0]
-df_csv = df_csv_mean_quan.fillna({"quantity_sold": mean_quantity})
+# Convert BIGINT timestamp to timestamp and then to Date
+df_csv_mean_date = df_csv.withColumn("_c0", from_unixtime(col("_c0") / 1000).cast("timestamp")) \
+                        .withColumn("_c0", to_date(col("_c0")))
 
-# Store
+df_csv_mean_date = df_csv_mean_date.dropna(subset=["_c0"])
 
-df_csv_store = df_csv.withColumn("store_id", col("store_id").cast("int"))
+# Find the mode of the date
+mode_date = df_csv_mean_date.groupBy("_c0").count().orderBy(col("count").desc()).first()[0]
 
-df_csv = df_csv_store.dropna(subset=["store_id"])
+# Convert mode_date to string if needed
+mode_date_str = mode_date.strftime('%Y-%m-%d')
 
-# Product
+df_csv = df_csv_mean_date.fillna({"_c0": mode_date_str})
 
-df_csv = df_csv.dropna(subset=["product_id"])
+q1, q3 = df_csv.approxQuantile("_c3", [0.25, 0.75], 0.05)
+iqr = q3 - q1
 
-# Date
+lower_bound = q1 - 1.5 * iqr
+upper_bound = q3 + 1.5 * iqr
 
-df_csv_mean_timestamp = df_csv.withColumn("timestamp", col("timestamp").cast("timestamp"))
-df_csv_mean_timestamp = df_csv_mean_timestamp.dropna(subset=["timestamp"])
-mode_timestamp = df_csv_mean_timestamp.groupBy("timestamp").count().orderBy(col("count").desc()).first()[0]
-
-mode_timestamp_str = mode_timestamp.strftime('%Y-%m-%d')
-
-df_csv = df_csv_mean_timestamp.fillna({"timestamp": mode_timestamp_str})
-
+df_csv_clean = df_csv.filter((col("_c3") >= lower_bound) & (col("_c3") <= upper_bound))
 
 df_csv.show(50)
 
-#df_csv.write.csv("s3://cubito/processed_ceseuve.csv", header=True)
+df_csv.write.mode("append").csv("s3a://cubito/processed/datos_compra", header=True)

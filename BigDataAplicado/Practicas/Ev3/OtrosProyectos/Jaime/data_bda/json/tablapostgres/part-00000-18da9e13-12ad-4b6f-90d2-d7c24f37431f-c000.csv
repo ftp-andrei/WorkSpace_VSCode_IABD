@@ -1,0 +1,1000 @@
+1,Las Palmas Shop,Melilla,""
+2,Segovia Shop,Murcia,Joven adulto
+3,Baleares Shop,Segovia,Tercera edad
+4,Lleida Shop,Tarragona,Joven adulto
+5,Jaén Shop,Barcelona,Tercera edad
+6,"",Córdoba,#2000d8
+7,Cantabria Shop,Melilla,Tercera edad
+8,Sevilla Shop,"",Adulto
+9,"",Álava,Tercera edad
+10,Melilla Shop,Málaga,Tercera edad
+11,#d85456,Asturias,Tercera edad
+12,Santa Cruz de Tenerife Shop,"",#b8f7a5
+13,"",Girona,Adolescente
+14,Melilla Shop,Zaragoza,#25ed51
+15,Teruel Shop,Guipúzcoa,Joven adulto
+16,"",#fcc7f6,Joven adulto
+17,Huesca Shop,Toledo,Joven adulto
+18,Cuenca Shop,"",Adulto
+19,La Rioja Shop,Las Palmas,Tercera edad
+20,León Shop,Zamora,Tercera edad
+21,Lugo Shop,Navarra,Adolescente
+22,Sevilla Shop,"",Tercera edad
+23,Toledo Shop,Burgos,Tercera edad
+24,Albacete Shop,Valencia,Adolescente
+25,Toledo Shop,Badajoz,""
+26,"",#6e30a8,""
+27,Guadalajara Shop,Salamanca,Joven adulto
+28,Albacete Shop,"",Adolescente
+29,Zamora Shop,Soria,""
+30,Cuenca Shop,Tarragona,Tercera edad
+31,Albacete Shop,"",Tercera edad
+32,Córdoba Shop,Zaragoza,Adulto
+33,Guipúzcoa Shop,Madrid,Adolescente
+34,"","",Adolescente
+35,Navarra Shop,Vizcaya,Tercera edad
+36,Guadalajara Shop,Palencia,Adolescente
+37,"",#db1e9c,Adulto
+38,"",Granada,Tercera edad
+39,#85f2ca,Santa Cruz de Tenerife,Tercera edad
+40,Asturias Shop,Murcia,Adulto
+41,Jaén Shop,Baleares,Tercera edad
+42,#8030c1,#c40957,Joven adulto
+43,"",Girona,Tercera edad
+44,Cádiz Shop,La Rioja,Tercera edad
+45,"",Cantabria,Adolescente
+46,Teruel Shop,Burgos,Adulto
+47,Barcelona Shop,Palencia,#fce7bf
+48,Segovia Shop,Albacete,Adulto
+49,"",Lleida,Tercera edad
+50,Las Palmas Shop,Cádiz,""
+51,Murcia Shop,Málaga,""
+52,Murcia Shop,Pontevedra,""
+53,Cádiz Shop,Granada,Adolescente
+54,Barcelona Shop,"",""
+55,Burgos Shop,Albacete,""
+56,Las Palmas Shop,Álava,Tercera edad
+57,"","",Adolescente
+58,Cuenca Shop,Albacete,Joven adulto
+59,Sevilla Shop,Jaén,Tercera edad
+60,Navarra Shop,Cuenca,Adolescente
+61,Málaga Shop,Asturias,Adolescente
+62,Burgos Shop,Guipúzcoa,Adolescente
+63,Navarra Shop,"",Joven adulto
+64,La Rioja Shop,Ciudad,""
+65,La Coruña Shop,#5ad834,Joven adulto
+66,Castellón Shop,Toledo,Joven adulto
+67,Lleida Shop,Cáceres,Adolescente
+68,Guipúzcoa Shop,Badajoz,""
+69,#b9e562,"",Adulto
+70,Badajoz Shop,Teruel,Adulto
+71,Huelva Shop,Almería,Joven adulto
+72,Soria Shop,Toledo,Adolescente
+73,Guipúzcoa Shop,Segovia,Adolescente
+74,"",Huelva,Joven adulto
+75,"",Murcia,Joven adulto
+76,Zamora Shop,Málaga,Adolescente
+77,Teruel Shop,Valladolid,Joven adulto
+78,Palencia Shop,Salamanca,Tercera edad
+79,Burgos Shop,Valencia,Joven adulto
+80,La Rioja Shop,Cuenca,Adolescente
+81,Baleares Shop,"",Adolescente
+82,Málaga Shop,Córdoba,Tercera edad
+83,"",Toledo,Adolescente
+84,Las Palmas Shop,Tarragona,Adolescente
+85,Navarra Shop,Guadalajara,Adolescente
+86,Cádiz Shop,Pontevedra,Joven adulto
+87,Badajoz Shop,"",""
+88,Granada Shop,Guadalajara,Adulto
+89,"",Álava,Adolescente
+90,Pontevedra Shop,Barcelona,Adolescente
+91,Ciudad Shop,#a9b2fc,Joven adulto
+92,Jaén Shop,"",Adolescente
+93,"",Salamanca,Adulto
+94,Jaén Shop,Valladolid,Joven adulto
+95,Teruel Shop,La Coruña,Tercera edad
+96,Huelva Shop,Las Palmas,Adolescente
+97,Lleida Shop,Melilla,Adolescente
+98,Huelva Shop,"",""
+99,"",Sevilla,Joven adulto
+100,Granada Shop,Lugo,Adulto
+101,Santa Cruz de Tenerife Shop,Zamora,Adulto
+102,Santa Cruz de Tenerife Shop,Sevilla,Adulto
+103,Badajoz Shop,Baleares,Adolescente
+104,La Coruña Shop,Ourense,""
+105,Segovia Shop,#f25e85,Joven adulto
+106,Teruel Shop,Lleida,Adulto
+107,Almería Shop,Segovia,Tercera edad
+108,Teruel Shop,Melilla,Adulto
+109,#82ce18,Baleares,Adulto
+110,Badajoz Shop,Ávila,Adulto
+111,Teruel Shop,Ceuta,""
+112,Huelva Shop,Teruel,Adolescente
+113,Sevilla Shop,"",Tercera edad
+114,Ciudad Shop,Santa Cruz de Tenerife,Adolescente
+115,Santa Cruz de Tenerife Shop,Valladolid,Tercera edad
+116,Cáceres Shop,Ciudad,Adulto
+117,#c8a5ef,Guipúzcoa,Tercera edad
+118,Madrid Shop,Santa Cruz de Tenerife,#cb53d6
+119,La Rioja Shop,#8e43bc,Tercera edad
+120,Lugo Shop,Baleares,Tercera edad
+121,Salamanca Shop,Lleida,Adulto
+122,"","",Adulto
+123,Guipúzcoa Shop,Ourense,Joven adulto
+124,"",Soria,Tercera edad
+125,Ávila Shop,Santa Cruz de Tenerife,""
+126,Cáceres Shop,Huelva,Tercera edad
+127,Pontevedra Shop,Alicante,Adulto
+128,Cáceres Shop,"",Adolescente
+129,"",Guipúzcoa,Adolescente
+130,Murcia Shop,#1ca88c,Adolescente
+131,Girona Shop,Huesca,Joven adulto
+132,Guadalajara Shop,Soria,""
+133,Salamanca Shop,Navarra,Joven adulto
+134,Soria Shop,Ourense,Adolescente
+135,Las Palmas Shop,Ciudad,Adolescente
+136,Las Palmas Shop,Guadalajara,""
+137,Huelva Shop,Barcelona,Adolescente
+138,Jaén Shop,Las Palmas,Tercera edad
+139,Ourense Shop,Toledo,""
+140,#cc964b,Salamanca,""
+141,Pontevedra Shop,Ciudad,Joven adulto
+142,Madrid Shop,Jaén,Adulto
+143,Segovia Shop,"",#e04e9e
+144,Málaga Shop,Cáceres,Adulto
+145,Barcelona Shop,Tarragona,""
+146,Zaragoza Shop,Madrid,Joven adulto
+147,Lugo Shop,Santa Cruz de Tenerife,Tercera edad
+148,Ávila Shop,Cuenca,Tercera edad
+149,Alicante Shop,Almería,Adolescente
+150,"","",Adolescente
+151,Pontevedra Shop,Girona,Adolescente
+152,#a03619,Alicante,Tercera edad
+153,La Coruña Shop,Lleida,Adolescente
+154,Granada Shop,Salamanca,#f09af4
+155,Badajoz Shop,Soria,Adulto
+156,Albacete Shop,Cáceres,Adolescente
+157,Álava Shop,Cádiz,Tercera edad
+158,Cádiz Shop,"",Adulto
+159,"",La Rioja,""
+160,"",Ourense,Adulto
+161,Soria Shop,Segovia,Joven adulto
+162,Córdoba Shop,Valencia,#e1ffad
+163,"",Asturias,Adulto
+164,Valladolid Shop,Granada,Adolescente
+165,Teruel Shop,Santa Cruz de Tenerife,Adulto
+166,Guipúzcoa Shop,Cáceres,Adolescente
+167,Toledo Shop,Guadalajara,Adolescente
+168,Melilla Shop,Zaragoza,""
+169,Ceuta Shop,"",Tercera edad
+170,"",#6beadb,Tercera edad
+171,"",Cáceres,Tercera edad
+172,#b5880c,Santa Cruz de Tenerife,Tercera edad
+173,Segovia Shop,Soria,Tercera edad
+174,Albacete Shop,Cuenca,Adolescente
+175,Lleida Shop,Soria,Joven adulto
+176,Santa Cruz de Tenerife Shop,Teruel,""
+177,#2d58ce,Ávila,Tercera edad
+178,Albacete Shop,Cantabria,""
+179,"",Cáceres,Tercera edad
+180,Zaragoza Shop,#556b01,Tercera edad
+181,Madrid Shop,Segovia,""
+182,Lugo Shop,"",Adolescente
+183,Cádiz Shop,Guipúzcoa,Adolescente
+184,Soria Shop,Ceuta,Tercera edad
+185,Madrid Shop,Barcelona,Adolescente
+186,"",Huelva,Adulto
+187,"",#37f2d6,Adulto
+188,Ávila Shop,Alicante,Adulto
+189,La Coruña Shop,Burgos,""
+190,Teruel Shop,"",Adolescente
+191,Ciudad Shop,Ceuta,Adulto
+192,Baleares Shop,Baleares,Adolescente
+193,Zaragoza Shop,Murcia,Adulto
+194,Melilla Shop,Valladolid,Adulto
+195,Guipúzcoa Shop,Santa Cruz de Tenerife,Adolescente
+196,"",Cádiz,Joven adulto
+197,Madrid Shop,Segovia,Adolescente
+198,Barcelona Shop,"",Joven adulto
+199,Girona Shop,León,Tercera edad
+200,Murcia Shop,"",Joven adulto
+201,Cádiz Shop,"",Tercera edad
+202,Lugo Shop,Teruel,Adolescente
+203,Ciudad Shop,Castellón,Tercera edad
+204,Madrid Shop,Guipúzcoa,Adolescente
+205,Pontevedra Shop,Baleares,Joven adulto
+206,Baleares Shop,Lugo,""
+207,"",Navarra,""
+208,Ciudad Shop,Sevilla,Joven adulto
+209,Baleares Shop,Palencia,Joven adulto
+210,Valladolid Shop,Ourense,Tercera edad
+211,"",Segovia,""
+212,Castellón Shop,Ávila,Tercera edad
+213,Baleares Shop,Ourense,Adulto
+214,Lugo Shop,#a0f481,Adulto
+215,Guipúzcoa Shop,"",Adulto
+216,"",Barcelona,Adolescente
+217,"",Valladolid,Adulto
+218,Cuenca Shop,Badajoz,""
+219,Huelva Shop,Toledo,""
+220,Málaga Shop,"",Adolescente
+221,La Coruña Shop,Pontevedra,Tercera edad
+222,Palencia Shop,Almería,Tercera edad
+223,Granada Shop,Jaén,Adolescente
+224,Girona Shop,Santa Cruz de Tenerife,Adulto
+225,Soria Shop,Ourense,Adolescente
+226,#1fb796,Ávila,Joven adulto
+227,Burgos Shop,Las Palmas,Adolescente
+228,Cuenca Shop,Albacete,Adulto
+229,Badajoz Shop,Santa Cruz de Tenerife,#409e1e
+230,Teruel Shop,Jaén,Adulto
+231,Girona Shop,Jaén,""
+232,Huelva Shop,Navarra,Adolescente
+233,Barcelona Shop,Málaga,Adulto
+234,Valladolid Shop,Teruel,Adolescente
+235,La Coruña Shop,Álava,Adulto
+236,Guadalajara Shop,Alicante,Adulto
+237,Cáceres Shop,Murcia,Adolescente
+238,Ciudad Shop,Málaga,Adulto
+239,Tarragona Shop,"",Adolescente
+240,Las Palmas Shop,"",Joven adulto
+241,Valencia Shop,"",Adolescente
+242,Ceuta Shop,"",Adolescente
+243,Ceuta Shop,La Rioja,Tercera edad
+244,"",Almería,Adulto
+245,Ourense Shop,Cádiz,Adolescente
+246,Vizcaya Shop,Madrid,""
+247,Granada Shop,Vizcaya,Adulto
+248,Baleares Shop,Lugo,""
+249,Tarragona Shop,Vizcaya,""
+250,Sevilla Shop,Soria,Joven adulto
+251,"",La Rioja,Adolescente
+252,Ceuta Shop,Alicante,Adulto
+253,"",Madrid,Tercera edad
+254,Lleida Shop,Asturias,Tercera edad
+255,"",Guadalajara,Joven adulto
+256,Badajoz Shop,León,Joven adulto
+257,"",#fcd6ab,Adulto
+258,Huelva Shop,Madrid,""
+259,Vizcaya Shop,Ciudad,""
+260,"",Granada,Joven adulto
+261,"",Barcelona,Adulto
+262,Segovia Shop,Huesca,Adolescente
+263,Ciudad Shop,#bbffb2,Adolescente
+264,Lugo Shop,Guipúzcoa,""
+265,Cuenca Shop,Girona,Adulto
+266,Tarragona Shop,Baleares,Joven adulto
+267,Ourense Shop,Burgos,Joven adulto
+268,Huelva Shop,Albacete,Adulto
+269,Álava Shop,Albacete,Adulto
+270,Madrid Shop,Guadalajara,Adulto
+271,Castellón Shop,#32d3c3,#eaa331
+272,Salamanca Shop,"",#e589c2
+273,Almería Shop,Cádiz,Joven adulto
+274,Tarragona Shop,Murcia,Tercera edad
+275,León Shop,"",Joven adulto
+276,Santa Cruz de Tenerife Shop,Álava,Adulto
+277,Toledo Shop,Santa Cruz de Tenerife,Joven adulto
+278,"",Jaén,Tercera edad
+279,Ciudad Shop,Toledo,Joven adulto
+280,Toledo Shop,Álava,Joven adulto
+281,Ciudad Shop,Cantabria,Adulto
+282,Burgos Shop,Zaragoza,#cc5567
+283,Valladolid Shop,Guipúzcoa,#eeef8f
+284,Lleida Shop,#b54236,Joven adulto
+285,Cantabria Shop,Jaén,""
+286,"",Girona,Adulto
+287,"",Tarragona,Joven adulto
+288,Jaén Shop,Navarra,""
+289,Zaragoza Shop,Ceuta,Adulto
+290,Murcia Shop,Huelva,Tercera edad
+291,León Shop,Murcia,Tercera edad
+292,"",Córdoba,#d4e050
+293,Albacete Shop,"",Adulto
+294,"",Cáceres,""
+295,Valencia Shop,"",""
+296,"",Valencia,Adolescente
+297,Guipúzcoa Shop,Ourense,""
+298,Lugo Shop,Murcia,Adulto
+299,"",La Rioja,#6d74db
+300,Toledo Shop,Valencia,Tercera edad
+301,Sevilla Shop,Lleida,Adolescente
+302,Palencia Shop,"",Joven adulto
+303,León Shop,Barcelona,Tercera edad
+304,Toledo Shop,Albacete,""
+305,Navarra Shop,Madrid,Tercera edad
+306,Castellón Shop,La Rioja,Tercera edad
+307,León Shop,Málaga,""
+308,#54d9e5,Burgos,Adulto
+309,Huelva Shop,"",Tercera edad
+310,Cádiz Shop,Segovia,""
+311,Guadalajara Shop,Santa Cruz de Tenerife,Adulto
+312,"",Zamora,Tercera edad
+313,La Coruña Shop,Cáceres,#ff63a6
+314,Málaga Shop,Teruel,Joven adulto
+315,Palencia Shop,Santa Cruz de Tenerife,""
+316,Ourense Shop,Soria,""
+317,"",León,Tercera edad
+318,León Shop,Huelva,Adolescente
+319,Madrid Shop,Jaén,Adulto
+320,Ciudad Shop,Valencia,Tercera edad
+321,Guipúzcoa Shop,Castellón,Tercera edad
+322,Alicante Shop,Córdoba,Tercera edad
+323,Álava Shop,"",Adolescente
+324,Lleida Shop,Castellón,Joven adulto
+325,Málaga Shop,Zamora,Tercera edad
+326,Alicante Shop,"",Adulto
+327,#a3ffad,Toledo,Joven adulto
+328,Zaragoza Shop,Zaragoza,Adulto
+329,Palencia Shop,Lugo,Adulto
+330,Guadalajara Shop,"",Adolescente
+331,Navarra Shop,Ciudad,Tercera edad
+332,Teruel Shop,Sevilla,Adolescente
+333,Badajoz Shop,Córdoba,Joven adulto
+334,Cádiz Shop,Las Palmas,""
+335,Pontevedra Shop,"",#f6f92f
+336,"",Pontevedra,Joven adulto
+337,Murcia Shop,Badajoz,Joven adulto
+338,"",Baleares,Adolescente
+339,La Rioja Shop,#048e7c,""
+340,Málaga Shop,"",Tercera edad
+341,#e29ad9,Palencia,Adolescente
+342,#8d53e2,Tarragona,#b307f7
+343,#ffe0c1,"",""
+344,Baleares Shop,Guipúzcoa,Adulto
+345,Córdoba Shop,Ceuta,Joven adulto
+346,Barcelona Shop,Soria,Adolescente
+347,Madrid Shop,Badajoz,Tercera edad
+348,Córdoba Shop,"",Joven adulto
+349,"",Ciudad,""
+350,La Coruña Shop,Murcia,Adulto
+351,#0db4e2,Guadalajara,Adolescente
+352,Asturias Shop,Girona,Adolescente
+353,"",Salamanca,Joven adulto
+354,Ávila Shop,Barcelona,#e804a7
+355,Cuenca Shop,"",Adulto
+356,Barcelona Shop,Navarra,""
+357,Soria Shop,Almería,Adulto
+358,Segovia Shop,"",Adulto
+359,#48db96,León,""
+360,Pontevedra Shop,Baleares,Adolescente
+361,Badajoz Shop,Granada,Tercera edad
+362,Ourense Shop,Salamanca,Adolescente
+363,Málaga Shop,"",Tercera edad
+364,Huesca Shop,Ceuta,#fcc4fb
+365,La Coruña Shop,Almería,Adulto
+366,Huelva Shop,Zamora,Tercera edad
+367,Lugo Shop,Tarragona,Joven adulto
+368,Almería Shop,Murcia,""
+369,Lugo Shop,León,""
+370,Córdoba Shop,Burgos,Adolescente
+371,Salamanca Shop,Las Palmas,Tercera edad
+372,Alicante Shop,"",Joven adulto
+373,Toledo Shop,Zaragoza,""
+374,Valencia Shop,Ciudad,Tercera edad
+375,"",La Rioja,""
+376,"",Granada,Tercera edad
+377,"","",Tercera edad
+378,Girona Shop,Cádiz,Joven adulto
+379,León Shop,Zamora,Adulto
+380,Vizcaya Shop,Huesca,Joven adulto
+381,Albacete Shop,Almería,Tercera edad
+382,Murcia Shop,Madrid,""
+383,Baleares Shop,"",Joven adulto
+384,Sevilla Shop,Madrid,Joven adulto
+385,#7925e8,Soria,Adolescente
+386,Albacete Shop,"",Joven adulto
+387,Zamora Shop,La Coruña,Adulto
+388,#baf27d,Cuenca,Joven adulto
+389,"","",Adolescente
+390,"",Ourense,Tercera edad
+391,Zaragoza Shop,Ávila,Adulto
+392,Cáceres Shop,Madrid,Adolescente
+393,"",Álava,Adulto
+394,Córdoba Shop,Tarragona,Joven adulto
+395,Albacete Shop,Alicante,Adulto
+396,"",Navarra,#4c2fc4
+397,Granada Shop,Cantabria,""
+398,Sevilla Shop,Huesca,Tercera edad
+399,Ciudad Shop,Valencia,Tercera edad
+400,Valencia Shop,Santa Cruz de Tenerife,Adolescente
+401,"",Asturias,Adolescente
+402,Palencia Shop,Huelva,Tercera edad
+403,"",Almería,Tercera edad
+404,Jaén Shop,Vizcaya,Joven adulto
+405,La Rioja Shop,Zamora,Tercera edad
+406,Palencia Shop,Zaragoza,Adolescente
+407,Zaragoza Shop,La Rioja,Adolescente
+408,Albacete Shop,"",Tercera edad
+409,Jaén Shop,Soria,Adolescente
+410,Baleares Shop,Zaragoza,Joven adulto
+411,Ourense Shop,Alicante,Adolescente
+412,Málaga Shop,Almería,Tercera edad
+413,Ourense Shop,"",""
+414,Tarragona Shop,"",Adulto
+415,Girona Shop,Castellón,Joven adulto
+416,Cuenca Shop,Toledo,Tercera edad
+417,Murcia Shop,Burgos,Adulto
+418,#5798f9,#21858c,""
+419,Toledo Shop,Soria,Joven adulto
+420,Pontevedra Shop,Alicante,Adolescente
+421,#7bfce2,Valladolid,Tercera edad
+422,Cádiz Shop,Zamora,Joven adulto
+423,Palencia Shop,"",Adolescente
+424,Albacete Shop,"",Adolescente
+425,"",Cádiz,Tercera edad
+426,Córdoba Shop,Zaragoza,Joven adulto
+427,León Shop,Ávila,Tercera edad
+428,Palencia Shop,Córdoba,Joven adulto
+429,Valladolid Shop,Tarragona,Tercera edad
+430,Guadalajara Shop,Vizcaya,Tercera edad
+431,#fca905,Ceuta,Adulto
+432,Valladolid Shop,Murcia,Joven adulto
+433,Palencia Shop,Ávila,Tercera edad
+434,Ceuta Shop,Valencia,Adulto
+435,Santa Cruz de Tenerife Shop,Ávila,""
+436,Guadalajara Shop,Cádiz,Adulto
+437,Baleares Shop,Salamanca,Adulto
+438,Álava Shop,Jaén,Adolescente
+439,Huelva Shop,Tarragona,Tercera edad
+440,La Rioja Shop,"",Joven adulto
+441,Ourense Shop,Tarragona,Tercera edad
+442,Tarragona Shop,Guipúzcoa,""
+443,#7eed38,Burgos,Tercera edad
+444,Guipúzcoa Shop,"",""
+445,Sevilla Shop,Guipúzcoa,""
+446,Albacete Shop,Soria,Adolescente
+447,#66e2d2,Cuenca,""
+448,Castellón Shop,Huesca,Adulto
+449,La Coruña Shop,Cádiz,Adolescente
+450,Guipúzcoa Shop,Granada,Adulto
+451,"",Navarra,Adolescente
+452,Valencia Shop,Granada,Joven adulto
+453,"","",#0bbaa8
+454,La Coruña Shop,Alicante,Joven adulto
+455,Guadalajara Shop,Pontevedra,""
+456,Murcia Shop,#7de0c4,""
+457,Albacete Shop,"",Adolescente
+458,"",Ourense,Tercera edad
+459,Zamora Shop,Santa Cruz de Tenerife,""
+460,"",Castellón,Tercera edad
+461,Navarra Shop,"",""
+462,"",Cuenca,""
+463,#db39cb,Jaén,""
+464,Valencia Shop,"",#68d8a4
+465,Cáceres Shop,Ávila,Tercera edad
+466,Málaga Shop,Girona,Joven adulto
+467,Granada Shop,Baleares,Tercera edad
+468,Pontevedra Shop,Ourense,""
+469,Asturias Shop,Valencia,Joven adulto
+470,Cuenca Shop,"",Adulto
+471,Ourense Shop,Cantabria,""
+472,Melilla Shop,Guipúzcoa,Joven adulto
+473,"",Toledo,Joven adulto
+474,Guadalajara Shop,Lugo,Adolescente
+475,Palencia Shop,Valencia,Tercera edad
+476,Madrid Shop,Lugo,""
+477,La Rioja Shop,Guadalajara,#f7948f
+478,Ciudad Shop,"",""
+479,La Coruña Shop,Ciudad,Joven adulto
+480,Álava Shop,Madrid,Tercera edad
+481,Albacete Shop,Girona,Tercera edad
+482,Valencia Shop,Ceuta,""
+483,Castellón Shop,Salamanca,Adolescente
+484,La Rioja Shop,Jaén,Adolescente
+485,Palencia Shop,León,Adulto
+486,Toledo Shop,#e06d2a,Tercera edad
+487,"",Alicante,Adulto
+488,Santa Cruz de Tenerife Shop,La Coruña,""
+489,Burgos Shop,"",Adulto
+490,Córdoba Shop,León,Tercera edad
+491,"","",Adolescente
+492,Huelva Shop,Córdoba,Joven adulto
+493,Castellón Shop,Las Palmas,""
+494,"",Valencia,Adulto
+495,"",Teruel,Adolescente
+496,Burgos Shop,Palencia,Joven adulto
+497,Ciudad Shop,La Coruña,Adulto
+498,"","",Adolescente
+499,"",#f2ec85,Joven adulto
+500,"",Cantabria,""
+501,Vizcaya Shop,#3eb5d6,Tercera edad
+502,Cantabria Shop,Girona,Tercera edad
+503,Ceuta Shop,Navarra,Tercera edad
+504,León Shop,Granada,Joven adulto
+505,La Rioja Shop,Vizcaya,""
+506,Jaén Shop,Córdoba,Tercera edad
+507,La Rioja Shop,Lugo,Adolescente
+508,Salamanca Shop,"",""
+509,"",Burgos,Joven adulto
+510,Huesca Shop,Tarragona,""
+511,"",Murcia,Joven adulto
+512,Zaragoza Shop,Alicante,Joven adulto
+513,Soria Shop,Zamora,Adolescente
+514,La Rioja Shop,"",Adolescente
+515,Álava Shop,Lleida,Tercera edad
+516,Navarra Shop,Burgos,Adulto
+517,"",Pontevedra,Joven adulto
+518,Guadalajara Shop,Burgos,#adcded
+519,Ceuta Shop,Huelva,""
+520,Lugo Shop,Zamora,Adolescente
+521,Zamora Shop,"",Adolescente
+522,Cádiz Shop,Barcelona,Tercera edad
+523,Palencia Shop,Álava,Adolescente
+524,Valencia Shop,Córdoba,Joven adulto
+525,Córdoba Shop,Jaén,Tercera edad
+526,Alicante Shop,"",Tercera edad
+527,Sevilla Shop,Toledo,Adulto
+528,Cádiz Shop,"",Adolescente
+529,Córdoba Shop,Zaragoza,Joven adulto
+530,"",Palencia,Joven adulto
+531,León Shop,Almería,""
+532,Toledo Shop,Zaragoza,Joven adulto
+533,#c6219a,Almería,Tercera edad
+534,Salamanca Shop,Melilla,Adolescente
+535,"",#a6fccb,Adolescente
+536,Tarragona Shop,Albacete,Joven adulto
+537,Las Palmas Shop,Cáceres,Joven adulto
+538,Vizcaya Shop,"",Tercera edad
+539,Vizcaya Shop,Castellón,Joven adulto
+540,"",Huesca,Joven adulto
+541,"",Barcelona,Joven adulto
+542,Navarra Shop,Granada,Tercera edad
+543,Ávila Shop,"",Joven adulto
+544,Cantabria Shop,Badajoz,""
+545,"",#f79bf4,Joven adulto
+546,Huelva Shop,Cantabria,Adulto
+547,Segovia Shop,Asturias,Adolescente
+548,Sevilla Shop,"",Adolescente
+549,Huelva Shop,Vizcaya,Adulto
+550,Asturias Shop,Valladolid,Adulto
+551,Soria Shop,Girona,""
+552,León Shop,Álava,Adolescente
+553,#efec34,Córdoba,Adulto
+554,Almería Shop,Toledo,Joven adulto
+555,León Shop,Valladolid,Tercera edad
+556,Lleida Shop,Huesca,Tercera edad
+557,Almería Shop,Jaén,Adulto
+558,Jaén Shop,Murcia,Adulto
+559,Santa Cruz de Tenerife Shop,Cádiz,Joven adulto
+560,Melilla Shop,Álava,Adulto
+561,Segovia Shop,Ceuta,""
+562,Murcia Shop,Vizcaya,Adulto
+563,Granada Shop,"",""
+564,Vizcaya Shop,Almería,Joven adulto
+565,Zaragoza Shop,Cáceres,Tercera edad
+566,#99ffdc,Melilla,Tercera edad
+567,Pontevedra Shop,Barcelona,Joven adulto
+568,León Shop,"",Adulto
+569,Soria Shop,Cáceres,#3fb9c6
+570,Valencia Shop,Albacete,Tercera edad
+571,Granada Shop,Asturias,Joven adulto
+572,Melilla Shop,Murcia,""
+573,#0ea340,Salamanca,Adolescente
+574,Ceuta Shop,Madrid,""
+575,Santa Cruz de Tenerife Shop,Álava,Joven adulto
+576,Castellón Shop,"",Adulto
+577,Sevilla Shop,Tarragona,Tercera edad
+578,"",Jaén,Joven adulto
+579,#9755e8,Melilla,""
+580,Vizcaya Shop,León,Adulto
+581,Castellón Shop,#5eeda3,Tercera edad
+582,Palencia Shop,"",Tercera edad
+583,"",Badajoz,Tercera edad
+584,Lleida Shop,Ourense,Tercera edad
+585,Huesca Shop,"",Adolescente
+586,Jaén Shop,Valladolid,""
+587,Jaén Shop,Melilla,Adolescente
+588,Barcelona Shop,Las Palmas,Adolescente
+589,Barcelona Shop,"",Joven adulto
+590,Murcia Shop,Lugo,""
+591,"",Pontevedra,Adolescente
+592,Cáceres Shop,Barcelona,Adolescente
+593,"",Lleida,Tercera edad
+594,Guipúzcoa Shop,"",""
+595,"",Zamora,Joven adulto
+596,Almería Shop,La Rioja,Adulto
+597,Tarragona Shop,Murcia,Adolescente
+598,"","",#242ee5
+599,Almería Shop,Guadalajara,""
+600,Cantabria Shop,"",Adulto
+601,"",Salamanca,Tercera edad
+602,Córdoba Shop,Álava,Adolescente
+603,Zamora Shop,Navarra,Tercera edad
+604,#fff2bf,Baleares,Adolescente
+605,"",Valencia,Tercera edad
+606,Toledo Shop,Lleida,Joven adulto
+607,Salamanca Shop,Granada,""
+608,Castellón Shop,Cantabria,Joven adulto
+609,"",Huelva,""
+610,Guipúzcoa Shop,Melilla,Adolescente
+611,Navarra Shop,#43d848,#0f0605
+612,"",Segovia,""
+613,Castellón Shop,Castellón,#ffed9e
+614,Toledo Shop,Madrid,Tercera edad
+615,Cáceres Shop,"",Joven adulto
+616,Alicante Shop,#45c435,Tercera edad
+617,Jaén Shop,Albacete,Tercera edad
+618,Valladolid Shop,La Coruña,""
+619,Tarragona Shop,Cáceres,""
+620,Burgos Shop,Navarra,Tercera edad
+621,"",Ceuta,Adulto
+622,Navarra Shop,Almería,Adolescente
+623,Jaén Shop,Zaragoza,""
+624,Baleares Shop,Las Palmas,Adulto
+625,"",Asturias,""
+626,Córdoba Shop,Valladolid,Adulto
+627,Ourense Shop,Albacete,Adolescente
+628,Asturias Shop,"",Joven adulto
+629,Ávila Shop,"",Joven adulto
+630,Zamora Shop,Badajoz,""
+631,Vizcaya Shop,Valladolid,""
+632,Navarra Shop,Madrid,Adolescente
+633,Alicante Shop,Barcelona,Adolescente
+634,"","",Adulto
+635,Málaga Shop,"",Joven adulto
+636,Huelva Shop,Ávila,Adolescente
+637,Albacete Shop,Toledo,Adulto
+638,Ceuta Shop,Vizcaya,Adulto
+639,Huesca Shop,Guipúzcoa,Joven adulto
+640,Navarra Shop,León,Joven adulto
+641,Huesca Shop,Girona,Adolescente
+642,Cantabria Shop,Salamanca,Adolescente
+643,Navarra Shop,Guipúzcoa,""
+644,Córdoba Shop,"",#7139b5
+645,"",Melilla,""
+646,"",Castellón,#f4a1bb
+647,Cantabria Shop,#281b1b,Tercera edad
+648,Córdoba Shop,"",Adulto
+649,#dcbaf4,Baleares,Tercera edad
+650,Cuenca Shop,Barcelona,Adulto
+651,Ceuta Shop,"",Adulto
+652,"",Ciudad,""
+653,"",Álava,Tercera edad
+654,#9153c6,Sevilla,Tercera edad
+655,"",La Coruña,Adolescente
+656,"",Cáceres,Adulto
+657,#8b92d3,Álava,Adulto
+658,La Rioja Shop,Madrid,Tercera edad
+659,Alicante Shop,Teruel,#796cc9
+660,Huelva Shop,Cuenca,Adulto
+661,"",Jaén,Adulto
+662,Pontevedra Shop,Cantabria,Tercera edad
+663,Lugo Shop,Santa Cruz de Tenerife,Adolescente
+664,Sevilla Shop,Valladolid,Adolescente
+665,La Rioja Shop,Teruel,Tercera edad
+666,Badajoz Shop,Navarra,Adolescente
+667,Palencia Shop,#5c5ae8,""
+668,Palencia Shop,Girona,Adulto
+669,Palencia Shop,#1a38ce,#f7a480
+670,"",Zaragoza,Joven adulto
+671,La Rioja Shop,Valladolid,""
+672,Zaragoza Shop,"",Joven adulto
+673,#f2afa4,Las Palmas,Adulto
+674,Zaragoza Shop,Asturias,Tercera edad
+675,Palencia Shop,Palencia,Adolescente
+676,Castellón Shop,Girona,Tercera edad
+677,Asturias Shop,Barcelona,Joven adulto
+678,"",#a5d1f7,Adulto
+679,Murcia Shop,Málaga,""
+680,Guipúzcoa Shop,Cádiz,Tercera edad
+681,Las Palmas Shop,Cáceres,""
+682,#f1f900,"",Joven adulto
+683,#d66737,Murcia,""
+684,Pontevedra Shop,Málaga,Joven adulto
+685,"",Jaén,Joven adulto
+686,La Coruña Shop,"",Joven adulto
+687,Ceuta Shop,Santa Cruz de Tenerife,""
+688,Ceuta Shop,Badajoz,Adulto
+689,Toledo Shop,Sevilla,Tercera edad
+690,Las Palmas Shop,"",Adolescente
+691,Segovia Shop,Girona,Adulto
+692,"",Vizcaya,Joven adulto
+693,Palencia Shop,Ourense,""
+694,"",Cuenca,""
+695,Teruel Shop,Ciudad,""
+696,#e990f4,Santa Cruz de Tenerife,Joven adulto
+697,Sevilla Shop,Albacete,""
+698,Huelva Shop,Jaén,Joven adulto
+699,Sevilla Shop,La Rioja,Adolescente
+700,Ciudad Shop,Jaén,Tercera edad
+701,Cuenca Shop,Asturias,Adulto
+702,"","",Adulto
+703,Ávila Shop,Almería,Adolescente
+704,Huelva Shop,Navarra,""
+705,Murcia Shop,Castellón,Joven adulto
+706,Barcelona Shop,Córdoba,Adolescente
+707,Segovia Shop,Badajoz,Adulto
+708,"",Santa Cruz de Tenerife,Adolescente
+709,Girona Shop,Segovia,Adulto
+710,Alicante Shop,Jaén,#f4b27f
+711,Guadalajara Shop,Navarra,Tercera edad
+712,Melilla Shop,Guipúzcoa,""
+713,Toledo Shop,#fc5ac9,""
+714,Las Palmas Shop,Zaragoza,""
+715,Jaén Shop,Las Palmas,Adulto
+716,Asturias Shop,"",#ea7ce8
+717,Burgos Shop,Ávila,Adolescente
+718,Cantabria Shop,Lleida,Adulto
+719,Almería Shop,La Rioja,Adulto
+720,Sevilla Shop,"",Joven adulto
+721,Cantabria Shop,Navarra,#e08414
+722,Lugo Shop,Murcia,Joven adulto
+723,Girona Shop,La Rioja,""
+724,Girona Shop,Pontevedra,Adolescente
+725,Barcelona Shop,"",Tercera edad
+726,Guadalajara Shop,Toledo,#e276ce
+727,La Coruña Shop,Palencia,Adolescente
+728,Álava Shop,Álava,Adulto
+729,#f7bb8a,Soria,#829fdd
+730,Navarra Shop,Toledo,Adolescente
+731,Teruel Shop,#208499,Adolescente
+732,Palencia Shop,La Coruña,""
+733,Málaga Shop,#5556b5,Adulto
+734,Guipúzcoa Shop,#ff7d4f,Adulto
+735,Pontevedra Shop,#d5ea6e,Adulto
+736,Segovia Shop,"",Adulto
+737,Ávila Shop,Burgos,""
+738,Castellón Shop,"",Adulto
+739,Cáceres Shop,Guipúzcoa,Adolescente
+740,Ciudad Shop,Navarra,Adolescente
+741,Huesca Shop,Soria,""
+742,Sevilla Shop,Guipúzcoa,Joven adulto
+743,Lleida Shop,Valencia,Joven adulto
+744,Valencia Shop,Teruel,""
+745,"","",Adulto
+746,Cuenca Shop,"",""
+747,Pontevedra Shop,"",Tercera edad
+748,Málaga Shop,Lleida,Tercera edad
+749,Guadalajara Shop,Vizcaya,Joven adulto
+750,Jaén Shop,Vizcaya,""
+751,Almería Shop,#aefcc4,Adolescente
+752,#887ded,Burgos,#d657bf
+753,Barcelona Shop,Cantabria,Adulto
+754,Alicante Shop,Cádiz,Adolescente
+755,#c49935,"",Adolescente
+756,Lleida Shop,Alicante,Adulto
+757,Valladolid Shop,La Rioja,Adulto
+758,"",Córdoba,Adolescente
+759,Málaga Shop,Cádiz,Adolescente
+760,Tarragona Shop,"",Adolescente
+761,Álava Shop,Badajoz,Joven adulto
+762,Granada Shop,Lugo,""
+763,#4dd6ca,Cantabria,Tercera edad
+764,Ceuta Shop,"",Tercera edad
+765,Salamanca Shop,La Coruña,Tercera edad
+766,"",Toledo,Adulto
+767,Ceuta Shop,Ciudad,Adulto
+768,Soria Shop,Jaén,""
+769,Ciudad Shop,Cuenca,""
+770,Castellón Shop,Granada,Joven adulto
+771,"",Cádiz,Tercera edad
+772,Valladolid Shop,Alicante,Joven adulto
+773,Barcelona Shop,Alicante,Tercera edad
+774,"","",Tercera edad
+775,Zaragoza Shop,Ceuta,Joven adulto
+776,Zaragoza Shop,"",""
+777,Castellón Shop,Burgos,Tercera edad
+778,Almería Shop,Madrid,Tercera edad
+779,Santa Cruz de Tenerife Shop,Burgos,Joven adulto
+780,#1fc190,Pontevedra,Tercera edad
+781,"",Huesca,Adolescente
+782,"",Huelva,Joven adulto
+783,Zamora Shop,Baleares,Tercera edad
+784,Cuenca Shop,Almería,Joven adulto
+785,Segovia Shop,Jaén,Joven adulto
+786,"",Ceuta,Tercera edad
+787,Teruel Shop,Guadalajara,Joven adulto
+788,Tarragona Shop,Guadalajara,Tercera edad
+789,"",Segovia,Joven adulto
+790,Ciudad Shop,Vizcaya,Adolescente
+791,León Shop,Huelva,Adulto
+792,Cáceres Shop,León,Adolescente
+793,Palencia Shop,La Rioja,Adulto
+794,Ávila Shop,Alicante,Adulto
+795,Albacete Shop,Almería,Adulto
+796,"",#a5f7f4,Adolescente
+797,Córdoba Shop,Valladolid,""
+798,Huelva Shop,Ceuta,Adolescente
+799,"",León,Joven adulto
+800,Cuenca Shop,Segovia,""
+801,Teruel Shop,Cuenca,Adolescente
+802,Toledo Shop,Ávila,Tercera edad
+803,"",Cuenca,Joven adulto
+804,"",Asturias,Joven adulto
+805,"",Vizcaya,Adulto
+806,La Coruña Shop,#ff0739,""
+807,Burgos Shop,"",Tercera edad
+808,Málaga Shop,Salamanca,Adulto
+809,Lleida Shop,Asturias,Joven adulto
+810,Jaén Shop,Soria,Adulto
+811,"","",Adulto
+812,Alicante Shop,Lleida,Adolescente
+813,Almería Shop,Álava,Adolescente
+814,Ávila Shop,Ávila,Adulto
+815,Pontevedra Shop,Jaén,Adulto
+816,Teruel Shop,Baleares,Tercera edad
+817,#2dff4d,Girona,Joven adulto
+818,"","",Adolescente
+819,"",Salamanca,Joven adulto
+820,Barcelona Shop,Segovia,Joven adulto
+821,Ourense Shop,Pontevedra,Adolescente
+822,Albacete Shop,Palencia,Adolescente
+823,León Shop,Málaga,Adulto
+824,La Coruña Shop,Ciudad,Joven adulto
+825,Córdoba Shop,Zamora,""
+826,Sevilla Shop,#f7a0c6,Adolescente
+827,Huesca Shop,Málaga,Adolescente
+828,#d985ea,Cuenca,Adolescente
+829,Teruel Shop,Valladolid,Joven adulto
+830,Las Palmas Shop,Lleida,Adulto
+831,Asturias Shop,Cantabria,Joven adulto
+832,Santa Cruz de Tenerife Shop,Jaén,Joven adulto
+833,Lleida Shop,Ceuta,""
+834,Burgos Shop,Jaén,Tercera edad
+835,Castellón Shop,Zaragoza,Adolescente
+836,Soria Shop,"",Adulto
+837,"",#d81182,Joven adulto
+838,Alicante Shop,Palencia,Adulto
+839,Baleares Shop,#00c462,Adolescente
+840,Barcelona Shop,Salamanca,Tercera edad
+841,Toledo Shop,Salamanca,Adolescente
+842,"",Burgos,Joven adulto
+843,Huelva Shop,Málaga,Tercera edad
+844,"",Cádiz,Tercera edad
+845,"",Álava,Adolescente
+846,Castellón Shop,Granada,Adulto
+847,Huesca Shop,Valladolid,Joven adulto
+848,Burgos Shop,"",Adulto
+849,Cantabria Shop,Ávila,Adulto
+850,Lleida Shop,Málaga,Adolescente
+851,"",Álava,Adulto
+852,Valladolid Shop,Toledo,Adulto
+853,"",Cádiz,Joven adulto
+854,Teruel Shop,Girona,""
+855,Zamora Shop,Burgos,Joven adulto
+856,Alicante Shop,Tarragona,Joven adulto
+857,Almería Shop,Murcia,Joven adulto
+858,#b77931,#9fef8d,""
+859,#3f1aaf,Palencia,Adulto
+860,Córdoba Shop,Cantabria,Tercera edad
+861,Ciudad Shop,Ciudad,""
+862,Álava Shop,Lugo,Joven adulto
+863,Huelva Shop,Valencia,""
+864,Teruel Shop,Asturias,Adulto
+865,Guadalajara Shop,"",""
+866,#f7b094,Álava,Tercera edad
+867,Lleida Shop,Santa Cruz de Tenerife,""
+868,Vizcaya Shop,Burgos,Adulto
+869,"",#46ceba,Tercera edad
+870,"",Alicante,Adulto
+871,"","",Adulto
+872,#b9f438,"",Joven adulto
+873,Girona Shop,Burgos,Adulto
+874,#74fc81,#ad161e,Joven adulto
+875,Málaga Shop,Lugo,Tercera edad
+876,#80e585,Cuenca,Adulto
+877,Málaga Shop,Zaragoza,Adolescente
+878,Salamanca Shop,Alicante,Adolescente
+879,Soria Shop,#82eda6,Tercera edad
+880,"",Cádiz,Adolescente
+881,Huelva Shop,Álava,Adolescente
+882,"",Álava,Joven adulto
+883,"",Zaragoza,""
+884,Melilla Shop,Teruel,Tercera edad
+885,Castellón Shop,León,""
+886,Santa Cruz de Tenerife Shop,La Rioja,Joven adulto
+887,"",Baleares,Adolescente
+888,Palencia Shop,Segovia,""
+889,Teruel Shop,Albacete,Adolescente
+890,Vizcaya Shop,Cantabria,Joven adulto
+891,Salamanca Shop,"",Adolescente
+892,Álava Shop,Cuenca,Adolescente
+893,Córdoba Shop,La Rioja,Adulto
+894,La Coruña Shop,Cantabria,""
+895,Alicante Shop,Cáceres,Adolescente
+896,"",Lugo,""
+897,Soria Shop,Cáceres,Joven adulto
+898,La Rioja Shop,Ávila,#d0fcab
+899,Tarragona Shop,La Rioja,Joven adulto
+900,Granada Shop,León,Adulto
+901,#ef9bde,"",Tercera edad
+902,Santa Cruz de Tenerife Shop,Cádiz,Joven adulto
+903,Las Palmas Shop,Ceuta,Adolescente
+904,Salamanca Shop,Castellón,Tercera edad
+905,Cantabria Shop,Madrid,""
+906,Huelva Shop,Melilla,#c94665
+907,Zamora Shop,"",""
+908,Ceuta Shop,Huelva,#9edb62
+909,Jaén Shop,#eded3b,Adolescente
+910,Teruel Shop,Murcia,Adulto
+911,"",Huelva,""
+912,Granada Shop,Palencia,Tercera edad
+913,La Rioja Shop,Zamora,Adolescente
+914,Soria Shop,Castellón,Adolescente
+915,Las Palmas Shop,Santa Cruz de Tenerife,""
+916,Cantabria Shop,#129e7f,Adulto
+917,"",Santa Cruz de Tenerife,Joven adulto
+918,Vizcaya Shop,Badajoz,Adulto
+919,#8ceabd,Málaga,Tercera edad
+920,Castellón Shop,Ceuta,Adolescente
+921,Ceuta Shop,Burgos,Tercera edad
+922,Tarragona Shop,"",Adulto
+923,"",Ceuta,Adolescente
+924,Las Palmas Shop,Girona,""
+925,Salamanca Shop,Huelva,Adolescente
+926,Ceuta Shop,Almería,Adulto
+927,"",#eda0ef,Adulto
+928,La Coruña Shop,Lleida,""
+929,Jaén Shop,Salamanca,Adulto
+930,"",Castellón,Adulto
+931,Tarragona Shop,Lugo,Adulto
+932,Segovia Shop,Cuenca,Adulto
+933,La Coruña Shop,#78e89f,Adulto
+934,Cantabria Shop,Cádiz,Joven adulto
+935,Ceuta Shop,Cáceres,Adolescente
+936,Salamanca Shop,"",Tercera edad
+937,Murcia Shop,Cantabria,""
+938,Tarragona Shop,Madrid,Tercera edad
+939,#fcf480,La Coruña,Joven adulto
+940,La Coruña Shop,Barcelona,Joven adulto
+941,"",Navarra,Joven adulto
+942,"",Cuenca,""
+943,León Shop,Girona,Tercera edad
+944,Huelva Shop,Jaén,Joven adulto
+945,Asturias Shop,Tarragona,Adulto
+946,La Coruña Shop,Cuenca,Adulto
+947,"",Lleida,Joven adulto
+948,Murcia Shop,Huelva,Adolescente
+949,Cantabria Shop,Barcelona,""
+950,Huesca Shop,Ceuta,Adolescente
+951,Valencia Shop,"",Tercera edad
+952,Cantabria Shop,Cantabria,Adolescente
+953,Ceuta Shop,#59f959,""
+954,Pontevedra Shop,Navarra,Joven adulto
+955,La Coruña Shop,Almería,Tercera edad
+956,Navarra Shop,Pontevedra,Adolescente
+957,La Rioja Shop,Sevilla,#c957e5
+958,"",Lugo,Adolescente
+959,#8cf771,Baleares,Adulto
+960,Cuenca Shop,Ciudad,Joven adulto
+961,Valladolid Shop,Ávila,Joven adulto
+962,Granada Shop,"",""
+963,Santa Cruz de Tenerife Shop,Vizcaya,Adolescente
+964,"",Cádiz,Tercera edad
+965,#f2f246,"",""
+966,Girona Shop,Toledo,Tercera edad
+967,Girona Shop,Jaén,Tercera edad
+968,Soria Shop,Almería,""
+969,Ciudad Shop,"",Adulto
+970,Valencia Shop,Salamanca,Joven adulto
+971,Barcelona Shop,Córdoba,Joven adulto
+972,Ciudad Shop,Santa Cruz de Tenerife,""
+973,Zamora Shop,Madrid,Adolescente
+974,Ávila Shop,"",Joven adulto
+975,Sevilla Shop,Guadalajara,Joven adulto
+976,"",Alicante,""
+977,Valencia Shop,Badajoz,Adulto
+978,"",Albacete,Tercera edad
+979,Zaragoza Shop,"",Adolescente
+980,Las Palmas Shop,Lugo,Tercera edad
+981,Soria Shop,Girona,Adulto
+982,Albacete Shop,Valencia,Tercera edad
+983,Cádiz Shop,Cantabria,""
+984,Baleares Shop,Álava,Joven adulto
+985,Málaga Shop,Burgos,Tercera edad
+986,Baleares Shop,Huelva,Adolescente
+987,Tarragona Shop,"",#f2e1ab
+988,Santa Cruz de Tenerife Shop,"",Tercera edad
+989,Alicante Shop,Almería,Adolescente
+990,Guipúzcoa Shop,Girona,""
+991,#9af9c4,Segovia,Adulto
+992,Teruel Shop,Baleares,""
+993,Albacete Shop,Lugo,Joven adulto
+994,Asturias Shop,"",Tercera edad
+995,Tarragona Shop,Lleida,""
+996,Asturias Shop,Ourense,""
+997,Zaragoza Shop,Zaragoza,Joven adulto
+998,Salamanca Shop,Alicante,#8f9de8
+999,"",Alicante,Adolescente
+1000,Cantabria Shop,Las Palmas,Adulto
