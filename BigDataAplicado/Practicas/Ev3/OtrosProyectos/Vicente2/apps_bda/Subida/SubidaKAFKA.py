@@ -1,38 +1,41 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json
-from pyspark.sql.types import StructType, StringType, IntegerType, DoubleType, LongType
+from pyspark.sql.types import StructType, StringType, IntegerType, DoubleType
 
-
+# Configuración de credenciales de AWS para LocalStack
 aws_access_key_id = 'test'
 aws_secret_access_key = 'test'
 
+# Función para procesar cada lote de datos recibido desde Kafka
 def process_batch(batch_df, batch_id):
     print(f"Processing batch {batch_id} with {batch_df.count()} records.")
+    
     if batch_df.count() > 0:
         print(f"Batch {batch_id} has data.")
-        batch_df.show()  # Log the batch data
-        batch_df.persist()
+        batch_df.show()  # Muestra el contenido del lote para depuración
+        batch_df.persist()  # Persistir el DataFrame en memoria
+        
         try:
-            # Write the DataFrame to S3
-           batch_df \
-            .write \
-            .option('fs.s3a.committer.name', 'partitioned') \
-            .option('fs.s3a.committer.staging.conflict-mode', 'replace') \
-            .option("fs.s3a.fast.upload.buffer", "bytebuffer")\
-            .option("header", "true") \
-            .mode('overwrite') \
-            .csv(path='s3a://bucket-1/SalidaKafka', sep=',')
-            
+            # Escribir el DataFrame en S3 con configuración optimizada
+            batch_df \
+                .write \
+                .option('fs.s3a.committer.name', 'partitioned') \
+                .option('fs.s3a.committer.staging.conflict-mode', 'replace') \
+                .option("fs.s3a.fast.upload.buffer", "bytebuffer")\
+                .option("header", "true") \
+                .mode('overwrite') \
+                .csv(path='s3a://bucket-1/SalidaKafka', sep=',')
+                
         except Exception as e:
             print(f"Error writing batch {batch_id} to S3: {str(e)}")
         finally:
-            batch_df.unpersist()
+            batch_df.unpersist()  # Liberar memoria
             print(f"Batch {batch_id} processed and unpersisted.")
     else:
         print(f"Batch {batch_id} is empty.")
 
-
 try:
+    # Crear una sesión de Spark
     spark = SparkSession.builder \
         .appName("Streaming from Kafka") \
         .config("spark.streaming.stopGracefullyOnShutdown", True) \
@@ -48,11 +51,13 @@ try:
         .master("spark://spark-master:7077") \
         .getOrCreate()
     
-    spark.conf.set("spark.hadoop.fs.s3a.connection.maximum", "100")  # Optional: Tune connection pool
+    # Configuración adicional para mejorar rendimiento
+    spark.conf.set("spark.hadoop.fs.s3a.connection.maximum", "100")
     spark.conf.set("spark.hadoop.fs.s3a.fast.upload", "true")
-    spark.conf.set("spark.hadoop.fs.s3a.path.style.access", "true")  # Required if using path-style S3 URLs (older format)
-    spark.conf.set("spark.hadoop.fs.s3a.committer.name", "partitioned")  # Ensures partitioning for large datasets
+    spark.conf.set("spark.hadoop.fs.s3a.path.style.access", "true")
+    spark.conf.set("spark.hadoop.fs.s3a.committer.name", "partitioned")
 
+    # Leer datos en streaming desde Kafka
     df = spark \
         .readStream \
         .format("kafka") \
@@ -60,6 +65,7 @@ try:
         .option("subscribe", "sales_stream") \
         .load()
 
+    # Definir el esquema de los datos JSON recibidos desde Kafka
     schema = StructType() \
         .add("timestamp", StringType()) \
         .add("store_id", IntegerType()) \
@@ -67,7 +73,7 @@ try:
         .add("quantity_sold", IntegerType()) \
         .add("revenue", DoubleType())
 
-    # Convertir la columna value a JSON y aplicar el esquema
+    # Convertir la columna "value" a JSON y aplicar el esquema
     df = df.selectExpr("CAST(value AS STRING)") \
         .select(from_json("value", schema).alias("data")) \
         .select("data.*")
@@ -75,15 +81,17 @@ try:
     # Imprimir el esquema del DataFrame para depuración
     df.printSchema()
 
+    # Definir la consulta de streaming
     query = df.writeStream \
         .option("checkpointLocation", "/tmp/spark-checkpoint") \
         .trigger(processingTime="5 seconds")\
         .foreachBatch(process_batch) \
         .start()
 
+    # Esperar la finalización de la consulta
     query.awaitTermination()
 
 except Exception as e:
     print("Error reading data from Kafka:", e)
 finally:
-    spark.stop()
+    spark.stop()  # Detener la sesión de Spark

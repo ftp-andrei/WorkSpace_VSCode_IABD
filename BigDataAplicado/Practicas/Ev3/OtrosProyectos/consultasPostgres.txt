@@ -1,0 +1,333 @@
+-- 1. INNER JOIN entre empleados y departamentos
+SELECT e.nombre, d.nombre 
+FROM empleados e
+INNER JOIN departamentos d ON e.departamento_id = d.id;
+
+-- 2. LEFT JOIN para obtener todos los empleados y sus departamentos
+SELECT e.nombre, d.nombre 
+FROM empleados e
+LEFT JOIN departamentos d ON e.departamento_id = d.id;
+
+-- 3. RIGHT JOIN para obtener todos los departamentos y sus empleados
+SELECT e.nombre, d.nombre 
+FROM empleados e
+RIGHT JOIN departamentos d ON e.departamento_id = d.id;
+
+-- 4. FULL OUTER JOIN entre empleados y departamentos
+SELECT e.nombre, d.nombre 
+FROM empleados e
+FULL OUTER JOIN departamentos d ON e.departamento_id = d.id;
+
+-- 5. CROSS JOIN entre productos y categorías
+SELECT p.nombre, c.nombre 
+FROM productos p
+CROSS JOIN categorias c;
+
+-- 6. INNER JOIN con condición adicional en WHERE
+SELECT e.nombre, d.nombre 
+FROM empleados e
+INNER JOIN departamentos d ON e.departamento_id = d.id
+WHERE d.nombre = 'Ventas';
+
+-- 7. INNER JOIN con filtrado en ON
+SELECT e.nombre, d.nombre 
+FROM empleados e
+INNER JOIN departamentos d ON e.departamento_id = d.id AND d.nombre = 'Ventas';
+
+-- 8. SELF JOIN para encontrar pares de empleados en el mismo departamento
+SELECT e1.nombre AS empleado1, e2.nombre AS empleado2, e1.departamento_id 
+FROM empleados e1
+JOIN empleados e2 ON e1.departamento_id = e2.departamento_id AND e1.id <> e2.id;
+
+-- 9. INNER JOIN con alias de tablas
+SELECT e.nombre AS empleado, d.nombre AS departamento 
+FROM empleados e
+JOIN departamentos d ON e.departamento_id = d.id;
+
+-- 10. JOIN con `USING` (si ambas columnas tienen el mismo nombre)
+SELECT e.nombre, d.nombre 
+FROM empleados e
+JOIN departamentos d USING(departamento_id);
+
+
+-- 11. Sumar todos los salarios de los empleados
+SELECT SUM(salario) AS total_salarios FROM empleados;
+
+-- 12. Calcular el salario promedio de los empleados
+SELECT AVG(salario) AS salario_promedio FROM empleados;
+
+-- 13. Contar cuántos empleados hay en la empresa
+SELECT COUNT(*) AS total_empleados FROM empleados;
+
+-- 14. Contar cuántos empleados hay en cada departamento
+SELECT departamento_id, COUNT(*) 
+FROM empleados 
+GROUP BY departamento_id;
+
+-- 15. Calcular el salario máximo y mínimo por departamento
+SELECT departamento_id, MAX(salario) AS max_salario, MIN(salario) AS min_salario 
+FROM empleados 
+GROUP BY departamento_id;
+
+-- 16. Promedio de salarios por tipo de empleo
+SELECT tipo_empleo, AVG(salario) 
+FROM empleados 
+GROUP BY tipo_empleo;
+
+-- 17. Sumar todas las ventas por cada producto
+SELECT producto_id, SUM(ventas) 
+FROM ventas 
+GROUP BY producto_id;
+
+-- 18. Contar cuántos clientes hay en cada ciudad
+SELECT ciudad, COUNT(*) 
+FROM clientes 
+GROUP BY ciudad;
+
+-- 19. Salario promedio por cada cargo
+SELECT cargo, AVG(salario) 
+FROM empleados 
+GROUP BY cargo;
+
+-- 20. Cantidad de productos por categoría
+SELECT categoria_id, COUNT(*) 
+FROM productos 
+GROUP BY categoria_id;
+
+
+-- 21. Mostrar departamentos con más de 5 empleados
+SELECT departamento_id, COUNT(*) 
+FROM empleados 
+GROUP BY departamento_id 
+HAVING COUNT(*) > 5;
+
+-- 22. Productos con ventas mayores a 1000
+SELECT producto_id, SUM(ventas) 
+FROM ventas 
+GROUP BY producto_id 
+HAVING SUM(ventas) > 1000;
+
+-- 23. Mostrar ciudades con más de 10 clientes
+SELECT ciudad, COUNT(*) 
+FROM clientes 
+GROUP BY ciudad 
+HAVING COUNT(*) > 10;
+
+-- 24. Departamentos con salario promedio mayor a 50000
+SELECT departamento_id, AVG(salario) 
+FROM empleados 
+GROUP BY departamento_id 
+HAVING AVG(salario) > 50000;
+
+-- 25. Categorías con más de 50 productos
+SELECT categoria_id, COUNT(*) 
+FROM productos 
+GROUP BY categoria_id 
+HAVING COUNT(*) > 50;
+
+-- 26. Clientes que han comprado más de 5 veces
+SELECT cliente_id, COUNT(*) 
+FROM compras 
+GROUP BY cliente_id 
+HAVING COUNT(*) > 5;
+
+-- 27. Vendedores con ventas totales mayores a 100000
+SELECT vendedor_id, SUM(ventas) 
+FROM ventas 
+GROUP BY vendedor_id 
+HAVING SUM(ventas) > 100000;
+
+-- 28. Productos con precio medio mayor a 20
+SELECT producto_id, AVG(precio) 
+FROM productos 
+GROUP BY producto_id 
+HAVING AVG(precio) > 20;
+
+-- 29. Clientes con gasto total mayor a 5000
+SELECT cliente_id, SUM(total) 
+FROM compras 
+GROUP BY cliente_id 
+HAVING SUM(total) > 5000;
+
+-- 30. Empleados que han trabajado en más de 2 proyectos
+SELECT empleado_id, COUNT(*) 
+FROM proyectos_empleados 
+GROUP BY empleado_id 
+HAVING COUNT(*) > 2;
+
+
+-- 31. Obtener empleados con salario mayor al promedio
+SELECT nombre, salario 
+FROM empleados 
+WHERE salario > (SELECT AVG(salario) FROM empleados);
+
+-- 32. Productos con precio mayor al precio promedio de su categoría
+SELECT nombre, precio 
+FROM productos p
+WHERE precio > (SELECT AVG(precio) FROM productos WHERE categoria_id = p.categoria_id);
+
+-- 33. Clientes con más compras que el cliente con menos compras
+SELECT cliente_id, COUNT(*) 
+FROM compras 
+GROUP BY cliente_id 
+HAVING COUNT(*) > (SELECT MIN(compras) FROM (SELECT cliente_id, COUNT(*) AS compras FROM compras GROUP BY cliente_id) sub);
+
+-- 34. Empleados cuyo salario es mayor al máximo salario en 'Ventas'
+SELECT nombre, salario 
+FROM empleados 
+WHERE salario > (SELECT MAX(salario) FROM empleados WHERE departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Ventas'));
+
+-- 35. Departamentos con más empleados que el departamento de 'Marketing'
+SELECT departamento_id, COUNT(*) 
+FROM empleados 
+GROUP BY departamento_id 
+HAVING COUNT(*) > (SELECT COUNT(*) FROM empleados WHERE departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Marketing'));
+
+
+-- 41. Calcular el salario acumulado por departamento
+SELECT nombre, departamento_id, salario, SUM(salario) OVER (PARTITION BY departamento_id ORDER BY salario) AS salario_acumulado
+FROM empleados;
+
+-- 42. Número de empleados por departamento con función de ventana
+SELECT nombre, departamento_id, COUNT(*) OVER (PARTITION BY departamento_id) AS empleados_por_departamento
+FROM empleados;
+
+-- 43. Ranking de empleados por salario dentro de cada departamento
+SELECT nombre, departamento_id, salario, RANK() OVER (PARTITION BY departamento_id ORDER BY salario DESC) AS ranking
+FROM empleados;
+
+-- 44. Ranking denso de empleados por salario global
+SELECT nombre, salario, DENSE_RANK() OVER (ORDER BY salario DESC) AS ranking
+FROM empleados;
+
+-- 45. Empleados con diferencia de salario respecto al anterior en su departamento
+SELECT nombre, departamento_id, salario, LAG(salario) OVER (PARTITION BY departamento_id ORDER BY salario) AS salario_anterior
+FROM empleados;
+
+-- 46. Salario promedio móvil de los últimos 3 empleados por orden de ingreso
+SELECT nombre, salario, AVG(salario) OVER (ORDER BY fecha_ingreso ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS promedio_movil
+FROM empleados;
+
+-- 47. Salario máximo por departamento con función de ventana
+SELECT nombre, departamento_id, salario, MAX(salario) OVER (PARTITION BY departamento_id) AS max_salario_departamento
+FROM empleados;
+
+-- 48. Ranking de productos por ventas en cada categoría
+SELECT producto_id, categoria_id, SUM(ventas) AS total_ventas, RANK() OVER (PARTITION BY categoria_id ORDER BY SUM(ventas) DESC) AS ranking
+FROM ventas
+GROUP BY producto_id, categoria_id;
+
+-- 49. Diferencia entre el salario de cada empleado y el salario promedio de su departamento
+SELECT nombre, departamento_id, salario, salario - AVG(salario) OVER (PARTITION BY departamento_id) AS diferencia_salario
+FROM empleados;
+
+-- 50. Contar cuántas veces un salario aparece en cada departamento
+SELECT nombre, departamento_id, salario, COUNT(*) OVER (PARTITION BY departamento_id, salario) AS veces_repetido
+FROM empleados;
+
+
+-- 51. CTE para calcular el salario promedio por departamento y filtrar los mayores a 50000
+WITH salario_departamento AS (
+    SELECT departamento_id, AVG(salario) AS salario_promedio
+    FROM empleados
+    GROUP BY departamento_id
+)
+SELECT * FROM salario_departamento WHERE salario_promedio > 50000;
+
+-- 52. CTE para encontrar empleados con salario mayor al promedio de su departamento
+WITH salario_departamento AS (
+    SELECT departamento_id, AVG(salario) AS salario_promedio
+    FROM empleados
+    GROUP BY departamento_id
+)
+SELECT e.nombre, e.salario, d.salario_promedio
+FROM empleados e
+JOIN salario_departamento d ON e.departamento_id = d.departamento_id
+WHERE e.salario > d.salario_promedio;
+
+-- 53. CTE para contar empleados por departamento y mostrar solo los que tienen más de 10
+WITH empleados_por_departamento AS (
+    SELECT departamento_id, COUNT(*) AS total_empleados
+    FROM empleados
+    GROUP BY departamento_id
+)
+SELECT * FROM empleados_por_departamento WHERE total_empleados > 10;
+
+-- 54. CTE recursivo para obtener la jerarquía de empleados
+WITH RECURSIVE jerarquia AS (
+    SELECT id, nombre, jefe_id, 1 AS nivel FROM empleados WHERE jefe_id IS NULL
+    UNION ALL
+    SELECT e.id, e.nombre, e.jefe_id, j.nivel + 1 
+    FROM empleados e
+    JOIN jerarquia j ON e.jefe_id = j.id
+)
+SELECT * FROM jerarquia;
+
+-- 55. CTE para encontrar los productos con ventas superiores a la media
+WITH promedio_ventas AS (
+    SELECT AVG(ventas) AS media FROM ventas
+)
+SELECT * FROM ventas WHERE ventas > (SELECT media FROM promedio_ventas);
+
+
+-- 61. Extraer un valor específico de una columna JSON
+SELECT datos->>'nombre' AS nombre FROM usuarios_json;
+
+-- 62. Filtrar registros donde el campo JSON tiene un valor específico
+SELECT * FROM usuarios_json WHERE datos->>'pais' = 'España';
+
+-- 63. Obtener una clave específica dentro de un array JSON
+SELECT datos->'contactos'->0->>'email' AS primer_email FROM usuarios_json;
+
+-- 64. Convertir un JSON en filas individuales (`jsonb_each`)
+SELECT key, value FROM jsonb_each('{"nombre": "Juan", "edad": 30}');
+
+-- 65. Buscar si un JSON contiene una clave específica
+SELECT * FROM usuarios_json WHERE datos ? 'direccion';
+
+-- 66. Agregar un nuevo campo a un JSON
+UPDATE usuarios_json SET datos = jsonb_set(datos, '{telefono}', '"123456789"') WHERE id = 1;
+
+-- 67. Contar cuántos objetos tiene un array dentro de un JSON
+SELECT jsonb_array_length(datos->'compras') FROM usuarios_json;
+
+-- 68. Extraer y ordenar valores dentro de un JSON
+SELECT datos->>'nombre' AS nombre FROM usuarios_json ORDER BY datos->>'nombre';
+
+-- 69. Buscar si un array JSON contiene un valor específico
+SELECT * FROM usuarios_json WHERE datos->'hobbies' ? 'fútbol';
+
+-- 70. Convertir un JSON en una tabla
+SELECT * FROM jsonb_to_recordset('[{"nombre": "Juan", "edad": 30}, {"nombre": "Ana", "edad": 25}]') AS x(nombre TEXT, edad INT*
+
+
+-- 71. Crear una tabla con una columna tipo ARRAY
+CREATE TABLE estudiantes (id SERIAL PRIMARY KEY, nombre TEXT, notas INT[]);
+
+-- 72. Insertar valores en un ARRAY
+INSERT INTO estudiantes (nombre, notas) VALUES ('Carlos', ARRAY[85, 90, 78]);
+
+-- 73. Obtener el primer elemento de un ARRAY
+SELECT notas[1] FROM estudiantes;
+
+-- 74. Obtener el tamaño de un ARRAY
+SELECT array_length(notas, 1) FROM estudiantes;
+
+-- 75. Agregar un nuevo valor a un ARRAY
+UPDATE estudiantes SET notas = array_append(notas, 95) WHERE nombre = 'Carlos';
+
+-- 76. Buscar si un ARRAY contiene un valor
+SELECT * FROM estudiantes WHERE 90 = ANY(notas);
+
+-- 77. Filtrar registros donde un ARRAY contiene todos los valores de otro ARRAY
+SELECT * FROM estudiantes WHERE notas @> ARRAY[85, 90];
+
+-- 78. Concatenar dos ARRAYS
+SELECT array_cat(ARRAY[1, 2, 3], ARRAY[4, 5, 6]);
+
+-- 79. Ordenar los elementos de un ARRAY
+SELECT array_sort(ARRAY[3, 1, 2]);
+
+-- 80. Convertir un ARRAY en una cadena de texto
+SELECT array_to_string(ARRAY['A', 'B', 'C'], ', ');
+
